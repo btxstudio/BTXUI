@@ -1,0 +1,54 @@
+.fixed, .max-screen {
+  position: fixed;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container.md {
+  max-width: 960px;
+}
+
+.container.sm {
+  max-width: 600px;
+}
+
+.max-w, .max, .max-screen {
+  width: 100%;
+}
+
+.max-h, .max, .max-screen {
+  height: 100%;
+}
+
+.max, .max-screen {
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}

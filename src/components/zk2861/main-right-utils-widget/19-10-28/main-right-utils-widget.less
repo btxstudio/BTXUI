@@ -1,0 +1,71 @@
+/*19-10-28*/
+
+@bar_width: 10rem;
+
+.main-right-utils-widget{
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
+    background-image: -webkit-linear-gradient(top, #171b21, transparent);
+
+    &[show-state="hide"]{ //隐藏状态
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+    .mru-w-list{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 2rem;
+        position: relative;
+        z-index: 2;
+
+        .mru-w-item{
+            cursor: pointer;
+            width: @bar_width;
+            color: #fff;
+            text-shadow: 0 0 4px #111;
+            -webkit-transition: all .4s;
+            transition: all .4s;
+
+            &:first-of-type{
+                margin-top: 0;
+            }
+            .mru-w-ico{
+                position: relative;
+                display: block;
+                transition: all .4s;
+                transform: scale(.6);
+                opacity: .4;
+                font-size: 3.4rem;
+                color: #fff;
+            }
+            .mru-w-text{
+                display: inline-block;
+                font-size: 1rem;
+                color: #fff;
+                opacity: .4;
+                transform: translateY(-1rem);
+                transition: all .4s;
+            }
+            &:hover{
+                padding: 2rem 0;
+                margin: 0;
+
+                .mru-w-ico{
+                    transform: scale(1);
+                    opacity: 1;
+                    color: inherit!important;
+                }
+                .mru-w-text{
+                    font-size: 1.2rem;
+                    opacity: .7;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}

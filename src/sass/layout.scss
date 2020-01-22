@@ -1,0 +1,47 @@
+.fixed {                                //fixed 定位
+    position: fixed;
+}
+ 
+.relative {                             //相对定位
+    position: relative;
+}
+
+.absolute {                             //绝对定位
+    position: absolute;
+}
+
+.container {                            //版心
+    max-width: 1200px;
+    margin: 0 auto;
+
+    &.md{
+        max-width: 960px; 
+    }
+    &.sm{
+        max-width: 600px;
+    }
+}
+
+.max-w{                                 //满宽
+    width: 100%;
+}
+
+.max-h{                                 //满高
+    height: 100%;
+}
+
+.max{                                   //满屏
+    @extend .max-w;
+    @extend .max-h;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.max-screen{                            //满屏
+    @extend .fixed;
+    @extend .max;
+}
+
+//弹性布局
+@import "./flex.scss";

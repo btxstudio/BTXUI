@@ -1,0 +1,15 @@
+.no-data-widget {
+  padding: 1.4rem 0;
+}
+.no-data-widget .nd-w-ico {
+  font-size: 2.1rem;
+  color: rgba(134, 134, 134, 0.84);
+  margin-right: .7rem;
+  vertical-align: middle;
+}
+.no-data-widget .nd-w-text {
+  font-size: 1.17rem;
+  vertical-align: middle;
+  color: rgba(134, 134, 134, 0.64);
+  letter-spacing: 4px;
+}

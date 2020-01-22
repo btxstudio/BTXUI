@@ -1,0 +1,128 @@
+/*19-10-17*/
+.license-inp-widget{
+    text-align: center;
+
+    .li-w-title{
+        color: rgba(255,255,255,.57);
+        font-size: 1.7rem;
+        display: flex;
+        margin-bottom: 3.4rem;
+        -webkit-animation: li-w-ani-scalein .4s;
+        animation: li-w-ani-scalein .4s;
+
+        &::before, &::after{
+            content: "";
+            position: relative;
+            top: -.9rem;
+            flex-grow: 1;
+            border-bottom: 1px solid rgba(255,255,255,.1);
+            -webkit-animation: li-w-ani-linein .6s .4s backwards;
+            animation: li-w-ani-linein .6s .4s backwards;
+        }
+        &::before{
+            margin-right: 2rem;
+            transform-origin: right;
+        }
+        &::after{
+            margin-left: 2rem;
+            transform-origin: left;
+        }
+        &:empty{
+            display: none;
+        }
+    }
+    .li-w-inps{
+        display: flex;
+
+        .m-w-inp{
+            width: 5.4rem;
+            height: 5.4rem;
+            line-height: 5.4rem;
+            text-align: center;
+            font-size: 2.4rem;
+            margin: 0 .5rem;
+            color: #fff;
+            border-radius: 7px;
+            border: 2px solid rgba(255,255,255,.4);
+            -webkit-transition: all .4s;
+            transition: all .4s;
+            -webkit-animation: li-w-ani-fadein .4s backwards;
+            animation: li-w-ani-fadein .4s backwards;
+            -webkit-transform: scale(.9);
+            transform: scale(.9);
+
+            &:focus{
+                border-color: transparent;
+                background-color: rgba(255,255,255,.2);
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+//标题动画
+@-webkit-keyframes li-w-ani-scalein{
+    from {
+        opacity: 0;
+        -webkit-transform: scale(.4);
+    }
+    to{
+        opacity: 1;
+        -webkit-transform: scale(1);
+    }
+}
+@keyframes li-w-ani-scalein{
+    from {
+        opacity: 0;
+        transform: scale(.4);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+//标题线动画
+@-webkit-keyframes li-w-ani-linein{
+    from {
+        -webkit-transform: scaleX(0);
+    }
+    to{
+        -webkit-transform: scaleX(1);
+    }
+}
+@keyframes li-w-ani-linein{
+    from {
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
+}
+
+//输入框入场动画
+@-webkit-keyframes li-w-ani-fadein {
+    from {
+        opacity: .4;
+        visibility: hidden;
+        -webkit-transform: scale(0);
+    }
+    to{
+        opacity: 1;
+        -webkit-transform: scale(.9);
+        visibility: visible;
+    }
+}
+@keyframes li-w-ani-fadein {
+    from {
+        opacity: .4;
+        visibility: hidden;
+        transform: scale(0);
+    }
+    to{
+        opacity: 1;
+        transform: scale(.9);
+        visibility: visible;
+    }
+}

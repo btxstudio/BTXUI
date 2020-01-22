@@ -1,0 +1,58 @@
+[
+    {
+        "id": "a_1",
+        "text": "<b class='fsize-1d1'>起步</b>",
+        "children": [],
+        "spread": false
+    },
+    {
+        "id": "a_2",
+        "text": "<b>全局样式</b>",
+        "children": [
+            {
+                "id": "a_2_1",
+                "text": "布局"
+            },
+            {
+                "id": "a_2_2",
+                "text": "色彩"
+            },
+            {
+                "id": "a_2_3",
+                "text": "动画"
+            },
+            {
+                "id": "a_2_4",
+                "text": "响应式"
+            }
+        ],
+        "spread": true
+    },
+    {
+        "id": "a_3",
+        "text": "<b>组件</b>",
+        "children": [
+            {
+                "id": "a_3_1",
+                "text": "<b>confirm</b> 弹窗"
+            },
+            {
+                "id": "a_3_2",
+                "text": "<b>slider</b> 轮播器"
+            },
+            {
+                "id": "a_3_3",
+                "text": "<b>tooltip</b> 提示框"
+            },
+            {
+                "id": "a_3_4",
+                "text": "<b>content</b> 目录树"
+            },
+            {
+                "id": "a_3_5",
+                "text": "<b>content-node</b> 节点"
+            }
+        ],
+        "spread": true
+    }
+]

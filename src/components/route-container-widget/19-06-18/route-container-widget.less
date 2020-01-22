@@ -1,0 +1,50 @@
+/*19-06-18*/
+.route-container-widget{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding: 5.7rem 50.4rem 0 5.4rem;
+
+    .rc-w-inner{
+        height: 100%;
+
+        //欢迎界面
+        .rc-w-welcome{
+            padding-top: 7rem;
+            text-align: center;
+            display: none;
+
+            .rc-w-ico{
+                font-size: 5.4rem;
+                color: rgba(110,110,110,.57);
+            }
+            .rc-w-main{
+                color: #eee;
+                font-size: 1.4rem;
+                letter-spacing: 3px;
+                margin: 1rem 0;
+            }
+            .rc-w-sub{
+                letter-spacing: 2px;
+                font-size: 1.14rem;
+                color: rgba(170,170,170,.57);
+            }
+            &:only-child{
+                display: block;
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width: 1367px){
+    .route-container-widget{
+        padding: 5.7rem 46.4rem 0 2rem;
+    }
+}
+
+@media only screen and (max-width: 415px){
+    .route-container-widget{
+        padding: 2rem;
+    }
+}

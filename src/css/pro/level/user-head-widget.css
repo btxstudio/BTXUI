@@ -1,0 +1,39 @@
+.user-head-widget {
+  text-align: center;
+  padding: 2.4rem 0 4rem;
+}
+.user-head-widget .uh-w-cover {
+  margin: 0 auto .7rem;
+}
+.user-head-widget .uh-w-cover .uh-w-cover-img {
+  border-radius: 50%;
+  width: 7.1rem;
+  border: 3px solid transparent;
+  opacity: .84;
+}
+.user-head-widget .uh-w-cover .uh-w-cover-img:hover,
+.user-head-widget .uh-w-cover .uh-w-cover-img[state="only_show"] {
+  border-color: rgba(200, 200, 200, 0.1);
+  opacity: 1;
+}
+.user-head-widget .uh-w-name {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.57rem;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.user-head-widget .uh-w-name:hover {
+  color: #fff;
+}
+.user-head-widget .uh-w-tags {
+  opacity: .54;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  line-height: 1;
+  padding: 0 .7rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.24);
+}
+.user-head-widget .uh-w-tags:last-of-type {
+  border-right: none;
+}

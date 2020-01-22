@@ -1,0 +1,98 @@
+/*19-05-27*/
+@import "variable.less";
+
+.tab-widget {
+    display: inline-block;
+
+    .t-w-item {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+
+        .t-w-item-btn{
+            border-radius: 17px;
+            padding: .47rem 2rem;
+            font-size: 1.44rem;
+
+            &::after{
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 50%;
+                height: 2px;
+                width: 2px;
+                border-radius: 50%;
+                background-color: rgba(110,110,110,.4);
+            }
+            i{
+                margin-right: .47rem;
+                display: inline-block;
+                transform: scale(1.37);
+                color: #777;
+            }
+            .t-w-item-text{
+                color: #777;
+            }
+        }
+        &:last-child .t-w-item-btn::after{
+            display: none;
+        }
+        &:hover .t-w-item-btn{
+            background-color: rgba(110,110,110,.17);
+        }
+        &[state="act"] .t-w-item-btn{
+            i{
+                color: inherit;
+            }
+            .t-w-item-text{
+                color: #fff;
+            }
+        }
+        &[state="act"][dark-text] .t-w-item-btn .t-w-item-text{//深色字风格
+            color: #111;
+        }
+    }
+
+    //竖向风格
+    &[style-type="vertical"]{
+        .t-w-item{
+            display: block;
+            margin-bottom: 2.4rem;
+
+            .t-w-item-btn{
+                font-size: 1.54rem;
+
+                &::after{
+                    display: none;
+                }
+            }
+            &:hover .t-w-item-btn{
+                background-color: transparent;
+
+                .t-w-item-text{
+                    color: @theme_blue;
+                }
+            }
+            &[state="act"] .t-w-item-btn{
+                background-color: rgba(110,110,110,.17);
+            }
+        }
+    }
+
+    //选中保持背景风格
+    &[style-type="keep_bg"]{
+        .t-w-item{
+            .t-w-item-btn::after{
+                display: none;
+            }
+            &:hover .t-w-item-btn{
+                background-color: transparent;
+            }
+        }
+        .t-w-item[state="act"]{
+            .t-w-item-btn{
+                background-color: rgba(147,147,147,.2);
+            }
+        }
+    }
+}

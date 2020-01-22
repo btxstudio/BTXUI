@@ -1,0 +1,144 @@
+/*19-12-13*/
+@border-radius: 20px;
+@border-offset: -1px;
+
+.main-btn-widget{
+    position: relative;
+    border-radius: @border-radius;
+    border: 1px solid rgba(161,190,246,.4);
+    padding: 6px;
+    cursor: pointer;
+    transition: all .4s;
+    -webkit-animation: main-btn-ani-out-fadein .4s;
+    animation: main-btn-ani-out-fadein .4s;
+
+    //装饰效果
+    .mb-w-decorate{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+
+        &::before, &::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: @border-radius;
+            border: 1px solid transparent;
+            height: 2 * @border-radius;
+            width: 2 * @border-radius;
+        }
+        &[pos-top]{
+            &::before{
+                top: @border-offset;
+                left: @border-offset;
+                border-top-color: #6cf2cb;
+                transform: rotate(-45deg);
+            }
+            &::after{
+                top: @border-offset;
+                right: @border-offset;
+                border-top-color: #6cf2cb;
+                transform: rotate(45deg);
+            }
+        }
+        &[pos-bottom]{
+            &::before{
+                bottom: @border-offset;
+                left: @border-offset;
+                border-left-color: #6cf2cb;
+                transform: rotate(-45deg);
+            }
+            &::after{
+                bottom: @border-offset;
+                right: @border-offset;
+                border-right-color: #6cf2cb;
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    .mb-w-inner{
+        background-color: rgba(61,78,112,.84);
+        height: 4.5rem;
+        border-radius: 18px;
+        opacity: .7;
+        transition: all .4s;
+        -webkit-animation: main-btn-ani-in-fadein .6s .4s backwards;
+        animation: main-btn-ani-in-fadein .6s .4s backwards;
+    }
+    &:hover .mb-w-inner{
+        transform: scale(1.02, 1.12);
+        opacity: 1;
+    }
+    .mb-w-text{
+        font-size: 1.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-shadow: 0 0 4px #000;
+        letter-spacing: 4px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-animation: main-btn-ani-out-fadein .6s 1s backwards;
+        animation: main-btn-ani-out-fadein .6s 1s backwards;
+    }
+}
+
+//外层入场动画
+@-webkit-keyframes main-btn-ani-out-fadein {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes main-btn-ani-out-fadein {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+//内层入场动画
+@-webkit-keyframes main-btn-ani-in-fadein {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0, 0);
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(.1, 1);
+    }
+    100% {
+        opacity: .7;
+        -webkit-transform: scale(1, 1);
+    }
+}
+@keyframes main-btn-ani-in-fadein {
+    0% {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(.1, 1);
+    }
+    100% {
+        opacity: .7;
+        transform: scale(1, 1);
+    }
+}

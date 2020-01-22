@@ -1,0 +1,57 @@
+/*19-03-09*/
+.uploader-widget{
+    display: inline-block;
+
+    .u-w-cover, .u-w-btn{
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 50%;
+        cursor: pointer;
+        opacity: .84;
+        background-color: rgba(124, 124, 124, 0.34);
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+    .u-w-cover{//预览图类型
+        width: 6rem;
+        height: 6rem;
+        line-height: 6rem;
+        font-size: 2rem;
+
+        .u-w-preview{
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+    }
+    .u-w-btn{//缺省普通类型
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 1.4rem;
+        color: #777;
+    }
+    .u-w-file{
+        display: none;
+    }
+
+    //撑满容器布局
+    &[style-type="max_layout"]{
+        display: block;
+        height: 100%;
+
+        .u-w-cover{
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+
+            .u-w-preview{
+                border-radius: 4px;
+            }
+        }
+    }
+}

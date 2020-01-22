@@ -1,0 +1,72 @@
+/*19-03-20*/
+.matte-video-widget{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background-color: rgba(40,40,40,.9);
+
+    .mv-w-box{
+        position: relative;
+        height: 60%;
+        width: 50%;
+        top: 20%;
+        left: 25%;
+
+        .mv-w-close{
+            position: absolute;
+            right: 1rem;
+            padding: 0 2rem;
+            height: 3rem;
+            line-height: 3rem;
+            top: .5rem;
+            border-radius: 7px;
+            border: 1px solid rgba(70,70,70,1);
+            color: #ccc;
+            font-size: 1.4rem;
+            cursor: pointer;
+
+            &:hover{
+                background-color: rgba(70,70,70,1);
+                color: #fff;
+            }
+        }
+        .mv-w-title{
+            color: #fff;
+            background-color: #222;
+            height: 4rem;
+            line-height: 4rem;
+            text-align: center;
+            border-radius: 7px 7px 0 0;
+            font-size: 1.54rem;
+        }
+    }
+}
+
+//移动端
+@media only screen and (max-width: 500px){
+    .matte-video-widget{
+        .mv-w-box{
+            height: 60%;
+            width: 100%;
+            left: 0;
+
+            .mv-w-close{
+                right: 50%;
+                margin-right: -5.5rem;
+                width: 11rem;
+                text-align: center;
+                height: 4rem;
+                line-height: 4rem;
+                top: -5rem;
+                font-size: 1.5rem;
+                background-color: rgba(0,0,0,.4);
+            }
+            .mv-w-title{
+                font-size: 1.4rem;
+            }
+        }
+    }
+}

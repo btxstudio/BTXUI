@@ -1,0 +1,145 @@
+<!--19-02-25-->
+<template>
+    <div class="waterfall-widget">
+        <ul class="w-w-frame" :width-plan="width_plan">
+            <li class="w-w-item" v-for="img of show_imgs" :id="img.item_id" :style="{top:img.item_top, left:img.item_left}">
+                <img class="w-w-img" :src="img.src" :title="img.title" />
+                <div class="wc-w-desc">
+                    hello world
+                </div>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "waterfall-widget",
+        props: ["init-data"],
+        data(){
+            return {
+
+                /*图片公共根路径*/
+                common_path_root: "",
+
+                /*全部图片*/
+                imgs: [],
+
+                /*显示图片*/
+                show_imgs: [],
+
+                /*细分列数*/
+                cols: 2,
+
+                /*宽度方案（最多支持5列）*/
+                width_plan: null,
+
+                /*瀑布流定位计算数据结构*/
+                pos_data: null,
+
+                /*重置大小定时器*/
+                resize_t: null
+
+            }
+        },
+        methods: {
+
+            /*加载图片*/
+            load_img(index){
+                let img = this.imgs[index];
+                if(!img) return;
+                let $img = new Image(),
+                    pos;
+                $img.onload = ()=>{
+                    pos = this._computed_pos_data();
+                    this.show_imgs.push({
+                        title: img.title,
+                        src: $img.src,
+                        item_left: pos.min_top_index * 1/this.cols * 100 + "%",
+                        item_top: pos.min_top + "px",
+                        item_id: img.id
+                    });
+                    this.$nextTick(()=>{
+                        this.pos_data[pos.min_top_index] += this.$el.querySelector("#" + img.id).clientHeight;
+                        this.load_img(++index);
+                    })
+                }
+                $img.src = this.common_path_root + img.src;
+            },
+
+            /*追加显示图片*/
+            append_imgs(imgs){
+                let start_index = this.imgs.length;
+                this.imgs = this.imgs.concat(imgs);
+                this.load_img(start_index);
+            },
+
+            /*列设置*/
+            set_cols(num){
+                this.cols = Math.max(Math.min(num, 5), 2);
+                this._set_width_plan();
+                this._resize();
+            },
+
+            //【内部方法】---------------------------------------------------------------------
+
+            /*基于列数设置宽度样式方案*/
+            _set_width_plan(){
+                this.width_plan = "p_" + this.cols;
+            },
+
+            /*基于列数设置瀑布流定位计算数据结构*/
+            _reset_pos_data(){
+                this.pos_data = [];
+                for(let i=0; i<this.cols; i++){
+                    this.pos_data.push(0);
+                }
+            },
+
+            /*resize*/
+            _resize(){
+                clearTimeout(this.resize_t);
+                let pos;
+                this.resize_t = setTimeout(()=>{
+                    this._reset_pos_data();
+                    this.$el.querySelectorAll(".w-w-item").forEach(($item, i) => {
+                        pos = this._computed_pos_data();
+                        this.show_imgs[i].item_top = pos.min_top + "px";
+                        this.show_imgs[i].item_left = pos.min_top_index * 1/this.cols * 100 + "%";
+                        this.pos_data[pos.min_top_index] += $item.clientHeight;
+                    })
+                }, 1000)
+            },
+
+            /*瀑布流定位计算*/
+            _computed_pos_data(){
+                let min_top = this.pos_data[0],
+                    min_top_index = 0;
+                this.pos_data.forEach((pos, i) => {
+                    if(pos < min_top){
+                        min_top = pos;
+                        min_top_index = i;
+                    }
+                })
+                return {
+                    min_top,
+                    min_top_index
+                }
+            },
+
+        },
+        mounted(){
+            window.onresize = this._resize;
+            this.common_path_root = this.initData.common_path_root;
+            this.imgs = this.initData.imgs;
+            this.cols = this.initData.cols || 2;
+            this._set_width_plan();
+            this._reset_pos_data();
+            this.load_img(0);
+        }
+    }
+</script>
+
+<style scoped>
+    @import "../../assets/css/waterfall-widget.css";
+</style>

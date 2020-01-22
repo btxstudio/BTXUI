@@ -1,0 +1,51 @@
+/*19-02-25*/
+.waterfall-column-widget{
+    .wc-w-frame{
+        column-count: 3;
+        column-gap: 10px;
+
+        .wc-w-item{
+            break-inside: avoid;
+            padding-bottom: 10px;
+            animation: fade_in 1s;
+            transition: all 1s;
+
+            .wc-w-img{
+                display: block;
+            }
+            .wc-w-desc{
+                padding: 2rem;
+                border: 1px solid #ddd;
+                border-top: none;
+                background-color: #eee;
+            }
+        }
+    }
+}
+
+@-webkit-keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

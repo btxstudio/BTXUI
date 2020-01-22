@@ -1,0 +1,60 @@
+@import "./initor.scss"; 
+
+//主题色-遂蓝
+.main-color{
+    color: $main-color;
+}     
+.main-bg-color{
+    background-color: $main-color;
+}
+
+//辅助色-锡金
+.sub-color{
+    color: $sub-color;
+}
+.sub-bg-color{
+    background-color: $sub-color;
+}      
+
+//纯白
+.light{
+    color: $light;
+}
+.light-bg{
+    background-color: $light;
+}
+
+//纯黑
+.dark{
+    color: $dark;
+}
+.dark-bg{
+    background-color: $dark;
+}
+
+//深灰
+.deep-gray{
+    color: $deep-gray;
+}
+.deep-gray-bg{
+    background-color: $deep-gray;
+}
+
+//中灰
+.middle-gray{
+    color: $middle-gray;
+}
+.middle-gray-bg{
+    background-color: $middle-gray;
+}
+
+//浅灰
+.light-gray{
+    color: $light-gray;
+}
+.light-gray-bg{
+    background-color: $light-gray;
+}
+
+//不透明度设置
+@include auto_gen_opacity_class();

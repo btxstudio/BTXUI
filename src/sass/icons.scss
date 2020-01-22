@@ -1,0 +1,47 @@
+@import "./initor.scss";  
+ 
+@font-face {font-family: "defaultICO";
+    src: url('/iconfont.eot?t=1559208409551'); /* IE9 */
+    src: url('/iconfont.eot?t=1559208409551#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
+    url('/iconfont.woff?t=1559208409551') format('woff'),
+    url('/iconfont.ttf?t=1559208409551') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('/iconfont.svg?t=1559208409551#iconfont') format('svg'); /* iOS 4.1- */
+}   
+
+[class^="ico-"],
+[class*=" ico-"] {
+    font-family: "defaultICO" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+ 
+$icons: 
+    (success, "\e620")              //正确（成功）
+    (fail, "\e60c")                 //错误（失败）
+    (xiala, "\e6b9")                //下拉
+    (arrow-right, "\e607")          //右箭头
+    (arrow-left, "\e608")           //左箭头
+    (sousuo, "\e66e")               //搜索
+    (play, "\e6a4")                 //播放
+    (pause, "\e6a5")                //暂停
+    (guanbi, "\e663")               //关闭（old）
+    (close, "\e663")                //关闭
+    (tianjia, "\e664")              //添加（old）
+    (add, "\e664")                  //添加
+    (more, "\e654")                 //更多
+    (link, "\e66d")                 //关联
+    (save, "\e602")                 //存储
+    (del, "\e612")                  //删除
+
+    (btxstudio-zh, "\e606")         //佰逹仕
+    (company-pad, "\e603")          //七武海（实心）
+    (company-line, "\e604")         //七武海（线性）
+    (company-zh, "\e605")           //七武海（文字）
+    (level, "\e60a")                //level
+    (level_round, "\e60e")          //level（圆形实心）
+    (btxstudio, "\e60b")            //btxstudio
+    (btxstudio-round, "\e60d");     //btxstudio（圆形实心）
+
+@include set_icons($icons); 

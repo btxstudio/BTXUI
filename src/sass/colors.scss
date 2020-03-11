@@ -4,17 +4,23 @@
 .main-color{
     color: $main-color;
 }     
-.main-bg-color{
+.main-bg{
     background-color: $main-color;
+}
+.main-border{
+    border: 1px solid $main-color;
 }
 
 //辅助色-锡金
 .sub-color{
     color: $sub-color;
 }
-.sub-bg-color{
+.sub-bg{
     background-color: $sub-color;
 }      
+.sub-border{
+    border: 1px solid $sub-color;
+}
 
 //纯白
 .light{
@@ -22,6 +28,9 @@
 }
 .light-bg{
     background-color: $light;
+}
+.light-border{
+    border: 1px solid $light;
 }
 
 //纯黑
@@ -31,6 +40,9 @@
 .dark-bg{
     background-color: $dark;
 }
+.dark-border{
+    border: 1px solid $dark;
+}
 
 //深灰
 .deep-gray{
@@ -38,6 +50,9 @@
 }
 .deep-gray-bg{
     background-color: $deep-gray;
+}
+.deep-gray-border{
+    border: 1px solid $deep-gray;
 }
 
 //中灰
@@ -47,6 +62,9 @@
 .middle-gray-bg{
     background-color: $middle-gray;
 }
+.middle-gray-border{
+    border: 1px solid $middle-gray;
+}
 
 //浅灰
 .light-gray{
@@ -54,6 +72,9 @@
 }
 .light-gray-bg{
     background-color: $light-gray;
+}
+.light-gray-border{
+    border: 1px solid $light-gray;
 }
 
 //不透明度设置

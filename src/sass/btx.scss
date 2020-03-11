@@ -1,15 +1,17 @@
-@import "./global.scss";  
+@import "./basic.scss";  
 
 @import "./colors.scss";
+
+@import "./table.scss";
+
+@import "./decoration.scss";
      
 @import "./scroll.scss";       
       
 @import "./layout.scss";        
  
-@import "./grid.scss";   
- 
-@import "./article.scss";  
+@import "./grid.scss";     
 
 @import "./animation.scss";       
        
-@import "./icons.scss";         
+@import "./icons.scss";   

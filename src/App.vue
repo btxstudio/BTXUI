@@ -2,11 +2,11 @@
     <div id="app" class="max-screen flex-column">
 
         <!-- 顶部主导航栏 -->
-        <div class="pad-h-3 main-bg-color flex-layout-spread sub-color">
+        <div class="pad-h-3 main-bg flex-layout-spread sub-color">
 
             <!-- 左侧 logo -->
             <div class="flex-layout-middle">
-                <div class="logo-widget">
+                <div id="Logo">
                     <i class="ico-btxstudio"></i>
                 </div>
             </div>
@@ -22,16 +22,18 @@
 
         </div>
 
-        <div class="grid flex-grow">
+        <div class="flex flex-grow">
 
             <!-- 左侧目录 -->
-            <div class="col-3 pad-2d5 sub-bg-color auto-scroll main-color fsize-1d3">
-                <content-widget v-if="content_data" :data-tree="content_data" />  
+            <div class="pad-2d5 w-25 sub-bg auto-scroll main-color fsize-1d2">
+                <content-widget v-if="content_data" :data-tree="content_data" @on_select="$_nav_select" />  
             </div>
             
             <!-- 右侧介绍 -->
-            <div class="col-9 pad-2d5 auto-scroll fsize-1d2">
-                <router-view />
+            <div class="flex-grow flex-column">
+                <div class="flex-grow auto-scroll fsize-1d2 pad-2d5">
+                    <router-view class="container pad-b-7" md />
+                </div>
             </div>
 
         </div>
@@ -51,6 +53,14 @@ export default {
 
         }
     },
+    methods: {
+
+        //导航选择
+        $_nav_select(route){
+            console.log(route)
+        }
+
+    },
     mounted(){
         this.$axios.get("/static/setting.json").then(res => {
             this.content_data = res.data
@@ -68,7 +78,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-    .logo-widget{
+    #Logo{
         transform: scale(1.35);
         font-size: 2.7rem;
     }

@@ -1,36 +1,52 @@
 [
     {
-        "id": "a_1",
+        "id": "a",
         "text": "<b class='fsize-1d1'>起步</b>",
         "children": [],
         "spread": false
     },
     {
-        "id": "a_2",
+        "id": "b",
         "text": "<b>全局样式</b>",
         "children": [
             {
-                "id": "a_2_1",
-                "text": "布局"
+                "id": "text",
+                "text": "文本"
             },
             {
-                "id": "a_2_2",
+                "id": "color",
                 "text": "色彩"
             },
             {
-                "id": "a_2_3",
+                "id": "layout",
+                "text": "布局"
+            },
+            {
+                "id": "table",
+                "text": "表格"
+            },
+            {
+                "id": "decoration",
+                "text": "装饰"
+            },
+            {
+                "id": "icon",
+                "text": "图标"
+            },
+            {
+                "id": "animation",
                 "text": "动画"
             },
             {
-                "id": "a_2_4",
+                "id": "responsive",
                 "text": "响应式"
             }
         ],
         "spread": true
     },
     {
-        "id": "a_3",
-        "text": "<b>组件</b>",
+        "id": "c",
+        "text": "<b>有状态组件</b>",
         "children": [
             {
                 "id": "a_3_1",
@@ -54,5 +70,9 @@
             }
         ],
         "spread": true
+    },
+    {
+        "id": "d",
+        "text": "<b>无状态组件</b>"
     }
 ]

@@ -1,0 +1,20 @@
+.select-widget {
+    .s-w-text {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    //下拉选择列表
+    .s-w-list {
+        .s-w-item {
+            &:hover {
+                background-color: rgba(170, 170, 170, 0.14);
+
+                .s-w-val {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}

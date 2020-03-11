@@ -35,14 +35,13 @@ $light-gray: #eee;        //浅灰
         padding-#{$dir}: $val;
     }
 }
- 
 
 //自动化生成全局样式类----------------------------------------------
 
 //生成内边距
 @mixin auto_gen_padding_class(){ 
     $dirs: (-t top), (-r right), (-l left), (-b bottom), (-v v), (-h h), ("" all); 
-    $vals: (1 1), (1d5 1.5), (2 2), (2d5 2.5), (3 3), (3d5 3.5), (4 4), (5 5), (6 6), (7 7), (8 8), (9 9), (10 10);
+    $vals: (0 0), (d5 .5), (1 1), (1d5 1.5), (2 2), (2d5 2.5), (3 3), (3d5 3.5), (4 4), (5 5), (6 6), (7 7), (8 8), (9 9), (10 10);
 
     @for $i from 1 to length($dirs) + 1{
         $dir: nth($dirs, $i);
@@ -56,7 +55,7 @@ $light-gray: #eee;        //浅灰
 
 //生成倍数字号
 @mixin auto_gen_font_size_class(){ 
-    @for $i from 0 to 11{
+    @for $i from 0 to 6{
         
         //处理缩小字号
         @if $i == 0 {
@@ -82,17 +81,6 @@ $light-gray: #eee;        //浅灰
     }
 } 
 
-//生成各尺寸方块 
-@mixin auto_gen_rect_class(){ 
-    @for $i from 1 to 11{
-        .rect-#{$i} {
-            width: #{$i}rem;
-            height: #{$i}rem;
-            line-height: #{$i}rem;
-        }
-    }
-}
-
 //设置字体图标
 @mixin set_icons($icons, $prefix:ico){
     @each $icon in $icons {
@@ -105,8 +93,41 @@ $light-gray: #eee;        //浅灰
 //生成不透明度阶梯
 @mixin auto_gen_opacity_class(){ 
     @for $i from 0 to 11{
-        .opacity-#{$i} {
+        .alpha-#{$i} {
             opacity: $i / 10;
+        }
+    }
+}
+
+//生成不同尺寸宽度及高度
+@mixin auto_size(){
+    .w-0 {
+        width: 0;
+    }
+    .h-0 {
+        height: 0;
+    }
+    .w-d5 {
+        width: .5rem;
+    }
+    .h-d5 {
+        height: .5rem;
+    }
+    @for $i from 1 to 11{
+        .w-#{$i} {
+            width: #{$i}rem;
+        }
+        .h-#{$i} {
+            height: #{$i}rem;
+        }
+    }
+    $vals: (15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
+    @each $val in $vals{
+        .w-#{$val} {
+            width: #{$val}rem;
+        }
+        .h-#{$val} {
+            height: #{$val}rem;
         }
     }
 }

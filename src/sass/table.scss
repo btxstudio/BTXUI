@@ -1,0 +1,46 @@
+.table {
+    th{
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 1.05em;
+    }
+    tbody{
+        tr{
+            &:nth-child(even){
+                background-color: #f7f7f7;
+            }
+            &:last-child td{
+                border-bottom: 1px solid #eee;
+            }
+        }
+    }
+    td, th{
+        padding: .7rem 1rem;
+    }
+
+    //中等尺寸
+    &[md]{
+        td, th{
+            padding: .5rem 1rem;
+        }
+        th{
+            font-size: .95em;
+        }
+        td{
+            font-size: .9em;
+        }
+    }
+
+    //小型尺寸
+    &[sm]{
+        td, th{
+            padding: .2rem 1rem;
+        }
+        th{
+            font-size: .85em;
+        }
+        td{
+            font-size: .8em;
+        }
+    }
+}

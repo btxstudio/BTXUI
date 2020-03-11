@@ -30,8 +30,63 @@ a:hover {
     opacity: .7;
 }
 
-ul, li {
+article {
+    font-size: 15px;
+    line-height: 2;
+
+    //编辑模式
+    &[contenteditable]{             
+        border: none;
+        outline: none;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        margin-bottom: 1em;
+    }
+    ol, ul{
+        margin-bottom: 1.4em;
+    }
+}
+
+p{
+    margin-bottom: 1.4em;
+    
+    &:empty {
+        margin-top: 1.4em;
+        height: 1.4em;
+    }
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.8em; 
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.4em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+ul {
     list-style: none;
+}
+
+ol{
+    list-style-position: inside;
 }
 
 img {
@@ -72,37 +127,28 @@ button{
     cursor: pointer;
 }
 
-//标题
-h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
-}
-
-h1 {
-    font-size: 2rem;
-}
-
-h2 {
-    font-size: 1.8rem; 
-}
-
-h3 {
-    font-size: 1.6rem;
-}
-
-h4 {
-    font-size: 1.4rem;
-}
-
-h5 {
-    font-size: 1.2rem;
-}
-
 iframe {
     border: none;
 }
 
-.hide{                                                          //强制隐藏
-    display: none!important;
+code {
+    background-color: #f9f2f4;
+    color: #c7254e;
+    font-family: Consolas !important;
+    padding: 2px 6px;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: rgba(134,134,134,.17);
+    margin: 2rem 0;
 }
 
 .pcenter {
@@ -119,22 +165,23 @@ iframe {
 
 .pjustify { 
     text-align: justify;
+} 
+
+//文本省略
+.ellipsis {             
+    display: block;                                        
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-   
-//内边距设置
-@include auto_gen_padding_class();    
-
+//强制隐藏
+.hide{                                                          
+    display: none!important;
+}
 
 //字号倍数设置
 @include auto_gen_font_size_class(); 
 [class^="fsize-"], [class*=" fsize-"]{
     vertical-align: middle;
-} 
-
-
-//生成各尺寸方块
-@include auto_gen_rect_class();
-[class^="rect-"], [class*=" rect-"]{
-    display: inline-block;
 } 

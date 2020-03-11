@@ -1,3 +1,5 @@
+@import "./initor.scss";  
+
 .fixed {                                //fixed 定位
     position: fixed;
 }
@@ -11,13 +13,14 @@
 }
 
 .container {                            //版心
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 
-    &.md{
+    &[md]{
         max-width: 960px; 
     }
-    &.sm{
+    &[sm]{
         max-width: 600px;
     }
 }
@@ -33,15 +36,23 @@
 .max{                                   //满屏
     @extend .max-w;
     @extend .max-h;
-    left: 0;
-    top: 0;
-    overflow: hidden;
 }
 
 .max-screen{                            //满屏
     @extend .fixed;
     @extend .max;
+    left: 0;
+    top: 0;
+    overflow: hidden;
 }
 
-//弹性布局
+//宽度及高度设置
+@include auto_size();
+
+//内边距设置
+@include auto_gen_padding_class();   
+
+//栅格布局
 @import "./flex.scss";
+
+

@@ -73,8 +73,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__btx_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__btx_scss__);
 
 
-//import "./a.css"
-
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {

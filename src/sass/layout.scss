@@ -49,10 +49,18 @@
 //宽度及高度设置
 @include auto_size();
 
-//内边距设置
-@include auto_gen_padding_class();   
+//内、外边距设置
+@include auto_gen_space_class();   
+
+//z 轴层级设置
+@include auto_gen_z_index();
+
+//放缩比率设置
+@include auto_gen_scale();
+
+//微调位移设置
+@include auto_gen_offset();
 
 //栅格布局
 @import "./flex.scss";
-
 

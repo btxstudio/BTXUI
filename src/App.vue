@@ -5,8 +5,8 @@
         <div class="pad-h-3 main-bg flex-layout-spread sub-color">
 
             <!-- 左侧 logo -->
-            <div class="flex-layout-middle">
-                <div id="Logo">
+            <div class="flex-layout-middle light alpha-4">
+                <div class="fsize-2d5 scale-1d4">
                     <i class="ico-btxstudio"></i>
                 </div>
             </div>
@@ -75,11 +75,4 @@ export default {
     /* 全局样式 */ 
     @import "./sass/btx";
 
-</style>
-
-<style lang="scss" scoped>
-    #Logo{
-        transform: scale(1.35);
-        font-size: 2.7rem;
-    }
 </style>

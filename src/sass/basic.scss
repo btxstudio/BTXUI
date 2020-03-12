@@ -7,7 +7,7 @@
     margin: 0;
     padding: 0;
     letter-spacing: 1px;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); //高亮颜色透明
     -webkit-overflow-scrolling: touch;
 }
 
@@ -98,21 +98,29 @@ video, audio {
     width: 100%;
 }
 
-input[type="text"], input[type="password"], textarea, select, option,
-input[type="text"]:hover, input[type="password"]:hover, textarea:hover, select:hover, option:hover{
+input, textarea, select, option,
+select:hover, option:hover{
     width: 100%;
     letter-spacing: 1px;
     border: none;
     background: none;
     outline: none;
     box-shadow: none;
+    resize: none;
     font-size: inherit;
     color: inherit;
     font-family: "微软雅黑", Arial;
+    -webkit-appearance: none; //ios下移除原生样式
 
     &::placeholder{
         opacity: .7;
     }
+}
+
+input:active, textarea:active
+input:hover, textarea:hover {
+    outline: none;
+    box-shadow: none;
 }
 
 table{

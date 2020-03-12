@@ -26,9 +26,18 @@
             <code>.round</code>
           </td>
           <td>
+            <code>lg</code>
+          </td>
+          <td>24px 大圆角</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.round</code>
+          </td>
+          <td>
             <code>md</code>
           </td>
-          <td>24px 中等圆角</td>
+          <td>10px 中等圆角</td>
         </tr>
         <tr>
           <td>
@@ -46,11 +55,12 @@
     <!-- 圆角示例 -->
     <p>使用圆角样式可用于头像之类的图像制作。</p>
     <p>【示例】：</p>
-    <div class="grid pcenter">
-        <div class="col-3"><img width="110" src="/static/img/head.jpg" /><br>方形头像</div>
-        <div class="col-3"><img width="110" class="round" sm src="/static/img/head.jpg" /><br>小圆角头像</div>
-        <div class="col-3"><img width="110" class="round" md src="/static/img/head.jpg" /><br>大圆角头像</div>
-        <div class="col-3"><img width="110" class="round" src="/static/img/head.jpg" /><br>正圆头像</div>
+    <div class="flex-layout-spread pcenter">
+        <div><img width="110" src="/static/img/head.jpg" /><br>方形头像</div>
+        <div><img width="110" class="round" sm src="/static/img/head.jpg" /><br>小圆角头像</div>
+        <div><img width="110" class="round" md src="/static/img/head.jpg" /><br>中等圆角头像</div>
+        <div><img width="110" class="round" lg src="/static/img/head.jpg" /><br>大圆角头像</div>
+        <div><img width="110" class="round" src="/static/img/head.jpg" /><br>正圆头像</div>
     </div>
     <p></p>
 

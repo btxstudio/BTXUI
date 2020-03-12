@@ -3,8 +3,11 @@
 .round{
     border-radius: 50%;         //50% 圆角
 
-    &[md]{                      //24px 中等圆角
+    &[lg]{                      //24px 大圆角
         border-radius: 24px;  
+    }
+    &[md]{                      //10px 中等圆角
+        border-radius: 10px;  
     }
     &[sm]{                      //4px 小型圆角
         border-radius: 4px;  

@@ -137,7 +137,7 @@
 
     <!-- 内边距 -->
     <h5>内边距</h5>
-    <p>通过 <code>pad-*</code> 可以使用预置的内边距方案，在布局上 BTX·UI 推荐使用内边距替代外边距。</p>
+    <p>通过 <code>pad-*</code> 可以使用预置的内边距方案。</p>
     <p>预置的内边距值：0、0.5、1、1.5、2、2.5、3、3.5、4、5、6、7、8、9、10，单位 rem。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如 0.5 rem 内边距，类名为 <code>.pad-d5</code>。</p>
     <table class="table" md>
         <thead>
@@ -174,6 +174,49 @@
             <tr>
                 <td><code>.pad-b-*</code></td>
                 <td>设置下侧内边距</td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+
+    <!-- 外边距 -->
+    <h5>外边距</h5>
+    <p>通过 <code>mrg-*</code> 可以使用预置的外边距方案。其值域范围等同于内边距。</p>
+    <table class="table" md>
+        <thead>
+            <tr>
+                <th>样式类</th>
+                <th>效果</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>.mrg-*</code></td>
+                <td>设置 4 个方向的外边距值</td>
+            </tr>
+            <tr>
+                <td><code>.mrg-v-*</code></td>
+                <td>设置垂直方向外边距</td>
+            </tr>
+            <tr>
+                <td><code>.mrg-h-*</code></td>
+                <td>设置水平方向外边距</td>
+            </tr>
+            <tr>
+                <td><code>.mrg-l-*</code></td>
+                <td>设置左侧外边距</td>
+            </tr>
+            <tr>
+                <td><code>.mrg-r-*</code></td>
+                <td>设置右侧外边距</td>
+            </tr>
+            <tr>
+                <td><code>.mrg-t-*</code></td>
+                <td>设置上侧外边距</td>
+            </tr>
+            <tr>
+                <td><code>.mrg-b-*</code></td>
+                <td>设置下侧外边距</td>
             </tr>
         </tbody>
     </table>
@@ -258,7 +301,50 @@
             </tr>
         </tbody>
     </table>
-    
+    <p></p>
+
+    <!-- z 轴层级 -->
+    <h5>z 轴层级</h5>
+    <p>框架预置了 -1 — 10 的 z-index 层级样式，通过 <code>z*</code> 样式类实现。如：-1 为 <code>z-1</code>、10 为 <code>z10</code>。</p>
+    <p></p>
+
+    <!-- 微调 -->
+    <h5>微调</h5>
+    <p>BTX·UI 提供了位移及放缩的微调样式，位移微调需基于绝对（absolute）、相对（relative）或固定式（fixed）定位。放缩微调则是基于 transform 二维变形实现的。</p>
+    <p>预置的微调位移值：-10 — -1、0 — 10，单位 px。比如向下位移 5 像素，类名为 <code>.t5</code>。</p>
+    <p>预置的微调放缩值：0 — 0.9（缩小）；1 — 1.9、2 — 10（放大）。比如放大为 1.5 倍，类名为 <code>.scale-1d5</code>。</p>
+    <p>数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。</p>
+    <table class="table" md>
+        <thead>
+            <tr>
+                <th>样式类</th>
+                <th>效果</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>.l*</code></td>
+                <td>基于左侧水平位移</td>
+            </tr>
+            <tr>
+                <td><code>.r*</code></td>
+                <td>基于左侧水平位移</td>
+            </tr>
+            <tr>
+                <td><code>.t*</code></td>
+                <td>基于上侧水平位移</td>
+            </tr>
+            <tr>
+                <td><code>.b*</code></td>
+                <td>基于下侧水平位移</td>
+            </tr>
+            <tr>
+                <td><code>.scale-*</code></td>
+                <td>放缩</td>
+            </tr>
+        </tbody>
+    </table>
+
   </article>
 </template>
 

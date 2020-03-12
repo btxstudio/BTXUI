@@ -18,7 +18,7 @@ $light-gray: #eee;        //浅灰
 //混合宏工具----------------------------------------------
 
 //设置内边距 
-@mixin set_padding($val:0, $dir:all){
+@mixin set_space($side, $val:0, $dir:all){
     @if $dir == all{
         padding: $val;
     }@else if $dir == v{ //vertical
@@ -32,14 +32,14 @@ $light-gray: #eee;        //浅灰
             right: $val;
         }
     }@else{
-        padding-#{$dir}: $val;
+        #{$side}-#{$dir}: $val;
     }
 }
 
 //自动化生成全局样式类----------------------------------------------
 
-//生成内边距
-@mixin auto_gen_padding_class(){ 
+//生成内、外边距
+@mixin auto_gen_space_class(){ 
     $dirs: (-t top), (-r right), (-l left), (-b bottom), (-v v), (-h h), ("" all); 
     $vals: (0 0), (d5 .5), (1 1), (1d5 1.5), (2 2), (2d5 2.5), (3 3), (3d5 3.5), (4 4), (5 5), (6 6), (7 7), (8 8), (9 9), (10 10);
 
@@ -47,7 +47,10 @@ $light-gray: #eee;        //浅灰
         $dir: nth($dirs, $i);
         @each $val in $vals{
             .pad#{nth($dir, 1)}-#{nth($val, 1)} {
-                @include set_padding(#{nth($val, 2)}rem, nth($dir, 2));
+                @include set_space(padding, #{nth($val, 2)}rem, nth($dir, 2));
+            }
+            .mrg#{nth($dir, 1)}-#{nth($val, 1)} {
+                @include set_space(margin, #{nth($val, 2)}rem, nth($dir, 2));
             }
         }
     }
@@ -128,6 +131,58 @@ $light-gray: #eee;        //浅灰
         }
         .h-#{$val} {
             height: #{$val}rem;
+        }
+    }
+}
+
+//生成 z 轴层级
+@mixin auto_gen_z_index(){ 
+    .z-1 {
+        z-index: -1;
+    }
+    @for $i from 0 to 11{
+        .z#{$i} {
+            z-index: $i;
+        }
+    }
+}
+
+//生成放缩比率
+@mixin auto_gen_scale(){
+    @for $i from 0 to 10{
+        .scale-d#{$i} {
+            transform: scale($i / 10);
+        }
+    }
+    @for $i from 1 to 10{
+        .scale-1d#{$i} {
+            transform: scale($i / 10 + 1);
+        }
+    }
+    @for $i from 2 to 11{
+        .scale-#{$i} {
+            transform: scale($i);
+        }
+    }
+}
+
+//生成微调位移
+@mixin auto_gen_offset(){
+    $dirs: (l left), (r right), (t top), (b bottom); 
+    @for $i from 0 to 11{
+        @each $dir in $dirs{
+            @if $i == 0{
+                .#{nth($dir, 1)}#{$i} {
+                    #{nth($dir, 2)}: #{$i}px;
+                }
+            }@else{
+                .#{nth($dir, 1)}#{$i} {
+                    #{nth($dir, 2)}: #{$i}px;
+                }
+                .#{nth($dir, 1)}-#{$i} {
+                    #{nth($dir, 2)}: -#{$i}px;
+                }
+            }
         }
     }
 }

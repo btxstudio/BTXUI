@@ -8,6 +8,7 @@ import layout from '@/router/global_style/layout'               //布局
 import color from '@/router/global_style/color'                 //色彩
 import text from '@/router/global_style/text'                   //文本
 import decoration from '@/router/global_style/decoration'       //装饰
+import icon from '@/router/global_style/icon'                   //图标
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
             path: '/decoration',
             name: 'decoration',
             component: decoration
+        },
+        {
+            path: '/icon',
+            name: 'icon',
+            component: icon
         },
         {
             path: '/color',

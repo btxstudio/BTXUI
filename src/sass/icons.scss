@@ -1,5 +1,3 @@
-@import "./initor.scss";  
- 
 @font-face {font-family: "defaultICO";
     src: url('/iconfont.eot?t=1559208409551'); /* IE9 */
     src: url('/iconfont.eot?t=1559208409551#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -43,5 +41,14 @@ $icons:
     (level_round, "\e60e")          //level（圆形实心）
     (btxstudio, "\e60b")            //btxstudio
     (btxstudio-round, "\e60d");     //btxstudio（圆形实心）
+
+//设置字体图标
+@mixin set_icons($icons, $prefix:ico){
+    @each $icon in $icons {
+        .#{$prefix}-#{nth($icon, 1)}::before {
+            content: nth($icon, 2);
+        }
+    }
+}
 
 @include set_icons($icons); 

@@ -11,23 +11,23 @@
     @extend .flex; 
     flex-direction: column;
 }
- 
-.flex-row{
-    @extend .flex;
-    flex-direction: row;
-}
 
 //对齐方式
 
-.flex-layout-center{
+.flex-layout-center{                    //主轴居中
     @extend .flex;
     justify-content: center;
 }
-.flex-layout-middle{
+.flex-layout-middle{                    //侧轴居中
     @extend .flex;
     align-items: center;
 }
-.flex-layout-spread{
+.flex-center{                           //主轴及侧轴居中
+    @extend .flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-layout-spread{                    //主轴均分两端对齐
     @extend .flex;
     justify-content: space-between;
 }

@@ -15,7 +15,7 @@
             <div class="flex-layout-middle fsize-1d2">
                 <router-link to="/" class="pad-r-3">BTX·UI</router-link>
                 <a href="http://75sea.com" class="pad-r-3">Level</a>
-                <a href="http://75sea.com" class="pad-r-3">Github</a>
+                <a href="https://github.com/btxstudio/BTXUI" target="_blank" class="pad-r-3">Github</a>
                 <a href="http://75sea.com" class="pad-r-3">下载</a>
                 <a href="http://www.75sea.com" target="_blank" class="pad-r-3">七武海科技</a>
             </div>

@@ -1,16 +1,19 @@
 <template>
   <article>
-    <p>BTX·UI 提供了一套常用的图标集合。其类名都是以 <code>.ico-*</code> 作为前缀的。</p>
+    <p>BTX·UI 提供了一套常用的字体图标集合。其类名都是以 <code>.ico-*</code> 作为前缀的，比如删除图标：<code>.ico-del</code>。</p>
+    <p>在实际项目中为了灵活控制字体图标大小，推荐使用 <code>&lt;i&gt;</code> 标签进行样式类绑定，可配合字号样式类 <code>.fsize-*</code> 及放缩微调类 <code>.scale-*</code> 协同使用。</p>
     <p></p>
 
     <!-- 图标 -->
     <h5>图标汇总</h5>
     <div class="pcenter fsize-d8">
-        <div class="flex-layout-spread mrg-b-2" v-for="n of Math.ceil(icons.length / row_num)" :key="n">
-            <div class="w-10 h-10 round light-gray-border" sm v-for="(num, i) of row_num" :key="i" v-if="icons[(n - 1)*row_num + i]">
-                <i :class="`ico-${icons[(n - 1)*row_num + i].name}`" class="fsize-2d5 dark"></i><br>
-                <span>{{icons[(n - 1)*row_num + i].name}}</span><br>
-                <span class="fsize-d8 middle-gray">{{icons[(n - 1)*row_num + i].code}}</span>
+        <div class="grid">
+            <div class="col-2 mrg-b-2" v-for="(ico, i) of icons" :key="i">    
+                <div class="w-10 h-10 round light-gray-border" sm>
+                    <i :class="`ico-${ico.name} scale-${ico.scale || 1}`" class="fsize-2d5 dark"></i><br>
+                    <span>{{ico.name}}</span><br>
+                    <span class="fsize-d8 middle-gray">{{ico.code}}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -23,9 +26,6 @@ export default {
   name: "icon",
   data(){
       return {
-
-        //单行显示数目
-        row_num: 6,
 
         //图标集合
         icons: [
@@ -75,35 +75,43 @@ export default {
             },
             {
                 name: "link",
-                code: "\e66d"
+                code: "\e66d",
+                scale: "d8"
             },
             {
                 name: "save",
-                code: "\e602"
+                code: "\e602",
+                scale: "d8"
             },
             {
                 name: "del",
-                code: "\e612"
+                code: "\e612",
+                scale: "d8"
             },
             {
                 name: "btxstudio-zh",
-                code: "\e606"
+                code: "\e606",
+                scale: "1d4"
             },
             {
                 name: "company-pad",
-                code: "\e603"
+                code: "\e603",
+                scale: "d8"
             },
             {
                 name: "company-line",
-                code: "\e604"
+                code: "\e604",
+                scale: "d8"
             },
             {
                 name: "company-zh",
-                code: "\e605"
+                code: "\e605",
+                scale: "1d7"
             },
             {
                 name: "level",
-                code: "\e60a"
+                code: "\e60a",
+                scale: "1d2"
             },
             {
                 name: "level_round",
@@ -111,7 +119,8 @@ export default {
             },
             {
                 name: "btxstudio",
-                code: "\e60b"
+                code: "\e60b",
+                scale: "1d2"
             },
             {
                 name: "btxstudio-round",

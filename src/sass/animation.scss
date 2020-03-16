@@ -1,7 +1,19 @@
-.transition{
+.ani {                                //中速过度动画
+    -webkit-transition: all .7s;
+    -moz-transition: all .7s;
+    transition: all .7s;
+}
+
+.ani-fast {                           //快速过度动画
     -webkit-transition: all .4s;
     -moz-transition: all .4s;
     transition: all .4s;
+}
+
+.ani-slow {                           //慢速过度动画
+    -webkit-transition: all 1.4s;
+    -moz-transition: all 1.4s;
+    transition: all 1.4s;
 }
 
 //淡入动画

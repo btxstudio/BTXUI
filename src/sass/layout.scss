@@ -1,5 +1,11 @@
 @import "./initor.scss";  
 
+.box-normal {                           //标准盒模型
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
 .fixed {                                //fixed 定位
     position: fixed;
 }

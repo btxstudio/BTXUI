@@ -89,6 +89,37 @@ export default {
                 scale: "d8"
             },
             {
+                name: "mobile",
+                code: "\e712"
+            },
+            {
+                name: "weibo",
+                code: "\e64e"
+            },
+            {
+                name: "wechat",
+                code: "\e609"
+            },
+            {
+                name: "baidu",
+                code: "\e64d"
+            },
+            {
+                name: "github",
+                code: "\e761",
+                scale: "d9"
+            },
+            {
+                name: "download",
+                code: "\e600",
+                scale: "d9"
+            },
+            {
+                name: "ui",
+                code: "\e63c",
+                scale: "d9"
+            },
+            {
                 name: "btxstudio-zh",
                 code: "\e606",
                 scale: "1d4"

@@ -115,10 +115,11 @@ select:hover, option:hover{
     }
 }
 
-input[type="text"]:active, input[type="password"]:active, input[type="number"]:active, textarea:active
-input[type="text"]:hover, input[type="password"]:active, input[type="number"]:active, textarea:hover {
-    outline: none;
-    box-shadow: none;
+input[type="text"], input[type="password"], input[type="number"], textarea {
+    &:focus, &:active, &:hover {
+        outline: none;
+        box-shadow: none;
+    }
 }
 
 table{

@@ -19,7 +19,7 @@
     </div>
 
   </article>
-</template>t
+</template>
 
 <script>
 export default {

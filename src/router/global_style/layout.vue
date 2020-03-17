@@ -155,14 +155,8 @@
 
     <!-- 内边距 -->
     <h5>内边距</h5>
-    <p>
-      通过
-      <code>pad-*</code> 可以使用预置的内边距方案。
-    </p>
-    <p>
-      预置的内边距值：0、0.5、1、1.5、2、2.5、3、3.5、4、5、6、7、8、9、10，单位 rem。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如 0.5 rem 内边距，类名为
-      <code>.pad-d5</code>。
-    </p>
+    <p>通过<code>pad-*</code> 可以使用预置的内边距方案。</p>
+    <p>预置的内边距值：0.5、1、1.5、2、2.5、3、3.5、4、5、6、7、8、9、10，单位 rem。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如 0.5 rem 内边距，类名为<code>.pad-d5</code>。</p>
     <table class="table" md>
       <thead>
         <tr>
@@ -219,10 +213,7 @@
 
     <!-- 外边距 -->
     <h5>外边距</h5>
-    <p>
-      通过
-      <code>mrg-*</code> 可以使用预置的外边距方案。其值域范围等同于内边距。
-    </p>
+    <p>通过<code>mrg*</code> 可以使用预置的外边距方案。其值域范围等同于内边距。</p>
     <table class="table" md>
       <thead>
         <tr>
@@ -393,15 +384,6 @@
     <!-- 微调 -->
     <h5>微调</h5>
     <p>BTX·UI 提供了位移及放缩的微调样式，位移微调需基于绝对（absolute）、相对（relative）或固定式（fixed）定位。放缩微调则是基于 transform 二维变形实现的。</p>
-    <p>
-      预置的微调位移值：-10 — -1、0 — 10，单位 px。比如向下位移 5 像素，类名为
-      <code>.t5</code>。
-    </p>
-    <p>
-      预置的微调放缩值：0 — 0.9（缩小）；1 — 1.9、2 — 10（放大）。比如放大为 1.5 倍，类名为
-      <code>.scale-1d5</code>。
-    </p>
-    <p>数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。</p>
     <table class="table" md>
       <thead>
         <tr>
@@ -420,19 +402,67 @@
           <td>
             <code>.r*</code>
           </td>
-          <td>基于左侧水平位移</td>
+          <td>基于右侧水平位移</td>
         </tr>
         <tr>
           <td>
             <code>.t*</code>
           </td>
-          <td>基于上侧水平位移</td>
+          <td>基于上侧垂直位移</td>
         </tr>
         <tr>
           <td>
             <code>.b*</code>
           </td>
-          <td>基于下侧水平位移</td>
+          <td>基于下侧垂直位移</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.lx*</code>
+          </td>
+          <td>基于左侧成倍水平位移</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.rx*</code>
+          </td>
+          <td>基于右侧成倍水平位移</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.tx*</code>
+          </td>
+          <td>基于上侧成倍垂直位移</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.bx*</code>
+          </td>
+          <td>基于下侧成倍垂直位移</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.lp*</code>
+          </td>
+          <td>基于左侧成倍于自身宽度水平位移</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.rp*</code>
+          </td>
+          <td>基于右侧成倍于自身宽度水平位移</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.tp*</code>
+          </td>
+          <td>基于上侧成倍于自身高度垂直位移</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.bp*</code>
+          </td>
+          <td>基于下侧成倍于自身高度垂直位移</td>
         </tr>
         <tr>
           <td>
@@ -442,6 +472,46 @@
         </tr>
       </tbody>
     </table>
+    <p></p>
+    <p>由于框架标准字号是基于 12px 的（手机端为 10px），因此预置的微调位移值：-11 — -1、1 — 11，单位 px。比如向下位移 5 像素，类名为 <code>.t5</code>。</p>
+    <p>如果要位移基于 12px 或 10px 的成倍距离，可以在位移类 "方向字符" 后追加 <code>x</code> 字符。预置的位移倍率值：-10 — -1、1 — 10，单位 rem。此外还可以基于自身宽高进行成倍位移（基于 transform 二维变形位移）。可以在位移类 "方向字符" 后追加 <code>p</code> 字符。预置的位移百分比值：-200、-100 — -10、10 — 100、200，单位 %。</p>
+    <p>预置的微调放缩值：0 — 0.9（缩小）；1.1 — 1.9、2 — 10（放大）。比如缩小为 0.5 倍，类名为 <code>.scale-d5</code>。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。</p>
+    <p>【示例】基础位移：</p>
+    <div class="grid fsize-d8">
+        <div class="col-3">
+            <div class="middle-gray-bg round w-10" sm>
+                <div class="relative l6 w-10 h-7 light-gray-bg flex-center flex-column round alpha-9" sm>向右位移 6px<br><code>.l6</code></div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="middle-gray-bg round w-10" sm>
+                <div class="relative lx1 w-10 h-7 light-gray-bg flex-center flex-column round alpha-9" sm>向右位移 1 倍<br><code>.lx1</code></div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="middle-gray-bg round w-10" sm>
+                <div class="relative lx2 w-10 h-7 light-gray-bg flex-center flex-column round alpha-9" sm>向右位移 2 倍<br><code>.lx2</code></div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="middle-gray-bg round w-10" sm>
+                <div class="relative lx-1 w-10 h-7 light-gray-bg flex-center flex-column round alpha-9" sm>向左位移 1 倍<br><code>.lx-1</code></div>
+            </div>
+        </div>
+    </div>
+    <p></p>
+    <p>【示例】基于自身宽高位移：</p>
+    <div class="flex-layout-spread fsize-d8">
+        <div class="middle-gray-bg round w-10" sm>
+            <div class="relative lp100 w-10 h-8 light-gray-bg flex-center flex-column round alpha-9" sm>向右位移自身宽度<b>100%</b><code>.lp100</code></div>
+        </div>
+        <div class="middle-gray-bg round w-10" sm>
+            <div class="relative tp-10 w-10 h-8 light-gray-bg flex-center flex-column round alpha-9" sm>向上位移自身高度<b>10%</b><code>.tp-10</code></div>
+        </div>
+        <div class="middle-gray-bg round w-10" sm>
+            <div class="relative lp-50 w-10 h-8 light-gray-bg flex-center flex-column round alpha-9" sm>向左位移自身宽度<b>50%</b><code>.lp-50</code></div>
+        </div>
+    </div>
   </article>
 </template>
 

@@ -1,15 +1,58 @@
 @import "./initor.scss"; 
 
 .round{
-    border-radius: 50%;         //50% 圆角
+    border-radius: 50%;                 //50% 圆角
 
-    &[lg]{                      //24px 大圆角
+    &[lg]{                              //24px 大圆角
         border-radius: 24px;  
     }
-    &[md]{                      //10px 中等圆角
+    &[md]{                              //10px 中等圆角
         border-radius: 10px;  
     }
-    &[sm]{                      //4px 小型圆角
+    &[sm]{                              //4px 小型圆角
         border-radius: 4px;  
+    }
+}
+
+.line {                                 //四周描边
+    border: 1px solid;                  
+}
+
+.line-v {                               //上下描边
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.line-h {                               //左右描边
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+
+.line-l {                               //左描边
+    border-left: 1px solid;
+}
+
+.line-r {                               //右描边
+    border-right: 1px solid;
+}
+
+.line-t {                               //上描边
+    border-top: 1px solid;
+}
+
+.line-b {                               //下描边
+    border-bottom: 1px solid;
+}
+
+[dashed] {                              //虚线
+    border-style: dashed;
+}
+
+
+//生成描边粗细
+$thicks: 2 4 6 8 10;
+@each $thick in $thicks {
+    .thick-#{$thick} {
+        border-width: #{$thick}px;
     }
 }

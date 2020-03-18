@@ -1,16 +1,26 @@
-$main-color: #051c24;     //主题色-遂蓝
+$main-color: #051c24;                   //主题色-遂蓝
 
-$sub-color: #8a6e54;      //辅助色-锡金
+$sub-color: #8a6e54;                    //辅助色-锡金
 
-$light: #fff;             //纯白
+$light: #fff;                           //纯白
 
-$dark: #111;              //纯黑
+$dark: #111;                            //纯黑
 
-$deep-gray: #373737;      //深灰
+$deep-gray: #373737;                    //深灰
 
-$middle-gray: #a7a7a7;    //中灰
+$middle-gray: #a7a7a7;                  //中灰
 
-$light-gray: #eee;        //浅灰
+$light-gray: #eee;                      //浅灰
+
+$blue: #eee;        //蓝
+
+$red: #eee;        //红
+
+$green: #eee;        //绿
+
+$yellow: #eee;        //黄
+
+$neutral: rgba(134,134,134,.17);        //中性色
 
 //主题色-遂蓝
 .main-color{
@@ -19,9 +29,6 @@ $light-gray: #eee;        //浅灰
 .main-bg{
     background-color: $main-color;
 }
-.main-border{
-    border: 1px solid $main-color;
-}
 
 //辅助色-锡金
 .sub-color{
@@ -29,74 +36,24 @@ $light-gray: #eee;        //浅灰
 }
 .sub-bg{
     background-color: $sub-color;
-}      
-.sub-border{
-    border: 1px solid $sub-color;
 }
 
-//纯白
-.light{
-    color: $light;
-}
-.light-bg{
-    background-color: $light;
-}
-.light-border{
-    border: 1px solid $light;
-}
 
-//纯黑
-.dark{
-    color: $dark;
-}
-.dark-bg{
-    background-color: $dark;
-}
-.dark-border{
-    border: 1px solid $dark;
-}
-
-//深灰
-.deep-gray{
-    color: $deep-gray;
-}
-.deep-gray-bg{
-    background-color: $deep-gray;
-}
-.deep-gray-border{
-    border: 1px solid $deep-gray;
-}
-
-//中灰
-.middle-gray{
-    color: $middle-gray;
-}
-.middle-gray-bg{
-    background-color: $middle-gray;
-}
-.middle-gray-border{
-    border: 1px solid $middle-gray;
-}
-
-//浅灰
-.light-gray{
-    color: $light-gray;
-}
-.light-gray-bg{
-    background-color: $light-gray;
-}
-.light-gray-border{
-    border: 1px solid $light-gray;
-}
-
-//生成不透明度阶梯
-@mixin auto_gen_opacity_class(){ 
-    @for $i from 0 to 11{
-        .alpha-#{$i} {
-            opacity: $i / 10;
-        }
+//生成色彩（文字、填充、描边）
+$colors: (light $light), (dark $dark), (deep-gray $deep-gray), (middle-gray $middle-gray), (light-gray $light-gray), (blue $blue), (green $green), (yellow $yellow), (red $red), (neutral, $neutral);
+@each $color in $colors{
+    .#{nth($color, 1)}{
+        color: nth($color, 2);
+    }     
+    .#{nth($color, 1)}-bg{
+        background-color: nth($color, 2);
     }
 }
 
-//不透明度设置
-@include auto_gen_opacity_class();
+
+//生成不透明度阶梯
+@for $i from 0 to 10{
+    .alpha-#{$i} {
+        opacity: $i / 10;
+    }
+}

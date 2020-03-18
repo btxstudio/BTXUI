@@ -9,9 +9,9 @@
     <div class="pcenter fsize-d8">
         <div class="grid">
             <div class="col-2 mrg-b-2" v-for="(ico, i) of icons" :key="i">    
-                <div class="w-10 h-10 round light-gray-border" sm>
+                <div class="w-10 h-10 round light-gray line" sm>
                     <i :class="`ico-${ico.name} scale-${ico.scale || 1}`" class="fsize-2d5 dark"></i><br>
-                    <span>{{ico.name}}</span><br>
+                    <span class="deep-gray">{{ico.name}}</span><br>
                     <span class="fsize-d8 middle-gray">{{ico.code}}</span>
                 </div>
             </div>

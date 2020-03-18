@@ -25,7 +25,7 @@
         <div class="flex flex-grow">
 
             <!-- 左侧目录 -->
-            <div class="pad-2d5 w-25 sub-bg auto-scroll main-color fsize-1d2">
+            <div class="pad-2d5 w-25 light-gray-bg auto-scroll main-color fsize-1d2">
                 <content-widget v-if="content_data" :data-tree="content_data" @on_select="$_nav_select" />  
             </div>
             

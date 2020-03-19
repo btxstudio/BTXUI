@@ -66,7 +66,7 @@
 
     <!-- 描边 -->
     <h5>描边</h5>
-    <p>框架提供了实线及虚线两种描边样式，通过 <code>.line</code> 类可以设置 1px 实线描边样式，同时添加 <code>dashed</code> 属性可以更改为虚线描边。线条颜色可基于框架预置色彩进行设置，线条粗细可基于 <code>.thick-*</code> 类进行额外设置，预置值：2、4、6、8、10，单位 px。此外还可以设置水平、垂直或是指定方向上的描边效果。</p>
+    <p>框架提供了实线及虚线两种描边样式，通过 <code>.line</code> 类可以设置 1px 实线描边样式，同时添加 <code>dashed</code> 属性可以更改为虚线描边。线条颜色可基于框架预置色彩进行设置，线条粗细可基于 <code>.thick-*</code> 类进行额外设置，预置值：2、4、6、8、10，单位 px。此外还可以设置指定方向上的描边效果。</p>
     <table class="table" md>
       <thead>
         <tr>
@@ -80,18 +80,6 @@
             <code>.line</code>
           </td>
           <td>设置四周描边</td>
-        </tr>
-        <tr>
-          <td>
-            <code>.line-v</code>
-          </td>
-          <td>设置上下描边</td>
-        </tr>
-        <tr>
-          <td>
-            <code>.line-h</code>
-          </td>
-          <td>设置左右描边</td>
         </tr>
         <tr>
           <td>

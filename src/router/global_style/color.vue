@@ -139,13 +139,13 @@
                 <td>
                     <code>.red</code>
                 </td>
-                <td>洋红文字色</td>
+                <td>玫红文字色</td>
             </tr>
             <tr>
                 <td>
                     <code>.red-bg</code>
                 </td>
-                <td>洋红背景色</td>
+                <td>玫红背景色</td>
             </tr>
             <tr>
                 <td>
@@ -170,7 +170,7 @@
           </div>
           <div class="flex-center flex-column">
               <div class="w-4 h-4 round sub-bg"></div>
-              <p>锡金<br><b class="fsize-d9">#8a6e54</b></p>
+              <p>锡金<br><b class="fsize-d9">#b4967a</b></p>
           </div>
       </div>
       <p>灰阶色：</p>
@@ -198,21 +198,21 @@
       </div>
       <p>常用彩色：</p>
       <div class="flex pcenter">
-          <div class="mrg-r-7 flex-center flex-column">
+          <div class="mrg-r-5 flex-center flex-column">
               <div class="w-4 h-4 round blue-bg"></div>
-              <p>湛蓝<br><b class="fsize-d9">#fff</b></p>
+              <p>湛蓝<br><b class="fsize-d9">#4085f3</b></p>
           </div>
-          <div class="mrg-r-6 flex-center flex-column">
+          <div class="mrg-r-5 flex-center flex-column">
               <div class="w-4 h-4 round green-bg"></div>
-              <p>青绿<br><b class="fsize-d9">#eee</b></p>
+              <p>青绿<br><b class="fsize-d9">#02b9a1</b></p>
           </div>
-          <div class="mrg-r-6 flex-center flex-column">
+          <div class="mrg-r-6 flex-center flex-column relative l4">
               <div class="w-4 h-4 round yellow-bg"></div>
-              <p>橙黄<br><b class="fsize-d9">#a7a7a7</b></p>
+              <p>橙黄<br><b class="fsize-d9">#fdba00</b></p>
           </div>
-          <div class="mrg-r-6 flex-center flex-column">
+          <div class="flex-center flex-column relative l6">
               <div class="w-4 h-4 round red-bg"></div>
-              <p>洋红<br><b class="fsize-d9">#373737</b></p>
+              <p>玫红<br><b class="fsize-d9">#ec4334</b></p>
           </div>
       </div>
       <p>中性色：</p>

@@ -149,24 +149,30 @@
 //生成微调位移
 @mixin auto_gen_offset(){
     $dirs: (l left), (r right), (t top), (b bottom); 
-    @for $i from 1 to 12{
+    @for $i from 0 to 12{
         @each $dir in $dirs{
-            .#{nth($dir, 1)}#{$i} {
-                #{nth($dir, 2)}: #{$i}px;
-            }
-            .#{nth($dir, 1)}-#{$i} {
-                #{nth($dir, 2)}: -#{$i}px;
-            }
-
-            //成倍位移
-            @if $i != 11{
-                .#{nth($dir, 1)}x#{$i} {
-                    #{nth($dir, 2)}: #{$i}rem;
+            @if $i == 0{
+                .#{nth($dir, 1)}#{$i} {
+                    #{nth($dir, 2)}: #{$i};
                 }
-                .#{nth($dir, 1)}x-#{$i} {
-                    #{nth($dir, 2)}: -#{$i}rem;
+            }@else {
+                .#{nth($dir, 1)}#{$i} {
+                    #{nth($dir, 2)}: #{$i}px;
                 }
-            }
+                .#{nth($dir, 1)}-#{$i} {
+                    #{nth($dir, 2)}: -#{$i}px;
+                }
+    
+                //成倍位移
+                @if $i != 11{
+                    .#{nth($dir, 1)}x#{$i} {
+                        #{nth($dir, 2)}: #{$i}rem;
+                    }
+                    .#{nth($dir, 1)}x-#{$i} {
+                        #{nth($dir, 2)}: -#{$i}rem;
+                    }
+                }
+            }   
         }
     }
 }

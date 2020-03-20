@@ -191,8 +191,35 @@ hr {
     display: none!important;
 }
 
-//字号倍数设置
-@include auto_gen_font_size_class(); 
+
+//生成倍数字号
+@for $i from 0 to 6{
+        
+    //处理缩小字号
+    @if $i == 0 {
+        .fsize-#{$i} { //0 号字 
+            font-size: 0;
+        }
+        @for $i from 1 to 10{
+            .fsize-d#{$i} {
+                font-size: #{$i / 10}em;   
+            }        
+        }
+    } @else if $i == 1 {
+        @for $i from 1 to 10{ 
+            .fsize-1d#{$i} {
+                font-size: #{1 + $i / 10}em;
+            }        
+        }
+    } @else if $i > 1 {
+        .fsize-#{$i} {
+            font-size: #{$i}em;
+        }
+        .fsize-#{$i}d5 {
+            font-size: #{$i + 0.5}em;
+        }
+    }
+}
 [class^="fsize-"], [class*=" fsize-"]{
     vertical-align: middle;
 } 

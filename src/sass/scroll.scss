@@ -1,5 +1,3 @@
-//自定义滚动条
-
 //IE 设置
 %ie-set{
     scrollbar-arrow-color: transparent;
@@ -94,4 +92,9 @@
         //webkit hovre 设置
         @extend %webkit-hover-set;
     }
+}
+
+//溢出隐藏
+.no-scroll{
+    overflow: hidden;
 }

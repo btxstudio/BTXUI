@@ -123,6 +123,45 @@
         <div class="pad-t-d5">浅色背景效果</div>
       </div>
     </div>
+    <p></p>
+
+    <!-- 三角形 -->
+    <h5>三角形</h5>
+    <p>可以使用框架预置的三角形（基于 border 样式实现，默认粗细 4px）。</p>
+    <table class="table" md>
+      <thead>
+        <tr>
+          <th>样式类</th>
+          <th>效果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.triangle-l</code>
+          </td>
+          <td>左侧三角形</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.triangle-r</code>
+          </td>
+          <td>左侧三角形</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.triangle-t</code>
+          </td>
+          <td>上侧三角形</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.triangle-b</code>
+          </td>
+          <td>下侧三角形</td>
+        </tr>
+      </tbody>
+    </table>
 
   </article>
 </template>

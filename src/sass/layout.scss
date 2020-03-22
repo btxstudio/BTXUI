@@ -1,4 +1,6 @@
 @import "./initor.scss";  
+@import "./scroll.scss";  
+@import "./flex.scss";
 
 .box-normal {                           //标准盒模型
     -webkit-box-sizing: content-box;
@@ -47,9 +49,9 @@
 .max-screen{                            //满屏
     @extend .fixed;
     @extend .max;
+    @extend .no-scroll;
     left: 0;
     top: 0;
-    overflow: hidden;
 }
 
 
@@ -204,8 +206,4 @@
     }
 }
 @include auto_gen_offset_by_self();
-
-
-//栅格布局
-@import "./flex.scss";
 

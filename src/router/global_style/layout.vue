@@ -55,44 +55,44 @@
     <p>【示例】等分布局：</p>
     <div class="pcenter fsize-d8">
       <div class="grid pad-b-1">
-        <div class="col-12 light-gray-bg middle-gray-border round" sm>col-12</div>
+        <div class="col-12 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-12</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-6 light-gray-bg middle-gray-border round" sm>col-6</div>
-        <div class="col-6 light-bg middle-gray-border round" sm>col-6</div>
+        <div class="col-6 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-6</span></div>
+        <div class="col-6 light-bg middle-gray line round" sm><span class="deep-gray">col-6</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-4 light-gray-bg middle-gray-border round" sm>col-4</div>
-        <div class="col-4 light-bg middle-gray-border round" sm>col-4</div>
-        <div class="col-4 light-gray-bg middle-gray-border round" sm>col-4</div>
+        <div class="col-4 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-4</span></div>
+        <div class="col-4 light-bg middle-gray line round" sm><span class="deep-gray">col-4</span></div>
+        <div class="col-4 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-4</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-3 light-gray-bg middle-gray-border round" sm>col-3</div>
-        <div class="col-3 light-bg middle-gray-border round" sm>col-3</div>
-        <div class="col-3 light-gray-bg middle-gray-border round" sm>col-3</div>
-        <div class="col-3 light-bg middle-gray-border round" sm>col-3</div>
+        <div class="col-3 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-3</span></div>
+        <div class="col-3 light-bg middle-gray line round" sm><span class="deep-gray">col-3</span></div>
+        <div class="col-3 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-3</span></div>
+        <div class="col-3 light-bg middle-gray line round" sm><span class="deep-gray">col-3</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-2 light-gray-bg middle-gray-border round" sm>col-2</div>
-        <div class="col-2 light-bg middle-gray-border round" sm>col-2</div>
-        <div class="col-2 light-gray-bg middle-gray-border round" sm>col-2</div>
-        <div class="col-2 light-bg middle-gray-border round" sm>col-2</div>
-        <div class="col-2 light-gray-bg middle-gray-border round" sm>col-2</div>
-        <div class="col-2 light-bg middle-gray-border round" sm>col-2</div>
+        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
       </div>
       <div class="grid">
-        <div class="col-1 light-gray-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-gray-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-gray-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-gray-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-gray-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-gray-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-1 light-bg middle-gray-border round" sm>col-1</div>
+        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
       </div>
     </div>
     <p></p>
@@ -100,19 +100,19 @@
     <p>【示例】非等分布局：</p>
     <div class="pcenter fsize-d8">
       <div class="grid pad-b-1">
-        <div class="col-6 light-gray-bg middle-gray-border round" sm>col-6</div>
-        <div class="col-4 light-bg middle-gray-border round" sm>col-4</div>
-        <div class="col-2 light-gray-bg middle-gray-border round" sm>col-2</div>
+        <div class="col-6 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-6</span></div>
+        <div class="col-4 light-bg middle-gray line round" sm><span class="deep-gray">col-4</span></div>
+        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-11 light-gray-bg middle-gray-border round" sm>col-11</div>
-        <div class="col-1 light-bg middle-gray-border round" sm>col-1</div>
+        <div class="col-11 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-11</span></div>
+        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
       </div>
       <div class="grid">
-        <div class="col-2 light-gray-bg middle-gray-border round" sm>col-2</div>
-        <div class="col-7 light-bg middle-gray-border round" sm>col-7</div>
-        <div class="col-1 light-gray-bg middle-gray-border round" sm>col-1</div>
-        <div class="col-2 light-bg middle-gray-border round" sm>col-2</div>
+        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
+        <div class="col-7 light-bg middle-gray line round" sm><span class="deep-gray">col-7</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-2 light-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
       </div>
     </div>
     <p></p>
@@ -122,32 +122,32 @@
     <div class="pcenter fsize-d8">
       <div class="grid pad-b-1">
         <div class="col-6 grid">
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>1</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>2</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>3</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>4</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>5</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>6</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>7</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>8</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>9</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>10</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>11</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>12</div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">1</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">2</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">3</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">4</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">5</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">6</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">7</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">8</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">9</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">10</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">11</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">12</span></div>
         </div>
         <div class="col-6 grid" sm>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>13</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>14</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>15</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>16</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>17</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>18</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>19</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>20</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>21</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>22</div>
-          <div class="col-1 light-gray-bg middle-gray-border round" sm>23</div>
-          <div class="col-1 light-bg middle-gray-border round" sm>24</div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">13</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">14</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">15</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">16</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">17</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">18</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">19</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">20</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">21</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">22</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">23</span></div>
+          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">24</span></div>
         </div>
       </div>
     </div>
@@ -300,7 +300,7 @@
           <td>
             <code>.max-screen</code>
           </td>
-          <td>全屏</td>
+          <td>全屏且溢出隐藏</td>
         </tr>
       </tbody>
     </table>
@@ -512,6 +512,12 @@
             <div class="relative lp-50 w-10 h-8 light-gray-bg flex-center flex-column round alpha-9" sm>向左位移自身宽度<b>50%</b><code>.lp-50</code></div>
         </div>
     </div>
+    <p></p>
+
+    <!-- 内容溢出 -->
+    <h5>内容溢出</h5>
+    <p>框架重置了默认滚动条样式，其风格更靠近 IOS，<code>.auto-scroll</code> 样式类可设置垂直溢出滚动；<code>.auto-h-scroll</code> 可设置水平溢出滚动；<code>.no-scroll</code> 可设置溢出隐藏。</p>
+
   </article>
 </template>
 

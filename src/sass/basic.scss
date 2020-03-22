@@ -191,6 +191,11 @@ hr {
     display: none!important;
 }
 
+//强制显示
+.show{                                                          
+    display: block!important;
+}
+
 
 //生成倍数字号
 @for $i from 0 to 6{

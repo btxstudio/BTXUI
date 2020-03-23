@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: "icon",
+  name: "Icon",
   data(){
       return {
 

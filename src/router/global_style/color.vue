@@ -7,7 +7,7 @@
       <!-- 主题色 -->
       <h5>主题色（theme color）</h5>
       <p>主题色包括标准色、辅助色、灰阶、常用彩色、中性色 5 部分。</p>
-      <table class="table" md>
+      <table class="table">
         <thead>
             <tr>
             <th>样式类</th>
@@ -259,6 +259,6 @@
 
 <script>
 export default {
-  name: "color"
+  name: "Color"
 };
 </script>

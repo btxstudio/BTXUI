@@ -2,13 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 //页面
-import home from '@/router/home'                                //首页介绍
+import Home from '@/router/Home'                                //首页介绍
 //页面：全局样式
-import layout from '@/router/global_style/layout'               //布局
-import color from '@/router/global_style/color'                 //色彩
-import text from '@/router/global_style/text'                   //文本
-import decoration from '@/router/global_style/decoration'       //装饰
-import icon from '@/router/global_style/icon'                   //图标
+import Layout from '@/router/global_style/Layout'               //布局
+import Table from '@/router/global_style/Table'                 //表格
+import Color from '@/router/global_style/Color'                 //色彩
+import Text from '@/router/global_style/Text'                   //文本
+import Decoration from '@/router/global_style/Decoration'       //装饰
+import Icon from '@/router/global_style/Icon'                   //图标
 
 Vue.use(Router)
 
@@ -16,33 +17,31 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'home',
-            component: home
-        },
-        {
-            path: '/layout',
-            name: 'layout',
-            component: layout
-        },
-        {
-            path: '/decoration',
-            name: 'decoration',
-            component: decoration
-        },
-        {
-            path: '/icon',
-            name: 'icon',
-            component: icon
-        },
-        {
-            path: '/color',
-            name: 'color',
-            component: color
+            component: Home
         },
         {
             path: '/text',
-            name: 'text',
-            component: text
+            component: Text
+        },
+        {
+            path: '/layout',
+            component: Layout
+        },
+        {
+            path: '/table',
+            component: Table
+        },
+        {
+            path: '/decoration',
+            component: Decoration
+        },
+        {
+            path: '/icon',
+            component: Icon
+        },
+        {
+            path: '/color',
+            component: Color
         }
     ]
 })

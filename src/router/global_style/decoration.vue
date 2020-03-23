@@ -5,7 +5,7 @@
 
     <!-- 圆角 -->
     <h5>圆角</h5>
-    <table class="table" md>
+    <table class="table">
       <thead>
         <tr>
           <th>样式类</th>
@@ -67,7 +67,7 @@
     <!-- 描边 -->
     <h5>描边</h5>
     <p>框架提供了实线及虚线两种描边样式，通过 <code>.line</code> 类可以设置 1px 实线描边样式，同时添加 <code>dashed</code> 属性可以更改为虚线描边。线条颜色可基于框架预置色彩进行设置，线条粗细可基于 <code>.thick-*</code> 类进行额外设置，预置值：2、4、6、8、10，单位 px。此外还可以设置指定方向上的描边效果。</p>
-    <table class="table" md>
+    <table class="table">
       <thead>
         <tr>
           <th>实线类</th>
@@ -128,7 +128,7 @@
     <!-- 三角形 -->
     <h5>三角形</h5>
     <p>可以使用框架预置的三角形（基于 border 样式实现，默认粗细 4px）。</p>
-    <table class="table" md>
+    <table class="table">
       <thead>
         <tr>
           <th>样式类</th>
@@ -168,6 +168,6 @@
 
 <script>
 export default {
-  name: "decoration"
+  name: "Decoration"
 };
 </script>

@@ -11,7 +11,7 @@
       可以为页面内容和栅格系统包裹一个
       <code>.container</code> 容器，作为版心布局。
     </p>
-    <table class="table" md>
+    <table class="table">
       <thead>
         <tr>
           <th>样式类</th>
@@ -43,7 +43,7 @@
           <td>
             <code>sm</code>
           </td>
-          <td>600px 宽度，小型版心容器</td>
+          <td>736px 宽度，小型版心容器</td>
         </tr>
       </tbody>
     </table>
@@ -135,7 +135,7 @@
           <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">11</span></div>
           <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">12</span></div>
         </div>
-        <div class="col-6 grid" sm>
+        <div class="col-6 grid">
           <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">13</span></div>
           <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">14</span></div>
           <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">15</span></div>
@@ -157,7 +157,7 @@
     <h5>内边距</h5>
     <p>通过<code>pad-*</code> 可以使用预置的内边距方案。</p>
     <p>预置的内边距值：0.5、1、1.5、2、2.5、3、3.5、4、5、6、7、8、9、10，单位 rem。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如 0.5 rem 内边距，类名为<code>.pad-d5</code>。</p>
-    <table class="table" md>
+    <table class="table">
       <thead>
         <tr>
           <th>样式类</th>
@@ -214,7 +214,7 @@
     <!-- 外边距 -->
     <h5>外边距</h5>
     <p>通过<code>mrg*</code> 可以使用预置的外边距方案。其值域范围等同于内边距。</p>
-    <table class="table" md>
+    <table class="table">
       <thead>
         <tr>
           <th>样式类</th>
@@ -270,7 +270,7 @@
 
     <!-- 尺寸 -->
     <h5>尺寸</h5>
-    <table class="table" md>
+    <table class="table">
       <thead>
         <tr>
           <th>样式类</th>
@@ -341,7 +341,7 @@
 
     <!-- 定位 -->
     <h5>定位</h5>
-    <table class="table" md>
+    <table class="table">
       <thead>
         <tr>
           <th>样式类</th>
@@ -384,7 +384,7 @@
     <!-- 微调 -->
     <h5>微调</h5>
     <p>BTX·UI 提供了位移及放缩的微调样式，位移微调需基于绝对（absolute）、相对（relative）或固定式（fixed）定位。放缩微调则是基于 transform 二维变形实现的。</p>
-    <table class="table" md>
+    <table class="table">
       <thead>
         <tr>
           <th>样式类</th>
@@ -523,6 +523,6 @@
 
 <script>
 export default {
-  name: "layout"
+  name: "Layout"
 };
 </script>

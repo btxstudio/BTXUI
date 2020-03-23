@@ -16,7 +16,7 @@
 
     <!-- 文本对齐 -->
     <h5>文本对齐</h5>
-    <table class="table" md>
+    <table class="table">
         <thead>
             <tr>
                 <th>样式类</th>
@@ -118,7 +118,7 @@
 
 <script>
 export default {
-  name: "text"
+  name: "Text"
 };
 </script>
 

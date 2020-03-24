@@ -1,6 +1,6 @@
 <template>
   <article>
-    <p>BTX·UI 提供了一些装饰类以实现常见的特殊样式处理。</p>
+    <p>BTX·UI 提供了一些装饰类以实现常见的特殊样式处理及细节设置。</p>
     <p></p>
 
     <!-- 圆角 -->
@@ -56,11 +56,11 @@
     <p>使用圆角样式可用于头像之类的图像制作。</p>
     <p>【示例】：</p>
     <div class="flex-layout-spread pcenter">
-        <div><img width="110" src="/static/img/head.jpg" /><br>方形头像</div>
-        <div><img width="110" class="round" sm src="/static/img/head.jpg" /><br>小圆角头像</div>
-        <div><img width="110" class="round" md src="/static/img/head.jpg" /><br>中等圆角头像</div>
-        <div><img width="110" class="round" lg src="/static/img/head.jpg" /><br>大圆角头像</div>
-        <div><img width="110" class="round" src="/static/img/head.jpg" /><br>正圆头像</div>
+        <div><img class="w-9" src="/static/img/head.jpg" /><br>方形头像</div>
+        <div><img class="round w-9" sm src="/static/img/head.jpg" /><br>小圆角头像</div>
+        <div><img class="round w-9" md src="/static/img/head.jpg" /><br>中等圆角头像</div>
+        <div><img class="round w-9" lg src="/static/img/head.jpg" /><br>大圆角头像</div>
+        <div><img class="round w-9" src="/static/img/head.jpg" /><br>正圆头像</div>
     </div>
     <p></p>
 
@@ -107,6 +107,29 @@
         </tr>
       </tbody>
     </table>
+    <p></p>
+    <p>设置描边效果（描边色需为半透明色）时，可通过 <code>outside</code> 属性设置其 "应用范围" 为外侧。</p>
+    <p>【示例】：</p>
+    <div class="flex">
+        <div class="mrg-r-9">
+            <div class="relative">
+                <img class="round flex w-9" sm src="/static/img/head.jpg" />
+                <div class="absolute max flex-center t0">
+                    <div class=" round w-5 h-5 deep-gray-bg line neutral thick-10"></div>
+                </div>
+            </div>
+            <div class="pcenter mrg-t-1">默认效果</div>
+        </div>
+        <div class="relative">
+            <div class="relative">
+                <img class="round flex w-9" sm src="/static/img/head.jpg" />
+                <div class="absolute max flex-center t0">
+                    <div class="round w-5 h-5 deep-gray-bg line neutral thick-10" outside></div>
+                </div>
+            </div>
+            <div class="pcenter mrg-t-1">外侧描边范围</div>
+        </div>
+    </div>
     <p></p>
 
     <!-- 分割线 -->

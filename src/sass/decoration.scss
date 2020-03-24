@@ -34,8 +34,15 @@
     border-bottom: 1px solid;
 }
 
-[dashed] {                              //虚线
-    border-style: dashed;
+.line, 
+[class^="line-"],  
+[class*=" line-"] {                     //虚线
+    &[dashed]{
+        border-style: dashed;
+    }
+    &[outside]{                         //外侧描边范围
+        background-clip: padding-box;
+    }
 }
 
 

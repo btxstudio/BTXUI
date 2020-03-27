@@ -14,23 +14,30 @@
     }
 }
 
+%no-line {
+    border-width: 0;
+}
 .line {                                 //四周描边
     border: 1px solid;                  
 }
 
 .line-l {                               //左描边
+    @extend %no-line;
     border-left: 1px solid;
 }
 
 .line-r {                               //右描边
+    @extend %no-line;
     border-right: 1px solid;
 }
 
 .line-t {                               //上描边
+    @extend %no-line;
     border-top: 1px solid;
 }
 
 .line-b {                               //下描边
+    @extend %no-line;
     border-bottom: 1px solid;
 }
 

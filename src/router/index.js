@@ -10,6 +10,7 @@ import Color from '@/router/global_style/Color'                 //色彩
 import Text from '@/router/global_style/Text'                   //文本
 import Decoration from '@/router/global_style/Decoration'       //装饰
 import Icon from '@/router/global_style/Icon'                   //图标
+import Animation from '@/router/global_style/Animation'         //动画
 
 Vue.use(Router)
 
@@ -42,6 +43,10 @@ export default new Router({
         {
             path: '/color',
             component: Color
+        },
+        {
+            path: '/animation',
+            component: Animation
         }
     ]
 })

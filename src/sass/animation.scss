@@ -1,20 +1,34 @@
-.ani {                                //中速过度动画
-    -webkit-transition: all .7s;
-    -moz-transition: all .7s;
+.trans {                                //中速过度动画
     transition: all .7s;
 }
 
-.ani-fast {                           //快速过度动画
-    -webkit-transition: all .4s;
-    -moz-transition: all .4s;
+.trans-fast {                           //快速过度动画
     transition: all .4s;
 }
 
-.ani-slow {                           //慢速过度动画
-    -webkit-transition: all 1.4s;
-    -moz-transition: all 1.4s;
+.trans-slow {                           //慢速过度动画
     transition: all 1.4s;
 }
+
+
+//设置过渡动画延迟执行
+@mixin auto_gen_trans_delay_class(){
+    @for $i from 1 to 10{
+        .trans-delay-d#{$i} {
+            transition-delay: #{$i / 10}s;
+        }
+        @if $i < 6 {
+            .trans-delay-#{$i} {
+                transition-delay: #{$i}s;
+            }
+            .trans-delay-#{$i}d5 {
+                transition-delay: #{$i + .5}s;
+            }
+        }
+    }
+}
+@include auto_gen_trans_delay_class();
+
 
 //淡入动画
 .ani-fade-in{

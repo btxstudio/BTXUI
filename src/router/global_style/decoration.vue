@@ -56,11 +56,11 @@
     <p>使用圆角样式可用于头像之类的图像制作。</p>
     <p>【示例】：</p>
     <div class="flex-layout-spread pcenter">
-        <div><img class="w-9" src="/static/img/head.jpg" /><br>方形头像</div>
-        <div><img class="round w-9" sm src="/static/img/head.jpg" /><br>小圆角头像</div>
-        <div><img class="round w-9" md src="/static/img/head.jpg" /><br>中等圆角头像</div>
-        <div><img class="round w-9" lg src="/static/img/head.jpg" /><br>大圆角头像</div>
-        <div><img class="round w-9" src="/static/img/head.jpg" /><br>正圆头像</div>
+        <div><img class="w-9" src="@/assets/img/head.jpg" /><br>方形头像</div>
+        <div><img class="round w-9" sm src="@/assets/img/head.jpg" /><br>小圆角头像</div>
+        <div><img class="round w-9" md src="@/assets/img/head.jpg" /><br>中等圆角头像</div>
+        <div><img class="round w-9" lg src="@/assets/img/head.jpg" /><br>大圆角头像</div>
+        <div><img class="round w-9" src="@/assets/img/head.jpg" /><br>正圆头像</div>
     </div>
     <p></p>
 
@@ -113,7 +113,7 @@
     <div class="flex">
         <div class="mrg-r-9">
             <div class="relative">
-                <img class="round flex w-9" sm src="/static/img/head.jpg" />
+                <img class="round flex w-9" sm src="@/assets/img/head2.jpg" />
                 <div class="absolute max flex-center t0">
                     <div class=" round w-5 h-5 deep-gray-bg line neutral thick-10"></div>
                 </div>
@@ -122,7 +122,7 @@
         </div>
         <div class="relative">
             <div class="relative">
-                <img class="round flex w-9" sm src="/static/img/head.jpg" />
+                <img class="round flex w-9" sm src="@/assets/img/head2.jpg" />
                 <div class="absolute max flex-center t0">
                     <div class="round w-5 h-5 deep-gray-bg line neutral thick-10" outside></div>
                 </div>

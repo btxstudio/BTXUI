@@ -107,7 +107,7 @@
     <h5>文章格式</h5>
     <p>BTX·UI 重置了 <code>&lt;article&gt;</code> 样式，以优化文章阅读格式。在 <code>&lt;article&gt;</code> 包裹的内容中：</p>
     <ol>
-        <li>基于 15px 的文本大小</li>
+        <li>基于 14.5px 的文本大小</li>
         <li>双倍行高</li>
         <li>标题、列表，具有下边距</li>
         <li>拥有 "编辑模式" 样式优化</li>

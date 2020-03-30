@@ -39,21 +39,30 @@ $neutral: rgba(140,140,140,.2);        //中性色
 }
 
 
-//生成色彩（文字、填充、描边）
-$colors: (light $light), (dark $dark), (deep-gray $deep-gray), (middle-gray $middle-gray), (light-gray $light-gray), (blue $blue), (green $green), (yellow $yellow), (red $red), (neutral, $neutral);
-@each $color in $colors{
-    .#{nth($color, 1)}{
-        color: nth($color, 2);
-    }     
-    .#{nth($color, 1)}-bg{
-        background-color: nth($color, 2);
+//生成色彩（文字、填充、描边）类
+@mixin auto_gen_color_class {
+    $colors: (light $light), (dark $dark), (deep-gray $deep-gray), (middle-gray $middle-gray), (light-gray $light-gray), (blue $blue), (green $green), (yellow $yellow), (red $red), (neutral, $neutral);
+    @each $color in $colors{
+        .#{nth($color, 1)}{
+            color: nth($color, 2);
+        }     
+        .#{nth($color, 1)}-bg{
+            background-color: nth($color, 2);
+        }
     }
 }
+@include auto_gen_color_class();
 
 
-//生成不透明度阶梯
-@for $i from 0 to 10{
-    .alpha-#{$i} {
-        opacity: $i / 10;
+//生成不透明度阶梯类
+@mixin auto_gen_opacity_class {
+    @for $i from 0 to 10{
+        .alpha-#{$i} {
+            opacity: $i / 10;
+            @if $i == 0 {
+                visibility: hidden;
+            }
+        }
     }
 }
+@include auto_gen_opacity_class();

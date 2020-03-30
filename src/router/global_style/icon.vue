@@ -120,6 +120,21 @@ export default {
                 scale: "d9"
             },
             {
+                name: "home",
+                code: "\e68e",
+                scale: "d8"
+            },
+            {
+                name: "list",
+                code: "\e665",
+                scale: "d9"
+            },
+            {
+                name: "brightness",
+                code: "\e632",
+                scale: "d9"
+            },
+            {
                 name: "btxstudio-zh",
                 code: "\e606",
                 scale: "1d4"

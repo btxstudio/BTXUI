@@ -106,6 +106,15 @@
             }
         }
     }
+
+    //外边距附加值
+    @for $i from 1 to length($dirs) + 1{
+        $dir: nth($dirs, $i);
+        .mrg#{nth($dir, 1)}-auto {
+            @include set_space(margin, auto, nth($dir, 2));
+        }
+    }
+
 } 
 @include auto_gen_space_class();   
 

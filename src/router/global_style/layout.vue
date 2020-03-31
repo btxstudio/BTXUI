@@ -213,7 +213,7 @@
 
     <!-- 外边距 -->
     <h5>外边距</h5>
-    <p>通过<code>mrg*</code> 可以使用预置的外边距方案。其值域范围等同于内边距。</p>
+    <p>通过<code>mrg*</code> 可以使用预置的外边距方案。其值域范围等同于内边距，同时多出了 auto。</p>
     <table class="table">
       <thead>
         <tr>
@@ -266,6 +266,65 @@
         </tr>
       </tbody>
     </table>
+    <p></p>
+    <p>外边距可以配合弹性布局，对容器内的元素进行灵活定位。</p>
+    <p>【示例】九宫格式定位：</p>
+    <div class="grid fsize-d9 pcenter">
+        <div class="col-4 pad-1">
+            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
+                <div class="w-2 h-2 round sub-bg mrg-r-auto" sm></div>
+            </div>
+            <div><code>.mrg-r-auto</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
+                <div class="w-2 h-2 round sub-bg mrg-h-auto" sm></div>
+            </div>
+            <div><code>.mrg-h-auto</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
+                <div class="w-2 h-2 round sub-bg mrg-l-auto" sm></div>
+            </div>
+            <div><code>.mrg-l-auto</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
+                <div class="w-2 h-2 round sub-bg mrg-v-auto" sm></div>
+            </div>
+            <div><code>.mrg-v-auto</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
+                <div class="w-2 h-2 round sub-bg mrg-auto" sm></div>
+            </div>
+            <div><code>.mrg-auto</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
+                <div class="w-2 h-2 round sub-bg mrg-l-auto mrg-v-auto" sm></div>
+            </div>
+            <div><code>.mrg-l-auto</code> + <code>.mrg-v-auto</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
+                <div class="w-2 h-2 round sub-bg mrg-t-auto" sm></div>
+            </div>
+            <div><code>.mrg-t-auto</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
+                <div class="w-2 h-2 round sub-bg mrg-h-auto mrg-t-auto" sm></div>
+            </div>
+            <div><code>.mrg-h-auto</code> + <code>.mrg-t-auto</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
+                <div class="w-2 h-2 round sub-bg mrg-l-auto mrg-t-auto" sm></div>
+            </div>
+            <div><code>.mrg-l-auto</code> + <code>.mrg-t-auto</code></div>
+        </div>
+    </div>
     <p></p>
 
     <!-- 尺寸 -->

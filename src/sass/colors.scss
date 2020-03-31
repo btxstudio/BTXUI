@@ -20,7 +20,7 @@ $green: #02b9a1;                        //青绿
 
 $yellow: #fdba00;                       //橙黄
 
-$neutral: rgba(140,140,140,.2);        //中性色
+$neutral: rgba(130,130,130,.15);        //中性色
 
 //主题色-遂蓝
 .main-color{
@@ -62,6 +62,9 @@ $neutral: rgba(140,140,140,.2);        //中性色
             @if $i == 0 {
                 visibility: hidden;
             }
+        }
+        .alpha-9d#{$i} {
+            opacity: .9 + $i / 100;
         }
     }
 }

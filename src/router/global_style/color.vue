@@ -221,7 +221,7 @@
 
       <!-- 不透明度 -->
       <h5>不透明度</h5>
-      <p>使用 <code>.alpha-*</code> 可以设置元素的不透明度，范围是 0 - 9，逐级不透明，0 为全透明，且 visibility 为 hidden，隐藏显示。</p>
+      <p>使用 <code>.alpha-*</code> 可以设置元素的不透明度，范围是 0 - 9、9.1 - 9.9，逐级不透明，0 为全透明，且 visibility 为 hidden，隐藏显示。数值 "." 使用 "d" 代替。比如 9.5，类名为<code>.alpha-9d5</code>。</p>
       <p>【示例】：</p>
       <div class="grid pcenter">
         <div class="col-4 pad-r-d5 pad-b-d5">

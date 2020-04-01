@@ -46,9 +46,14 @@
     }
 }
 
+%relative {
+    position: relative;
+}
+
 //纵向滚动条
 .auto-scroll{                           
     overflow-y: auto;
+    @extend %relative;
 
     //IE 设置
     @extend %ie-set;
@@ -69,10 +74,11 @@
         @extend %webkit-hover-set;
     }
 }
-
+ 
 //横向滚动条（易于拖动）
 .auto-h-scroll{                           
     overflow-x: auto;
+    @extend %relative;
 
     //IE 设置
     @extend %ie-set; 

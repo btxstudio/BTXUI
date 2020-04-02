@@ -1,3 +1,66 @@
+.bg-repeat {
+    background-repeat: repeat;
+}
+
+.bg-repeat-x {
+    background-repeat: repeat-x;
+}
+
+.bg-repeat-y {
+    background-repeat: repeat-y;
+}
+
+.bg-size-cover {
+    background-size: cover;
+}
+
+.bg-size-contain {
+    background-size: contain;
+}
+
+.bg-size-max-h {
+    background-size: auto 100%;
+}
+
+.bg-size-max-w {
+    background-size: 100% auto;
+}
+
+.bg-size-max {
+    background-size: 100% 100%;
+}
+
+
+//九宫格背景图定位
+.bg-layout-1 {
+    background-position: 0 0;
+}
+.bg-layout-2 {
+    background-position: center 0;
+}
+.bg-layout-3 {
+    background-position: 100% 0;
+}
+.bg-layout-4 {
+    background-position: 0 center;
+}
+.bg-layout-5 {
+    background-position: center;
+}
+.bg-layout-6 {
+    background-position: 100% center;
+}
+.bg-layout-7 {
+    background-position: 0 100%;
+}
+.bg-layout-8 {
+    background-position: center 100%;
+}
+.bg-layout-9 {
+    background-position: 100% 100%;
+}
+
+
 .round{
     border-radius: 50%;                 //50% 圆角
 
@@ -51,16 +114,13 @@
 }
 
 
-//生成描边粗细
-@mixin auto_gen_border_width(){
-    $thicks: 2 4 6 8 10;
-    @each $thick in $thicks {
-        .thick-#{$thick} {
-            border-width: #{$thick}px;
-        }
+//描边粗细
+$thicks: 2 4 6 8 10;
+@each $thick in $thicks {
+    .thick-#{$thick} {
+        border-width: #{$thick}px;
     }
 }
-@include auto_gen_border_width();
 
 
 //生成三角形
@@ -79,26 +139,23 @@
     border-left-width: 3px;
     border-right-width: 3px;
 }
-@mixin auto_gen_triangle(){
-    $dirs: (l left), (r right), (t top), (b bottom);
-    @each $dir in $dirs {
-        .triangle-#{nth($dir, 1)} {
-            @extend %default-border; 
-            border-#{nth($dir, 2)}-color: inherit;
-            @if nth($dir, 1) == l{
-                @extend %v-border;
-                left: 4px; 
-            }@else if nth($dir, 1) == r{
-                @extend %v-border;
-                right: 4px;
-            }@else if nth($dir, 1) == t{
-                @extend %h-border;
-                top: 4px;
-            }@else {
-                @extend %h-border;
-                bottom: 4px;
-            }
+$dirs: (l left), (r right), (t top), (b bottom);
+@each $dir in $dirs {
+    .triangle-#{nth($dir, 1)} {
+        @extend %default-border; 
+        border-#{nth($dir, 2)}-color: inherit;
+        @if nth($dir, 1) == l{
+            @extend %v-border;
+            left: 4px; 
+        }@else if nth($dir, 1) == r{
+            @extend %v-border;
+            right: 4px;
+        }@else if nth($dir, 1) == t{
+            @extend %h-border;
+            top: 4px;
+        }@else {
+            @extend %h-border;
+            bottom: 4px;
         }
     }
 }
-@include auto_gen_triangle();

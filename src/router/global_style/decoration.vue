@@ -3,6 +3,110 @@
     <p>BTX·UI 提供了一些装饰类以实现常见的特殊样式处理及细节设置。</p>
     <p></p>
 
+    <!-- 背景 -->
+    <h5>背景</h5>
+    <p>框架封装了 background 基础样式，包括定位、尺寸及重复（框架预置为不重复）。</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>样式类</th>
+          <th>效果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.bg-repeat</code>
+          </td>
+          <td>背景图水平及垂直平铺</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.bg-repeat-x</code>
+          </td>
+          <td>背景图水平平铺</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.bg-repeat-y</code>
+          </td>
+          <td>背景图垂直平铺</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.bg-size-cover</code>
+          </td>
+          <td>背景图尺寸覆盖容器</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.bg-size-contain</code>
+          </td>
+          <td>背景图尺寸适应容器</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.bg-size-max-h</code>
+          </td>
+          <td>背景图尺寸高度撑满容器，保持等比例</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.bg-size-max-w</code>
+          </td>
+          <td>背景图尺寸宽度撑满容器，保持等比例</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.bg-size-max</code>
+          </td>
+          <td>背景图尺寸撑满容器</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <p>通过 <code>.bg-layout-*</code> 样式类，值域为：1 — 9。可以对背景图进行九宫格式对齐定位。</p>
+    <p>【示例】：</p>
+    <div class="grid fsize-d9 pcenter">
+        <div class="col-4 pad-1">
+            <div class="bg-layout-1 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div><code>.bg-layout-1</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="bg-layout-2 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div><code>.bg-layout-2</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="bg-layout-3 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div><code>.bg-layout-3</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="bg-layout-4 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div><code>.bg-layout-4</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="bg-layout-5 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div><code>.bg-layout-5</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="bg-layout-6 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div><code>.bg-layout-6</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="bg-layout-7 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div><code>.bg-layout-7</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="bg-layout-8 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div><code>.bg-layout-8</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="bg-layout-9 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div><code>.bg-layout-9</code></div>
+        </div>
+    </div>
+    <p></p>
+
     <!-- 圆角 -->
     <h5>圆角</h5>
     <table class="table">

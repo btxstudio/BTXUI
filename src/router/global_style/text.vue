@@ -4,7 +4,7 @@
     <h5>标题</h5>
     <p>BTX·UI 重置了 <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> 的标题样式。使用相对单位 em，由 <code>&lt;h6&gt;</code> 到 <code>&lt;h1&gt;</code> 字号逐渐放大至 2 倍。</p>
     <p>【示例】：</p>
-    <div class="flex-layout-middle">
+    <div class="flex-layout-4">
         <h1 class="pad-r-4">h1</h1>
         <h2 class="pad-r-4">h2</h2>
         <h3 class="pad-r-4">h3</h3>
@@ -67,23 +67,23 @@
     <!-- 字号 -->
     <h5>字号</h5>
     <p>通过 <code>.fsize-*</code> 可以设置元素内文本以及后代元素的文本字号，这里的字号为相对父元素的字号放缩比率。</p>
-    <p>预置的字号比率值：0 — 0.9、1.1 — 1.9、2、2.5、3、3.5、4、4.5、5、5.5，单位 em。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如缩小为 0.9 倍，类名为 <code>.fsize-d9</code>。<code>.fsize-0</code> 可设置 0 号字。</p>
+    <p>预置的字号比率值：0 — 0.9、1 — 1.9、2、2.5、3、3.5、4、4.5、5、5.5，单位 em。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如缩小为 0.9 倍，类名为 <code>.fsize-d9</code>。<code>.fsize-0</code> 可设置 0 号字。</p>
     <p>【示例】：</p>
     <div class="grid pcenter">
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round pad-1 flex-layout-middle flex-layout-center" sm style="height: 6rem">javascript</div>
+            <div class="light-gray-bg round pad-1 flex-layout-4 flex-layout-2" sm style="height: 6rem">javascript</div>
             <div class="pad-t-d5 fsize-d9">初始文本大小</div>
         </div>
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round pad-1 flex-layout-middle flex-layout-center fsize-d6" sm style="height: 6rem">javascript</div>
+            <div class="light-gray-bg round pad-1 flex-layout-4 flex-layout-2 fsize-d6" sm style="height: 6rem">javascript</div>
             <div class="pad-t-d5 fsize-d9"><code>.fsize-d6</code> 缩小为 0.6 倍字号</div>
         </div>
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round pad-1 flex-layout-middle flex-layout-center fsize-1d2" sm  style="height: 6rem">javascript</div>
+            <div class="light-gray-bg round pad-1 flex-layout-4 flex-layout-2 fsize-1d2" sm  style="height: 6rem">javascript</div>
             <div class="pad-t-d5 fsize-d9"><code>.fsize-1d2</code> 放大 1.2 倍字号</div>
         </div>
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round pad-1 flex-layout-middle flex-layout-center fsize-2" sm style="height: 6rem">javascript</div>
+            <div class="light-gray-bg round pad-1 flex-layout-4 flex-layout-2 fsize-2" sm style="height: 6rem">javascript</div>
             <div class="pad-t-d5 fsize-d9"><code>.fsize-2</code> 放大 2 倍字号</div>
         </div>
     </div>
@@ -112,7 +112,7 @@
     <h5>文章格式</h5>
     <p>BTX·UI 重置了 <code>&lt;article&gt;</code> 样式，以优化文章阅读格式。在 <code>&lt;article&gt;</code> 包裹的内容中：</p>
     <ol>
-        <li>基于 14.5px 的文本大小</li>
+        <li>基于 1.21rem 的文本大小</li>
         <li>双倍行高</li>
         <li>标题、列表，具有下边距</li>
         <li>拥有 "编辑模式" 样式优化</li>

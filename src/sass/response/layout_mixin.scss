@@ -1,0 +1,81 @@
+//生成强制隐藏与显示类
+@mixin auto_gen_display_class($suffix:"") {
+    .hide#{$suffix}{                                                                
+        display: none!important;        //强制隐藏   
+    } 
+    .show#{$suffix}{                                                                            
+        display: block!important;       //强制显示  
+    }
+}
+
+//生成内、外边距类
+@mixin set_space($side, $val:0, $dir:all){
+    @if $dir == all{
+        #{$side}: $val;
+    }@else if $dir == v{ //vertical
+        #{$side}: {
+            top: $val;
+            bottom: $val;
+        }
+    }@else if $dir == h{ //horizontal
+        #{$side}: {
+            left: $val;
+            right: $val;
+        }
+    }@else{
+        #{$side}-#{$dir}: $val;
+    }
+}
+@mixin auto_gen_space_class($suffix:""){ 
+    $dirs: (-t top), (-r right), (-l left), (-b bottom), (-v v), (-h h), ("" all); 
+    $vals: (d5 .5), (1 1), (1d5 1.5), (2 2), (2d5 2.5), (3 3), (3d5 3.5), (4 4), (5 5), (6 6), (7 7), (8 8), (9 9), (10 10);
+
+    @for $i from 1 to length($dirs) + 1{
+        $dir: nth($dirs, $i);
+        @each $val in $vals{
+            .pad#{nth($dir, 1)}-#{nth($val, 1)}#{$suffix} {
+                @include set_space(padding, #{nth($val, 2)}rem, nth($dir, 2));
+            }
+            .mrg#{nth($dir, 1)}-#{nth($val, 1)}#{$suffix} {
+                @include set_space(margin, #{nth($val, 2)}rem, nth($dir, 2));
+            }
+        }
+    }
+}
+
+//生成放缩比率类
+@mixin auto_gen_scale_class($suffix:""){
+    .scale-0#{$suffix} {
+        transform: scale(0);
+    }
+    @for $i from 1 to 10{
+        .scale-d#{$i}#{$suffix} {
+            transform: scale($i / 10);
+        }
+    }
+    @for $i from 1 to 10{
+        .scale-1d#{$i}#{$suffix} {
+            transform: scale($i / 10 + 1);
+        }
+    }
+    @for $i from 2 to 11{
+        .scale-#{$i}#{$suffix} {
+            transform: scale($i);
+        }
+    }
+}
+
+//生成成倍位移类
+@mixin auto_gen_offset_class($suffix:""){
+    $dirs: (l left), (r right), (t top), (b bottom);
+    @for $i from 1 to 11{
+        @each $dir in $dirs{
+            .#{nth($dir, 1)}x#{$i}#{$suffix} {
+                #{nth($dir, 2)}: #{$i}rem;
+            }
+            .#{nth($dir, 1)}x-#{$i}#{$suffix} {
+                #{nth($dir, 2)}: -#{$i}rem;
+            }
+        }
+    }
+}

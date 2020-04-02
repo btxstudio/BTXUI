@@ -114,7 +114,7 @@
         <div class="mrg-r-9">
             <div class="relative">
                 <img class="round flex w-9" sm src="@/assets/img/head2.jpg" />
-                <div class="absolute max flex-center t0">
+                <div class="absolute max flex-layout-5 t0">
                     <div class=" round w-5 h-5 deep-gray-bg line neutral thick-10"></div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
         <div class="relative">
             <div class="relative">
                 <img class="round flex w-9" sm src="@/assets/img/head2.jpg" />
-                <div class="absolute max flex-center t0">
+                <div class="absolute max flex-layout-5 t0">
                     <div class="round w-5 h-5 deep-gray-bg line neutral thick-10" outside></div>
                 </div>
             </div>

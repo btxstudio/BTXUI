@@ -2,7 +2,11 @@ const path = require("path")
 const ExtractText = require("extract-text-webpack-plugin")
 
 module.exports = {
-    entry: "./src/sass/main.js",
+    entry: {
+        "btx": "./src/sass/btx.scss",
+        "btx.mob": "./src/sass/btx.mob.scss",
+        "btx.pad": "./src/sass/btx.pad.scss"
+    },
     output: {
         filename: "_main.js",
         path: path.join(__dirname, "../css")
@@ -20,7 +24,7 @@ module.exports = {
     },
     plugins: [
         new ExtractText({
-            filename: `btx.min.css`
+            filename: `[name].min.css`
         })
     ]
 }

@@ -1,5 +1,4 @@
 @import "./colors.scss";
-@import "./initor.scss"; 
 
 * {
     -webkit-box-sizing: border-box;
@@ -29,7 +28,7 @@ a, a:hover {
 }
 
 article {
-    font-size: 14.5px;
+    font-size: 1.21rem;
     line-height: 2;
 
     //编辑模式
@@ -94,6 +93,7 @@ img {
 video, audio {
     display: block;
     width: 100%;
+    object-fit: fill;
 }
 
 input[type="text"], input[type="password"], input[type="number"], textarea, select, option,
@@ -161,87 +161,3 @@ hr {
     background-color: $neutral;
     margin: 2rem 0;
 }
-
-.pcenter {
-    text-align: center;
-}
-
-.pright {
-    text-align: right;
-}
-
-.pleft {
-    text-align: left;
-}
-
-.pjustify { 
-    text-align: justify;
-} 
-
-//文本省略
-.ellipsis {             
-    display: block;                                        
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-//强制隐藏
-.hide{                                                          
-    display: none!important;
-}
-
-//强制显示
-.show{                                                          
-    display: block!important;
-}
-
-
-//生成字符间距类
-@mixin auto_gen_letter_space_class {
-    @for $i from 0 to 6 {
-        @if $i != 1{
-            .lspace-#{$i}{
-                letter-spacing: #{$i}px;
-            }
-        }
-    }
-};
-@include auto_gen_letter_space_class();
-
-
-//生成倍数字号
-@mixin auto_gen_font_size_class {
-    @for $i from 0 to 6{
-        
-        //处理缩小字号
-        @if $i == 0 {
-            .fsize-#{$i} { //0 号字 
-                font-size: 0;
-            }
-            @for $i from 1 to 10{
-                .fsize-d#{$i} {
-                    font-size: #{$i / 10}em;   
-                }        
-            }
-        } @else if $i == 1 {
-            @for $i from 1 to 10{ 
-                .fsize-1d#{$i} {
-                    font-size: #{1 + $i / 10}em;
-                }        
-            }
-        } @else if $i > 1 {
-            .fsize-#{$i} {
-                font-size: #{$i}em;
-            }
-            .fsize-#{$i}d5 {
-                font-size: #{$i + 0.5}em;
-            }
-        }
-    }
-    [class^="fsize-"], [class*=" fsize-"]{
-        vertical-align: middle;
-    }    
-}
-@include auto_gen_font_size_class();
- 

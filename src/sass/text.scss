@@ -1,0 +1,7 @@
+//文本省略
+.ellipsis {             
+    display: block;                                        
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

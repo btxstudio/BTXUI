@@ -1,13 +1,17 @@
-@import "./basic.scss";  
+@import "./reset.scss";  
+
+@import "./text.scss";  
+
+@import "./layout.scss";  
 
 @import "./table.scss";
 
-@import "./decoration.scss";     
-      
-@import "./layout.scss";        
- 
-@import "./grid.scss";     
+@import "./decoration.scss";               
 
 @import "./animation.scss";       
        
-@import "./icons.scss";   
+@import "./icons.scss";
+
+@import "./response/main.scss";
+
+@include auto_gen_response_class();

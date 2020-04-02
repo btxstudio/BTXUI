@@ -49,6 +49,127 @@
     </table>
     <p></p>
 
+    <!-- flex 弹性布局 -->
+    <h5>flex 弹性布局</h5>
+    <p>BTX·UI 框架的布局核心是基于 flex 的，<code>.flex</code> 样式类可设置横向生长弹性布局容器；<code>.flex-column</code> 设置纵向生长弹性布局容器。</p>
+    <p>通过 <code>.flex-layout-*</code> 样式类，值域为：1 — 9。可以对容器内的元素进行九宫格式对齐定位。<code>.flex-layout-spread</code> 样式类可以设置元素均分排列、两端对齐。</p>
+    <p>【示例】：横向生长九宫格对齐定位</p>
+    <div class="grid fsize-d9 pcenter">
+        <div class="col-4 pad-1">
+            <div class="flex-layout-1 h-5 round light-gray-bg mrg-b-d5" sm>
+                <div class="w-2 h-2 round sub-bg" sm>1</div>
+            </div>
+            <div><code>.flex-layout-1</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex-layout-2 h-5 round light-gray-bg mrg-b-d5" sm>
+                <div class="w-2 h-2 round sub-bg" sm>2</div>
+            </div>
+            <div><code>.flex-layout-2</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex-layout-3 h-5 round light-gray-bg mrg-b-d5" sm>
+                <div class="w-2 h-2 round sub-bg" sm>3</div>
+            </div>
+            <div><code>.flex-layout-3</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex-layout-4 h-5 round light-gray-bg mrg-b-d5" sm>
+                <div class="w-2 h-2 round sub-bg" sm>4</div>
+            </div>
+            <div><code>.flex-layout-4</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex-layout-5 h-5 round light-gray-bg mrg-b-d5" sm>
+                <div class="w-2 h-2 round sub-bg" sm>5</div>
+            </div>
+            <div><code>.flex-layout-5</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex-layout-6 h-5 round light-gray-bg mrg-b-d5" sm>
+                <div class="w-2 h-2 round sub-bg" sm>6</div>
+            </div>
+            <div><code>.flex-layout-6</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex-layout-7 h-5 round light-gray-bg mrg-b-d5" sm>
+                <div class="w-2 h-2 round sub-bg" sm>7</div>
+            </div>
+            <div><code>.flex-layout-7</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex-layout-8 h-5 round light-gray-bg mrg-b-d5" sm>
+                <div class="w-2 h-2 round sub-bg" sm>8</div>
+            </div>
+            <div><code>.flex-layout-8</code></div>
+        </div>
+        <div class="col-4 pad-1">
+            <div class="flex-layout-9 h-5 round light-gray-bg mrg-b-d5" sm>
+                <div class="w-2 h-2 round sub-bg" sm>9</div>
+            </div>
+            <div><code>.flex-layout-9</code></div>
+        </div>
+    </div>
+    <p></p>
+    <p>【示例】：竖向生长九宫格对齐定位</p>
+    <div class="grid fsize-d9 pcenter">
+      <div class="col-4 pad-1">
+        <div class="flex-column flex-layout-1 h-5 round light-gray-bg mrg-b-d5" sm>
+          <div class="w-2 h-2 round sub-bg" sm>1</div>
+        </div>
+        <div><code>.flex-layout-1</code></div>
+      </div>
+      <div class="col-4 pad-1">
+        <div class="flex-column flex-layout-2 h-5 round light-gray-bg mrg-b-d5" sm>
+          <div class="w-2 h-2 round sub-bg" sm>2</div>
+        </div>
+        <div><code>.flex-layout-2</code></div>
+      </div>
+      <div class="col-4 pad-1">
+        <div class="flex-column flex-layout-3 h-5 round light-gray-bg mrg-b-d5" sm>
+          <div class="w-2 h-2 round sub-bg" sm>3</div>
+        </div>
+        <div><code>.flex-layout-3</code></div>
+      </div>
+      <div class="col-4 pad-1">
+        <div class="flex-column flex-layout-4 h-5 round light-gray-bg mrg-b-d5" sm>
+          <div class="w-2 h-2 round sub-bg" sm>4</div>
+        </div>
+        <div><code>.flex-layout-4</code></div>
+      </div>
+      <div class="col-4 pad-1">
+        <div class="flex-column flex-layout-5 h-5 round light-gray-bg mrg-b-d5" sm>
+          <div class="w-2 h-2 round sub-bg" sm>5</div>
+        </div>
+        <div><code>.flex-layout-5</code></div>
+      </div>
+      <div class="col-4 pad-1">
+        <div class="flex-column flex-layout-6 h-5 round light-gray-bg mrg-b-d5" sm>
+          <div class="w-2 h-2 round sub-bg" sm>6</div>
+        </div>
+        <div><code>.flex-layout-6</code></div>
+      </div>
+      <div class="col-4 pad-1">
+        <div class="flex-column flex-layout-7 h-5 round light-gray-bg mrg-b-d5" sm>
+          <div class="w-2 h-2 round sub-bg" sm>7</div>
+        </div>
+        <div><code>.flex-layout-7</code></div>
+      </div>
+      <div class="col-4 pad-1">
+        <div class="flex-column flex-layout-8 h-5 round light-gray-bg mrg-b-d5" sm>
+          <div class="w-2 h-2 round sub-bg" sm>8</div>
+        </div>
+        <div><code>.flex-layout-8</code></div>
+      </div>
+      <div class="col-4 pad-1">
+        <div class="flex-column flex-layout-9 h-5 round light-gray-bg mrg-b-d5" sm>
+          <div class="w-2 h-2 round sub-bg" sm>9</div>
+        </div>
+        <div><code>.flex-layout-9</code></div>
+      </div>
+    </div>
+    <p></p>
+
     <!-- 栅格系统 -->
     <h5>栅格系统</h5>
     <p>通过基础的 12 分栏，迅速简便地创建布局。</p>
@@ -213,7 +334,7 @@
 
     <!-- 外边距 -->
     <h5>外边距</h5>
-    <p>通过<code>mrg*</code> 可以使用预置的外边距方案。其值域范围等同于内边距，同时多出了 auto。</p>
+    <p>通过<code>mrg*</code> 可以使用预置的外边距方案。其值域范围等同于内边距。</p>
     <table class="table">
       <thead>
         <tr>
@@ -267,65 +388,6 @@
       </tbody>
     </table>
     <p></p>
-    <p>外边距可以配合弹性布局，对容器内的元素进行灵活定位。</p>
-    <p>【示例】九宫格式定位：</p>
-    <div class="grid fsize-d9 pcenter">
-        <div class="col-4 pad-1">
-            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
-                <div class="w-2 h-2 round sub-bg mrg-r-auto" sm></div>
-            </div>
-            <div><code>.mrg-r-auto</code></div>
-        </div>
-        <div class="col-4 pad-1">
-            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
-                <div class="w-2 h-2 round sub-bg mrg-h-auto" sm></div>
-            </div>
-            <div><code>.mrg-h-auto</code></div>
-        </div>
-        <div class="col-4 pad-1">
-            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
-                <div class="w-2 h-2 round sub-bg mrg-l-auto" sm></div>
-            </div>
-            <div><code>.mrg-l-auto</code></div>
-        </div>
-        <div class="col-4 pad-1">
-            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
-                <div class="w-2 h-2 round sub-bg mrg-v-auto" sm></div>
-            </div>
-            <div><code>.mrg-v-auto</code></div>
-        </div>
-        <div class="col-4 pad-1">
-            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
-                <div class="w-2 h-2 round sub-bg mrg-auto" sm></div>
-            </div>
-            <div><code>.mrg-auto</code></div>
-        </div>
-        <div class="col-4 pad-1">
-            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
-                <div class="w-2 h-2 round sub-bg mrg-l-auto mrg-v-auto" sm></div>
-            </div>
-            <div><code>.mrg-l-auto</code> + <code>.mrg-v-auto</code></div>
-        </div>
-        <div class="col-4 pad-1">
-            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
-                <div class="w-2 h-2 round sub-bg mrg-t-auto" sm></div>
-            </div>
-            <div><code>.mrg-t-auto</code></div>
-        </div>
-        <div class="col-4 pad-1">
-            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
-                <div class="w-2 h-2 round sub-bg mrg-h-auto mrg-t-auto" sm></div>
-            </div>
-            <div><code>.mrg-h-auto</code> + <code>.mrg-t-auto</code></div>
-        </div>
-        <div class="col-4 pad-1">
-            <div class="flex h-5 round light-gray-bg mrg-b-d5 mrg-h-auto" sm>
-                <div class="w-2 h-2 round sub-bg mrg-l-auto mrg-t-auto" sm></div>
-            </div>
-            <div><code>.mrg-l-auto</code> + <code>.mrg-t-auto</code></div>
-        </div>
-    </div>
-    <p></p>
 
     <!-- 尺寸 -->
     <h5>尺寸</h5>
@@ -372,22 +434,22 @@
     </p>
     <p>BTX·UI 未预置百分比尺寸，推荐使用 flex 完全取代相关使用场景。</p>
     <p>【示例】1 rem 至 10 rem 方形：</p>
-    <div class="flex-layout-spread flex-layout-middle">
-      <div class="w-1 h-1 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle" sm>1</div>
-      <div class="w-2 h-2 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle" sm>2</div>
-      <div class="w-3 h-3 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle" sm>3</div>
-      <div class="w-4 h-4 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle" sm>4</div>
-      <div class="w-5 h-5 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle" sm>5</div>
+    <div class="flex-layout-spread flex-layout-4">
+      <div class="w-1 h-1 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>1</div>
+      <div class="w-2 h-2 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>2</div>
+      <div class="w-3 h-3 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>3</div>
+      <div class="w-4 h-4 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>4</div>
+      <div class="w-5 h-5 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>5</div>
     </div>
-    <div class="flex-layout-spread flex-layout-middle">
+    <div class="flex-layout-spread flex-layout-4">
       <div
-        class="w-10 h-10 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle"
+        class="w-10 h-10 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4"
         sm
       >10</div>
-      <div class="w-9 h-9 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle" sm>9</div>
-      <div class="w-8 h-8 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle" sm>8</div>
-      <div class="w-7 h-7 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle" sm>7</div>
-      <div class="w-6 h-6 light-gray-bg round fsize-d8 flex-layout-center flex-layout-middle" sm>6</div>
+      <div class="w-9 h-9 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>9</div>
+      <div class="w-8 h-8 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>8</div>
+      <div class="w-7 h-7 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>7</div>
+      <div class="w-6 h-6 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>6</div>
     </div>
     <p></p>
     <p>【示例】配合自生长实现弹性布局：</p>
@@ -539,22 +601,22 @@
     <div class="grid fsize-d8">
         <div class="col-3">
             <div class="middle-gray-bg round w-10" sm>
-                <div class="relative l6 w-10 h-7 light-gray-bg flex-center flex-column round alpha-9" sm>向右位移 6px<br><code>.l6</code></div>
+                <div class="relative l6 w-10 h-7 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向右位移 6px<br><code>.l6</code></div>
             </div>
         </div>
         <div class="col-3">
             <div class="middle-gray-bg round w-10" sm>
-                <div class="relative lx1 w-10 h-7 light-gray-bg flex-center flex-column round alpha-9" sm>向右位移 1 倍<br><code>.lx1</code></div>
+                <div class="relative lx1 w-10 h-7 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向右位移 1 倍<br><code>.lx1</code></div>
             </div>
         </div>
         <div class="col-3">
             <div class="middle-gray-bg round w-10" sm>
-                <div class="relative lx2 w-10 h-7 light-gray-bg flex-center flex-column round alpha-9" sm>向右位移 2 倍<br><code>.lx2</code></div>
+                <div class="relative lx2 w-10 h-7 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向右位移 2 倍<br><code>.lx2</code></div>
             </div>
         </div>
         <div class="col-3">
             <div class="middle-gray-bg round w-10" sm>
-                <div class="relative lx-1 w-10 h-7 light-gray-bg flex-center flex-column round alpha-9" sm>向左位移 1 倍<br><code>.lx-1</code></div>
+                <div class="relative lx-1 w-10 h-7 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向左位移 1 倍<br><code>.lx-1</code></div>
             </div>
         </div>
     </div>
@@ -562,13 +624,13 @@
     <p>【示例】基于自身宽高位移：</p>
     <div class="flex-layout-spread fsize-d8">
         <div class="middle-gray-bg round w-10" sm>
-            <div class="relative lp100 w-10 h-8 light-gray-bg flex-center flex-column round alpha-9" sm>向右位移自身宽度<b>100%</b><code>.lp100</code></div>
+            <div class="relative lp100 w-10 h-8 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向右位移自身宽度<b>100%</b><code>.lp100</code></div>
         </div>
         <div class="middle-gray-bg round w-10" sm>
-            <div class="relative tp-10 w-10 h-8 light-gray-bg flex-center flex-column round alpha-9" sm>向上位移自身高度<b>10%</b><code>.tp-10</code></div>
+            <div class="relative tp-10 w-10 h-8 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向上位移自身高度<b>10%</b><code>.tp-10</code></div>
         </div>
         <div class="middle-gray-bg round w-10" sm>
-            <div class="relative lp-50 w-10 h-8 light-gray-bg flex-center flex-column round alpha-9" sm>向左位移自身宽度<b>50%</b><code>.lp-50</code></div>
+            <div class="relative lp-50 w-10 h-8 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向左位移自身宽度<b>50%</b><code>.lp-50</code></div>
         </div>
     </div>
     <p></p>

@@ -1,0 +1,53 @@
+//生成九宫格对齐定位类
+@mixin auto_gen_flex_align_class($suffix:"") {
+    .flex-layout-1#{$suffix} {
+        justify-content: flex-start;
+    }
+    .flex-layout-2#{$suffix} {
+        justify-content: center;
+    }
+    .flex-layout-3#{$suffix} {
+        justify-content: flex-end;
+    }
+    .flex-layout-4#{$suffix} {
+        align-items: center;
+    }
+    .flex-layout-5#{$suffix} {
+        justify-content: center;
+        align-items: center;
+    }
+    .flex-layout-6#{$suffix} {
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .flex-layout-7#{$suffix} {
+        align-items: flex-end;
+    }
+    .flex-layout-8#{$suffix} {
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .flex-layout-9#{$suffix} {
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+}
+
+//生成栅格布局类
+@mixin auto_gen_grid_class($suffix:"") {
+    $percent: "%";
+    @for $i from 1 to 13 {
+        .col-#{$i}#{$suffix} {
+            width: ($i / 12 * 100)#{$percent};
+        }
+        .col-offset-#{$i}#{$suffix} {
+            margin-left: ($i / 12 * 100)#{$percent};
+        }
+    }
+    .col-2d4#{$suffix} {
+        width: 20%;
+    }
+    .col-offset-2d4#{$suffix} {
+        margin-left: 20%;
+    }
+}

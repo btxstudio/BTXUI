@@ -5,14 +5,14 @@
         <div class="pad-h-3 main-bg flex-layout-spread sub-color">
 
             <!-- 左侧 logo -->
-            <div class="flex-layout-middle light alpha-4">
+            <div class="flex-layout-4 light alpha-4">
                 <div class="fsize-2d5 scale-1d4">
                     <i class="ico-btxstudio"></i>
                 </div>
             </div>
 
             <!-- 右侧导航按钮 -->
-            <div class="flex-layout-middle fsize-1d2">
+            <div class="flex-layout-4 fsize-1d2">
                 <router-link to="/" class="pad-r-3">BTX·UI</router-link>
                 <a href="http://75sea.com" class="pad-r-3">Level</a>
                 <a href="https://github.com/btxstudio/BTXUI" target="_blank" class="pad-r-3">Github</a>
@@ -71,8 +71,18 @@ export default {
 </script>
 
 <style lang="scss">
-    
-    /* 全局样式 */ 
+
+    //全局样式 
     @import "./sass/btx";
 
+    //平板端
+    @media only screen and (max-width: 1367px){
+        @import "./sass/btx.pad";
+    }
+
+    //移动端
+    @media only screen and (max-width: 740px){
+        @import "./sass/btx.mob";
+    }
+    
 </style>

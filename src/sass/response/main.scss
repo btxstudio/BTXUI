@@ -1,0 +1,35 @@
+@import "./text_mixin.scss";
+@import "./layout_mixin.scss";
+@import "./flex_mixin.scss";
+
+@mixin auto_gen_response_class($suffix:"") {
+    
+    //文本对齐
+    @include auto_gen_text_align_class($suffix);
+
+    //倍数字号
+    @include auto_gen_font_size_class($suffix);
+
+    //字符间距
+    @include auto_gen_letter_space_class($suffix);
+
+    //强制隐藏与显示
+    @include auto_gen_display_class($suffix);
+
+    //内、外边距
+    @include auto_gen_space_class($suffix);
+
+    //九宫格对齐定位
+    @include auto_gen_flex_align_class($suffix);
+
+    //栅格布局
+    @include auto_gen_grid_class($suffix);
+
+    //放缩比率
+    @include auto_gen_scale_class($suffix);
+
+    //成倍位移
+    @include auto_gen_offset_class($suffix);
+
+}
+

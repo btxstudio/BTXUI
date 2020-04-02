@@ -164,53 +164,53 @@
       <p></p>
       <p>标准色及辅助色：</p>
       <div class="flex pcenter">
-          <div class="flex-center flex-column mrg-r-5">
+          <div class="flex-layout-5 flex-column mrg-r-5">
               <div class="w-4 h-4 round main-bg"></div>
               <p>邃蓝<br><b class="fsize-d9">#051c24</b></p>
           </div>
-          <div class="flex-center flex-column">
+          <div class="flex-layout-5 flex-column">
               <div class="w-4 h-4 round sub-bg"></div>
               <p>锡金<br><b class="fsize-d9">#b4967a</b></p>
           </div>
       </div>
       <p>灰阶色：</p>
       <div class="flex pcenter">
-          <div class="mrg-r-7 flex-center flex-column relative l7">
+          <div class="mrg-r-7 flex-layout-5 flex-column relative l7">
               <div class="w-4 h-4 round light-bg light-gray line"></div>
               <p>纯白<br><b class="fsize-d9">#fff</b></p>
           </div>
-          <div class="mrg-r-6 flex-center flex-column">
+          <div class="mrg-r-6 flex-layout-5 flex-column">
               <div class="w-4 h-4 round light-gray-bg"></div>
               <p>浅灰<br><b class="fsize-d9">#eee</b></p>
           </div>
-          <div class="mrg-r-6 flex-center flex-column">
+          <div class="mrg-r-6 flex-layout-5 flex-column">
               <div class="w-4 h-4 round middle-gray-bg"></div>
               <p>中灰<br><b class="fsize-d9">#a7a7a7</b></p>
           </div>
-          <div class="mrg-r-6 flex-center flex-column">
+          <div class="mrg-r-6 flex-layout-5 flex-column">
               <div class="w-4 h-4 round deep-gray-bg"></div>
               <p>深灰<br><b class="fsize-d9">#373737</b></p>
           </div>
-          <div class="flex-center flex-column">
+          <div class="flex-layout-5 flex-column">
               <div class="w-4 h-4 round dark-bg"></div>
               <p>纯黑<br><b class="fsize-d9">#111</b></p>
           </div>
       </div>
       <p>常用彩色：</p>
       <div class="flex pcenter">
-          <div class="mrg-r-5 flex-center flex-column">
+          <div class="mrg-r-5 flex-layout-5 flex-column">
               <div class="w-4 h-4 round blue-bg"></div>
               <p>湛蓝<br><b class="fsize-d9">#4085f3</b></p>
           </div>
-          <div class="mrg-r-5 flex-center flex-column">
+          <div class="mrg-r-5 flex-layout-5 flex-column">
               <div class="w-4 h-4 round green-bg"></div>
               <p>青绿<br><b class="fsize-d9">#02b9a1</b></p>
           </div>
-          <div class="mrg-r-6 flex-center flex-column relative l4">
+          <div class="mrg-r-6 flex-layout-5 flex-column relative l4">
               <div class="w-4 h-4 round yellow-bg"></div>
               <p>橙黄<br><b class="fsize-d9">#fdba00</b></p>
           </div>
-          <div class="flex-center flex-column relative l6">
+          <div class="flex-layout-5 flex-column relative l6">
               <div class="w-4 h-4 round red-bg"></div>
               <p>玫红<br><b class="fsize-d9">#ec4334</b></p>
           </div>

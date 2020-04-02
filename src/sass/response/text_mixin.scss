@@ -1,0 +1,67 @@
+//生成文本对齐类
+@mixin auto_gen_text_align_class($suffix:"") {
+    .pcenter#{$suffix} {
+        text-align: center;
+    }
+    
+    .pright#{$suffix} {
+        text-align: right;
+    }
+    
+    .pleft#{$suffix} {
+        text-align: left;
+    }
+    
+    .pjustify#{$suffix} { 
+        text-align: justify;
+    }
+    
+    .pindent#{$suffix} {
+        text-indent: 2em;
+    }
+}
+
+//生成倍数字号类
+@mixin auto_gen_font_size_class($suffix:"") {
+    @for $i from 0 to 6{
+        
+        //处理缩小字号
+        @if $i == 0 {
+            .fsize-#{$i}#{$suffix} { //0 号字 
+                font-size: 0;
+            }
+            @for $i from 1 to 10{
+                .fsize-d#{$i}#{$suffix} {
+                    font-size: #{$i / 10}em;   
+                }        
+            }
+        } @else if $i == 1 {
+            .fsize-#{$i}#{$suffix} {
+                font-size: #{$i}em;
+            }
+            @for $i from 1 to 10{
+                .fsize-1d#{$i}#{$suffix} {
+                    font-size: #{1 + $i / 10}em;
+                }
+            }
+        } @else if $i > 1 {
+            .fsize-#{$i}#{$suffix} {
+                font-size: #{$i}em;
+            }
+            .fsize-#{$i}d5#{$suffix} {
+                font-size: #{$i + 0.5}em;
+            }
+        }
+    }   
+}
+
+//生成字符间距类
+@mixin auto_gen_letter_space_class($suffix:"") {
+    @for $i from 0 to 6 {
+        @if $i != 1{
+            .lspace-#{$i}#{$suffix}{
+                letter-spacing: #{$i}px;
+            }
+        }
+    }
+}

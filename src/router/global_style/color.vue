@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <article>
+  <article>
       <p>BTX·UI 预置了基于 Level 的色彩主题。</p>
       <p></p>
 
@@ -254,7 +253,6 @@
       </div>
 
     </article>
-  </div>
 </template>
 
 <script>

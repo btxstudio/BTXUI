@@ -1,6 +1,6 @@
 <!--19-12-04-->
 <template>
-    <div :class="`table-list-widget ani-left-slider-to-right flex flex-column max-h ${styleState}`">
+    <div :class="`table-list-widget ani-left-to-right flex flex-column max-h ${styleState}`">
         <div class="tl-w-table-head" v-if="Array.isArray(dataList.cols)">
             <table>
                 <thead>

@@ -1,50 +1,101 @@
+$duration: .7s;
+$fast_duration: .4s;
+$slow_duration: 1.4s;
+
+%duration {
+    animation-duration: $duration;
+}
+%reverse {
+    animation-direction: reverse;
+}
+
+
 .trans {                                //中速过度动画
-    transition: all .7s;
+    transition: all $duration;
 }
 
 .trans-fast {                           //快速过度动画
-    transition: all .4s;
+    transition: all $fast_duration;
 }
 
 .trans-slow {                           //慢速过度动画
-    transition: all 1.4s;
+    transition: all $slow_duration;
 }
 
 
-//设置过渡动画延迟执行
-@mixin auto_gen_trans_delay_class(){
-    @for $i from 1 to 10{
-        .trans-delay-d#{$i} {
-            transition-delay: #{$i / 10}s;
+//过渡动画延迟
+@for $i from 1 to 10{
+    .trans-delay-d#{$i} {
+        transition-delay: #{$i / 10}s;
+    }
+    @if $i < 6 {
+        .trans-delay-#{$i} {
+            transition-delay: #{$i}s;
         }
-        @if $i < 6 {
-            .trans-delay-#{$i} {
-                transition-delay: #{$i}s;
-            }
-            .trans-delay-#{$i}d5 {
-                transition-delay: #{$i + .5}s;
-            }
+        .trans-delay-#{$i}d5 {
+            transition-delay: #{$i + .5}s;
         }
     }
 }
-@include auto_gen_trans_delay_class();
 
 
-//淡入动画
-.ani-fade-in{
-    animation: fadeIn .54s; 
+//animation 动画 ---------------------------------------------------------------
+
+.ani {                                      //中速动画
+    animation-duration: $duration;
+}
+
+.ani-fast {                                 //快速动画
+    animation-duration: $fast_duration;
+}
+
+.ani-slow {                                 //慢速动画
+    animation-duration: $slow_duration;
+}
+
+.ani-mode-forwards {
+    animation-fill-mode: forwards;
+}
+
+.ani-mode-backwards {
+    animation-fill-mode: backwards;
+}
+
+.ani-mode-both {
+    animation-fill-mode: both;
+}
+
+//animation 动画延迟
+@for $i from 1 to 11{
+    .ani-delay-#{$i} {
+        animation-delay: #{$i}s;
+    }
+}
+.ani-delay-d5 {
+    animation-delay: .5s;
+}
+
+
+//animation 动画迭代
+@for $i from 1 to 7{
+    .ani-loop-#{$i} {
+        animation-iteration-count: $i;
+    }
+}
+.ani-loop {
+    animation-iteration-count: infinite;
+}
+
+
+.ani-fade-in, 
+.ani-fade-out{                              //淡入动画               
+    animation-name: fadeIn; 
+    @extend %duration;
+}
+.ani-fade-out{                              //淡出动画 
+    @extend %reverse;
 }
 @-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-        visibility: hidden;
-    }
-    to{
-        opacity: 1;
-        visibility: visible;
-    }
-}
-@-moz-keyframes fadeIn {
     from {
         opacity: 0;
         visibility: hidden;
@@ -65,9 +116,14 @@
     }
 }
 
-//由小到大淡入动画
-.ani-scale-fade-in{
-    animation: scaleFadeIn .54s;
+
+.ani-scale-fade-in, 
+.ani-scale-fade-out{                        //缩放式淡入动画
+    animation-name: scaleFadeIn; 
+    @extend %duration;
+}
+.ani-scale-fade-out{                        //放缩式淡出动画
+    @extend %reverse;
 }
 @-webkit-keyframes scaleFadeIn {
     from {
@@ -77,16 +133,6 @@
     to{
         opacity: 1;
         -webkit-transform: scale(1);
-    }
-}
-@-moz-keyframes scaleFadeIn {
-    from {
-        opacity: 0;
-        -moz-transform: scale(0);
-    }
-    to{
-        opacity: 1;
-        -moz-transform: scale(1);
     }
 }
 @keyframes scaleFadeIn {
@@ -100,9 +146,11 @@
     }
 }
 
-//滑动动画（由左向右）
-.ani-left-slider-to-right{
-    animation: aniLeftSliderToRight .54s;
+
+//由左向右滑动动画
+.ani-left-to-right{                         
+    animation-name: aniLeftSliderToRight; 
+    @extend %duration;
 }
 @-webkit-keyframes aniLeftSliderToRight {
     from {
@@ -110,14 +158,6 @@
     }
     to{
         -webkit-transform: translateX(0%);
-    }
-}
-@-moz-keyframes aniLeftSliderToRight {
-    from {
-        -moz-transform: translateX(-100%);
-    }
-    to{
-        -moz-transform: translateX(0%);
     }
 }
 @keyframes aniLeftSliderToRight {
@@ -129,9 +169,11 @@
     }
 }
 
-//滑动动画（由右向左）
-.ani-right-slider-to-left{
-    animation: aniRightSliderToLeft .54s;
+
+//由右向左滑动动画
+.ani-right-to-left{                         
+    animation-name: aniRightSliderToLeft; 
+    @extend %duration;
 }
 @-webkit-keyframes aniRightSliderToLeft {
     from {
@@ -139,14 +181,6 @@
     }
     to{
         -webkit-transform: translateX(0%);
-    }
-}
-@-moz-keyframes aniRightSliderToLeft {
-    from {
-        -moz-transform: translateX(100%);
-    }
-    to{
-        -moz-transform: translateX(0%);
     }
 }
 @keyframes aniRightSliderToLeft {
@@ -158,9 +192,11 @@
     }
 }
 
-//滑动动画（由上向下）
-.ani-top-slider-to-bottom{
-    animation: aniTopSliderToBottom .54s;
+
+//由上向下滑动动画
+.ani-top-to-bottom{                         
+    animation-name: aniTopSliderToBottom; 
+    @extend %duration;
 }
 @-webkit-keyframes aniTopSliderToBottom {
     from {
@@ -168,14 +204,6 @@
     }
     to{
         -webkit-transform: translateY(0%);
-    }
-}
-@-moz-keyframes aniTopSliderToBottom {
-    from {
-        -moz-transform: translateY(-100%);
-    }
-    to{
-        -moz-transform: translateY(0%);
     }
 }
 @keyframes aniTopSliderToBottom {
@@ -187,9 +215,11 @@
     }
 }
 
-//滑动动画（由下向上）
-.ani-bottom-slider-to-top{
-    animation: aniBottomSliderToTop .54s;
+
+//由下向上滑动动画
+.ani-bottom-to-top{                         
+    animation-name: aniBottomSliderToTop; 
+    @extend %duration;
 }
 @-webkit-keyframes aniBottomSliderToTop {
     from {
@@ -199,19 +229,103 @@
         -webkit-transform: translateY(0%);
     }
 }
-@-moz-keyframes aniBottomSliderToTop {
-    from {
-        -moz-transform: translateY(100%);
-    }
-    to{
-        -moz-transform: translateY(0%);
-    }
-}
 @keyframes aniBottomSliderToTop {
     from {
         transform: translateY(100%);
     }
     to{
         transform: translateY(0%);
+    }
+}
+
+
+//旋转 360 度动画
+.ani-rotate {
+    animation-name: aniRotate; 
+    @extend %duration;
+}
+@-webkit-keyframes aniRotate {
+    0%{
+        -webkit-transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes aniRotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+//旋转 180 度动画
+.ani-rotate-half {
+    animation-name: aniRotateHalf; 
+    @extend %duration;
+}
+@-webkit-keyframes aniRotateHalf {
+    0%{
+        -webkit-transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(180deg);
+    }
+}
+@keyframes aniRotateHalf {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}
+
+
+//旋转 90 度动画
+.ani-rotate-90 {
+    animation-name: aniRotate90; 
+    @extend %duration;
+}
+@-webkit-keyframes aniRotate90 {
+    0%{
+        -webkit-transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(90deg);
+    }
+}
+@keyframes aniRotate90 {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(90deg);
+    }
+}
+
+
+//旋转 45 度动画
+.ani-rotate-45 {
+    animation-name: aniRotate45; 
+    @extend %duration;
+}
+@-webkit-keyframes aniRotate45 {
+    0%{
+        -webkit-transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(45deg);
+    }
+}
+@keyframes aniRotate45 {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(45deg);
     }
 }

@@ -135,6 +135,38 @@ export default {
                 scale: "d9"
             },
             {
+                name: "data",
+                code: "\e690"
+            },
+            {
+                name: "user",
+                code: "\e62b",
+                scale: "d9"
+            },
+            {
+                name: "system",
+                code: "\e611",
+                scale: "d9"
+            },
+            {
+                name: "order",
+                code: "\e684"
+            },
+            {
+                name: "exit",
+                code: "\e618",
+                scale: "d8"
+            },
+            {
+                name: "log",
+                code: "\e60f",
+                scale: "d9"
+            },
+            {
+                name: "edit",
+                code: "\e70c"
+            },
+            {
                 name: "btxstudio-zh",
                 code: "\e606",
                 scale: "1d4"

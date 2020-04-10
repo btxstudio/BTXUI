@@ -1,12 +1,12 @@
 <template>
-    <div class="content-widget flex flex-column max-h">
+    <div>
 
         <!-- 提示框组件 -->
         <tooltip-widget ref="tooltip" class="data-center-pro" line-enable :offset="{x:40, y:-110}" />
-
-        <div class="c-w-title" v-if="title">{{title}}</div>
-        <div class="c-w-body flex-grow relative ani-left-slider-to-right">
-            <div class="c-w-body-inner absolute max-h max-w auto-scroll" @mousemove="$_show_tooltip">
+        
+        <div class="mrg-b-1" v-if="title">{{title}}</div>
+        <div class="ani-delay-1 ani-mode-backwards flex-grow relative ani-left-to-right">
+            <div class="round absolute max-h max-w pad-r-d5" sm @mousemove="$_show_tooltip">
 
                 <!--树形目录组件-->
                 <content-node-widget v-for="data of dataTree"
@@ -128,23 +128,3 @@
         components: { ContentNodeWidget, TooltipWidget }
     }
 </script>
-
-<style lang="scss" scoped>
-    .content-widget{
-        overflow: hidden;
-
-        .c-w-title{
-            font-size: 1.3em;
-            margin-bottom: 1rem;
-        }
-        .c-w-body{
-            animation-delay: 2s;
-            animation-fill-mode: backwards;
-
-            .c-w-body-inner{
-                border-radius: 7px;
-                padding-right: .4rem;
-            }
-        }
-    }
-</style>

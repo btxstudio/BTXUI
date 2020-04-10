@@ -46,6 +46,31 @@
     },
     {
         "id": "c",
+        "text": "<b>组件核心</b>",
+        "children": [],
+        "spread": true
+    },
+    {
+        "id": "d",
+        "text": "<b>无状态组件</b>",
+        "children": [
+            {
+                "id": "view",
+                "text": "<b>View</b> 布局"
+            },
+            {
+                "id": "text",
+                "text": "<b>Text</b> 文本"
+            },
+            {
+                "id": "image",
+                "text": "<b>Image</b> 图片"
+            }
+        ],
+        "spread": true
+    },
+    {
+        "id": "e",
         "text": "<b>有状态组件</b>",
         "children": [
             {
@@ -69,10 +94,6 @@
                 "text": "<b>content-node</b> 节点"
             }
         ],
-        "spread": true
-    },
-    {
-        "id": "d",
-        "text": "<b>无状态组件</b>"
+        "spread": false
     }
 ]

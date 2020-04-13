@@ -69,39 +69,39 @@
     <p>【示例】：</p>
     <div class="grid fsize-d9 pcenter">
         <div class="col-4 pad-1">
-            <div class="bg-layout-1 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div class="bg-layout-1 h-5 round-sm light-gray-bg mrg-b-d5" :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
             <div><code>.bg-layout-1</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="bg-layout-2 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div class="bg-layout-2 h-5 round-sm light-gray-bg mrg-b-d5" :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
             <div><code>.bg-layout-2</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="bg-layout-3 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div class="bg-layout-3 h-5 round-sm light-gray-bg mrg-b-d5" :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
             <div><code>.bg-layout-3</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="bg-layout-4 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div class="bg-layout-4 h-5 round-sm light-gray-bg mrg-b-d5" :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
             <div><code>.bg-layout-4</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="bg-layout-5 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div class="bg-layout-5 h-5 round-sm light-gray-bg mrg-b-d5" :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
             <div><code>.bg-layout-5</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="bg-layout-6 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div class="bg-layout-6 h-5 round-sm light-gray-bg mrg-b-d5" :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
             <div><code>.bg-layout-6</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="bg-layout-7 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div class="bg-layout-7 h-5 round-sm light-gray-bg mrg-b-d5" :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
             <div><code>.bg-layout-7</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="bg-layout-8 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div class="bg-layout-8 h-5 round-sm light-gray-bg mrg-b-d5" :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
             <div><code>.bg-layout-8</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="bg-layout-9 h-5 round light-gray-bg mrg-b-d5" sm :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
+            <div class="bg-layout-9 h-5 round-sm light-gray-bg mrg-b-d5" :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
             <div><code>.bg-layout-9</code></div>
         </div>
     </div>
@@ -113,7 +113,6 @@
       <thead>
         <tr>
           <th>样式类</th>
-          <th>属性</th>
           <th>效果</th>
         </tr>
       </thead>
@@ -122,48 +121,60 @@
           <td>
             <code>.round</code>
           </td>
-          <td>-</td>
           <td>50% 圆角，可用于制作正圆形或椭圆形</td>
         </tr>
         <tr>
           <td>
-            <code>.round</code>
-          </td>
-          <td>
-            <code>lg</code>
+            <code>.round-lg</code>
           </td>
           <td>24px 大圆角</td>
         </tr>
         <tr>
           <td>
-            <code>.round</code>
-          </td>
-          <td>
-            <code>md</code>
+            <code>.round-md</code>
           </td>
           <td>10px 中等圆角</td>
         </tr>
         <tr>
           <td>
-            <code>.round</code>
-          </td>
-          <td>
-            <code>sm</code>
+            <code>.round-sm</code>
           </td>
           <td>4px 小型圆角</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.round-t</code>
+          </td>
+          <td>上侧圆角</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.round-b</code>
+          </td>
+          <td>下侧圆角</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.round-l</code>
+          </td>
+          <td>左侧圆角</td>
+        </tr>
+        <tr>
+          <td>
+            <code>.round-r</code>
+          </td>
+          <td>右侧圆角</td>
         </tr>
       </tbody>
     </table>
     <p></p>
-
-    <!-- 圆角示例 -->
     <p>使用圆角样式可用于头像之类的图像制作。</p>
     <p>【示例】：</p>
     <div class="flex-layout-spread pcenter">
         <div><img class="w-9" src="@/assets/img/head.jpg" /><br>方形头像</div>
-        <div><img class="round w-9" sm src="@/assets/img/head.jpg" /><br>小圆角头像</div>
-        <div><img class="round w-9" md src="@/assets/img/head.jpg" /><br>中等圆角头像</div>
-        <div><img class="round w-9" lg src="@/assets/img/head.jpg" /><br>大圆角头像</div>
+        <div><img class="round-sm w-9" src="@/assets/img/head.jpg" /><br>小圆角头像</div>
+        <div><img class="round-md w-9" src="@/assets/img/head.jpg" /><br>中等圆角头像</div>
+        <div><img class="round-lg w-9" src="@/assets/img/head.jpg" /><br>大圆角头像</div>
         <div><img class="round w-9" src="@/assets/img/head.jpg" /><br>正圆头像</div>
     </div>
     <p></p>
@@ -217,7 +228,7 @@
     <div class="flex">
         <div class="mrg-r-9">
             <div class="relative">
-                <img class="round flex w-9" sm src="@/assets/img/head2.jpg" />
+                <img class="round-sm flex w-9" src="@/assets/img/head2.jpg" />
                 <div class="absolute max flex-layout-5 t0">
                     <div class=" round w-5 h-5 deep-gray-bg line neutral thick-10"></div>
                 </div>
@@ -226,7 +237,7 @@
         </div>
         <div class="relative">
             <div class="relative">
-                <img class="round flex w-9" sm src="@/assets/img/head2.jpg" />
+                <img class="round-sm flex w-9" src="@/assets/img/head2.jpg" />
                 <div class="absolute max flex-layout-5 t0">
                     <div class="round w-5 h-5 deep-gray-bg line neutral thick-10" outside></div>
                 </div>
@@ -236,17 +247,67 @@
     </div>
     <p></p>
 
+    <!-- 文字描边 -->
+    <h5>文字描边</h5>
+    <p>使用 <code>.text-line</code> 样式类可以设置文字的描边效果，描边颜色为中性半透明灰色。</p>
+    <div class="flex">
+        <div class="w-20 h-4 flex-layout-5 middle-gray-bg round-sm text-line fsize-1d2">Hello World</div>
+        <div class="w-20 h-4 flex-layout-5 line light-gray round-sm text-line fsize-1d2 mrg-l-2">
+            <span class="deep-gray">Hello World</span>
+        </div>
+    </div>
+    <p></p>
+
+    <!-- 阴影 -->
+    <h5>阴影</h5>
+    <p>框架预置了几种常用的盒子阴影样式，阴影的颜色可以通过颜色类进行设置。</p>
+    <div class="grid pcenter">
+        <div class="col-3 pad-r-2">
+            <div class="line light-gray max-w h-6 round-sm shadow deep-gray flex-layout-5">
+                <div>    
+                    <div><code>.shadow</code></div>
+                    <div class="fsize-d8 deep-gray">普通尺寸阴影</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 pad-r-2">
+            <div class="line light-gray max-w h-6 round-sm shadow-sm deep-gray flex-layout-5">
+                <div>
+                    <div><code>.shadow-sm</code></div>
+                    <div class="fsize-d8 deep-gray">小尺寸阴影</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 pad-r-2">
+            <div class="line light-gray max-w h-6 round-sm shadow-lg deep-gray flex-layout-5">
+                <div>
+                    <div><code>.shadow-lg</code></div>
+                    <div class="fsize-d8 deep-gray">大尺寸阴影</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 pad-r-2">
+            <div class="line light-gray max-w h-6 round-sm middle-gray-bg flex-layout-5">
+                <div class="shadow-relief round-sm deep-gray-bg pad-h-2">
+                    <div><code>.shadow-relief</code></div>
+                    <div class="fsize-d8 middle-gray">浮雕阴影效果</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
     <!-- 分割线 -->
     <h5>分割线</h5>
     <p>BTX·UI 重置了 <code>&lt;hr&gt;</code> 分割线样式，同时适用于深、浅背景。</p>
     <p>【示例】：</p>
     <div class="grid pcenter">
-      <div class="col-6 pad-h-2">
-        <div class="deep-gray-bg pad-d5 round" sm><hr/></div>
+      <div class="col-6 pad-r-2">
+        <div class="deep-gray-bg pad-d5 round-sm"><hr/></div>
         <div class="pad-t-d5">深色背景效果</div>
       </div>
-      <div class="col-6 pad-h-2">
-        <div class="light-gray line pad-d5 round" sm><hr/></div>
+      <div class="col-6 pad-r-2">
+        <div class="light-gray line pad-d5 round-sm"><hr/></div>
         <div class="pad-t-d5">浅色背景效果</div>
       </div>
     </div>

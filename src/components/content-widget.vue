@@ -6,7 +6,7 @@
         
         <div class="mrg-b-1" v-if="title">{{title}}</div>
         <div class="ani-delay-1 ani-mode-backwards flex-grow relative ani-left-to-right">
-            <div class="round absolute max-h max-w pad-r-d5" sm @mousemove="$_show_tooltip">
+            <div class="round-sm absolute max-h max-w pad-r-d5" @mousemove="$_show_tooltip">
 
                 <!--树形目录组件-->
                 <content-node-widget v-for="data of dataTree"

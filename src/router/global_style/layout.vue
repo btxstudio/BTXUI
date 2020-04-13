@@ -56,56 +56,56 @@
     <p>【示例】：横向生长九宫格对齐定位</p>
     <div class="grid fsize-d9 pcenter">
         <div class="col-4 pad-1">
-            <div class="flex-layout-1 h-5 round light-gray-bg mrg-b-d5" sm>
-                <div class="w-2 h-2 round sub-bg" sm>1</div>
+            <div class="flex-layout-1 h-5 round-sm light-gray-bg mrg-b-d5">
+                <div class="w-2 h-2 round-sm sub-bg">1</div>
             </div>
             <div><code>.flex-layout-1</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="flex-layout-2 h-5 round light-gray-bg mrg-b-d5" sm>
-                <div class="w-2 h-2 round sub-bg" sm>2</div>
+            <div class="flex-layout-2 h-5 round-sm light-gray-bg mrg-b-d5">
+                <div class="w-2 h-2 round-sm sub-bg">2</div>
             </div>
             <div><code>.flex-layout-2</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="flex-layout-3 h-5 round light-gray-bg mrg-b-d5" sm>
-                <div class="w-2 h-2 round sub-bg" sm>3</div>
+            <div class="flex-layout-3 h-5 round-sm light-gray-bg mrg-b-d5">
+                <div class="w-2 h-2 round-sm sub-bg">3</div>
             </div>
             <div><code>.flex-layout-3</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="flex-layout-4 h-5 round light-gray-bg mrg-b-d5" sm>
-                <div class="w-2 h-2 round sub-bg" sm>4</div>
+            <div class="flex-layout-4 h-5 round-sm light-gray-bg mrg-b-d5">
+                <div class="w-2 h-2 round-sm sub-bg">4</div>
             </div>
             <div><code>.flex-layout-4</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="flex-layout-5 h-5 round light-gray-bg mrg-b-d5" sm>
-                <div class="w-2 h-2 round sub-bg" sm>5</div>
+            <div class="flex-layout-5 h-5 round-sm light-gray-bg mrg-b-d5">
+                <div class="w-2 h-2 round-sm sub-bg">5</div>
             </div>
             <div><code>.flex-layout-5</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="flex-layout-6 h-5 round light-gray-bg mrg-b-d5" sm>
-                <div class="w-2 h-2 round sub-bg" sm>6</div>
+            <div class="flex-layout-6 h-5 round-sm light-gray-bg mrg-b-d5">
+                <div class="w-2 h-2 round-sm sub-bg">6</div>
             </div>
             <div><code>.flex-layout-6</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="flex-layout-7 h-5 round light-gray-bg mrg-b-d5" sm>
-                <div class="w-2 h-2 round sub-bg" sm>7</div>
+            <div class="flex-layout-7 h-5 round-sm light-gray-bg mrg-b-d5">
+                <div class="w-2 h-2 round-sm sub-bg">7</div>
             </div>
             <div><code>.flex-layout-7</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="flex-layout-8 h-5 round light-gray-bg mrg-b-d5" sm>
-                <div class="w-2 h-2 round sub-bg" sm>8</div>
+            <div class="flex-layout-8 h-5 round-sm light-gray-bg mrg-b-d5">
+                <div class="w-2 h-2 round-sm sub-bg">8</div>
             </div>
             <div><code>.flex-layout-8</code></div>
         </div>
         <div class="col-4 pad-1">
-            <div class="flex-layout-9 h-5 round light-gray-bg mrg-b-d5" sm>
-                <div class="w-2 h-2 round sub-bg" sm>9</div>
+            <div class="flex-layout-9 h-5 round-sm light-gray-bg mrg-b-d5">
+                <div class="w-2 h-2 round-sm sub-bg">9</div>
             </div>
             <div><code>.flex-layout-9</code></div>
         </div>
@@ -114,56 +114,56 @@
     <p>【示例】：竖向生长九宫格对齐定位</p>
     <div class="grid fsize-d9 pcenter">
       <div class="col-4 pad-1">
-        <div class="flex-column flex-layout-1 h-5 round light-gray-bg mrg-b-d5" sm>
-          <div class="w-2 h-2 round sub-bg" sm>1</div>
+        <div class="flex-column flex-layout-1 h-5 round-sm light-gray-bg mrg-b-d5">
+          <div class="w-2 h-2 round-sm sub-bg">1</div>
         </div>
         <div><code>.flex-layout-1</code></div>
       </div>
       <div class="col-4 pad-1">
-        <div class="flex-column flex-layout-2 h-5 round light-gray-bg mrg-b-d5" sm>
-          <div class="w-2 h-2 round sub-bg" sm>2</div>
+        <div class="flex-column flex-layout-2 h-5 round-sm light-gray-bg mrg-b-d5">
+          <div class="w-2 h-2 round-sm sub-bg">2</div>
         </div>
         <div><code>.flex-layout-2</code></div>
       </div>
       <div class="col-4 pad-1">
-        <div class="flex-column flex-layout-3 h-5 round light-gray-bg mrg-b-d5" sm>
-          <div class="w-2 h-2 round sub-bg" sm>3</div>
+        <div class="flex-column flex-layout-3 h-5 round-sm light-gray-bg mrg-b-d5">
+          <div class="w-2 h-2 round-sm sub-bg">3</div>
         </div>
         <div><code>.flex-layout-3</code></div>
       </div>
       <div class="col-4 pad-1">
-        <div class="flex-column flex-layout-4 h-5 round light-gray-bg mrg-b-d5" sm>
-          <div class="w-2 h-2 round sub-bg" sm>4</div>
+        <div class="flex-column flex-layout-4 h-5 round-sm light-gray-bg mrg-b-d5">
+          <div class="w-2 h-2 round-sm sub-bg">4</div>
         </div>
         <div><code>.flex-layout-4</code></div>
       </div>
       <div class="col-4 pad-1">
-        <div class="flex-column flex-layout-5 h-5 round light-gray-bg mrg-b-d5" sm>
-          <div class="w-2 h-2 round sub-bg" sm>5</div>
+        <div class="flex-column flex-layout-5 h-5 round-sm light-gray-bg mrg-b-d5">
+          <div class="w-2 h-2 round-sm sub-bg">5</div>
         </div>
         <div><code>.flex-layout-5</code></div>
       </div>
       <div class="col-4 pad-1">
-        <div class="flex-column flex-layout-6 h-5 round light-gray-bg mrg-b-d5" sm>
-          <div class="w-2 h-2 round sub-bg" sm>6</div>
+        <div class="flex-column flex-layout-6 h-5 round-sm light-gray-bg mrg-b-d5">
+          <div class="w-2 h-2 round-sm sub-bg">6</div>
         </div>
         <div><code>.flex-layout-6</code></div>
       </div>
       <div class="col-4 pad-1">
-        <div class="flex-column flex-layout-7 h-5 round light-gray-bg mrg-b-d5" sm>
-          <div class="w-2 h-2 round sub-bg" sm>7</div>
+        <div class="flex-column flex-layout-7 h-5 round-sm light-gray-bg mrg-b-d5">
+          <div class="w-2 h-2 round-sm sub-bg">7</div>
         </div>
         <div><code>.flex-layout-7</code></div>
       </div>
       <div class="col-4 pad-1">
-        <div class="flex-column flex-layout-8 h-5 round light-gray-bg mrg-b-d5" sm>
-          <div class="w-2 h-2 round sub-bg" sm>8</div>
+        <div class="flex-column flex-layout-8 h-5 round-sm light-gray-bg mrg-b-d5">
+          <div class="w-2 h-2 round-sm sub-bg">8</div>
         </div>
         <div><code>.flex-layout-8</code></div>
       </div>
       <div class="col-4 pad-1">
-        <div class="flex-column flex-layout-9 h-5 round light-gray-bg mrg-b-d5" sm>
-          <div class="w-2 h-2 round sub-bg" sm>9</div>
+        <div class="flex-column flex-layout-9 h-5 round-sm light-gray-bg mrg-b-d5">
+          <div class="w-2 h-2 round-sm sub-bg">9</div>
         </div>
         <div><code>.flex-layout-9</code></div>
       </div>
@@ -176,44 +176,44 @@
     <p>【示例】等分布局：</p>
     <div class="pcenter fsize-d8">
       <div class="grid pad-b-1">
-        <div class="col-12 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-12</span></div>
+        <div class="col-12 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-12</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-6 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-6</span></div>
-        <div class="col-6 light-bg middle-gray line round" sm><span class="deep-gray">col-6</span></div>
+        <div class="col-6 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-6</span></div>
+        <div class="col-6 light-bg middle-gray line round-sm"><span class="deep-gray">col-6</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-4 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-4</span></div>
-        <div class="col-4 light-bg middle-gray line round" sm><span class="deep-gray">col-4</span></div>
-        <div class="col-4 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-4</span></div>
+        <div class="col-4 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-4</span></div>
+        <div class="col-4 light-bg middle-gray line round-sm"><span class="deep-gray">col-4</span></div>
+        <div class="col-4 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-4</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-3 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-3</span></div>
-        <div class="col-3 light-bg middle-gray line round" sm><span class="deep-gray">col-3</span></div>
-        <div class="col-3 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-3</span></div>
-        <div class="col-3 light-bg middle-gray line round" sm><span class="deep-gray">col-3</span></div>
+        <div class="col-3 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-3</span></div>
+        <div class="col-3 light-bg middle-gray line round-sm"><span class="deep-gray">col-3</span></div>
+        <div class="col-3 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-3</span></div>
+        <div class="col-3 light-bg middle-gray line round-sm"><span class="deep-gray">col-3</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
-        <div class="col-2 light-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
-        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
-        <div class="col-2 light-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
-        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
-        <div class="col-2 light-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-bg middle-gray line round-sm"><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-bg middle-gray line round-sm"><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-bg middle-gray line round-sm"><span class="deep-gray">col-2</span></div>
       </div>
       <div class="grid">
-        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
       </div>
     </div>
     <p></p>
@@ -221,19 +221,19 @@
     <p>【示例】非等分布局：</p>
     <div class="pcenter fsize-d8">
       <div class="grid pad-b-1">
-        <div class="col-6 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-6</span></div>
-        <div class="col-4 light-bg middle-gray line round" sm><span class="deep-gray">col-4</span></div>
-        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
+        <div class="col-6 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-6</span></div>
+        <div class="col-4 light-bg middle-gray line round-sm"><span class="deep-gray">col-4</span></div>
+        <div class="col-2 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-2</span></div>
       </div>
       <div class="grid pad-b-1">
-        <div class="col-11 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-11</span></div>
-        <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
+        <div class="col-11 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-11</span></div>
+        <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
       </div>
       <div class="grid">
-        <div class="col-2 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
-        <div class="col-7 light-bg middle-gray line round" sm><span class="deep-gray">col-7</span></div>
-        <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">col-1</span></div>
-        <div class="col-2 light-bg middle-gray line round" sm><span class="deep-gray">col-2</span></div>
+        <div class="col-2 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-2</span></div>
+        <div class="col-7 light-bg middle-gray line round-sm"><span class="deep-gray">col-7</span></div>
+        <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">col-1</span></div>
+        <div class="col-2 light-bg middle-gray line round-sm"><span class="deep-gray">col-2</span></div>
       </div>
     </div>
     <p></p>
@@ -243,32 +243,32 @@
     <div class="pcenter fsize-d8">
       <div class="grid pad-b-1">
         <div class="col-6 grid">
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">1</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">2</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">3</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">4</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">5</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">6</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">7</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">8</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">9</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">10</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">11</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">12</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">1</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">2</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">3</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">4</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">5</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">6</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">7</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">8</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">9</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">10</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">11</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">12</span></div>
         </div>
         <div class="col-6 grid">
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">13</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">14</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">15</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">16</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">17</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">18</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">19</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">20</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">21</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">22</span></div>
-          <div class="col-1 light-gray-bg middle-gray line round" sm><span class="deep-gray">23</span></div>
-          <div class="col-1 light-bg middle-gray line round" sm><span class="deep-gray">24</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">13</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">14</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">15</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">16</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">17</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">18</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">19</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">20</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">21</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">22</span></div>
+          <div class="col-1 light-gray-bg middle-gray line round-sm"><span class="deep-gray">23</span></div>
+          <div class="col-1 light-bg middle-gray line round-sm"><span class="deep-gray">24</span></div>
         </div>
       </div>
     </div>
@@ -435,21 +435,21 @@
     <p>BTX·UI 未预置百分比尺寸，推荐使用 flex 完全取代相关使用场景。</p>
     <p>【示例】1 rem 至 10 rem 方形：</p>
     <div class="flex-layout-spread flex-layout-4">
-      <div class="w-1 h-1 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>1</div>
-      <div class="w-2 h-2 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>2</div>
-      <div class="w-3 h-3 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>3</div>
-      <div class="w-4 h-4 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>4</div>
-      <div class="w-5 h-5 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>5</div>
+      <div class="w-1 h-1 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">1</div>
+      <div class="w-2 h-2 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">2</div>
+      <div class="w-3 h-3 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">3</div>
+      <div class="w-4 h-4 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">4</div>
+      <div class="w-5 h-5 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">5</div>
     </div>
     <div class="flex-layout-spread flex-layout-4">
       <div
         class="w-10 h-10 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4"
         sm
       >10</div>
-      <div class="w-9 h-9 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>9</div>
-      <div class="w-8 h-8 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>8</div>
-      <div class="w-7 h-7 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>7</div>
-      <div class="w-6 h-6 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4" sm>6</div>
+      <div class="w-9 h-9 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">9</div>
+      <div class="w-8 h-8 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">8</div>
+      <div class="w-7 h-7 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">7</div>
+      <div class="w-6 h-6 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">6</div>
     </div>
     <p></p>
     <p>【示例】配合自生长实现弹性布局：</p>
@@ -600,37 +600,37 @@
     <p>【示例】基础位移：</p>
     <div class="grid fsize-d8">
         <div class="col-3">
-            <div class="middle-gray-bg round w-10" sm>
-                <div class="relative l6 w-10 h-7 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向右位移 6px<br><code>.l6</code></div>
+            <div class="middle-gray-bg round-sm w-10">
+                <div class="relative l6 w-10 h-7 light-gray-bg flex-layout-5 flex-column round-sm alpha-9">向右位移 6px<br><code>.l6</code></div>
             </div>
         </div>
         <div class="col-3">
-            <div class="middle-gray-bg round w-10" sm>
-                <div class="relative lx1 w-10 h-7 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向右位移 1 倍<br><code>.lx1</code></div>
+            <div class="middle-gray-bg round-sm w-10">
+                <div class="relative lx1 w-10 h-7 light-gray-bg flex-layout-5 flex-column round-sm alpha-9">向右位移 1 倍<br><code>.lx1</code></div>
             </div>
         </div>
         <div class="col-3">
-            <div class="middle-gray-bg round w-10" sm>
-                <div class="relative lx2 w-10 h-7 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向右位移 2 倍<br><code>.lx2</code></div>
+            <div class="middle-gray-bg round-sm w-10">
+                <div class="relative lx2 w-10 h-7 light-gray-bg flex-layout-5 flex-column round-sm alpha-9">向右位移 2 倍<br><code>.lx2</code></div>
             </div>
         </div>
         <div class="col-3">
-            <div class="middle-gray-bg round w-10" sm>
-                <div class="relative lx-1 w-10 h-7 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向左位移 1 倍<br><code>.lx-1</code></div>
+            <div class="middle-gray-bg round-sm w-10">
+                <div class="relative lx-1 w-10 h-7 light-gray-bg flex-layout-5 flex-column round-sm alpha-9">向左位移 1 倍<br><code>.lx-1</code></div>
             </div>
         </div>
     </div>
     <p></p>
     <p>【示例】基于自身宽高位移：</p>
     <div class="flex-layout-spread fsize-d8">
-        <div class="middle-gray-bg round w-10" sm>
-            <div class="relative lp100 w-10 h-8 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向右位移自身宽度<b>100%</b><code>.lp100</code></div>
+        <div class="middle-gray-bg round-sm w-10">
+            <div class="relative lp100 w-10 h-8 light-gray-bg flex-layout-5 flex-column round-sm alpha-9">向右位移自身宽度<b>100%</b><code>.lp100</code></div>
         </div>
-        <div class="middle-gray-bg round w-10" sm>
-            <div class="relative tp-10 w-10 h-8 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向上位移自身高度<b>10%</b><code>.tp-10</code></div>
+        <div class="middle-gray-bg round-sm w-10">
+            <div class="relative tp-10 w-10 h-8 light-gray-bg flex-layout-5 flex-column round-sm alpha-9">向上位移自身高度<b>10%</b><code>.tp-10</code></div>
         </div>
-        <div class="middle-gray-bg round w-10" sm>
-            <div class="relative lp-50 w-10 h-8 light-gray-bg flex-layout-5 flex-column round alpha-9" sm>向左位移自身宽度<b>50%</b><code>.lp-50</code></div>
+        <div class="middle-gray-bg round-sm w-10">
+            <div class="relative lp-50 w-10 h-8 light-gray-bg flex-layout-5 flex-column round-sm alpha-9">向左位移自身宽度<b>50%</b><code>.lp-50</code></div>
         </div>
     </div>
     <p></p>

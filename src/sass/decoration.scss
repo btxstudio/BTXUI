@@ -1,31 +1,26 @@
 .bg-repeat {
     background-repeat: repeat;
 }
-
 .bg-repeat-x {
     background-repeat: repeat-x;
 }
-
 .bg-repeat-y {
     background-repeat: repeat-y;
 }
 
+
 .bg-size-cover {
     background-size: cover;
 }
-
 .bg-size-contain {
     background-size: contain;
 }
-
 .bg-size-max-h {
     background-size: auto 100%;
 }
-
 .bg-size-max-w {
     background-size: 100% auto;
 }
-
 .bg-size-max {
     background-size: 100% 100%;
 }
@@ -61,54 +56,69 @@
 }
 
 
-.round{
-    border-radius: 50%;                 //50% 圆角
-
-    &[lg]{                              //24px 大圆角
-        border-radius: 24px;  
-    }
-    &[md]{                              //10px 中等圆角
-        border-radius: 10px;  
-    }
-    &[sm]{                              //4px 小型圆角
-        border-radius: 4px;  
-    }
+.round {
+    border-radius: 50%;                         //50% 圆角
 }
+.round-lg {                                     //24px 大圆角
+    border-radius: 24px;  
+}
+.round-md {                                     //10px 中等圆角
+    border-radius: 10px;  
+}
+.round-sm {                                     //4px 小型圆角
+    border-radius: 4px;  
+}
+
+
+.round-t {                                      //上侧圆角
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.round-b {                                      //下侧圆角
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.round-l {                                      //左侧圆角
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.round-r {                                      //右侧圆角
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 
 %no-line {
     border-width: 0;
 }
-.line {                                 //四周描边
+.line {                                         //四周描边
     border: 1px solid;                  
 }
-
-.line-l {                               //左描边
+.line-l {                                       //左描边
     @extend %no-line;
     border-left: 1px solid;
 }
-
-.line-r {                               //右描边
+.line-r {                                       //右描边
     @extend %no-line;
     border-right: 1px solid;
 }
-
-.line-t {                               //上描边
+.line-t {                                       //上描边
     @extend %no-line;
     border-top: 1px solid;
 }
-
-.line-b {                               //下描边
+.line-b {                                       //下描边
     @extend %no-line;
     border-bottom: 1px solid;
 }
 
+
 .line, 
 [class^="line-"],  
-[class*=" line-"] {                     //虚线
+[class*=" line-"] {                             //虚线
     &[dashed]{
         border-style: dashed;
     }
-    &[outside]{                         //外侧描边范围
+    &[outside]{                                 //外侧描边范围
         background-clip: padding-box;
     }
 }
@@ -120,6 +130,31 @@ $thicks: 2 4 6 8 10;
     .thick-#{$thick} {
         border-width: #{$thick}px;
     }
+}
+
+
+//文字描边
+.text-line {
+    text-shadow: 
+    1px 0 0 rgba(200, 200, 200, .5), 
+    -1px 0 0 rgba(200, 200, 200, .5), 
+    0 1px 0 rgba(200, 200, 200, .5),
+    0 -1px 0 rgba(200, 200, 200, .5);
+}
+
+
+//阴影
+.shadow {
+    box-shadow: 0 4px 17px;
+}
+.shadow-sm {
+    box-shadow: 0 2px 4px;
+}
+.shadow-lg {
+    box-shadow: 0 14px 40px;
+}
+.shadow-relief {
+    box-shadow: -1px -1px 0 rgba(0,0,0,.7) inset, 1px 1px 0 rgba(255,255,255,.4);
 }
 
 

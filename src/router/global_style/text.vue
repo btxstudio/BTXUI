@@ -46,19 +46,19 @@
     <p>【示例】：</p>
     <div class="grid fsize-d9">
         <div class="col-3 pad-1">
-            <div class="light-gray-bg round pad-2 pleft" sm>在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
+            <div class="light-gray-bg round-sm pad-2 pleft">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
             <div class="pcenter pad-t-d5">pleft</div>
         </div>
         <div class="col-3 pad-1">
-            <div class="light-gray-bg round pad-2 pright" sm>在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
+            <div class="light-gray-bg round-sm pad-2 pright">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
             <div class="pcenter pad-t-d5">pright</div>
         </div>
         <div class="col-3 pad-1">
-            <div class="light-gray-bg round pad-2 pcenter" sm>在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
+            <div class="light-gray-bg round-sm pad-2 pcenter">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
             <div class="pcenter pad-t-d5">pcenter</div>
         </div>
         <div class="col-3 pad-1">
-            <div class="light-gray-bg round pad-2 pjustify" sm>在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
+            <div class="light-gray-bg round-sm pad-2 pjustify">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
             <div class="pcenter pad-t-d5">pjustify</div>
         </div>
     </div>
@@ -71,19 +71,19 @@
     <p>【示例】：</p>
     <div class="grid pcenter">
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round pad-1 flex-layout-4 flex-layout-2" sm style="height: 6rem">javascript</div>
+            <div class="light-gray-bg round-sm pad-1 flex-layout-4 flex-layout-2 h-6">javascript</div>
             <div class="pad-t-d5 fsize-d9">初始文本大小</div>
         </div>
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round pad-1 flex-layout-4 flex-layout-2 fsize-d6" sm style="height: 6rem">javascript</div>
+            <div class="light-gray-bg round-sm pad-1 flex-layout-4 flex-layout-2 fsize-d6 h-6">javascript</div>
             <div class="pad-t-d5 fsize-d9"><code>.fsize-d6</code> 缩小为 0.6 倍字号</div>
         </div>
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round pad-1 flex-layout-4 flex-layout-2 fsize-1d2" sm  style="height: 6rem">javascript</div>
+            <div class="light-gray-bg round-sm pad-1 flex-layout-4 flex-layout-2 fsize-1d2 h-6">javascript</div>
             <div class="pad-t-d5 fsize-d9"><code>.fsize-1d2</code> 放大 1.2 倍字号</div>
         </div>
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round pad-1 flex-layout-4 flex-layout-2 fsize-2" sm style="height: 6rem">javascript</div>
+            <div class="light-gray-bg round-sm pad-1 flex-layout-4 flex-layout-2 fsize-2 h-6">javascript</div>
             <div class="pad-t-d5 fsize-d9"><code>.fsize-2</code> 放大 2 倍字号</div>
         </div>
     </div>

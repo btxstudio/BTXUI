@@ -224,31 +224,31 @@
       <p>【示例】：</p>
       <div class="grid pcenter">
         <div class="col-4 pad-r-d5 pad-b-d5">
-            <div class="middle-gray-bg alpha-9 round" sm>alpha-9</div>
+            <div class="middle-gray-bg alpha-9 round-sm">alpha-9</div>
         </div>
         <div class="col-4 pad-r-d5 pad-b-d5">
-            <div class="middle-gray-bg alpha-8 round" sm>alpha-8</div>
+            <div class="middle-gray-bg alpha-8 round-sm">alpha-8</div>
         </div>
         <div class="col-4 pad-r-d5 pad-b-d5">
-            <div class="middle-gray-bg alpha-7 round" sm>alpha-7</div>
+            <div class="middle-gray-bg alpha-7 round-sm">alpha-7</div>
         </div>
         <div class="col-4 pad-r-d5 pad-b-d5">
-            <div class="middle-gray-bg alpha-6 round" sm>alpha-6</div>
+            <div class="middle-gray-bg alpha-6 round-sm">alpha-6</div>
         </div>
         <div class="col-4 pad-r-d5 pad-b-d5">
-            <div class="middle-gray-bg alpha-5 round" sm>alpha-5</div>
+            <div class="middle-gray-bg alpha-5 round-sm">alpha-5</div>
         </div>
         <div class="col-4 pad-r-d5 pad-b-d5">
-            <div class="middle-gray-bg alpha-4 round" sm>alpha-4</div>
+            <div class="middle-gray-bg alpha-4 round-sm">alpha-4</div>
         </div>
         <div class="col-4 pad-r-d5 pad-b-d5">
-            <div class="middle-gray-bg alpha-3 round" sm>alpha-3</div>
+            <div class="middle-gray-bg alpha-3 round-sm">alpha-3</div>
         </div>
         <div class="col-4 pad-r-d5 pad-b-d5">
-            <div class="middle-gray-bg alpha-2 round" sm>alpha-2</div>
+            <div class="middle-gray-bg alpha-2 round-sm">alpha-2</div>
         </div>
         <div class="col-4 pad-r-d5 pad-b-d5">
-            <div class="middle-gray-bg alpha-1 round" sm>alpha-1</div>
+            <div class="middle-gray-bg alpha-1 round-sm">alpha-1</div>
         </div>
       </div>
 

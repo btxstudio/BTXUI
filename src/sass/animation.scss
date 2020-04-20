@@ -67,12 +67,14 @@ $slow_duration: 1.4s;
 
 //animation 动画延迟
 @for $i from 1 to 11{
+    @if $i < 10 {
+        .ani-delay-d#{$i} {
+            animation-delay: #{$i / 10}s;
+        }
+    }
     .ani-delay-#{$i} {
         animation-delay: #{$i}s;
     }
-}
-.ani-delay-d5 {
-    animation-delay: .5s;
 }
 
 
@@ -147,6 +149,72 @@ $slow_duration: 1.4s;
 }
 
 
+.ani-v-stretch-h-in {                       //先垂直后水平伸展式动画
+    animation-name: stretchV2HIn; 
+    animation-timing-function: ease-out;
+    @extend %duration;
+}
+@-webkit-keyframes stretchV2HIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0, 0);
+    }
+    70% {
+        opacity: 1;
+        -webkit-transform: scale(.2, 1);
+    }
+    100%{
+        -webkit-transform: scale(1, 1);
+    }
+}
+@keyframes stretchV2HIn {
+    0% {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(.2, 1);
+    }
+    100%{
+        transform: scale(1, 1);
+    }
+}
+
+
+.ani-h-stretch-v-in {                       //先水平后垂直伸展式动画
+    animation-name: stretchH2VIn; 
+    animation-timing-function: ease-out;
+    @extend %duration;
+}
+@-webkit-keyframes stretchH2VIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0, 0);
+    }
+    70% {
+        opacity: 1;
+        -webkit-transform: scale(1, .2);
+    }
+    100%{
+        -webkit-transform: scale(1, 1);
+    }
+}
+@keyframes stretchH2VIn {
+    0% {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1, .2);
+    }
+    100%{
+        transform: scale(1, 1);
+    }
+}
+
+
 //由左向右滑动动画
 .ani-left-to-right{                         
     animation-name: aniLeftSliderToRight; 
@@ -154,7 +222,7 @@ $slow_duration: 1.4s;
 }
 @-webkit-keyframes aniLeftSliderToRight {
     from {
-        -webkit-transform: translateX(-100%);
+        -webkit-transform: translateX(-150%);
     }
     to{
         -webkit-transform: translateX(0%);
@@ -162,7 +230,7 @@ $slow_duration: 1.4s;
 }
 @keyframes aniLeftSliderToRight {
     from {
-        transform: translateX(-100%);
+        transform: translateX(-150%);
     }
     to{
         transform: translateX(0%);
@@ -177,7 +245,7 @@ $slow_duration: 1.4s;
 }
 @-webkit-keyframes aniRightSliderToLeft {
     from {
-        -webkit-transform: translateX(100%);
+        -webkit-transform: translateX(150%);
     }
     to{
         -webkit-transform: translateX(0%);
@@ -185,7 +253,7 @@ $slow_duration: 1.4s;
 }
 @keyframes aniRightSliderToLeft {
     from {
-        transform: translateX(100%);
+        transform: translateX(150%);
     }
     to{
         transform: translateX(0%);
@@ -200,7 +268,7 @@ $slow_duration: 1.4s;
 }
 @-webkit-keyframes aniTopSliderToBottom {
     from {
-        -webkit-transform: translateY(-100%);
+        -webkit-transform: translateY(-150%);
     }
     to{
         -webkit-transform: translateY(0%);
@@ -208,7 +276,7 @@ $slow_duration: 1.4s;
 }
 @keyframes aniTopSliderToBottom {
     from {
-        transform: translateY(-100%);
+        transform: translateY(-150%);
     }
     to{
         transform: translateY(0%);
@@ -223,7 +291,7 @@ $slow_duration: 1.4s;
 }
 @-webkit-keyframes aniBottomSliderToTop {
     from {
-        -webkit-transform: translateY(100%);
+        -webkit-transform: translateY(150%);
     }
     to{
         -webkit-transform: translateY(0%);
@@ -231,7 +299,7 @@ $slow_duration: 1.4s;
 }
 @keyframes aniBottomSliderToTop {
     from {
-        transform: translateY(100%);
+        transform: translateY(150%);
     }
     to{
         transform: translateY(0%);

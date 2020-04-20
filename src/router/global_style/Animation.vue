@@ -46,7 +46,7 @@
             <h5>动画（animation）</h5>
             <p>
                 框架预置了多种常用 animation 动画效果。通过
-                <code>.ani-delay-*</code> 可以设置动画延迟执行时间，预置的延时值：0.5、1 — 10，单位 s。
+                <code>.ani-delay-*</code> 可以设置动画延迟执行时间，预置的延时值：0.1 — 0.9、1 — 10，单位 s。
             </p>
             <p>
                 通过
@@ -88,6 +88,18 @@
                             <code>.ani-scale-fade-out</code>
                         </td>
                         <td>放缩式淡出动画</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>.ani-v-stretch-h-in</code>
+                        </td>
+                        <td>先垂直后水平伸展式动画</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>.ani-h-stretch-v-in</code>
+                        </td>
+                        <td>先水平后垂直伸展式动画</td>
                     </tr>
                     <tr>
                         <td>

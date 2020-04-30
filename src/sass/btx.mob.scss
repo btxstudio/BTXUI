@@ -1,7 +1,3 @@
 @import "./response/main.scss";
 
-html {
-    font-size: 11px;
-}
-
 @include auto_gen_response_class(-s);

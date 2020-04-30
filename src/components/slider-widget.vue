@@ -1,18 +1,24 @@
-<!--20-01-06-->
 <template>
     <div class="slider-widget relative" :style="'height:' + view.height + '; background-color:' + view.bg_color">
         <div class="s-w-view relative" :style="'height:' + view.height">
-            <ul class="s-w-bar flex max-h" @touchstart="$_touch_start" @touchmove="$_touch_move" @touchend="$_touch_end" @transitionend="$_flip_over"
-                :style="'width:' +    slider_bar_width + 'px; height:' + view.height + '; transform:translateX(' + touch_point.x + 'px); transition-duration:' + flip_speed">
-                <li class="s-w-item auto-scroll" :ref="'$' + page.id" v-for="page of slider_pages" :state="page.state">
-                    <slot :name="page.id"></slot>
+            <ul class="s-w-bar flex max-h"
+                @touchstart="$_touch_start"
+                @touchmove="$_touch_move"
+                @touchend="$_touch_end"
+                @transitionend="$_flip_over"
+                :style="'width:' + slider_bar_width + 'px; height:' + view.height + '; transform:translateX(' + touch_point.x + 'px); transition-duration:' + flip_speed">
+                <li class="flex-column max" :ref="'$' + page.id" v-for="page of slider_pages" :state="page.state">
+                    <div class="flex-grow auto-scroll">
+                        <slot :name="page.id"></slot>
+                    </div>
                 </li>
             </ul>
         </div>
 
         <!--计数点-->
-        <div class="s-w-dots absolute pcenter max-w ani-scale-fade-in" v-if="showDot" :style="'bottom:' + showDot.bottom" @click="$_dot_click">
-            <span class="s-w-dot" v-for="(page,index) of slider_pages"
+        <div class="flex-layout-5 absolute z1 b0 max-w h-0 ani-scale-fade-in" v-if="showDot" :style="'bottom:' + showDot.bottom">
+            <span class="round mrg-h-d5 w-d5 h-d5" v-for="(page,index) of slider_pages"
+                  @click="$_dot_click(index + 1)"
                   :key="index"
                   :data-s="page.state"
                   :data-page="index + 1"
@@ -33,8 +39,7 @@
         * init-data{
         *   pages: [
         *       {
-        *           id: "内容名",
-        *           [* callback: (slider_dom, slider_id)=>{ "回调处理" },]
+        *           id: "内容名"
         *       }...
         *   ],
         *   view: {
@@ -169,15 +174,11 @@
                 this.touch_point.x = this.touch_point.left = -this.point.cur * this.$el.clientWidth;
 
                 if(this.point.prev !== this.point.cur){
-                    let cur_page_data = this.slider_pages[this.point.cur],
-                        cur_page_id = cur_page_data.id;
+                    let cur_page_data = this.slider_pages[this.point.cur];
 
                     //设置分页激活状态
                     this.slider_pages[this.point.prev].state = "";
                     cur_page_data.state = "act";
-
-                    //执行分页回调
-                    cur_page_data.callback(this.$refs["$" + cur_page_id][0], cur_page_id);
 
                 }
                 this.auto_play(this.point.cur === page_len - 1? true: false);
@@ -205,22 +206,17 @@
 
             //初始化组件数据
             $_init_data(){
+                this.point = {
+                    prev: 0,
+                    cur: 0
+                };
                 this.show_flip_btn = this.showFlipBtn;
-                this.pages.forEach((data, i) => {
-                    this.slider_pages.push({
+                this.slider_pages = this.pages.map((data, i) => {
+                    return {
                         id: data.id,
-                        state: i==0?"act":"",
-                        callback: data.callback || function(){}
-                    });
+                        state: i==0?"act":""
+                    };
                 })
-
-                //初始化执行首页回调
-                this.$nextTick(()=>{
-                    let page_data = this.slider_pages[0],
-                        page_id = page_data.id;
-                    page_data.callback(this.$refs["$" + page_id][0], page_id);
-                })
-
                 this.slider_bar_width = this.slider_pages.length * this.$el.clientWidth;//组件宽度
                 this.$_init_auto_play();
                 if(this.keyboardFlip) this.$_bind_keyboard_flip_event();
@@ -286,6 +282,7 @@
             //滑动结束
             $_flip_over(){
                 this.flip_speed = "0s";
+                this.$emit("on_flip", this.point.cur);
             },
 
             //滑动方向判断
@@ -306,10 +303,8 @@
             },
 
             //计数点点击
-            $_dot_click(e){
-                if(e.target.className === "s-w-dot"){
-                    this.smooth_flip(e.target.dataset.page, ".54s");
-                }
+            $_dot_click(page){
+                this.smooth_flip(page, ".54s");
             },
 
             //绑定键盘翻页事件
@@ -321,12 +316,45 @@
             }
 
         },
+        watch: {
+            pages(){
+                this.$_init_data();
+            }
+        },
         mounted(){
             this.$_init_data();
         }
     }
 </script>
 
-<style scoped>
-    @import "../assets/css/slider-widget.css";
+<style lang="scss" scoped>
+    .slider-widget{
+        .s-w-view{
+            overflow: hidden;
+
+            .s-w-bar{
+                touch-action: none;
+                transition-property: transform;
+                transition-timing-function: ease-out;
+            }
+        }
+
+        //分页按钮
+        .s-w-btn{
+            top: 50%;
+            width: 4rem;
+            height: 4rem;
+            line-height: 4rem;
+            margin-top: -2rem;
+            color: rgba(200,200,200,.57);
+
+            &[data-dir="left"]{
+                left: 0;
+            }
+            &[data-dir="right"]{
+                right: 0;
+            }
+        }
+
+    }
 </style>

@@ -46,6 +46,10 @@ article {
     ol, ul{
         margin-bottom: 1.4em;
     }
+
+    img {
+        width: 100%;
+    }
 }
 
 p{
@@ -163,14 +167,4 @@ hr {
     height: 1px;
     background-color: $neutral;
     margin: 2rem 0;
-}
-
-//响应式
-@media only screen and (max-width: 1367px){
-    html {
-        font-size: 11px;
-    }
-    img {
-        max-width: 50%;
-    }
 }

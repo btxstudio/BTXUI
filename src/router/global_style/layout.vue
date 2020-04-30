@@ -277,7 +277,7 @@
     <!-- 内边距 -->
     <h5>内边距</h5>
     <p>通过<code>pad-*</code> 可以使用预置的内边距方案。</p>
-    <p>预置的内边距值：0.5、1、1.5、2、2.5、3、3.5、4、5、6、7、8、9、10，单位 rem。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如 0.5 rem 内边距，类名为<code>.pad-d5</code>。</p>
+    <p>预置的内边距值：0、0.5、1、1.5、2、2.5、3、3.5、4、5、6、7、8、9、10，单位 rem。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如 0.5 rem 内边距，类名为<code>.pad-d5</code>。</p>
     <table class="table">
       <thead>
         <tr>
@@ -442,10 +442,7 @@
       <div class="w-5 h-5 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">5</div>
     </div>
     <div class="flex-layout-spread flex-layout-4">
-      <div
-        class="w-10 h-10 light-gray-bg round fsize-d8 flex-layout-2 flex-layout-4"
-        sm
-      >10</div>
+      <div class="w-10 h-10 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">10</div>
       <div class="w-9 h-9 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">9</div>
       <div class="w-8 h-8 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">8</div>
       <div class="w-7 h-7 light-gray-bg round-sm fsize-d8 flex-layout-2 flex-layout-4">7</div>

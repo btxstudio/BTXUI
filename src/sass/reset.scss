@@ -53,11 +53,10 @@ article {
 }
 
 p{
-    margin-bottom: 1.4em;
+    margin: 1.4em 0;
     
     &:empty {
-        margin-top: 1.4em;
-        height: 1.4em;
+        height: 2.4em;
     }
 }
 

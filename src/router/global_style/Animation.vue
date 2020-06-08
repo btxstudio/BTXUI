@@ -188,6 +188,6 @@
 
 <script>
 export default {
-    name: "Animation"
+    name: "animation"
 };
 </script>

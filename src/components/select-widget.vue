@@ -3,7 +3,7 @@
         <div class="round-lg line light-gray shadow pad-v-d5 pad-r-3 pad-l-2" @click="toggle_options">
             <span v-if="show_selected" class="deep-gray">{{show_selected}}</span>
             <span v-else class="alpha-7">{{placeholder}}</span>
-            <span class="absolute r0 t0 max-h w-3 flex-layout-5">
+            <span class="absolute r0 t0 max-h w-3 flex-5">
                 <img class="s-w-ico h-1 alpha-4 trans-fast scale-d7" src="/static/img/more_icon.png" />
             </span>
         </div>

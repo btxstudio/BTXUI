@@ -16,7 +16,7 @@
         </div>
 
         <!--计数点-->
-        <div class="flex-layout-5 absolute z1 b0 max-w h-0 ani-scale-fade-in" v-if="showDot" :style="'bottom:' + showDot.bottom">
+        <div class="flex-5 absolute z1 b0 max-w h-0 ani-scale-fade-in" v-if="showDot" :style="'bottom:' + showDot.bottom">
             <span class="round mrg-h-d5 w-d5 h-d5" v-for="(page,index) of slider_pages"
                   @click="$_dot_click(index + 1)"
                   :key="index"

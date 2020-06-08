@@ -56,15 +56,15 @@
         "children": [
             {
                 "id": "view",
-                "text": "<b>View</b> 布局"
+                "text": "<b>b-view</b> 布局"
             },
             {
                 "id": "text",
-                "text": "<b>Text</b> 文本"
+                "text": "<b>b-text</b> 文本"
             },
             {
-                "id": "image",
-                "text": "<b>Image</b> 图片"
+                "id": "list",
+                "text": "<b>b-list</b> 内容滚动"
             }
         ],
         "spread": true

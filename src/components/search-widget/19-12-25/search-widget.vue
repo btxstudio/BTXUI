@@ -1,7 +1,7 @@
 <!--19-12-25-->
 <template>
     <div class="search-widget flex relative" :style="'height:' + dataHeight">
-        <div class="flex-grow pad-h-1d5 fsize-1d3 flex-layout-4">
+        <div class="flex-grow pad-h-1d5 fsize-1d3 flex-4">
             <input class="s-w-inp-text" type="text" spellcheck="false" v-model="search_text"
                    @[search_mode]="$_search"
                    :placeholder="dataNotic"/>

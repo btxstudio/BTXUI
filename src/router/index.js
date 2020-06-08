@@ -1,19 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/router/Home'                                //首页介绍
+import home from '@/router/home'                                //首页介绍
 
 //全局样式
-import Layout from '@/router/global_style/Layout'               //布局
-import Table from '@/router/global_style/Table'                 //表格
-import Color from '@/router/global_style/Color'                 //色彩
-import Text from '@/router/global_style/Text'                   //文本
-import Decoration from '@/router/global_style/Decoration'       //装饰
-import Icon from '@/router/global_style/Icon'                   //图标
-import Animation from '@/router/global_style/Animation'         //动画
+import layout from '@/router/global_style/layout'               //布局
+import table from '@/router/global_style/table'                 //表格
+import color from '@/router/global_style/color'                 //色彩
+import text from '@/router/global_style/text'                   //文本
+import decoration from '@/router/global_style/decoration'       //装饰
+import icon from '@/router/global_style/icon'                   //图标
+import animation from '@/router/global_style/animation'         //动画
 
 //组件
-import Core from '@/router/components/Core'                     //核心
+import core from '@/router/components/core'                     //核心
+import b_list from '@/router/components/b_list'                 //内容滚动
 
 Vue.use(Router)
 
@@ -21,39 +22,43 @@ export default new Router({
     routes: [
         {
             path: '/',
-            component: Home
+            component: home
         },
         {
             path: '/text',
-            component: Text
+            component: text
         },
         {
             path: '/layout',
-            component: Layout
+            component: layout
         },
         {
             path: '/table',
-            component: Table
+            component: table
         },
         {
             path: '/decoration',
-            component: Decoration
+            component: decoration
         },
         {
             path: '/icon',
-            component: Icon
+            component: icon
         },
         {
             path: '/color',
-            component: Color
+            component: color
         },
         {
             path: '/animation',
-            component: Animation
+            component: animation
         },
         {
             path: '/core',
-            component: Core
-        }
+            component: core
+        },
+        {
+            path: '/b_list',
+            component: b_list
+        },
     ]
 })

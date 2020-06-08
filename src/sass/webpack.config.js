@@ -3,9 +3,10 @@ const ExtractText = require("extract-text-webpack-plugin")
 
 module.exports = {
     entry: {
+        "btx.webapp": "./src/sass/btx.webapp.scss",
         "btx": "./src/sass/btx.scss",
         "btx.mob": "./src/sass/btx.mob.scss",
-        "btx.pad": "./src/sass/btx.pad.scss"
+        "btx.pad": "./src/sass/btx.pad.scss",
     },
     output: {
         filename: "_main.js",

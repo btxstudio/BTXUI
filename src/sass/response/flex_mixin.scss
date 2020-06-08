@@ -1,33 +1,30 @@
 //生成九宫格对齐定位类
 @mixin auto_gen_flex_align_class($suffix:"") {
-    .flex-layout-1#{$suffix} {
-        justify-content: flex-start;
-    }
-    .flex-layout-2#{$suffix} {
+    .flex-2#{$suffix} {
         justify-content: center;
     }
-    .flex-layout-3#{$suffix} {
+    .flex-3#{$suffix} {
         justify-content: flex-end;
     }
-    .flex-layout-4#{$suffix} {
+    .flex-4#{$suffix} {
         align-items: center;
     }
-    .flex-layout-5#{$suffix} {
+    .flex-5#{$suffix} {
         justify-content: center;
         align-items: center;
     }
-    .flex-layout-6#{$suffix} {
+    .flex-6#{$suffix} {
         justify-content: flex-end;
         align-items: center;
     }
-    .flex-layout-7#{$suffix} {
+    .flex-7#{$suffix} {
         align-items: flex-end;
     }
-    .flex-layout-8#{$suffix} {
+    .flex-8#{$suffix} {
         justify-content: center;
         align-items: flex-end;
     }
-    .flex-layout-9#{$suffix} {
+    .flex-9#{$suffix} {
         justify-content: flex-end;
         align-items: flex-end;
     }

@@ -4,17 +4,17 @@
         <!--浮层遮罩组件-->
         <matte-widget :show-state="pannel.state" :bg-color="pannel.bg_color" class="pad-2 z10">
             <div class="c-w-pannel scale-0 trans-fast light-bg round-sm pcenter fsize-1d3" @transitionend="$_ani_end" :visiable="pannel.state">
-                <div class="flex-column flex-layout-5 pad-v-2d5 pad-h-4">
+                <div class="flex-column flex-5 pad-v-2d5 pad-h-4">
                     <i class="c-w-ico mrg-b-1 w-2 h-2" :state="pannel.icon_state" v-show="pannel.icon_state"></i>
                     <div v-html="pannel.text"></div>
                 </div>
                 <div class="flex" >
                     <template v-if="pannel.mode === 'alert'">
-                        <a href="" class="c-w-btn flex-layout-5 h-4 flex-grow light-gray-bg" type="ok" @click.prevent="$_click('ok')">{{pannel.btn_cname[0]}}</a>
+                        <a href="" class="c-w-btn flex-5 h-4 flex-grow light-gray-bg" type="ok" @click.prevent="$_click('ok')">{{pannel.btn_cname[0]}}</a>
                     </template>
                     <template v-else-if="pannel.mode === 'confirm'">
-                        <a href="" class="c-w-btn flex-layout-5 h-4 flex-grow light-gray-bg middle-gray" type="ok" @click.prevent="$_click('ok')">确认</a>
-                        <a href="" class="c-w-btn flex-layout-5 h-4 flex-grow light-gray-bg middle-gray" type="cancel" @click.prevent="$_click('cancel')">取消</a>
+                        <a href="" class="c-w-btn flex-5 h-4 flex-grow light-gray-bg middle-gray" type="ok" @click.prevent="$_click('ok')">确认</a>
+                        <a href="" class="c-w-btn flex-5 h-4 flex-grow light-gray-bg middle-gray" type="cancel" @click.prevent="$_click('cancel')">取消</a>
                     </template>
                 </div>
             </div>

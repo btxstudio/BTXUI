@@ -39,6 +39,9 @@
             .mrg#{nth($dir, 1)}-#{nth($val, 1)}#{$suffix} {
                 @include set_space(margin, #{nth($val, 2)}rem, nth($dir, 2));
             }
+            .mrg#{nth($dir, 1)}-auto#{$suffix} {
+                @include set_space(margin, auto, nth($dir, 2));
+            }
         }
     }
 }
@@ -65,16 +68,38 @@
     }
 }
 
-//生成成倍位移类
+//生成位移类
 @mixin auto_gen_offset_class($suffix:""){
     $dirs: (l left), (r right), (t top), (b bottom);
-    @for $i from 1 to 11{
+    $percent: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200;
+    $units: rem, px;
+    @for $i from 0 to 12{
         @each $dir in $dirs{
-            .#{nth($dir, 1)}x#{$i}#{$suffix} {
-                #{nth($dir, 2)}: #{$i}rem;
+            @if $i == 0{
+                .#{nth($dir, 1)}-#{$i} {
+                    #{nth($dir, 2)}: #{$i};
+                }
+            }@else {
+                @each $unit in $units{
+                    .#{nth($dir, 1)}-#{$i}#{$unit} { //正数
+                        #{nth($dir, 2)}: #{$i}#{$unit};
+                    }
+                    .#{nth($dir, 1)}-f#{$i}#{$unit} { //负数
+                        #{nth($dir, 2)}: -#{$i}#{$unit};
+                    }
+                }
             }
-            .#{nth($dir, 1)}x-#{$i}#{$suffix} {
-                #{nth($dir, 2)}: -#{$i}rem;
+        }
+    }
+
+    //百分比位移
+    @each $dir in $dirs{
+        @each $v in $percent {
+            .#{nth($dir, 1)}-#{$v}p { //正数
+                #{nth($dir, 2)}: #{$v + '%'};
+            }
+            .#{nth($dir, 1)}-f#{$v}p { //负数
+                #{nth($dir, 2)}: -#{$v + '%'};
             }
         }
     }

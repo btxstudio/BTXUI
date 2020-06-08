@@ -1,6 +1,79 @@
-//文本省略
-.ellipsis {             
-    display: block;                                        
+p{
+    margin: 1.4em 0;
+
+    &:empty {
+        height: 1.4em;
+    }
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.4em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+article {
+    font-size: 1.21rem;
+    line-height: 2;
+
+    //编辑模式
+    &[contenteditable]{
+        border: none;
+        outline: none;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        margin-bottom: 1em;
+    }
+    ol, ul{
+        margin-bottom: 1.4em;
+    }
+}
+
+code {
+    background-color: #f9f2f4;
+    color: #c7254e;
+    font-family: Consolas !important;
+    padding: 2px 6px;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+
+i {
+    display: inline-block;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: rgba(130,130,130,.15);
+    margin: 2rem 0;
+}
+
+.ellipsis {                         //文本省略
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

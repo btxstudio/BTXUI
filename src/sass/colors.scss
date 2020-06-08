@@ -1,16 +1,16 @@
-$main-color: #051c24;                   //主题色-遂蓝
+$main: #051c24;                         //主题色-遂蓝
 
-$sub-color: #b4967a;                    //辅助色-锡金
+$sub: #b4967a;                          //辅助色-锡金
 
 $light: #fff;                           //纯白
 
 $dark: #111;                            //纯黑
 
-$deep-gray: #373737;                    //深灰
+$dgray: #373737;                        //深灰
 
-$middle-gray: #a7a7a7;                  //中灰
+$mgray: #a7a7a7;                        //中灰
 
-$light-gray: #eee;                      //浅灰
+$lgray: #eee;                           //浅灰
 
 $blue: #4085f3;                         //湛蓝
 
@@ -23,31 +23,39 @@ $yellow: #fdba00;                       //橙黄
 $neutral: rgba(130,130,130,.15);        //中性色
 
 //主题色-遂蓝
-.main-color{
-    color: $main-color;
+.color-main{
+    color: $main;
 }     
-.main-bg{
-    background-color: $main-color;
+.bg-color-main{
+    background-color: $main;
+}
+.line-main{
+    border-color: $main;
 }
 
 //辅助色-锡金
-.sub-color{
-    color: $sub-color;
+.color-sub{
+    color: $sub;
 }
-.sub-bg{
-    background-color: $sub-color;
+.bg-color-sub{
+    background-color: $sub;
 }
-
+.line-sub{
+    border-color: $sub;
+}
 
 //生成色彩（文字、填充、描边）类
 @mixin auto_gen_color_class {
-    $colors: (light $light), (dark $dark), (deep-gray $deep-gray), (middle-gray $middle-gray), (light-gray $light-gray), (blue $blue), (green $green), (yellow $yellow), (red $red), (neutral, $neutral);
+    $colors: (light $light), (dark $dark), (dgray $dgray), (mgray $mgray), (lgray $lgray), (blue $blue), (green $green), (yellow $yellow), (red $red), (neutral, $neutral);
     @each $color in $colors{
-        .#{nth($color, 1)}{
+        .color-#{nth($color, 1)}{
             color: nth($color, 2);
         }     
-        .#{nth($color, 1)}-bg{
+        .bg-color-#{nth($color, 1)}{
             background-color: nth($color, 2);
+        }
+        .line-#{nth($color, 1)}{
+            border-color: nth($color, 2);
         }
     }
 }

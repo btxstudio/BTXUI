@@ -2,17 +2,17 @@
     <div id="app" class="max-screen flex-column">
 
         <!-- 顶部主导航栏 -->
-        <div class="pad-h-3 main-bg flex-layout-spread sub-color">
+        <div class="pad-h-3 bg-color-main flex-between color-sub">
 
             <!-- 左侧 logo -->
-            <div class="flex-layout-4 light alpha-4">
+            <div class="flex-4 color-light alpha-4">
                 <div class="fsize-2d5 scale-1d4">
                     <i class="ico-btxstudio"></i>
                 </div>
             </div>
 
             <!-- 右侧导航按钮 -->
-            <div class="flex-layout-4 fsize-1d2">
+            <div class="flex-4 fsize-1d2">
                 <router-link to="/" class="pad-r-3">BTX·UI</router-link>
                 <a href="http://75sea.com" class="pad-r-3">Level</a>
                 <a href="https://github.com/btxstudio/BTXUI" target="_blank" class="pad-r-3">Github</a>
@@ -25,8 +25,8 @@
         <div class="flex flex-grow">
 
             <!-- 左侧目录 -->
-            <div class="flex-column w-25 light-gray-bg">
-                <div class="flex-grow auto-scroll pad-2d5 main-color fsize-1d2">
+            <div class="flex-column w-25 bg-color-lgray">
+                <div class="flex-grow auto-scroll pad-2d5 color-main fsize-1d2">
                     <content-widget v-if="content_data" :data-tree="content_data" @on_select="$_nav_select" />  
                 </div>
             </div>

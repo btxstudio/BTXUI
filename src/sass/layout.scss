@@ -11,11 +11,11 @@
     position: fixed;
 }
  
-.relative {                             //相对定位
+.rel {                                  //相对定位
     position: relative;
 }
 
-.absolute {                             //绝对定位
+.abs {                                  //绝对定位
     position: absolute;
 }
 
@@ -102,50 +102,44 @@
 }
 @include auto_gen_z_index();
 
- 
-//生成基于元素自身宽高的位移
-@mixin auto_gen_offset_by_self(){
-    $l:'(';
-    $r:')';
-    $dirs: (l translateX), (r translateX), (t translateY), (b translateY);
-    @for $i from 1 to 11{
-        @each $dir in $dirs{
-            .#{nth($dir, 1)}p#{$i * 10} {
-                transform: #{nth($dir, 2)}#{$l}($i * 10)%#{$r};
-            } 
-            .#{nth($dir, 1)}p-#{$i * 10} {
-                transform: #{nth($dir, 2)}#{$l}-($i * 10)%#{$r};
-            }
-            @if $i == 2{
-                .#{nth($dir, 1)}p200 {
-                    transform: #{nth($dir, 2)}#{$l}200%#{$r};
-                } 
-                .#{nth($dir, 1)}p-200 {
-                    transform: #{nth($dir, 2)}#{$l}-200%#{$r};
-                }
-            }
+
+//生成旋转
+@mixin auto_gen_rotate_class($suffix:""){
+    $degs: 0, 15, 30, 45, 90, 180, 360;
+    @each $deg in $degs{
+        .rotate-#{$deg}#{$suffix} {
+            transform: rotate(#{$deg}deg);
         }
     }
 }
-@include auto_gen_offset_by_self();
+@include auto_gen_rotate_class();
 
 
-//微调位移
-$dirs: (l left), (r right), (t top), (b bottom);
-@for $i from 0 to 12{
-    @each $dir in $dirs{
-        @if $i == 0{
-            .#{nth($dir, 1)}#{$i} {
-                #{nth($dir, 2)}: #{$i};
-            }
-        }@else {
-            .#{nth($dir, 1)}#{$i} {
-                #{nth($dir, 2)}: #{$i}px;
-            }
-            .#{nth($dir, 1)}-#{$i} {
-                #{nth($dir, 2)}: -#{$i}px;
-            }
-        }
-    }
+//变形中心点
+.origin-1 {
+    transform-origin: left top;
 }
-
+.origin-2 {
+    transform-origin: center top;
+}
+.origin-3 {
+    transform-origin: right top;
+}
+.origin-4 {
+    transform-origin: left center;
+}
+.origin-5 {
+    transform-origin: center center;
+}
+.origin-6 {
+    transform-origin: right center;
+}
+.origin-7 {
+    transform-origin: left bottom;
+}
+.origin-8 {
+    transform-origin: center bottom;
+}
+.origin-9 {
+    transform-origin: right bottom;
+}

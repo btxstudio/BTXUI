@@ -17,10 +17,18 @@
     flex-wrap: wrap;
 }
 
-[class*=" flex-layout-"], [class^="flex-layout-"]{
-    @extend .flex; 
+@for $i from 2 to 10 {
+    .flex-#{$i}, .flex-#{$i}-{
+        @extend .flex;
+    }
 }
 
-.flex-layout-spread{                    //主轴均分两端对齐
+.flex-between{                           //主轴均分排列，两端对齐
+    @extend .flex;
     justify-content: space-between;
+}
+
+.flex-around{                            //主轴均分排列
+    @extend .flex;
+    justify-content: space-around;
 }

@@ -5,7 +5,7 @@
         <!--轮播组件-->
         <slider-widget :pages="pages" :view="slider_view" :show-dot="showDot">
 
-            <div :slot="page.id" :key="page.id" v-for="page of pages" class="max flex flex-column flex-layout-2 pcenter pad-h-4">
+            <div :slot="page.id" :key="page.id" v-for="page of pages" class="max flex flex-column flex-2 pcenter pad-h-4">
                 <div class="pad-b-2 pad-h-4"><img :src="`${cover_path}${page.id}.jpg`"></div>
                 <div class="fsize-2 pad-v-1" v-html="page.title"></div>
                 <div class="pad-b-2" v-html="page.text"></div>

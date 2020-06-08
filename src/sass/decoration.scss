@@ -15,43 +15,37 @@
 .bg-size-contain {
     background-size: contain;
 }
-.bg-size-max-h {
-    background-size: auto 100%;
-}
-.bg-size-max-w {
-    background-size: 100% auto;
-}
 .bg-size-max {
     background-size: 100% 100%;
 }
 
 
 //九宫格背景图定位
-.bg-layout-1 {
+.bg-pos-1 {
     background-position: 0 0;
 }
-.bg-layout-2 {
+.bg-pos-2 {
     background-position: center 0;
 }
-.bg-layout-3 {
+.bg-pos-3 {
     background-position: 100% 0;
 }
-.bg-layout-4 {
+.bg-pos-4 {
     background-position: 0 center;
 }
-.bg-layout-5 {
+.bg-pos-5 {
     background-position: center;
 }
-.bg-layout-6 {
+.bg-pos-6 {
     background-position: 100% center;
 }
-.bg-layout-7 {
+.bg-pos-7 {
     background-position: 0 100%;
 }
-.bg-layout-8 {
+.bg-pos-8 {
     background-position: center 100%;
 }
-.bg-layout-9 {
+.bg-pos-9 {
     background-position: 100% 100%;
 }
 
@@ -88,44 +82,43 @@
 }
 
 
-%no-line {
-    border-width: 0;
+.line {                                         //四周实线描边
+    border-style: solid;
 }
-.line {                                         //四周描边
-    border: 1px solid;                  
+.line-l {                                       //左实线描边
+    border-left-style: solid;
 }
-.line-l {                                       //左描边
-    @extend %no-line;
-    border-left: 1px solid;
+.line-r {                                       //右实线描边
+    border-right-style: solid;
 }
-.line-r {                                       //右描边
-    @extend %no-line;
-    border-right: 1px solid;
+.line-t {                                       //上实线描边
+    border-top-style: solid;
 }
-.line-t {                                       //上描边
-    @extend %no-line;
-    border-top: 1px solid;
+.line-b {                                       //下实线描边
+    border-bottom-style: solid;
 }
-.line-b {                                       //下描边
-    @extend %no-line;
-    border-bottom: 1px solid;
+.dashed {                                       //四周虚线描边
+    border-style: dashed;
 }
-
-
-.line, 
-[class^="line-"],  
-[class*=" line-"] {                             //虚线
-    &[dashed]{
-        border-style: dashed;
-    }
-    &[outside]{                                 //外侧描边范围
-        background-clip: padding-box;
-    }
+.dashed-l {                                     //左虚线描边
+    border-left-style: dashed;
+}
+.dashed-r {                                     //右虚线描边
+    border-right-style: dashed;
+}
+.dashed-t {                                     //上虚线描边
+    border-top-style: dashed;
+}
+.dashed-b {                                     //下虚线描边
+    border-bottom-style: dashed;
+}
+.line-outside {                                 //外侧描边范围
+    background-clip: padding-box;
 }
 
 
 //描边粗细
-$thicks: 2 4 6 8 10;
+$thicks: 1 2 4 6 8 10;
 @each $thick in $thicks {
     .thick-#{$thick} {
         border-width: #{$thick}px;
@@ -154,7 +147,7 @@ $thicks: 2 4 6 8 10;
     box-shadow: 0 14px 40px;
 }
 .shadow-relief {
-    box-shadow: -1px -1px 0 rgba(0,0,0,.7) inset, 1px 1px 0 rgba(255,255,255,.4);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.7) inset, 1px 1px 0 rgba(255,255,255,.4);
 }
 
 

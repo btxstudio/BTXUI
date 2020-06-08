@@ -4,7 +4,7 @@
     <h5>标题</h5>
     <p>BTX·UI 重置了 <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> 的标题样式。使用相对单位 em，由 <code>&lt;h6&gt;</code> 到 <code>&lt;h1&gt;</code> 字号逐渐放大至 2 倍。</p>
     <p>【示例】：</p>
-    <div class="flex-layout-4">
+    <div class="flex-4">
         <h1 class="pad-r-4">h1</h1>
         <h2 class="pad-r-4">h2</h2>
         <h3 class="pad-r-4">h3</h3>
@@ -42,23 +42,22 @@
             </tr>
         </tbody>
     </table>
-    <p></p>
     <p>【示例】：</p>
     <div class="grid fsize-d9">
         <div class="col-3 pad-1">
-            <div class="light-gray-bg round-sm pad-2 pleft">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
+            <div class="bg-color-lgray round-sm pad-2 pleft">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
             <div class="pcenter pad-t-d5">pleft</div>
         </div>
         <div class="col-3 pad-1">
-            <div class="light-gray-bg round-sm pad-2 pright">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
+            <div class="bg-color-lgray round-sm pad-2 pright">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
             <div class="pcenter pad-t-d5">pright</div>
         </div>
         <div class="col-3 pad-1">
-            <div class="light-gray-bg round-sm pad-2 pcenter">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
+            <div class="bg-color-lgray round-sm pad-2 pcenter">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
             <div class="pcenter pad-t-d5">pcenter</div>
         </div>
         <div class="col-3 pad-1">
-            <div class="light-gray-bg round-sm pad-2 pjustify">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
+            <div class="bg-color-lgray round-sm pad-2 pjustify">在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。</div>
             <div class="pcenter pad-t-d5">pjustify</div>
         </div>
     </div>
@@ -71,19 +70,19 @@
     <p>【示例】：</p>
     <div class="grid pcenter">
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round-sm pad-1 flex-layout-4 flex-layout-2 h-6">javascript</div>
+            <div class="bg-color-lgray round-sm pad-1 flex-4 flex-2 h-6">javascript</div>
             <div class="pad-t-d5 fsize-d9">初始文本大小</div>
         </div>
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round-sm pad-1 flex-layout-4 flex-layout-2 fsize-d6 h-6">javascript</div>
+            <div class="bg-color-lgray round-sm pad-1 flex-4 flex-2 fsize-d6 h-6">javascript</div>
             <div class="pad-t-d5 fsize-d9"><code>.fsize-d6</code> 缩小为 0.6 倍字号</div>
         </div>
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round-sm pad-1 flex-layout-4 flex-layout-2 fsize-1d2 h-6">javascript</div>
+            <div class="bg-color-lgray round-sm pad-1 flex-4 flex-2 fsize-1d2 h-6">javascript</div>
             <div class="pad-t-d5 fsize-d9"><code>.fsize-1d2</code> 放大 1.2 倍字号</div>
         </div>
         <div class="col-3 pad-d5">
-            <div class="light-gray-bg round-sm pad-1 flex-layout-4 flex-layout-2 fsize-2 h-6">javascript</div>
+            <div class="bg-color-lgray round-sm pad-1 flex-4 flex-2 fsize-2 h-6">javascript</div>
             <div class="pad-t-d5 fsize-d9"><code>.fsize-2</code> 放大 2 倍字号</div>
         </div>
     </div>
@@ -124,7 +123,7 @@
 
 <script>
 export default {
-  name: "Text"
+  name: "text"
 };
 </script>
 

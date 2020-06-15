@@ -1,7 +1,7 @@
 <template>
     <div class="zk2861-circle-slider-widget light flex-layout-2" :style="el_style">
-        <div class="zcs-w-box trans-fast" :style="container_style">
-            <div v-for="(page, p_i) of show_items" class="abs trans" :style="slider_style[p_i]">
+        <div class="zcs-w-box" :class="rotate_dir? 'trans-fast': ''" :style="container_style" @transitionend="$_rotated">
+            <div v-for="(page, p_i) of show_items" class="abs" :class="rotate_dir? 'trans': ''" :style="slider_style[p_i]">
                 <slot :name="page.id" />
             </div>
         </div>
@@ -17,8 +17,8 @@
         *   radius: "圆环半径",
         *   x-angle: "圆环 x 轴旋转角度",
         *   item-angle: "项目夹角",
-        *   item-width: "项目宽度",
-        *   [* item-limit: "项目显示数量限制（最多 360 项）"],
+        *   item-width: "项目宽度",NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNB
+        *   [* item-limit: "项目显示数量限制"],
         * }
         * */
         props: {
@@ -53,6 +53,15 @@
                 //当前轮播指针
                 cur_point: 1,
 
+                //溢出项目数目
+                overflow_item_count: 0,
+
+                //当前显示项目
+                show_items: null,
+
+                //旋转方向（正向：1；反向：-1）
+                rotate_dir: 0
+
             }
         },
         computed: {
@@ -62,10 +71,18 @@
                 return this.pages.length;
             },
 
-            //当前显示项目
-            show_items(){
-                let slice = this.pages.slice(this.cur_point, Math.min(360, this.itemLimit));
-                return slice;
+            //项目显示数量限制（仅限奇数项：3 - 359）
+            item_limit(){
+                let limit = Math.min(359, this.itemLimit),
+                    odd = limit % 2;
+                return odd? limit: limit - 1;
+            },
+
+            //项目数据源
+            items(){
+                let count = Math.floor(this.item_limit / 2);
+                this.overflow_item_count = count;
+                return [...this.pages.slice(-count), ...this.pages, ...this.pages.slice(0, count)];
             },
 
             //组件 x 轴倾斜样式
@@ -81,17 +98,17 @@
                 return {
                     transformStyle: "preserve-3d",
                     transformOrigin: `center center ${this.radius}px`,
-                    transform: `rotateY(${-(this.cur_point - 1) * this.itemAngle}deg) translateX(-${this.itemWidth / 2}px)`
+                    transform: `rotateY(${-(this.rotate_dir + this.overflow_item_count) * this.itemAngle}deg) translateX(-${this.itemWidth / 2}px)`
                 }
             },
 
             //旋转项目样式
             slider_style(){
-                let style = this.pages.reduce((total, val, i)=>{
+                let style = this.show_items.reduce((total, val, i)=>{
                     let item_style = {
                         transformOrigin: `center center ${this.radius}px`,
                     }
-                    if(this.cur_point - 1 === i){ //当前选中 item
+                    if(this.rotate_dir + this.overflow_item_count === i){ //当前选中 item
                         item_style.transform = `rotateY(${i*this.itemAngle}deg) scale(1) translateZ(20px)`;
                         item_style.filter = "blur(0px) grayscale(0%)";
                         item_style.fontWeight = "bold";
@@ -113,15 +130,34 @@
             //后一项
             next(){
                 this.cur_point++;
+                this.rotate_dir = 1;
                 if(this.cur_point > this.item_count) this.cur_point = 1;
             },
 
             //前一项
             prev(){
                 this.cur_point--;
+                this.rotate_dir = -1;
                 if(this.cur_point < 1) this.cur_point = this.item_count;
             },
 
+            //设置当前显示项目
+            $_set_show_items(){
+                let slice_start_index = this.cur_point - 1;
+                this.show_items = this.items.slice(slice_start_index, slice_start_index + this.item_limit);
+            },
+
+            //旋转结束
+            $_rotated(e){
+                if(e.propertyName === "transform" && e.elapsedTime == 0.4){
+                    this.$_set_show_items();
+                    this.rotate_dir = 0;
+                }
+            }
+
+        },
+        mounted(){
+            this.$_set_show_items();
         }
     }
 </script>

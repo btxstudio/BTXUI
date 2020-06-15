@@ -5,9 +5,10 @@
                                          :pages="slider_datas"
                                          :item-angle="36"
                                          :item-width="240"
-                                         :radius="-270"
-                                         :x-angle="5">
-                <zk2861-slider-item-widget v-for="page of slider_datas" :title="page.title" :slot="page.id" />
+                                         :radius="-300"
+                                         :x-angle="7"
+                                         :item-limit="5">
+                <zk2861-slider-item-widget v-for="(page, p_i) of slider_datas" :key="p_i" :title="page.title" :slot="page.id" />
             </zk2861-circle-slider-widget>
         </div>
         <div class="flex-grow flex-5">
@@ -53,6 +54,22 @@
                     {
                         id: "d",
                         title: "测试值 python"
+                    },
+                    {
+                        id: "e",
+                        title: "测试值 c++"
+                    },
+                    {
+                        id: "f",
+                        title: "测试值 dart"
+                    },
+                    {
+                        id: "g",
+                        title: "测试值 c#"
+                    },
+                    {
+                        id: "h",
+                        title: "测试值 go"
                     },
                 ],
 
@@ -115,7 +132,7 @@
         },
         mounted(){
             this.circle_slider = this.$refs.circleSlider;
-            this.$_get_data();
+            //this.$_get_data();
         }
     }
 </script>

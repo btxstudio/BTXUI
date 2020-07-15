@@ -5,7 +5,7 @@
 
       <!-- 主题色 -->
       <h5>主题色（theme color）</h5>
-      <p>主题色包括标准色、辅助色、灰阶、常用彩色、中性色 5 部分。</p>
+      <p>主题色包括标准色、辅助色、灰阶、常用彩色、中性色 5 部分。此外还有特殊值 none 可用于设置全透明颜色。</p>
       <table class="table">
         <thead>
             <tr>
@@ -15,16 +15,24 @@
         </thead>
         <tbody>
             <tr>
-                <td><code>bg-color-*</code></td>
+                <td><code>.bg-color-*</code></td>
                 <td>背景色</td>
             </tr>
             <tr>
-                <td><code>color-*</code></td>
+                <td><code>.color-*</code></td>
                 <td>文字色</td>
             </tr>
             <tr>
-                <td><code>line-*</code></td>
+                <td><code>.line-*</code></td>
                 <td>描边色</td>
+            </tr>
+            <tr>
+                <td><code>.bg-none</code></td>
+                <td>背景点透效果</td>
+            </tr>
+            <tr>
+                <td><code>.bg-use</code></td>
+                <td>背景常规效果（非点透）</td>
             </tr>
         </tbody>
       </table>
@@ -43,7 +51,7 @@
       <p>灰阶色：</p>
       <div class="flex pcenter">
           <div class="mrg-r-7 flex-5 flex-column">
-              <div class="w-4 h-4 round bg-color-light color-lgray line"></div>
+              <div class="w-4 h-4 round bg-color-light line-lgray thick-2 line"></div>
               <p>纯白<br><span class="color-mgray fsize-d9">light</span><br><b class="fsize-d9">#fff</b></p>
           </div>
           <div class="mrg-r-6 flex-5 flex-column">

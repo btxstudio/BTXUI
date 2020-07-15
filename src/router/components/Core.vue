@@ -60,7 +60,7 @@
 
         <p>颜色相关样式：</p>
         <p>
-            可以使用框架预置主题色，包括：main、sub、light、dgray、mgray、lgray、dark、red、green、blue、yellow、neutral。色值效果可参考
+            可以使用框架预置主题色，包括：none、main、sub、light、dgray、mgray、lgray、dark、red、green、blue、yellow、neutral。色值效果可参考
             <b>"全局样式 - 色彩"</b>。</p>
         <p>也可以定制扩展及修改主题色，此外任意标准 web 色彩模式都可以直接使用。</p>
         <p>【exp】：</p>
@@ -95,6 +95,16 @@
                 <td>不透明度</td>
                 <td>值域范围：0 - 1</td>
             </tr>
+            <tr>
+                <td><code>bg-none</code></td>
+                <td>背景点透效果</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>bg-use</code></td>
+                <td>背景常规效果（非点透）</td>
+                <td>-</td>
+            </tr>
             </tbody>
         </table>
         <p></p>
@@ -110,6 +120,21 @@
             </thead>
             <tbody>
             <tr>
+                <td><code>show</code></td>
+                <td>显示元素</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>hide</code></td>
+                <td>隐藏元素</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>destroy</code></td>
+                <td>销毁元素</td>
+                <td>-</td>
+            </tr>
+            <tr>
                 <td><code>flex</code></td>
                 <td>弹性布局容器</td>
                 <td>-</td>
@@ -117,7 +142,7 @@
             <tr>
                 <td><code>flex-*</code></td>
                 <td>弹性布局容器，九宫格式布局</td>
-                <td>值域范围：2 - 9</td>
+                <td>值域范围：1 - 9</td>
             </tr>
             <tr>
                 <td><code>flex-between</code></td>
@@ -590,6 +615,48 @@
                 </td>
                 <td>浮雕阴影效果</td>
                 <td>-</td>
+            </tr>
+            </tbody>
+        </table>
+        <p></p>
+
+        <p>过渡动画相关样式：</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>样式值</th>
+                <th>效果</th>
+                <th>值备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <code>trans</code>
+                </td>
+                <td>中速过度动画（.7s）</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>
+                    <code>trans-fast</code>
+                </td>
+                <td>快速过度动画（.4s）</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>
+                    <code>trans-slow</code>
+                </td>
+                <td>慢速过度动画（1.4s）</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>
+                    <code>trans-delay-*</code>
+                </td>
+                <td>动画延迟执行时间</td>
+                <td>任意合法值，缺省单位 s</td>
             </tr>
             </tbody>
         </table>

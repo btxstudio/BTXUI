@@ -1,5 +1,5 @@
 <template>
-    <a href="javascript:;" @click="$_click" class="zk2861-slider-btn-widget h-7 w-7 bg-color-light rotate-45 flex-2 round-sm">
+    <a href="javascript:;" @click="$_click" class="zk2861-slider-btn-widget h-7 w-7 bg-color-light rotate-45 flex-5 round-sm">
         <div class="zsb-w-inner flex-4" :class="`zsb-${dir}-w-item`">
             <i class="ico-arrow-left fsize-3"></i>
             <span class="zsb-w-bar rel l-f1rem w-1 line-b"></span>
@@ -9,10 +9,7 @@
 </template>
 
 <script>
-    import HotArea from "@/components/core/lib/HotArea"
-
     export default {
-        extends: HotArea,
         name: "zk2861-slider-btn-widget",
         /*
         * init-data{
@@ -28,6 +25,11 @@
             text: {
                 type: String,
                 required: false
+            }
+        },
+        methods: {
+            $_click(){
+                this.$emit("on_click")
             }
         }
     }
@@ -70,7 +72,7 @@
 
         //鼠标悬停效果
         &:hover {
-            outline-color: #8dd6f3;
+            outline-color: #009af3;
             outline-offset: 3px;
             transform: rotate(0);
             color: #009af3;

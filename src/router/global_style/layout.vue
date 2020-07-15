@@ -6,6 +6,42 @@
             <code>.box-normal</code> 类恢复标准盒模型。</p>
         <p></p>
 
+        <!-- 显示及隐藏 -->
+        <h5>显示及隐藏</h5>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>样式类</th>
+                <th>属性</th>
+                <th>效果</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <code>.show</code>
+                </td>
+                <td>-</td>
+                <td>强制元素显示（visibility: visible）</td>
+            </tr>
+            <tr>
+                <td>
+                    <code>.hide</code>
+                </td>
+                <td>-</td>
+                <td>强制元素隐藏（visibility: hidden）</td>
+            </tr>
+            <tr>
+                <td>
+                    <code>.destroy</code>
+                </td>
+                <td>-</td>
+                <td>强制元素销毁（display: none）</td>
+            </tr>
+            </tbody>
+        </table>
+        <p></p>
+
         <!-- 版心容器 -->
         <h5>版心容器</h5>
         <p>
@@ -52,15 +88,14 @@
 
         <!-- flex 弹性布局 -->
         <h5>flex 弹性布局</h5>
-        <p>BTX·UI 框架的布局核心是基于 flex 的，<code>.flex</code> 及 <code>.flex-*</code> 样式类，可以对容器内的元素进行九宫格式对齐定位。<code>.flex-between</code>
-            样式类可以设置元素均分排列、两端对齐。而 <code>.flex-column</code> 可以设置纵向生长弹性布局容器。</p>
+        <p>BTX·UI 框架的布局核心是基于 flex 的，<code>.flex</code> 及 <code>.flex-*</code> 样式类，可以对容器内的元素进行九宫格式对齐定位。<code>.flex-between</code> 及 <code>.flex-around</code> 样式类可以设置元素均分排列。而 <code>.flex-column</code> 可以设置纵向生长弹性布局容器。</p>
         <p>【示例】：横向生长九宫格对齐定位</p>
         <div class="grid fsize-d9 pcenter">
             <div class="col-4 pad-1">
-                <div class="flex h-5 round-sm bg-color-lgray mrg-b-d5">
+                <div class="flex-1 h-5 round-sm bg-color-lgray mrg-b-d5">
                     <div class="w-2 h-2 round-sm bg-color-sub">1</div>
                 </div>
-                <div><code>.flex</code></div>
+                <div><code>.flex-1</code></div>
             </div>
             <div class="col-4 pad-1">
                 <div class="flex-2 h-5 round-sm bg-color-lgray mrg-b-d5">
@@ -115,10 +150,10 @@
         <p>【示例】：竖向生长九宫格对齐定位</p>
         <div class="grid fsize-d9 pcenter">
             <div class="col-4 pad-1">
-                <div class="flex-column flex h-5 round-sm bg-color-lgray mrg-b-d5">
+                <div class="flex-column flex-1 h-5 round-sm bg-color-lgray mrg-b-d5">
                     <div class="w-2 h-2 round-sm bg-color-sub">1</div>
                 </div>
-                <div><code>.flex</code></div>
+                <div><code>.flex-1</code></div>
             </div>
             <div class="col-4 pad-1">
                 <div class="flex-column flex-2 h-5 round-sm bg-color-lgray mrg-b-d5">
@@ -499,19 +534,19 @@
         </p>
         <p>BTX·UI 未预置百分比尺寸，推荐使用 flex 完全取代相关使用场景。</p>
         <p>【示例】1 rem 至 10 rem 方形：</p>
-        <div class="flex-between flex-4">
-            <div class="w-1 h-1 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">1</div>
-            <div class="w-2 h-2 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">2</div>
-            <div class="w-3 h-3 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">3</div>
-            <div class="w-4 h-4 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">4</div>
-            <div class="w-5 h-5 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">5</div>
+        <div class="flex-4 flex-between">
+            <div class="w-1 h-1 bg-color-lgray round-sm fsize-d8 flex-5">1</div>
+            <div class="w-2 h-2 bg-color-lgray round-sm fsize-d8 flex-5">2</div>
+            <div class="w-3 h-3 bg-color-lgray round-sm fsize-d8 flex-5">3</div>
+            <div class="w-4 h-4 bg-color-lgray round-sm fsize-d8 flex-5">4</div>
+            <div class="w-5 h-5 bg-color-lgray round-sm fsize-d8 flex-5">5</div>
         </div>
-        <div class="flex-between flex-4">
-            <div class="w-10 h-10 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">10</div>
-            <div class="w-9 h-9 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">9</div>
-            <div class="w-8 h-8 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">8</div>
-            <div class="w-7 h-7 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">7</div>
-            <div class="w-6 h-6 bg-color-lgray round-sm fsize-d8 flex-2 flex-4">6</div>
+        <div class="flex-4 flex-between">
+            <div class="w-10 h-10 bg-color-lgray round-sm fsize-d8 flex-5">10</div>
+            <div class="w-9 h-9 bg-color-lgray round-sm fsize-d8 flex-5">9</div>
+            <div class="w-8 h-8 bg-color-lgray round-sm fsize-d8 flex-5">8</div>
+            <div class="w-7 h-7 bg-color-lgray round-sm fsize-d8 flex-5">7</div>
+            <div class="w-6 h-6 bg-color-lgray round-sm fsize-d8 flex-5">6</div>
         </div>
         <p></p>
         <p>【示例】配合自生长实现弹性布局：</p>

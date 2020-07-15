@@ -1,5 +1,7 @@
 .flex{
     display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
 .flex-grow{
@@ -25,10 +27,10 @@
 
 .flex-between{                           //主轴均分排列，两端对齐
     @extend .flex;
-    justify-content: space-between;
+    justify-content: space-between !important;
 }
 
 .flex-around{                            //主轴均分排列
     @extend .flex;
-    justify-content: space-around;
+    justify-content: space-around !important;
 }

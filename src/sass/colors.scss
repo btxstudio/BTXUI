@@ -1,3 +1,5 @@
+$none: transparent;                     //全透明色
+
 $main: #051c24;                         //主题色-遂蓝
 
 $sub: #b4967a;                          //辅助色-锡金
@@ -22,31 +24,12 @@ $yellow: #fdba00;                       //橙黄
 
 $neutral: rgba(130,130,130,.15);        //中性色
 
-//主题色-遂蓝
-.color-main{
-    color: $main;
-}     
-.bg-color-main{
-    background-color: $main;
-}
-.line-main{
-    border-color: $main;
-}
-
-//辅助色-锡金
-.color-sub{
-    color: $sub;
-}
-.bg-color-sub{
-    background-color: $sub;
-}
-.line-sub{
-    border-color: $sub;
-}
+.bg-none { pointer-events: none; }      //背景点透效果
+.bg-use { pointer-events: auto; }       //背景常规效果（非点透）
 
 //生成色彩（文字、填充、描边）类
 @mixin auto_gen_color_class {
-    $colors: (light $light), (dark $dark), (dgray $dgray), (mgray $mgray), (lgray $lgray), (blue $blue), (green $green), (yellow $yellow), (red $red), (neutral, $neutral);
+    $colors: (none $none), (sub $sub), (main $main), (light $light), (dark $dark), (dgray $dgray), (mgray $mgray), (lgray $lgray), (blue $blue), (green $green), (yellow $yellow), (red $red), (neutral, $neutral);
     @each $color in $colors{
         .color-#{nth($color, 1)}{
             color: nth($color, 2);
@@ -55,7 +38,7 @@ $neutral: rgba(130,130,130,.15);        //中性色
             background-color: nth($color, 2);
         }
         .line-#{nth($color, 1)}{
-            border-color: nth($color, 2);
+            border-color: nth($color, 2) !important;
         }
     }
 }

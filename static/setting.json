@@ -1,8 +1,7 @@
 [
     {
         "id": "a",
-        "text": "<b class='fsize-1d1'>起步</b>",
-        "children": [],
+        "text": "<b>起步</b>",
         "spread": false
     },
     {
@@ -46,52 +45,64 @@
     },
     {
         "id": "c",
-        "text": "<b>组件核心</b>",
+        "text": "<b>核心组件</b>",
         "children": [],
         "spread": true
     },
     {
         "id": "d",
-        "text": "<b>无状态组件</b>",
+        "text": "<b>基础组件</b>",
         "children": [
             {
                 "id": "view",
-                "text": "<b>b-view</b> 布局"
+                "text": "b-view 布局"
             },
             {
                 "id": "text",
-                "text": "<b>b-text</b> 文本"
+                "text": "b-text 文本"
             },
             {
                 "id": "list",
-                "text": "<b>b-list</b> 内容滚动"
+                "text": "b-list 内容滚动"
             }
         ],
         "spread": true
     },
     {
         "id": "e",
-        "text": "<b>有状态组件</b>",
+        "text": "<b>功能组件</b>",
         "children": [
             {
+                "id": "tag_widget",
+                "text": "tag-widget 标签"
+            },
+            {
+                "id": "tab_widget",
+                "text": "tab-widget 选项卡"
+            },
+            {
+                "id": "pannel_widget",
+                "text": "pannel-widget 弹出层"
+            },
+            {
                 "id": "a_3_1",
-                "text": "<b>confirm</b> 弹窗"
+                "text": "confirm 弹窗"
             },
             {
                 "id": "a_3_2",
-                "text": "<b>slider</b> 轮播器"
+                "text": "slider 轮播器"
             },
             {
                 "id": "a_3_3",
-                "text": "<b>tooltip</b> 提示框"
+                "text": "tooltip 提示框"
             },
             {
                 "id": "a_3_4",
-                "text": "<b>content</b> 目录树"
+                "text": "content 目录树"
             },
             {
                 "id": "a_3_5",
-                "text": "<b>content-node</b> 节点"
+                "text": "content-node 节点"
             }
         ],
         "spread": false

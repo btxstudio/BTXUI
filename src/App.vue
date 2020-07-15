@@ -1,6 +1,9 @@
 <template>
     <div id="app" class="max-screen flex-column">
 
+        <!--全局弹窗组件-->
+        <confirm-widget matte-color="rgba(240,240,240,.6)" pannel-color="dark"></confirm-widget>
+
         <!-- 顶部主导航栏 -->
         <div class="pad-h-3 bg-color-main flex-between color-sub">
 
@@ -25,7 +28,7 @@
         <div class="flex flex-grow">
 
             <!-- 左侧目录 -->
-            <div class="flex-column w-25 bg-color-lgray">
+            <div class="flex-column w-30 bg-color-lgray">
                 <div class="flex-grow auto-scroll pad-2d5 color-main fsize-1d2">
                     <content-widget v-if="content_data" :data-tree="content_data" @on_select="$_nav_select" />  
                 </div>
@@ -43,10 +46,15 @@
 </template>
 
 <script>
-import ContentWidget from "@/components/content-widget"
+import ContentWidget from "@/components/BTXUI/content-widget"
+import ConfirmWidget from "@/components/BTXUI/confirm-widget"
 
 export default {
     name: "App",
+    components: {
+        ConfirmWidget,
+        ContentWidget
+    },
     data(){
         return {
 
@@ -67,8 +75,7 @@ export default {
         this.$axios.get("/static/setting.json").then(res => {
             this.content_data = res.data
         })
-    },
-    components: { ContentWidget }
+    }
 }
 </script>
 

@@ -17,7 +17,7 @@ import core from '@/router/components/core'                     //核心
 import b_list from '@/router/components/b_list'                 //内容滚动
 
 //测试
-import test from '@/router/test'
+import demo from '@/router/demo'
 
 Vue.use(Router)
 
@@ -63,9 +63,6 @@ export default new Router({
             path: '/b_list',
             component: b_list
         },
-        {
-            path: '/test',
-            component: test
-        },
+        ...demo
     ]
 })

@@ -1,12 +1,19 @@
 //生成九宫格对齐定位类
 @mixin auto_gen_flex_align_class($suffix:"") {
+    .flex-1#{$suffix} {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
     .flex-2#{$suffix} {
         justify-content: center;
+        align-items: flex-start;
     }
     .flex-3#{$suffix} {
         justify-content: flex-end;
+        align-items: flex-start;
     }
     .flex-4#{$suffix} {
+        justify-content: flex-start;
         align-items: center;
     }
     .flex-5#{$suffix} {

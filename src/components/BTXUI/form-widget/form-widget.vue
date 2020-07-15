@@ -8,6 +8,8 @@
                     state: layout.title_wrap
                 }
             }">
+
+            <!--标题区-->
             <b-view styles="flex-4"
                     :states="{
                         fixed_title_width: {
@@ -26,12 +28,18 @@
                     {{item.text}}
                 </b-text>
             </b-view>
+
+            <!--表单元素区-->
             <b-view styles="flex-grow bg-color-neutral round-sm pad-v-.4 pad-h-1">
                 <b-input :type="item.type" :name="item.name" v-model="selected[item.name]"
                          :maxlength="item.maxlength"
                          :placeholder="item.placeholder" />
             </b-view>
         </b-view>
+
+        <!--提交按钮-->
+        <btn-widget v-if="submit" @on_click="$_submit" :btn-text="submit.text" />
+
     </b-view>
 </template>
 
@@ -41,6 +49,7 @@
     import BHot from "@/components/BTXUI/core/b-hot";
     import BIcon from "@/components/BTXUI/core/b-icon";
     import BInput from "@/components/BTXUI/core/b-input";
+    import BtnWidget from "@/components/BTXUI/btn-widget/btn-widget";
 
     export default {
         name: "form-widget",
@@ -49,7 +58,8 @@
             BText,
             BHot,
             BIcon,
-            BInput
+            BInput,
+            BtnWidget
         },
         /*
         * init-data{
@@ -69,6 +79,10 @@
         *   [* layout: {
         *       title_width: "表单元素标题宽度，默认单位 rem",
         *       title_wrap: "表单元素标题是否折行",
+        *   }],
+        *   [* submit: {
+        *       text: "按钮文字",
+        *       callback: "回调函数",
         *   }]
         * }
         * */
@@ -90,7 +104,19 @@
                 default: ()=>{
                     return {title_width: "", title_wrap: false}
                 }
+            },
+            submit: {
+                type: Object,
+                required: false
+            },
+        },
+        methods: {
+
+            //提交表单
+            $_submit(){
+                this.submit && this.submit.callback(this.selected);
             }
+
         }
     }
 </script>

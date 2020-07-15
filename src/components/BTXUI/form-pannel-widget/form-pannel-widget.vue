@@ -1,20 +1,20 @@
 <template>
     <pannel-widget v-bind="pannel_prams" v-model="visible">
-        <b-view :styles="pannelStyles">
+        <b-list :styles="pannel_styles">
             <form-widget :form-data="formData" :selected="selected" />
-        </b-view>
+        </b-list>
     </pannel-widget>
 </template>
 
 <script>
-    import BView from "@/components/BTXUI/core/b-view";
+    import BList from "@/components/BTXUI/core/b-list";
     import PannelWidget from "@/components/BTXUI/pannel-widget/pannel-widget";
     import FormWidget from "@/components/BTXUI/form-widget/form-widget";
 
     export default {
         name: "form-pannel-widget",
         components: {
-            BView,
+            BList,
             PannelWidget,
             FormWidget
         },
@@ -44,10 +44,10 @@
         *           y: "垂直方向位移 styles 值"
         *       },
         *       [* matte: "是否启用遮罩，默认不启用"],
-        *       [* matte-color: "遮罩颜色"],
-        *       [* matte-z-index: "遮罩 z 轴层级，默认为 9"],
-        *       [* close-btn: "是否启用关闭按钮"],
-        *       [* matte-close: "遮罩自身点击关闭面板：click 单击、dblclick 双击"],
+        *       [* matteColor: "遮罩颜色"],
+        *       [* matteZIndex: "遮罩 z 轴层级，默认为 9"],
+        *       [* closeBtn: "是否启用关闭按钮"],
+        *       [* matteClose: "遮罩自身点击关闭面板：click 单击、dblclick 双击"],
         *   }],
         * }
         * */
@@ -83,7 +83,6 @@
                 //面板初始化样式
                 pannel_styles: [
                     "bg-color-light",
-                    "round-sm",
                     "pad-2",
                     "w-30",
                     ...(Array.isArray(this.pannelStyles)? this.pannelStyles: this.pannelStyles.split(" ")),
@@ -114,9 +113,6 @@
                 this.pannelInfo.visible = val;
             }
 
-        },
-        mounted(){
-            console.log(this.pannel_styles)
         }
     }
 </script>

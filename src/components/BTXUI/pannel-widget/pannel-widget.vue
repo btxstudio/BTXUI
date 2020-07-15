@@ -15,7 +15,7 @@
             <b-view :styles="`abs max t-0 l-0 bg-color-${matteColor}`"/>
         </b-hot>
 
-        <b-view :styles="`rel trans-fast scale-0 bg-use l-${offset.x} t-${offset.y}`"
+        <b-view :styles="`rel trans-fast scale-0 bg-use l-${offsetStyles.x} t-${offsetStyles.y}`"
             :states="{
                 show: {
                     style: ['alpha-1', 'scale-1', matte? 'trans-delay-.4': ''],
@@ -24,7 +24,7 @@
             }">
 
             <!--关闭按钮-->
-            <b-hot v-if="closeBtn" @on_click="$_close" styles="abs flex-5 r-.4 t-.4 w-2 h-2 bg-color-lgray round"
+            <b-hot v-if="closeBtn" @on_click="$_close" styles="abs flex-5 r-.4 t-.4 w-2 h-2 bg-color-neutral color-dark round z1"
                 hover="bg-color-red color-light">
                 <b-icon icon="close" />
             </b-hot>
@@ -50,9 +50,9 @@
         * init-data{
         *   visible（model）: "面板显示状态",
         *   [* pos: "面板定位（基于视口九宫格定位: 1-9）"],
-        *   [* offset: {
-        *       x: "水平方向位移，默认单位 rem",
-        *       y: "垂直方向位移，默认单位 rem",
+        *   [* offset-styles: {
+        *       x: "水平方向位移样式，默认单位 rem",
+        *       y: "垂直方向位移样式，默认单位 rem",
         *   }],
         *   [* matte: "是否启用遮罩，默认不启用"],
         *   [* matte-color: "遮罩颜色"],
@@ -71,7 +71,7 @@
                 required: false,
                 default: 5
             },
-            offset: {
+            offsetStyles: {
                 type: Object,
                 required: false,
                 default: () => {

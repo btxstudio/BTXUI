@@ -32,7 +32,7 @@
         <p></p>
 
         <h5>定位弹窗</h5>
-        <p>可以通过 <code>pos</code> 属性来对面板进行九宫格定位，属性值：1-9。之后可以通过 <code>offset</code> 属性来进行位移调整。</p>
+        <p>可以通过 <code>pos</code> 属性来对面板进行九宫格定位，属性值：1-9。之后可以通过 <code>offset-styles</code> 属性来进行位移调整。</p>
         <p>【exp】右下方显示弹窗，向上位移 100px，向左位移 100px：</p>
         <span class="color-sub flex">
             <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_toggle_pannel3">显示弹窗</a>
@@ -79,7 +79,7 @@
                         matteColor: "rgba(220,220,220,.7)",
                         closeBtn: true,
                         pos: 9,
-                        offset: {
+                        offsetStyles: {
                             x: "f100px",
                             y: "f100px"
                         }

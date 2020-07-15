@@ -3,7 +3,7 @@
         <h5><code>form-widget</code></h5>
         <p>该组件用于表单构建及操作。</p>
         <p>组件继承：无</p>
-        <p>组件依赖：无</p>
+        <p>组件依赖：<code>btn-widget</code></p>
         <p>组件初始化入参：</p>
         <p></p>
 
@@ -29,6 +29,14 @@
             <form-widget :form-data="dataList_3.data" :layout="dataList_3.layout" v-model="dataList_3.selected" />
         </div>
         <p>当前所选数据：<code class="mrg-r-d5" v-for="(val, key) of dataList_3.selected"><b>{{key}}</b>:{{val}}</code></p>
+        <p></p>
+
+        <h5>表单提交按钮</h5>
+        <p>通过 <code>submit</code> 属性可设置表单"提交"按钮，以及点击操作所执行的回调函数，函数中自变量为表单选择数据。</p>
+        <div class="bg-color-lgray pad-v-1 pad-h-2 round-sm">
+            <form-widget :form-data="dataList_4.data" :submit="dataList_4.submit" v-model="dataList_4.selected" />
+        </div>
+        <p>表单提交数据：<code class="mrg-r-d5" v-for="(val, key) of dataList_4.submit_data"><b>{{key}}</b>:{{val}}</code></p>
         <p></p>
 
     </article>
@@ -124,6 +132,33 @@
                         title_wrap: true
                     },
                     selected: {},
+                },
+
+                //基础渲染数据4
+                dataList_4: {
+                    data: [
+                        {
+                            type: "text",
+                            name: "uname",
+                            text: "账号",
+                            placeholder: "请输入英文字母、下划线或数字"
+                        },
+                        {
+                            type: "password",
+                            name: "pwd",
+                            text: "密码",
+                            maxlength: 6,
+                            placeholder: "请输入您的账号密码"
+                        },
+                    ],
+                    selected: {},
+                    submit: {
+                        callback: (form_data)=>{
+                            this.dataList_4.submit_data = {...form_data};
+                        },
+                        text: "提交表单"
+                    },
+                    submit_data: {}
                 },
 
             }

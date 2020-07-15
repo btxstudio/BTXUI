@@ -1,6 +1,20 @@
 <template>
-    <b-view :styles="['flex-grow', 'rel', scroll_state.style]"
-            :class="scroll_state.class_name">
+    <b-view :styles="styles"
+            :state="{
+                scroll_x: {
+                    style: [{ overflowX: 'auto' }],
+                    state: scroll === 'x'
+                },
+                scroll_y: {
+                    style: [{ overflowY: 'auto' }],
+                    state: scroll === 'y'
+                },
+                scroll_hide: {
+                    style: [{ overflow: 'hidden' }],
+                    state: scroll === 'hide'
+                }
+            }"
+            :class="scroll_class">
         <slot />
     </b-view>
 </template>
@@ -15,11 +29,18 @@
         },
         /*
         * init-data{
+        *   styles: [
+        *       样式规范，基于并扩展 btx·UI 全局样式语法,...
+        *   ],
         *   [* scroll: "溢出滚动。y：垂直溢出滚动（默认）；x：水平溢出滚动；hide：溢出隐藏],
         *   [* watch-pos: "滚动位置监听],
         * }
         * */
         props: {
+            styles: {
+                type: [String, Array],
+                required: true
+            },
             scroll: {
                 type: String,
                 required: false,
@@ -41,34 +62,15 @@
         computed: {
 
             //溢出样式
-            scroll_state(){
-                let state;
+            scroll_class(){
                 switch(this.scroll){
                     case "x":
-                        state = {
-                            style: {
-                                overflowX: "auto"
-                            },
-                            class_name: "auto-h-scroll"
-                        }
-                        break;
+                        return "auto-h-scroll";
                     case "y":
-                        state = {
-                            style: {
-                                overflowY: "auto"
-                            },
-                            class_name: "auto-scroll"
-                        }
-                        break;
+                        return "auto-scroll";
                     case "hiden":
-                        state = {
-                            style: {
-                                overflow: "hidden"
-                            },
-                            class_name: "no-scroll"
-                        }
+                        return "no-scroll";
                 }
-                return state;
             }
 
         },

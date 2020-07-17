@@ -1,12 +1,18 @@
 <template>
     <pannel-widget v-bind="pannel_prams" v-model="visible">
-        <b-list :styles="pannel_styles">
-            <form-widget :form-data="formData" :selected="selected" />
-        </b-list>
+        <b-view :styles="pannel_styles">
+            <b-view v-if="pannelTitle" styles="pad-l-2">
+                <b-view styles="line-b thick-1 pad-v-.7 line-neutral">{{pannelTitle}}</b-view>
+            </b-view>
+            <b-list styles="pad-2">
+                <form-widget v-bind="formData" :selected="selected" />
+            </b-list>
+        </b-view>
     </pannel-widget>
 </template>
 
 <script>
+    import BView from "@/components/BTXUI/core/b-view";
     import BList from "@/components/BTXUI/core/b-list";
     import PannelWidget from "@/components/BTXUI/pannel-widget/pannel-widget";
     import FormWidget from "@/components/BTXUI/form-widget/form-widget";
@@ -14,6 +20,7 @@
     export default {
         name: "form-pannel-widget",
         components: {
+            BView,
             BList,
             PannelWidget,
             FormWidget
@@ -26,29 +33,10 @@
         *           name（所选表单元素键名）: value（所选表单元素键值）,...
         *       }
         *   },
-        *   form-data: [
-        *       {
-        *           type: "表单元素类型",
-        *           name: "表单元素数据键名",
-        *           [* text: "表单元素字段"],
-        *           [* icon: "表单元素图标"],
-        *           [* maxlength: "字符数上限（限输入型表单元素）"],
-        *           [* placeholder: "输入提示（限输入型表单元素）"],
-        *       },...
-        *   ],
+        *   form-data: (参照：form-widget 组件入参),
+        *   [* pannel-title: "面板标题"],
         *   [* pannel-styles: "面板样式"],
-        *   [* pannel-data: {
-        *       [* pos: "面板定位（基于视口九宫格定位: 1-9）"],
-        *       [* offset: {
-        *           x: "水平方向位移 styles 值",
-        *           y: "垂直方向位移 styles 值"
-        *       },
-        *       [* matte: "是否启用遮罩，默认不启用"],
-        *       [* matteColor: "遮罩颜色"],
-        *       [* matteZIndex: "遮罩 z 轴层级，默认为 9"],
-        *       [* closeBtn: "是否启用关闭按钮"],
-        *       [* matteClose: "遮罩自身点击关闭面板：click 单击、dblclick 双击"],
-        *   }],
+        *   [* pannel-data: (参照：pannel-widget 组件入参)],
         * }
         * */
         model: {
@@ -61,8 +49,12 @@
                 required: true
             },
             formData: {
-                type: Array,
+                type: Object,
                 required: true
+            },
+            pannelTitle: {
+                type: String,
+                required: false,
             },
             pannelStyles: {
                 type: [String, Array],
@@ -82,9 +74,10 @@
 
                 //面板初始化样式
                 pannel_styles: [
+                    "flex-column",
                     "bg-color-light",
-                    "pad-2",
                     "w-30",
+                    "round-sm",
                     ...(Array.isArray(this.pannelStyles)? this.pannelStyles: this.pannelStyles.split(" ")),
                 ],
 

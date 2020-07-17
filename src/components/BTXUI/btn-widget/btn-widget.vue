@@ -1,7 +1,7 @@
 <template>
     <b-hot @on_click="$_click"
-           styles="pad-v-.4 pad-h-2 bg-color-lgray round-sm"
-           hover="bg-color-blue color-light" >
+           :styles="`pad-v-.5 pad-h-1.7 round-sm line thick-1 color-${btn_color[0]} bg-color-${btn_color[1]} line-${btn_color[2]}`"
+           :hover="`color-${btn_color[3]} bg-color-${btn_color[4]} line-${btn_color[5]}`" >
         {{btnText}}
     </b-hot>
 </template>
@@ -11,12 +11,13 @@
 
     export default {
         name: "btn-widget",
-        components: { BHot },
+        components: {
+            BHot,
+        },
         /*
         * init-data{
         *   btn-text: "按钮文字",
-        *   [* styles: "按钮样式"],
-        *   [* hover-styles: "按钮悬停样式"],
+        *   [* btn-color: ["文字色", "背景色", "描边色", "hover文字色", "hover背景色", "hover描边色"]],
         * }
         * */
         props: {
@@ -24,14 +25,21 @@
                 type: String,
                 required: true,
             },
-            styles: {
-                type: [String, Array],
+            btnColor: {
+                type: Array,
                 required: false,
+                default: () => []
             },
-            hoverStyles: {
-                type: [String, Array],
-                required: false,
-            },
+        },
+        data(){
+            return {
+
+                //按钮色彩风格
+                btn_color: ["dgray", "neutral", "neutral", "light", "blue", "blue"].map((color, index)=>{
+                    return this.btnColor[index] || color;
+                }),
+
+            }
         },
         methods: {
 

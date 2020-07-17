@@ -30,15 +30,24 @@
             </b-view>
 
             <!--表单元素区-->
-            <b-view styles="flex-grow bg-color-neutral round-sm pad-v-.4 pad-h-1">
+            <b-view styles="flex-grow bg-color-neutral round-sm pad-v-.3 pad-h-1"
+                    :states="{
+                        readonly: {
+                            style: 'bg-color-none alpha-.8',
+                            state: item.readonly
+                        }
+                     }">
                 <b-input :type="item.type" :name="item.name" v-model="selected[item.name]"
                          :maxlength="item.maxlength"
+                         :readonly="item.readonly"
                          :placeholder="item.placeholder" />
             </b-view>
         </b-view>
 
         <!--提交按钮-->
-        <btn-widget v-if="submit" @on_click="$_submit" :btn-text="submit.text" />
+        <b-view v-if="submit" :styles="`mrg-t-2.4 p${submit.align || 'left'}`">
+            <btn-widget @on_click="$_submit" :btn-text="submit.text" :btn-color="submit.btnColor" />
+        </b-view>
 
     </b-view>
 </template>
@@ -71,6 +80,7 @@
         *           [* icon: "表单元素图标"],
         *           [* maxlength: "字符数上限（限输入型表单元素）"],
         *           [* placeholder: "输入提示（限输入型表单元素）"],
+        *           [* readonly: "只读"],
         *       },...
         *   ],
         *   selected（model）: {
@@ -82,7 +92,9 @@
         *   }],
         *   [* submit: {
         *       text: "按钮文字",
+        *       align: "对齐方式：默认 left、center、right",
         *       callback: "回调函数",
+        *       [* btnColor: "按钮颜色"],
         *   }]
         * }
         * */

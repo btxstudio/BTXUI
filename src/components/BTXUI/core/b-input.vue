@@ -21,7 +21,7 @@
         },
         props: {
             inpVal: {
-                type: String,
+                type: [String, Number],
                 required: false,
             }
         },

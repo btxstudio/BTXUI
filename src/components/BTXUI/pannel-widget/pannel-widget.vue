@@ -1,5 +1,5 @@
 <template>
-    <b-view :styles="`fixed max t-0 l-0 trans-fast flex-${pos} ${matte? '': 'bg-none'} z-${matteZIndex} hide alpha-0`"
+    <b-view :styles="`fixed max t-0 l-0 trans-fast flex-${pos} ${matte? '': 'bg-none'} z${matteZIndex} hide alpha-0`"
             :states="{
                 show: {
                     style: 'alpha-1 show',

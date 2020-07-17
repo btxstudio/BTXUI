@@ -8,7 +8,7 @@
         <p></p>
 
         <h5>基础使用</h5>
-        <p>通过 v-model 绑定响应式表单选取数据。其次可以使用 <code>form-data</code> 属性，对表单元素进行常规设置：<b>name</b> 设置数据字段键名、<b>placeholder</b> 设置提示文字、<b>maxlength</b> 设置最大字符数</p>
+        <p>通过 v-model 绑定响应式表单选取数据。其次可以使用 <code>form-data</code> 属性，对表单元素进行常规设置：<b>name</b> 设置数据字段键名、<b>placeholder</b> 设置提示文字、<b>maxlength</b> 设置最大字符数、<b>readonly</b> 内容只读。</p>
         <div class="bg-color-lgray pad-v-1 pad-h-2 round-sm">
             <form-widget :form-data="dataList_1.data" v-model="dataList_1.selected" />
         </div>
@@ -32,7 +32,7 @@
         <p></p>
 
         <h5>表单提交按钮</h5>
-        <p>通过 <code>submit</code> 属性可设置表单"提交"按钮，以及点击操作所执行的回调函数，函数中自变量为表单选择数据。</p>
+        <p>通过 <code>submit</code> 属性可设置表单"提交"按钮和其对齐方式，以及点击操作所执行的回调函数，函数中自变量为表单选择数据。<b>btnColor</b> 字段可以设置按钮颜色风格。（可参考：<code>btn-widget</code> 组件入参）。</p>
         <div class="bg-color-lgray pad-v-1 pad-h-2 round-sm">
             <form-widget :form-data="dataList_4.data" :submit="dataList_4.submit" v-model="dataList_4.selected" />
         </div>
@@ -67,9 +67,16 @@
                             maxlength: 6,
                             placeholder: "请输入您的账号密码"
                         },
+                        {
+                            type: "text",
+                            name: "license",
+                            text: "串号",
+                            readonly: true
+                        },
                     ],
                     selected: {
-                        uname: "administrator"
+                        uname: "administrator",
+                        license: 745829
                     },
                 },
 
@@ -154,9 +161,18 @@
                     selected: {},
                     submit: {
                         callback: (form_data)=>{
-                            this.dataList_4.submit_data = {...form_data};
+                            let result = {},
+                                val;
+                            for(let pro in form_data){
+                                val = form_data[pro];
+                                if(val) result[pro] = val;
+                            }
+                            if(!Object.values(result).join("")) result = { result: "暂无数据" };
+                            this.dataList_4.submit_data = result;
                         },
-                        text: "提交表单"
+                        text: "提交表单",
+                        align: "left",
+                        btnColor: "dgray none #ccc light blue none".split(" ")
                     },
                     submit_data: {}
                 },

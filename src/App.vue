@@ -2,7 +2,7 @@
     <div id="app" class="max-screen flex-column">
 
         <!--全局弹窗组件-->
-        <confirm-widget matte-color="rgba(240,240,240,.6)" pannel-color="dark"></confirm-widget>
+        <confirm-widget matte-color="rgba(240,240,240,.6)" />
 
         <!-- 顶部主导航栏 -->
         <div class="pad-h-3 bg-color-main flex-between color-sub">
@@ -47,7 +47,7 @@
 
 <script>
 import ContentWidget from "@/components/BTXUI/content-widget"
-import ConfirmWidget from "@/components/BTXUI/confirm-widget"
+import ConfirmWidget from "@/components/BTXUI/confirm/confirm-widget"
 
 export default {
     name: "App",

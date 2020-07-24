@@ -144,7 +144,11 @@
                 val = val.split("|").map((v)=>{ //逗号解析空格
                     return v[0] === "f"? v.replace("f", "-"): v; //使用负数值
                 }).join(" ");
-                if(tmp) val = tmp.replace("%{}%", val); //使用 tmp 模板
+                if(tmp){ //使用 tmp 模板
+                    val = tmp.replace("%{}%", val.split(",").map((color)=>{ //渐变色使用预置主题色
+                        return theme[color] || color
+                    }));
+                }
                 return isNaN(val)? val: `${val}${unit || ""}`;
             }
 

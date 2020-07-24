@@ -5,7 +5,7 @@
                 <b-view styles="line-b thick-1 pad-v-.7 line-neutral">{{pannelTitle}}</b-view>
             </b-view>
             <b-list styles="pad-2">
-                <form-widget v-bind="formData" :selected="selected" />
+                <form-widget ref="former" v-bind="formData" :selected="selected" />
             </b-list>
         </b-view>
     </pannel-widget>
@@ -14,7 +14,7 @@
 <script>
     import BView from "@/components/BTXUI/core/b-view";
     import BList from "@/components/BTXUI/core/b-list";
-    import PannelWidget from "@/components/BTXUI/pannel-widget/pannel-widget";
+    import PannelWidget from "@/components/BTXUI/pannel/pannel-widget";
     import FormWidget from "@/components/BTXUI/form-widget/form-widget";
 
     export default {
@@ -103,6 +103,7 @@
 
             //监听面板显示状态出参
             visible(val){
+                if(val === false) this.$refs.former.reset();
                 this.pannelInfo.visible = val;
             }
 

@@ -1,54 +1,64 @@
 <template>
     <article>
-        <h5><code>pannel-widget</code></h5>
-        <p>该组件用于自定义弹窗交互操作。</p>
-        <p>组件依赖：无</p>
-        <p>组件初始化入参：</p>
-        <p></p>
+        <section>
+            <h5><code>pannel-widget</code></h5>
+            <p>该组件用于自定义弹窗交互操作。</p>
+            <p>组件依赖：无</p>
+            <p>组件初始化入参：</p>
+            <hr>
+            <p></p>
+        </section>
 
-        <h5>基础自定义弹窗使用</h5>
-        <p>默认为居中弹出效果，且没有遮罩背景。</p>
-        <span class="color-sub flex">
-            <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_toggle_pannel1">切换弹窗</a>
-        </span>
-        <pannel-widget v-model="dataList_1.visible">
-            <div class="color-mgray pcenter pad-2 w-20 round-md bg-color-light line thick-1 line-mgray shadow-sm">
-                <span class="color-blue">html + css</span>
-            </div>
-        </pannel-widget>
-        <p></p>
+        <section>
+            <h5>基础自定义弹窗使用</h5>
+            <p>默认为居中弹出效果，且没有遮罩背景。</p>
+            <span class="color-sub flex">
+                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_toggle_pannel1">切换弹窗</a>
+            </span>
+            <pannel-widget v-model="dataList_1.visible">
+                <div class="color-mgray pcenter pad-2 w-20 round-md bg-color-light line thick-1 line-mgray shadow-sm">
+                    <span class="color-blue">html + css</span>
+                </div>
+            </pannel-widget>
+            <hr>
+            <p></p>
+        </section>
 
-        <h5>弹窗遮罩</h5>
-        <p>可以启用 <code>matte</code> 属性来设置面板遮罩背景，默认为透明色，z 轴层级为 9。可以通过 <code>matte-color</code> 属性设置遮罩颜色，以及 <code>matte-z-index</code> 属性设置遮罩 z 轴层级。此外可以通过 <code>close-btn</code> 属性启用关闭按钮，或通过 <code>matte-close</code> 属性设置 "click" 或 "dblclick" 启用遮罩自身单击或双击关闭效果。</p>
-        <p>【exp】设置半透明灰色遮罩，可单击关闭，同时显示面板关闭按钮：</p>
-        <span class="color-sub flex">
-            <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_toggle_pannel2">显示弹窗</a>
-        </span>
-        <pannel-widget v-model="dataList_2.visible" v-bind="dataList_2.props">
-            <div class="color-mgray pcenter pad-2 w-25 round-md bg-color-light line thick-1 line-mgray shadow-sm">
-                <span class="color-blue">javascript + typescript</span>
-            </div>
-        </pannel-widget>
-        <p></p>
+        <section>
+            <h5>弹窗遮罩</h5>
+            <p>可以启用 <code>matte</code> 属性来设置面板遮罩背景，默认为透明色，z 轴层级为 9。可以通过 <code>matte-color</code> 属性设置遮罩颜色，以及 <code>matte-z-index</code> 属性设置遮罩 z 轴层级。此外可以通过 <code>close-btn</code> 属性启用关闭按钮，或通过 <code>matte-close</code> 属性设置 "click" 或 "dblclick" 启用遮罩自身单击或双击关闭效果。</p>
+            <p>【exp】设置半透明灰色遮罩，可单击关闭，同时显示面板关闭按钮：</p>
+            <span class="color-sub flex">
+                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_toggle_pannel2">显示弹窗</a>
+            </span>
+            <pannel-widget v-model="dataList_2.visible" v-bind="dataList_2.props">
+                <div class="color-mgray pcenter pad-2 w-25 round-md bg-color-light line thick-1 line-mgray shadow-sm">
+                    <span class="color-blue">javascript + typescript</span>
+                </div>
+            </pannel-widget>
+            <hr>
+            <p></p>
+        </section>
 
-        <h5>定位弹窗</h5>
-        <p>可以通过 <code>pos</code> 属性来对面板进行九宫格定位，属性值：1-9。之后可以通过 <code>offset-styles</code> 属性来进行位移调整。</p>
-        <p>【exp】右下方显示弹窗，向上位移 100px，向左位移 100px：</p>
-        <span class="color-sub flex">
-            <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_toggle_pannel3">显示弹窗</a>
-        </span>
-        <pannel-widget v-model="dataList_3.visible" v-bind="dataList_3.props">
-            <div class="color-mgray pcenter pad-2 w-25 round-md bg-color-light line thick-1 line-mgray shadow-sm">
-                <span class="color-blue">vue VS react</span>
-            </div>
-        </pannel-widget>
-        <p></p>
+        <section>
+            <h5>定位弹窗</h5>
+            <p>可以通过 <code>pos</code> 属性来对面板进行九宫格定位，属性值：1-9。之后可以通过 <code>offset-styles</code> 属性来进行位移调整。</p>
+            <p>【exp】右下方显示弹窗，向上位移 100px，向左位移 100px：</p>
+            <span class="color-sub flex">
+                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_toggle_pannel3">显示弹窗</a>
+            </span>
+            <pannel-widget v-model="dataList_3.visible" v-bind="dataList_3.props">
+                <div class="color-mgray pcenter pad-2 w-25 round-md bg-color-light line thick-1 line-mgray shadow-sm">
+                    <span class="color-blue">vue VS react</span>
+                </div>
+            </pannel-widget>
+        </section>
 
     </article>
 </template>
 
 <script>
-    import PannelWidget from "@/components/BTXUI/pannel-widget/pannel-widget"
+    import PannelWidget from "@/components/BTXUI/pannel/pannel-widget"
 
     export default {
         name: "pannel_widget_demo",

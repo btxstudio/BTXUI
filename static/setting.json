@@ -74,8 +74,16 @@
                 "text": "b-icon 图标"
             },
             {
+                "id": "input",
+                "text": "b-input 输入表单项"
+            },
+            {
                 "id": "list",
                 "text": "b-list 内容滚动"
+            },
+            {
+                "id": "webview",
+                "text": "b-webview 网页容器"
             }
         ],
         "spread": true

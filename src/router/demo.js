@@ -9,6 +9,7 @@ import pannel_widget_demo from '@/components/demo/pannel_widget_demo'
 import form_pannel_widget_demo from '@/components/demo/form_pannel_widget_demo'
 import form_widget_demo from '@/components/demo/form_widget_demo'
 import btn_widget_demo from '@/components/demo/btn_widget_demo'
+import confirm_widget_demo from '@/components/demo/confirm_widget_demo'
 
 //项目测试
 import zk2861_demo1 from '@/components/pro/zk2861/demo1'
@@ -59,5 +60,9 @@ export default [
     {
         path: '/btn_widget_demo',
         component: btn_widget_demo
+    },
+    {
+        path: '/confirm_widget_demo',
+        component: confirm_widget_demo
     },
 ]

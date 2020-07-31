@@ -69,7 +69,7 @@
 </template>
 
 <script>
-    import FormPannelWidget from "@/components/BTXUI/form-pannel-widget/form-pannel-widget"
+    import FormPannelWidget from "@/components/BTXUI/formPannel/form-pannel-widget"
 
     export default {
         name: "form_pannel_widget_demo",

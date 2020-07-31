@@ -68,7 +68,7 @@
 </template>
 
 <script>
-    import BtnWidget from "@/components/BTXUI/btn-widget/btn-widget"
+    import BtnWidget from "@/components/BTXUI/btn/btn-widget"
 
     export default {
         name: "btn_widget_demo",

@@ -22,21 +22,14 @@
                     <code>.show</code>
                 </td>
                 <td>-</td>
-                <td>强制元素显示（visibility: visible）</td>
+                <td>强制元素显示（display: block）</td>
             </tr>
             <tr>
                 <td>
                     <code>.hide</code>
                 </td>
                 <td>-</td>
-                <td>强制元素隐藏（visibility: hidden）</td>
-            </tr>
-            <tr>
-                <td>
-                    <code>.destroy</code>
-                </td>
-                <td>-</td>
-                <td>强制元素销毁（display: none）</td>
+                <td>强制元素隐藏（display: none）</td>
             </tr>
             </tbody>
         </table>

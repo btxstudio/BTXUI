@@ -8,7 +8,7 @@
         <div class="pad-h-3 bg-color-main flex-between color-sub">
 
             <!-- 左侧 logo -->
-            <div class="flex-4 color-light alpha-4">
+            <div class="flex-4 color-light alpha-d4">
                 <div class="fsize-2d5 scale-1d4">
                     <i class="ico-btxstudio"></i>
                 </div>

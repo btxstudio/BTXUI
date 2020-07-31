@@ -9,9 +9,7 @@
         <p>其样式规范，基于并扩展 BTX·UI 全局样式语法，相当于 div 的作用，可以接收 styles 属性来应用框架封装样式体系。因此可以像添加标签类属性那样进行样式设置，web 和 app UI 得到统一。</p>
         <p>【exp】：</p>
         <p>class 全局样式：<code>&lt;div class="pright fsize-1d5"&gt;hello world&lt;/div&gt;</code></p>
-        <p>styles 组件样式，字符串格式：<code>&lt;b-view styles="pright fsize-1.5"&gt;hello world&lt;/b-view&gt;</code>
-        </p>
-        <p>styles 组件样式，数组格式：<code>&lt;b-view :styles="['pright', 'fsize-1.5']"&gt;hello world&lt;/b-view&gt;</code>
+        <p>styles 组件样式：<code>&lt;b-view styles="pright fsize-1.5"&gt;hello world&lt;/b-view&gt;</code>
         </p>
         <p></p>
         <p>文本相关样式：</p>
@@ -127,11 +125,6 @@
             <tr>
                 <td><code>hide</code></td>
                 <td>隐藏元素</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td><code>destroy</code></td>
-                <td>销毁元素</td>
                 <td>-</td>
             </tr>
             <tr>

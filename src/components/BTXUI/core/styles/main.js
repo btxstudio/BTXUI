@@ -9,9 +9,8 @@ export default {
     "pjustify": {textAlign: "justify"},
 
     //隐藏显示
-    "show": { visibility: "visible" },
-    "hide": { visibility: "hidden" },
-    "destroy": { display: "none" },
+    "show": { display: "block" },
+    "hide": { display: "none" },
 
     //布局
     "flex": {
@@ -198,7 +197,15 @@ export default {
 
             //不透明度
             "alpha": {
-                pro: "opacity"
+                pro: "opacity",
+                extra: {
+                    visibility: "visible"
+                },
+                escape: {
+                    "0": {
+                        visibility: "hidden"
+                    },
+                }
             },
 
             //文字颜色

@@ -12,9 +12,7 @@
         name: "b-text",
         /*
         * init-data{
-        *   [* styles: [
-        *       样式规范，基于并扩展 btx·UI 全局样式语法,...
-        *   ]],
+        *   [* styles: (参照：b-style 组件入参)],
         * }
         * */
     }

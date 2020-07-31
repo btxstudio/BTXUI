@@ -18,9 +18,7 @@
         *   [* maxlength: "字符数上限（限输入型表单元素）"],
         *   [* placeholder: "输入提示（限输入型表单元素）"],
         *   [* readonly: "只读"],
-        *   [* styles: [
-        *       样式规范，基于并扩展 btx·UI 全局样式语法,...
-        *   ]],
+        *   [* styles: (参照：b-style 组件入参)],
         *   [* rule: {
         *       type: "自定义正则验证，或预置正则验证（包括：required、uname、email、tel、url）",
         *       notic: "验证报错提示"

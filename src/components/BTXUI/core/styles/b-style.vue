@@ -17,8 +17,9 @@
         * */
         props: {
             styles: {
-                type: [Array, String],
-                required: false
+                type: String,
+                required: false,
+                default: ""
             },
             states: {
                 type: Object,
@@ -98,8 +99,7 @@
             $_parse_style(styles, state="origin"){
                 let style = {};
                 if(styles){
-                    if(typeof(styles) === "string") styles = styles.split(" ");
-                    styles.forEach(rule=>{
+                    styles.split(" ").forEach(rule=>{
                         if(typeof(rule) === "string"){
                             let _rule = rule.split("-"),
                                 r1 = _rule[0],
@@ -113,17 +113,21 @@
                             }else if(r3) {
 
                                 //样式三段赋值
-                                let rule_3 = preset_style.rule_3[r2];
-                                rule_3.pro.forEach(dir=>{
-                                    style[`${preset_style.rule_2[r1].pro}${dir}`] = this.$_set_style_val(r3, rule_3.unit, rule_3.tmp);
+                                let rule_3 = preset_style.rule_3[r2],
+                                    {unit, tmp, extra, escape} = rule_3;
+                                rule_3.pro.forEach(dir=>{ //方向及复合属性相关样式
+                                    style[`${preset_style.rule_2[r1].pro}${dir}`] = this.$_set_style_val(r3, unit, tmp);
+                                    style = {...style, ...this.$_set_extra_style(r3, extra, escape)};
                                 })
 
                             } else if(r2){
 
                                 //样式二段赋值
-                                let rule_2 = preset_style.rule_2[r1];
+                                let rule_2 = preset_style.rule_2[r1],
+                                    {unit, tmp, extra, escape} = rule_2;
                                 if(rule_2){
-                                    style[rule_2.pro] = this.$_set_style_val(r2, rule_2.unit, rule_2.tmp);
+                                    style[rule_2.pro] = this.$_set_style_val(r2, unit, tmp);
+                                    style = {...style, ...this.$_set_extra_style(r2, extra, escape)};
                                 }
 
                             }
@@ -150,6 +154,11 @@
                     }));
                 }
                 return isNaN(val)? val: `${val}${unit || ""}`;
+            },
+
+            //设置额外样式值
+            $_set_extra_style(val, extra={}, escape={}){
+                return {...extra, ...escape[val]};
             }
 
         },

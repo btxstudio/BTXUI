@@ -29,16 +29,14 @@
         },
         /*
         * init-data{
-        *   styles: [
-        *       样式规范，基于并扩展 btx·UI 全局样式语法,...
-        *   ],
+        *   [* styles: (参照：b-style 组件入参)],
         *   [* scroll: "溢出滚动。y：垂直溢出滚动（默认）；x：水平溢出滚动；hide：溢出隐藏],
         *   [* watch-pos: "滚动位置监听],
         * }
         * */
         props: {
             styles: {
-                type: [String, Array],
+                type: String,
                 required: true
             },
             scroll: {

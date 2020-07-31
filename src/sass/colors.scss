@@ -47,16 +47,19 @@ $neutral: rgba(130,130,130,.15);        //中性色
 
 //生成不透明度阶梯类
 @mixin auto_gen_opacity_class {
-    @for $i from 0 to 10{
-        .alpha-#{$i} {
+    .alpha-0 {
+        opacity: 0;
+        visibility: hidden;
+    }
+    @for $i from 1 to 10{
+        .alpha-d#{$i} {
             opacity: $i / 10;
-            @if $i == 0 {
-                visibility: hidden;
-            }
+            visibility: visible;
         }
-        .alpha-9d#{$i} {
-            opacity: .9 + $i / 100;
-        }
+    }
+    .alpha-1 {
+        opacity: 1;
+        visibility: visible;
     }
 }
 @include auto_gen_opacity_class();

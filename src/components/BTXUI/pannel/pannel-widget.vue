@@ -1,8 +1,8 @@
 <template>
-    <b-view :styles="`fixed max t-0 l-0 trans-fast flex-${pos} ${matte? '': 'bg-none'} z${matteZIndex} hide alpha-0`"
+    <b-view :styles="`fixed max t-0 l-0 trans-fast flex-${pos} ${matte? '': 'bg-none'} z${matteZIndex} alpha-0`"
             :states="{
                 show: {
-                    style: 'alpha-1 show',
+                    style: 'alpha-1',
                     state: visible
                 }
             }"
@@ -18,7 +18,7 @@
         <b-view :styles="`rel trans-fast scale-0 bg-use l-${offsetStyles.x} t-${offsetStyles.y}`"
             :states="{
                 show: {
-                    style: ['alpha-1', 'scale-1', matte? 'trans-delay-.4': ''],
+                    style: `alpha-1 scale-1 ${matte? 'trans-delay-.4': ''}`,
                     state: visible
                 }
             }">

@@ -11,20 +11,14 @@
         /*
         * init-data{
         *   img: "图片数据",
-        *   [* styles: [
-        *       样式规范，基于并扩展 btx·UI 全局样式语法,...
-        *   ]],
+        *   [* styles: (参照：b-style 组件入参)],
         * }
         * */
         props: {
             img: {
                 type: String,
                 required: false
-            },
-            styles: {
-                type: [Array, String],
-                required: false
-            },
+            }
         },
     }
 </script>

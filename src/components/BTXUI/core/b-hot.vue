@@ -15,9 +15,7 @@
         name: "b-hot",
         /*
         * init-data{
-        *   [* styles: [
-        *       样式规范，基于并扩展 btx·UI 全局样式语法,...
-        *   ]],
+        *   [* styles: (参照：b-style 组件入参)],
         *   [* link: "外部链接|组件路由"],
         *   [* hover: "鼠标悬停样式"],
         *   [* forbid: "鼠标点击事件及链接禁用，默认 false，不禁用"],
@@ -29,7 +27,7 @@
                 required: false
             },
             hover: {
-                type: [Array, String],
+                type: String,
                 required: false
             },
             forbid: {

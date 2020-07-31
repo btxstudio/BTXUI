@@ -15,7 +15,7 @@
     import BView from "@/components/BTXUI/core/b-view";
     import BList from "@/components/BTXUI/core/b-list";
     import PannelWidget from "@/components/BTXUI/pannel/pannel-widget";
-    import FormWidget from "@/components/BTXUI/form-widget/form-widget";
+    import FormWidget from "@/components/BTXUI/form/form-widget";
 
     export default {
         name: "form-pannel-widget",
@@ -57,9 +57,9 @@
                 required: false,
             },
             pannelStyles: {
-                type: [String, Array],
+                type: String,
                 required: false,
-                default: () => []
+                default: ""
             },
             pannelData: {
                 type: Object,
@@ -73,13 +73,7 @@
                 visible: this.pannelInfo.visible,
 
                 //面板初始化样式
-                pannel_styles: [
-                    "flex-column",
-                    "bg-color-light",
-                    "w-30",
-                    "round-sm",
-                    ...(Array.isArray(this.pannelStyles)? this.pannelStyles: this.pannelStyles.split(" ")),
-                ],
+                pannel_styles: `flex-column bg-color-light w-30 round-sm ${this.pannelStyles}`,
 
                 //面板初始化配置
                 pannel_prams: {

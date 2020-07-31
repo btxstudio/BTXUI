@@ -82,6 +82,10 @@
                 "text": "b-list 内容滚动"
             },
             {
+                "id": "grid",
+                "text": "b-grid 栅格容器"
+            },
+            {
                 "id": "webview",
                 "text": "b-webview 网页容器"
             }

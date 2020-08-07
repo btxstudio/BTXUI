@@ -10,7 +10,7 @@
                 </thead>
             </table>
         </div>
-        <div class="tl-w-table-body flex-grow auto-scroll">
+        <div class="tl-w-table-body grow-1 auto-scroll">
             <table>
                 <tbody>
                 <tr v-for="(row, tr_index) of dataList.rows" :key="tr_index">

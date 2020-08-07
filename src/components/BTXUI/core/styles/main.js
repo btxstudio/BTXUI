@@ -2,6 +2,15 @@ export default {
 
     //预置样式-----------------------------------------------------------------------------------
 
+    //重置初始字号及行高
+    "resize": {
+        fontSize: "1rem",
+        lineHeight: "1.5"
+    },
+
+    //文字加粗
+    "bold": {fontWeight: "bold"},
+
     //文本对齐
     "pright": {textAlign: "right"},
     "pleft": {textAlign: "left"},
@@ -75,10 +84,6 @@ export default {
         display: "flex",
         flexDirection: "column"
     },
-    "flex-grow": {
-        flexGrow: 1,
-        flexBasis: 0
-    },
     "grid": {
         display: "flex",
         flexWrap: "wrap",
@@ -108,6 +113,7 @@ export default {
     "z8": { zIndex: 8 },
     "z9": { zIndex: 9 },
     "z10": { zIndex: 10 },
+    "no-scroll": { overflow: "hidden" },
 
     //背景
     "bg-repeat": { backgroundRepeat: "repeat" },
@@ -221,6 +227,14 @@ export default {
             //描边颜色
             "line": {
                 pro: "borderColor"
+            },
+
+            //自生长比率
+            "grow": {
+                pro: "flexGrow",
+                extra: {
+                    flexBasis: 0
+                },
             },
 
             //内边距

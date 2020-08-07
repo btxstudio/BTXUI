@@ -2,7 +2,7 @@
     <b-view>
         <b-view styles="flex-column pad-b-1">
             <b-view styles="bg-color-light round-lg flex">
-                <b-input styles="h-3 pad-l-1.5 flex-grow" type="text"
+                <b-input styles="h-3 pad-l-1.5 grow-1" type="text"
                        @blur.prevent="$_debug_webview"
                        v-model="tel"
                        maxlength="11"
@@ -21,7 +21,7 @@
         </b-view>
         <b-view styles="flex-column">
             <b-view styles="bg-color-light round-lg flex">
-                <b-input styles="h-3 pad-l-1.5 flex-grow" type="text"
+                <b-input styles="h-3 pad-l-1.5 grow-1" type="text"
                        @blur.prevent="$_debug_webview"
                        v-model="check_code"
                        maxlength="4"

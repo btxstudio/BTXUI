@@ -1,13 +1,6 @@
 <template>
     <article>
-        <section>
-            <h5><code>pannel-widget</code></h5>
-            <p>该组件用于自定义弹窗交互操作。</p>
-            <p>组件依赖：无</p>
-            <p>组件初始化入参：</p>
-            <hr>
-            <p></p>
-        </section>
+        <header-info v-bind="header_info" />
 
         <section>
             <h5>基础自定义弹窗使用</h5>
@@ -52,19 +45,46 @@
                     <span class="color-blue">vue VS react</span>
                 </div>
             </pannel-widget>
+            <hr>
+            <p></p>
+        </section>
+
+        <section>
+            <h5>全屏弹窗</h5>
+            <p>可以通过 <code>max-enable</code> 属性来启用满屏弹窗，<b>width</b> 字段设置面板宽度样式数值；<b>height</b> 字段设置面板高度样式数值；<b>bg</b> 字段设置面板背景色样式色值。通常启用满屏弹窗后无需再对插槽内容进行尺寸设置。</p>
+            <span class="color-sub flex">
+                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_toggle_pannel4">显示全屏弹窗</a>
+            </span>
+            <pannel-widget v-model="dataList_4.visible" v-bind="dataList_4.props">
+                <div class="flex-5 fsize-3 max">
+                    <span class="color-blue">Full Screen !</span>
+                </div>
+            </pannel-widget>
+            <hr>
+            <p></p>
         </section>
 
     </article>
 </template>
 
 <script>
+    import HeaderInfo from "@/components/demo/common/header-info"
     import PannelWidget from "@/components/BTXUI/pannel/pannel-widget"
 
     export default {
         name: "pannel_widget_demo",
-        components: { PannelWidget },
+        components: {
+            HeaderInfo,
+            PannelWidget
+        },
         data(){
             return {
+
+                //初始化入参
+                header_info: {
+                    name: PannelWidget.name,
+                    ...PannelWidget.introduce,
+                },
 
                 //基础渲染数据1
                 dataList_1: {
@@ -97,6 +117,19 @@
                     visible: false
                 },
 
+                //基础渲染数据4
+                dataList_4: {
+                    props: {
+                        closeBtn: true,
+                        maxEnable: {
+                            width: "100%",
+                            height: "100%",
+                            bg: "rgba(255,255,255,.94)",
+                        }
+                    },
+                    visible: false
+                },
+
             }
         },
         methods: {
@@ -114,6 +147,11 @@
             //切换弹窗3
             $_toggle_pannel3(){
                 this.dataList_3.visible = !this.dataList_3.visible;
+            },
+
+            //切换弹窗4
+            $_toggle_pannel4(){
+                this.dataList_4.visible = !this.dataList_4.visible;
             },
 
         }

@@ -55,7 +55,7 @@
     import BGrid from "@/components/BTXUI/core/b-grid"
 
     export default {
-        name: "basic_components_demo",
+        name: "websit_demo",
         components: {
             BView,
             BText,

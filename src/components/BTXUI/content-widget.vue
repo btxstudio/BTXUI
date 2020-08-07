@@ -5,7 +5,7 @@
         <tooltip-widget ref="tooltip" class="data-center-pro" line-enable :offset="{x:40, y:-110}" />
         
         <b-view styles="mrg-b-1" v-if="title">{{title}}</b-view>
-        <b-view styles="flex-grow">
+        <b-view styles="grow-1">
             <b-view styles="round-sm pad-r-d5" @mousemove="$_show_tooltip">
 
                 <!--树形目录组件-->

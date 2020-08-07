@@ -8,7 +8,7 @@
                 @transitionend="$_flip_over"
                 :style="'width:' + slider_bar_width + 'px; height:' + view.height + '; transform:translateX(' + touch_point.x + 'px); transition-duration:' + flip_speed">
                 <li class="flex-column max" :ref="'$' + page.id" v-for="page of slider_pages" :state="page.state">
-                    <div class="flex-grow auto-scroll">
+                    <div class="grow-1 auto-scroll">
                         <slot :name="page.id"></slot>
                     </div>
                 </li>

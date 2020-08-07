@@ -28,7 +28,7 @@
                              @on_select="$_flip_item" />
          -->
 
-        <div class="flex-grow flex-5">
+        <div class="grow-1 flex-5">
             <div class="abs l-4rem">
                 <zk2861-btn-widget dir="left" :text="items_title[0]" @on_click="$_flip('prev')" />
             </div>

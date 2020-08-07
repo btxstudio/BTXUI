@@ -8,6 +8,39 @@
     }
 }
 
+//生成不同尺寸宽度及高度
+@mixin auto_size($suffix:""){
+    .w-0#{$suffix} {
+        width: 0;
+    }
+    .h-0#{$suffix} {
+        height: 0;
+    }
+    .w-d5#{$suffix} {
+        width: .5rem;
+    }
+    .h-d5#{$suffix} {
+        height: .5rem;
+    }
+    @for $i from 1 to 11{
+        .w-#{$i}#{$suffix} {
+            width: #{$i}rem;
+        }
+        .h-#{$i}#{$suffix} {
+            height: #{$i}rem;
+        }
+    }
+    $vals: (15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
+    @each $val in $vals{
+        .w-#{$val}#{$suffix} {
+            width: #{$val}rem;
+        }
+        .h-#{$val}#{$suffix} {
+            height: #{$val}rem;
+        }
+    }
+}
+
 //生成内、外边距类
 @mixin set_space($side, $val:0, $dir:all){
     @if $dir == all{

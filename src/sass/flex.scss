@@ -4,11 +4,6 @@
     align-items: stretch;
 }
 
-.flex-grow{
-    flex-grow: 1;
-    flex-basis: 0;
-}
-
 .flex-column{
     @extend .flex; 
     flex-direction: column;

@@ -25,18 +25,18 @@
 
         </div>
 
-        <div class="flex flex-grow">
+        <div class="flex grow-1">
 
             <!-- 左侧目录 -->
             <div class="flex-column w-30 bg-color-lgray">
-                <div class="flex-grow auto-scroll pad-2d5 color-main fsize-1d2">
+                <div class="grow-1 auto-scroll pad-2d5 color-main fsize-1d2">
                     <content-widget v-if="content_data" :data-tree="content_data" @on_select="$_nav_select" />  
                 </div>
             </div>
             
             <!-- 右侧介绍 -->
-            <div class="flex-grow flex-column">
-                <div class="flex-grow auto-scroll fsize-1d2 pad-2d5">
+            <div class="grow-1 flex-column">
+                <div class="grow-1 auto-scroll fsize-1d2 pad-2d5">
                     <router-view class="container pad-b-7" md />
                 </div>
             </div>

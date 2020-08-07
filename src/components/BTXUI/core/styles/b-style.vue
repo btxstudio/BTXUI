@@ -69,13 +69,18 @@
 
             //追加样式
             append_style(styles, state){
-                this.$_parse_style(styles, state);
+                styles && this.$_parse_style(styles, state);
             },
 
             //恢复样式
             reset_style(){
                 this.cur_state = [];
                 this.computed_style = this.style_stack["origin"];
+            },
+
+            //判断是否具备某项样式状态
+            has_state(state){
+                return this.style_stack[state]? true: false;
             },
 
             //初始化样式状态

@@ -31,7 +31,7 @@
                 </b-view>
 
                 <!--表单元素区-->
-                <b-view styles="flex-grow bg-color-neutral round-sm pad-v-.3 pad-h-1"
+                <b-view styles="grow-1 bg-color-neutral round-sm pad-v-.3 pad-h-1"
                         :states="{
                         readonly: {
                             style: 'bg-color-none alpha-.8',

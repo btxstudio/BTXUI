@@ -36,7 +36,7 @@
                 <!--alert-->
                 <template v-if="pannel.mode === 'alert'">
                     <b-hot key="a" @on_click="$_close()"
-                        styles="bg-color-lgray color-dgray round-sm pad-1 flex-grow"
+                        styles="bg-color-lgray color-dgray round-sm pad-1 grow-1"
                         hover="bg-color-#ddd">
                         {{btn_cname[0]}}
                     </b-hot>
@@ -45,12 +45,12 @@
                 <!--confirm-->
                 <template v-else-if="pannel.mode === 'confirm'">
                     <b-hot key="b" @on_click="$_click('ok')"
-                           styles="bg-color-lgray color-dgray round-sm round-l pad-1 flex-grow mrg-r-1px"
+                           styles="bg-color-lgray color-dgray round-sm round-l pad-1 grow-1 mrg-r-1px"
                            hover="bg-color-#ddd">
                         {{btn_cname[0]}}
                     </b-hot>
                     <b-hot @on_click="$_click('cancel')"
-                           styles="bg-color-lgray color-dgray round-sm round-r pad-1 flex-grow"
+                           styles="bg-color-lgray color-dgray round-sm round-r pad-1 grow-1"
                            hover="bg-color-#ddd">
                         {{btn_cname[1]}}
                     </b-hot>
@@ -91,7 +91,8 @@
                 //pannel-widget 入参
                 pannel_data: {
                     matte: true,
-                    matteColor: this.matteColor
+                    matteColor: this.matteColor,
+                    matteZIndex: 10
                 },
 
                 //弹窗显示状态

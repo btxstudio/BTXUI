@@ -16,6 +16,9 @@
     //强制隐藏与显示
     @include auto_gen_display_class($suffix);
 
+    //生成不同尺寸宽度及高度
+    @include auto_size($suffix);
+
     //内、外边距
     @include auto_gen_space_class($suffix);
 
@@ -24,6 +27,9 @@
 
     //栅格布局
     @include auto_gen_grid_class($suffix);
+
+    //生成自生长元素类
+    @include auto_gen_grow_class($suffix);
 
     //放缩比率
     @include auto_gen_scale_class($suffix);

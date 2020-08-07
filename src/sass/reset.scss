@@ -8,6 +8,7 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); //高亮颜色透明
     -webkit-overflow-scrolling: touch;
     background-repeat: no-repeat;
+    background-origin: border-box;
 }
 
 html {
@@ -79,6 +80,11 @@ button{
     background-color: transparent;
     outline: none;
     cursor: pointer;
+}
+
+pre {
+    line-height: 1.5;
+    font-size: 1.14rem;
 }
 
 iframe {

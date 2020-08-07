@@ -11,11 +11,11 @@
         <!--遮罩背景-->
         <b-hot @on_click="matteClose === 'click' && $_close()"
                @on_dblclick="matteClose === 'dblclick' && $_close()"
-               :forbid="matteClose? false: true">
-            <b-view :styles="`abs max t-0 l-0 bg-color-${matteColor}`"/>
+               :forbid="matteClose? false: true"
+               :styles="`abs max t-0 l-0 bg-color-${matteColor}`">
         </b-hot>
 
-        <b-view :styles="`rel trans-fast scale-0 bg-use l-${offsetStyles.x} t-${offsetStyles.y}`"
+        <b-view :styles="`rel trans-fast scale-0 bg-use ${max_pannel_styles} l-${offsetStyles.x} t-${offsetStyles.y}`"
             :states="{
                 show: {
                     style: `alpha-1 scale-1 ${matte? 'trans-delay-.4': ''}`,
@@ -39,28 +39,37 @@
     import BHot from "@/components/BTXUI/core/b-hot";
     import BIcon from "@/components/BTXUI/core/b-icon";
 
+    const desc = ["该组件用于自定义弹窗交互操作。"],
+        extend = [],
+        dependent = ["b-icon", "b-hot", "b-view"],
+        api = null,
+        init_data = `{
+        visible: "（model）面板显示状态",
+        /* pos: "面板定位（基于视口九宫格定位: 1-9）" */,
+        /* offsetStyles: {
+            x: "水平方向位移样式，默认单位 rem",
+            y: "垂直方向位移样式，默认单位 rem",
+        } */,
+        /* matte: "是否启用遮罩，默认不启用" */,
+        /* matteColor: "遮罩颜色" */,
+        /* matteZIndex: "遮罩 z 轴层级，默认为 9" */,
+        /* closeBtn: "是否启用关闭按钮" */,
+        /* matteClose: "遮罩自身点击关闭面板：click 单击、dblclick 双击" */,
+        /* maxEnable: "{
+            width: "满屏弹窗宽度样式数值",
+            height: "满屏弹窗高度样式数值",
+            bg: "弹窗背景色样式色值",
+        }" */,
+    }`;
+
     export default {
         name: "pannel-widget",
+        introduce: { desc, extend, dependent, api, init_data },
         components: {
             BView,
             BHot,
             BIcon
         },
-        /*
-        * init-data{
-        *   visible（model）: "面板显示状态",
-        *   [* pos: "面板定位（基于视口九宫格定位: 1-9）"],
-        *   [* offset-styles: {
-        *       x: "水平方向位移样式，默认单位 rem",
-        *       y: "垂直方向位移样式，默认单位 rem",
-        *   }],
-        *   [* matte: "是否启用遮罩，默认不启用"],
-        *   [* matte-color: "遮罩颜色"],
-        *   [* matte-z-index: "遮罩 z 轴层级，默认为 9"],
-        *   [* close-btn: "是否启用关闭按钮"],
-        *   [* matte-close: "遮罩自身点击关闭面板：click 单击、dblclick 双击"],
-        * }
-        * */
         model:{
             prop: "visible",
             event: "on_click"
@@ -102,6 +111,18 @@
             matteClose: {
                 type: String,
                 required: false,
+            },
+            maxEnable: {
+                type: Object,
+                required: false
+            }
+        },
+        data(){
+            return {
+
+                //满屏弹窗样式
+                max_pannel_styles: this.maxEnable? `w-${this.maxEnable.width} h-${this.maxEnable.height} bg-color-${this.maxEnable.bg}`: ''
+
             }
         },
         methods: {

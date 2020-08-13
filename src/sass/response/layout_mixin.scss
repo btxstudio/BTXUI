@@ -10,6 +10,12 @@
 
 //生成不同尺寸宽度及高度
 @mixin auto_size($suffix:""){
+    .w-auto#{$suffix} {
+        width: auto;
+    }
+    .h-auto#{$suffix} {
+        height: auto;
+    }
     .w-0#{$suffix} {
         width: 0;
     }
@@ -109,15 +115,15 @@
     @for $i from 0 to 12{
         @each $dir in $dirs{
             @if $i == 0{
-                .#{nth($dir, 1)}-#{$i} {
+                .#{nth($dir, 1)}-#{$i}#{$suffix} {
                     #{nth($dir, 2)}: #{$i};
                 }
             }@else {
                 @each $unit in $units{
-                    .#{nth($dir, 1)}-#{$i}#{$unit} { //正数
+                    .#{nth($dir, 1)}-#{$i}#{$unit}#{$suffix} { //正数
                         #{nth($dir, 2)}: #{$i}#{$unit};
                     }
-                    .#{nth($dir, 1)}-f#{$i}#{$unit} { //负数
+                    .#{nth($dir, 1)}-f#{$i}#{$unit}#{$suffix} { //负数
                         #{nth($dir, 2)}: -#{$i}#{$unit};
                     }
                 }

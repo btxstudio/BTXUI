@@ -32,7 +32,7 @@
 </template>
 
 <script>
-    import ContentNodeWidget from "@/components/BTXUI/content-node-widget"
+    import ContentNodeWidget from "@/components/BTXUI/content/content-node-widget"
     import Zk2861ContentNodeRadioWidget from "@/components/pro/zk2861/zk2861-content-node-radio-widget"
 
     export default {

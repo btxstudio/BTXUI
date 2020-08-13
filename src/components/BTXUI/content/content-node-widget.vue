@@ -58,11 +58,11 @@
 </template>
 
 <script>
-    import contentNodeWidget from "@/components/BTXUI/content-node-widget";
     import BView from "@/components/BTXUI/core/b-view";
     import BText from "@/components/BTXUI/core/b-text";
     import BIcon from "@/components/BTXUI/core/b-icon";
     import BHot from "@/components/BTXUI/core/b-hot";
+    import contentNodeWidget from "./content-node-widget";
 
     export default {
         name: "content-node-widget",

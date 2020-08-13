@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    import ContentNodeWidget from "@/components/BTXUI/content-node-widget"
+    import ContentNodeWidget from "@/components/BTXUI/content/content-node-widget"
     import Zk2861ContentNodeWidget from "@/components/pro/zk2861/zk2861-content-node-widget"
 
     export default {

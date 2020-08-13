@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import ContentWidget from "@/components/BTXUI/content-widget"
+import ContentWidget from "@/components/BTXUI/content/content-widget"
 import ConfirmWidget from "@/components/BTXUI/confirm/confirm-widget"
 
 export default {

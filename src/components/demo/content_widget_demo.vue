@@ -71,7 +71,7 @@
 </template>
 
 <script>
-    import ContentWidget from "@/components/BTXUI/content-widget"
+    import ContentWidget from "@/components/BTXUI/content/content-widget"
 
     export default {
         name: "content_widget_demo",

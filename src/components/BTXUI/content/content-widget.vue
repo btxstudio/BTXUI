@@ -22,9 +22,9 @@
 </template>
 
 <script>
-    import ContentNodeWidget from "@/components/BTXUI/content-node-widget";
-    import TooltipWidget from "@/components/BTXUI/tooltip-widget";
     import BView from "@/components/BTXUI/core/b-view";
+    import TooltipWidget from "@/components/BTXUI/tooltip-widget";
+    import ContentNodeWidget from "./content-node-widget";
 
     export default {
         name: "content-widget",

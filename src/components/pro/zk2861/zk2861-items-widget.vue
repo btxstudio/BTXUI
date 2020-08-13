@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import ContentWidget from "@/components/BTXUI/content-widget"
+    import ContentWidget from "@/components/BTXUI/content/content-widget"
     import Zk2861ContentNodeRadioWidget from "@/components/pro/zk2861/zk2861-content-node-radio-widget"
 
     export default {

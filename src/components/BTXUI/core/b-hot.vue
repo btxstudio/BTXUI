@@ -105,8 +105,8 @@
             //初始化内链控制器
             $_init_chapter_link(){
                 if(this.link && typeof(this.link) === "object"){
-                    let chapter_link_data = this.link.chapter_link_data || {};
-                    return new ChapterLink(...chapter_link_data);
+                    let {ani_speed, offset, callback} = this.link.chapter_link_data;
+                    return new ChapterLink(ani_speed, offset, callback);
                 }else {
                     return null;
                 }

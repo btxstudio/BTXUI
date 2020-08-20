@@ -2,7 +2,7 @@
     <article>
         <header-info v-bind="header_info" />
 
-        <section>
+        <section id="sec_1">
             <h5>基础按钮</h5>
             <p>可以设计为按钮样式，并通过 <code>@on_click</code> 事件绑定点击回调，此外可以通过 <code>hover</code> 属性设置鼠标悬停样式。</p>
             <p>
@@ -42,6 +42,23 @@
             <p></p>
         </section>
 
+        <section>
+            <h5>内链跳转定位</h5>
+            <p>通过 <code>link</code> 属性可配置内部链接跳转。其中 <b>chapter_id</b> 字段决定跳转元素位置。<b>chapter_link_data</b> 字段则包含了：ani_speed：平移动画缓动速率、offset：位移偏移、callback：滚动完成回调函数（直接硬跳转无效）。</p>
+            <p class="flex">
+                <b-hot styles="flex-5 h-3 w-14 bg-color-lgray round-sm"
+                       hover="bg-color-blue color-light"
+                       :link="data_4.no_1">
+                    滑至 "基础按钮"
+                </b-hot>
+                <b-hot styles="flex-5 h-3 w-14 bg-color-lgray round-sm mrg-l-1"
+                       hover="bg-color-blue color-light"
+                       :link="data_4.no_2">
+                    跳至 "基础按钮"
+                </b-hot>
+            </p>
+        </section>
+
     </article>
 </template>
 
@@ -69,6 +86,26 @@
 
                 //按钮数据3
                 data_3: "鼠标移出",
+
+                //按钮数据4
+                data_4: {
+                    no_1: {
+                        chapter_id: "sec_1",
+                        chapter_link_data: {
+                            ani_speed: .3,
+                            offset: -40,
+                            callback: ()=>{
+                                this.$confirm.toast("已滚动至 \"基础按钮\" 位置")
+                            }
+                        }
+                    },
+                    no_2: {
+                        chapter_id: "sec_1",
+                        chapter_link_data: {
+                            ani_speed: 0,
+                        }
+                    },
+                },
 
             }
         },

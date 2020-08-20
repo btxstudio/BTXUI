@@ -10,11 +10,12 @@
 </template>
 
 <script>
-    import bStyle from "./styles/b-style";
+    import ChapterLink from "./lib/ChapterLink"
+    import bStyle from "./styles/b-style"
 
-    const desc = ["该组件用于实现热点交互操作。"],
+    let desc = ["该组件用于实现热点交互操作。"],
         extend = ["b-style"],
-        dependent = [],
+        dependent = ["ChapterLink"],
         api = {
             event: [
                 {
@@ -41,7 +42,10 @@
         },
         init_data = `{
         /* styles: "(参照：b-style 组件入参)" */,
-        /* link: "外部链接|组件路由" */,
+        /* link: "外部链接 | 组件路由 | {
+            chapter_id: "内部链接元素 id",
+            chapter_link_data: "(参照：ChapterLink 类构造函数)"
+        }" */,
         /* hover: "悬停样式" */,
         /* forbid: "鼠标点击事件及链接禁用，默认 false，不禁用" */,
     }`;
@@ -52,7 +56,7 @@
         introduce: { desc, extend, dependent, api, init_data },
         props: {
             link: {
-                type: String,
+                type: [String, Object],
                 required: false
             },
             hover: {
@@ -68,7 +72,10 @@
             return {
 
                 //链接开启方式
-                target: null
+                target: null,
+
+                //内链控制器
+                chapter_link: this.$_init_chapter_link()
 
             }
         },
@@ -79,20 +86,36 @@
                 if(this.forbid) return false; //禁用效果
                 let link = this.link;
                 if(!link) return "javascript:;"
-                if(link.search("http") === 0){
-                    this.target = "_blank";
-                    return link;
-                }else{
-                    return `#${link}`;
+                if(typeof(link) === "string"){
+                    if(link.search("http") === 0){ //外部链接
+                        this.target = "_blank";
+                        return link;
+                    }else if(link.search("/") === 0){ //组件路由
+                        return `#${link}`;
+                    }
+                }
+                else{ //内部链接
+                    return `#${this.$route.path}`;
                 }
             },
 
         },
         methods: {
 
+            //初始化内链控制器
+            $_init_chapter_link(){
+                if(this.link && typeof(this.link) === "object"){
+                    let chapter_link_data = this.link.chapter_link_data || {};
+                    return new ChapterLink(...chapter_link_data);
+                }else {
+                    return null;
+                }
+            },
+
             //执行点击
             $_click(){
                 !this.forbid && this.$emit("on_click");
+                this.chapter_link && this.chapter_link.$_go_chapter(this.link.chapter_id); //内部链接
             },
 
             //执行双击
@@ -110,7 +133,7 @@
             $_leave(){
                 this.cur_state[0] === "hover" && this.reset_style(); //仅限 hover 状态下
                 this.$emit("on_leave");
-            },
+            }
 
         },
         mounted(){

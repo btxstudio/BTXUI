@@ -266,6 +266,11 @@
                     <td>-</td>
                 </tr>
                 <tr>
+                    <td><code>max-screen</code></td>
+                    <td>全屏且溢出隐藏</td>
+                    <td>-</td>
+                </tr>
+                <tr>
                     <td><code>h-*</code></td>
                     <td>设置高度</td>
                     <td>任意合法值，缺省单位 rem</td>

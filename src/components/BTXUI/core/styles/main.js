@@ -27,6 +27,12 @@ export default {
         justifyContent: "flex-start",
         alignItems: "stretch",
     },
+    "flex-column": {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "stretch",
+    },
     "flex-1": {
         display: "flex",
         justifyContent: "flex-start",
@@ -80,10 +86,6 @@ export default {
         display: "flex",
         justifyContent: "space-around"
     },
-    "flex-column": {
-        display: "flex",
-        flexDirection: "column"
-    },
     "grid": {
         display: "flex",
         flexWrap: "wrap",
@@ -97,6 +99,13 @@ export default {
     "max": {
         height: "100%",
         width: "100%",
+    },
+    "max-screen": {
+        height: "100%",
+        width: "100%",
+        position: "fixed",
+        left: 0,
+        top: 0
     },
     "fixed": { position: "fixed" },
     "rel": { position: "relative" },

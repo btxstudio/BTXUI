@@ -1,10 +1,10 @@
 class ChapterLink {
-    constructor(ani_speed=.1, offset=0, callback=null){
-        this.ani_speed = ani_speed;         //平移动画缓动速率：0 - 1，默认：0.1，0 为硬切换"
-        this.offset = offset;               //位移偏移
-        this.cur_top = -1;                  //当前滚动位置
-        this.t = null;                      //滚动计时器
-        this.callback = callback;           //滚动完成回调函数
+    constructor(ani_speed=.2, offset=0, callback=null){
+        this.ani_speed = ani_speed;             //平移动画缓动速率：0 - 1，默认：0.2，0 为硬切换"
+        this.offset = offset;                   //位移偏移
+        this.callback = callback;               //滚动完成回调函数
+        this.mousewheel = window.onmousewheel;  //鼠标滚轮事件
+        this.touchstart = window.ontouchstart;  //手势触控事件
     }
 
     //跳转指定 dom 章节
@@ -15,32 +15,27 @@ class ChapterLink {
 
     //跳转指定位置
     $_go_top($box, top){
+        top = Math.min(Math.max(0, top), $box.scrollHeight - $box.offsetHeight); //校正滚动范围
         if($box.nodeName === "BODY") $box = document.documentElement;
         if(this.ani_speed > 0){ //平滑跳转
-            this.t = setInterval(()=>{
-                let offset = (top - $box.scrollTop) * this.ani_speed;
-                if(offset === 0){
-                    this.$_scroll_over();
-                }else{
-                    if(Math.abs(offset) < 1){
-                        offset = 1 * offset < 0? -1: 1;
-                    }
-                    $box.scrollTop += offset;
-                    if(this.cur_top === $box.scrollTop){
-                        this.$_scroll_over();
-                    }else{
-                        this.cur_top = $box.scrollTop;
-                    }
-                }
+            let offset;
+            this.$_stop_scroll();
+            window.onmousewheel = window.ontouchstart = this.$_stop_scroll;
+            ChapterLink.t = setInterval(()=>{
+                offset = (top - $box.scrollTop) * this.ani_speed;
+                offset === 0 && this.$_scroll_over();
+                if(Math.abs(offset) < 1) offset = offset < 0? -1: 1;
+                $box.scrollTop += offset;
             }, 17);
         }else { //硬跳转
-            $box.scrollTop = this.cur_top = top;
+            $box.scrollTop = top;
         }
     }
 
     //终止滚动
     $_stop_scroll(){
-        clearInterval(this.t);
+        clearInterval(ChapterLink.t);
+        window.onmousewheel = window.ontouchstart = this.mousewheel;
     }
 
     //滚动停止
@@ -49,5 +44,7 @@ class ChapterLink {
         this.callback && this.callback();
     }
 }
+
+ChapterLink.t = null; //滚动计时器
 
 export default ChapterLink

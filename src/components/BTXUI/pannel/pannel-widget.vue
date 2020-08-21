@@ -125,6 +125,16 @@
 
             }
         },
+        watch: {
+
+            //含遮罩或全屏状态时禁止 body 滚动
+            visible(state){
+                if(this.matte || this.maxEnable){
+                    document.body.style.overflow = state === true? "hidden": "auto";
+                }
+            }
+
+        },
         methods: {
 
             //关闭面板

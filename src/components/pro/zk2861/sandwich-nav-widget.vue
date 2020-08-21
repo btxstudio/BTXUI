@@ -2,7 +2,7 @@
     <b-view>
         <b-view :styles="`fixed max-w flex-4 pad-h-2 h-${barHeight} z9 color-${color.text} bg-color-${color.bg}`">
             <b-view styles="grow-1">
-                <b-img styles="flex" :img="logo" />
+                <b-img styles="flex h-1.4" :img="logo" />
             </b-view>
             <b-hot styles="fsize-1.5" @on_click="$_show">
                 <b-icon icon="list" />
@@ -21,7 +21,7 @@
                     <b-icon icon="close" />
                 </b-hot>
                 <b-view styles="mrg-b-4">
-                    <b-img :img="logo" />
+                    <b-img :img="logo" styles="h-1.4" />
                 </b-view>
                 <b-hot v-for="(item,index) of navs" :key="index"
                        :link="item.link"

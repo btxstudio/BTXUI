@@ -8,11 +8,53 @@
             <p>组件初始化入参：</p>
             <pre v-highlightjs><code class="javascript" v-html="init_data"></code></pre>
             <hr>
-            <p></p>
         </div>
 
         <div v-if="api">
             <h5>组件 API：</h5>
+
+            <!--属性-->
+            <table v-if="api.props" class="table">
+                <thead>
+                <tr>
+                    <th>属性</th>
+                    <th>意义</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="prop of api.props">
+                    <td>
+                        <code>{{prop.name}}</code>
+                    </td>
+                    <td>{{prop.ef}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--方法-->
+            <table v-if="api.methods" class="table">
+                <thead>
+                <tr>
+                    <th>方法</th>
+                    <th>效果</th>
+                    <th>参数</th>
+                    <th>返回值</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="method of api.methods">
+                    <td>
+                        <code>{{method.name}}</code>
+                    </td>
+                    <td>{{method.ef}}</td>
+                    <td>{{method.params}}</td>
+                    <td>
+                        <code v-if="method.return !== '-'">{{method.return}}</code>
+                        <span v-else>-</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
             <!--事件-->
             <table v-if="api.event" class="table">
@@ -29,13 +71,16 @@
                         <code>{{event.name}}</code>
                     </td>
                     <td>{{event.ef}}</td>
-                    <td>{{event.params}}</td>
+                    <td>
+                        <code v-if="event.name !== '-'">{{event.params}}</code>
+                        <span v-else>-</span>
+                    </td>
                 </tr>
                 </tbody>
             </table>
 
-            <p></p>
         </div>
+        <p></p>
     </section>
 </template>
 

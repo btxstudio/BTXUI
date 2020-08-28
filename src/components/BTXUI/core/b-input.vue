@@ -1,6 +1,6 @@
 <template>
     <input :style="computed_style" :type="type" :name="name"
-           @change="check"
+           @change="$_check"
            v-model="value"
            autocomplete="off" />
 </template>
@@ -8,23 +8,50 @@
 <script>
     import bStyle from "./styles/b-style";
 
+    let desc = ["该组件用于实现输入型表单元素。"],
+        extend = ["b-style"],
+        dependent = [],
+        api = {
+            methods: [
+                {
+                    name: "check",
+                    ef: "表单验证",
+                    params: "-",
+                    return: "{name:'表单项属性', notic:'报错提示', pass:'是否通过'}"
+                },
+                {
+                    name: "reset",
+                    ef: "重置表单",
+                    params: "-",
+                    return: "-"
+                }
+            ],
+            event: [
+                {
+                    name: "on_check",
+                    ef: "表单输入变化",
+                    params: "{name:'表单项属性', notic:'报错提示', pass:'是否通过'}",
+                }
+            ]
+        },
+        init_data = `{
+        type: "表单元素类型",
+        name: "表单元素数据键名",
+        /* styles: "(参照：b-style 组件入参)" */,
+        /* inpVal: "(model) 表单输入内容" */,
+        /* maxlength: "字符数上限（限输入型表单元素）" */,
+        /* placeholder: "输入提示（限输入型表单元素）" */,
+        /* readonly: "只读" */,
+        /* rule: {
+            type: "自定义正则验证，或预置正则验证（包括：required、uname、email、tel、url）",
+            notic: "验证报错提示"
+        } */
+    }`;
+
     export default {
         extends: bStyle,
         name: "b-input",
-        /*
-        * init-data{
-        *   [* type: "表单元素类型"],
-        *   [* name: "表单元素数据键名"],
-        *   [* maxlength: "字符数上限（限输入型表单元素）"],
-        *   [* placeholder: "输入提示（限输入型表单元素）"],
-        *   [* readonly: "只读"],
-        *   [* styles: (参照：b-style 组件入参)],
-        *   [* rule: {
-        *       type: "自定义正则验证，或预置正则验证（包括：required、uname、email、tel、url）",
-        *       notic: "验证报错提示"
-        *   }],
-        * }
-        * */
+        introduce: { desc, extend, dependent, api, init_data },
         model: {
             prop: "inpVal",
             event: "on_input"
@@ -98,7 +125,7 @@
         },
         methods: {
 
-            //表单验证
+            //执行验证
             check(){
                 let rule = this.rule;
                 if(rule){
@@ -106,12 +133,17 @@
                         regexp = pre_rule? pre_rule.regexp: rule.type,
                         pre_notic = pre_rule? pre_rule.notic: "输入格式有误!",
                         val = this.inpVal;
-                    this.$emit("on_check", {
+                    return {
                         name: this.name,
                         notic: rule.notic || pre_notic,
                         pass: regexp.test(val)
-                    });
+                    };
                 }
+            },
+
+            //输入验证
+            $_check(){
+                this.$emit("on_check", this.check());
             },
 
             //重置表单

@@ -128,9 +128,9 @@
                             } else if(r2){
 
                                 //样式二段赋值
-                                let rule_2 = preset_style.rule_2[r1],
-                                    {unit, tmp, extra, escape} = rule_2;
+                                let rule_2 = preset_style.rule_2[r1];
                                 if(rule_2){
+                                    let {unit, tmp, extra, escape} = rule_2;
                                     style[rule_2.pro] = this.$_set_style_val(r2, unit, tmp);
                                     style = {...style, ...this.$_set_extra_style(r2, extra, escape)};
                                 }
@@ -150,8 +150,8 @@
             //设置样式值
             $_set_style_val(val, unit, tmp){
                 val = theme[val] || val; //使用预置主题色
-                val = val.split("|").map((v)=>{ //逗号解析空格
-                    return v[0] === "f"? v.replace("f", "-"): v; //使用负数值
+                val = val.split("|").map((v)=>{ //竖号解析空格
+                    return v[0] === "f" || v.search(/\(f/) > -1 ? v.replace("f", "-"): v; //使用负数值，exp：l-f1、transform-translateX(f10)
                 }).join(" ");
                 if(tmp){ //使用 tmp 模板
                     val = tmp.replace("%{}%", val.split(",").map((color)=>{ //渐变色使用预置主题色

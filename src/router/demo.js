@@ -1,6 +1,7 @@
 //核心组件
 import basic_websit_demo from '@/components/demo/basic/websit_demo'
 import b_hot_demo from '@/components/demo/basic/b_hot_demo'
+import b_input_demo from '@/components/demo/basic/b_input_demo'
 
 //应用组件
 import content_widget_demo from '@/components/demo/content_widget_demo'
@@ -12,6 +13,8 @@ import form_widget_demo from '@/components/demo/form_widget_demo'
 import btn_widget_demo from '@/components/demo/btn_widget_demo'
 import confirm_widget_demo from '@/components/demo/confirm_widget_demo'
 import table_widget_demo from '@/components/demo/table_widget_demo'
+import select_widget_demo from '@/components/demo/select_widget_demo'
+import slider_widget_demo from '@/components/demo/slider_widget_demo'
 
 //项目测试
 import zk2861_demo1 from '@/components/pro/zk2861/demo1'
@@ -40,6 +43,10 @@ export default [
     {
         path: '/b_hot_demo',
         component: b_hot_demo
+    },
+    {
+        path: '/b_input_demo',
+        component: b_input_demo
     },
 
     //功能组件
@@ -78,5 +85,13 @@ export default [
     {
         path: '/table_widget_demo',
         component: table_widget_demo
+    },
+    {
+        path: '/select_widget_demo',
+        component: select_widget_demo
+    },
+    {
+        path: '/slider_widget_demo',
+        component: slider_widget_demo
     },
 ]

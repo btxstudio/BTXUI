@@ -77,7 +77,6 @@ hr {
 }
 
 .ellipsis {                         //文本省略
-    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

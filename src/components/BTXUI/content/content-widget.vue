@@ -23,7 +23,7 @@
 
 <script>
     import BView from "@/components/BTXUI/core/b-view";
-    import TooltipWidget from "@/components/BTXUI/tooltip-widget";
+    import TooltipWidget from "@/components/BTXUI/tooltip/tooltip-widget";
     import ContentNodeWidget from "./content-node-widget";
 
     export default {

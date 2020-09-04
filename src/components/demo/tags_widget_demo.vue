@@ -7,9 +7,9 @@
             <h5>基础单选使用</h5>
             <p>通过 v-model 绑定响应式数据。</p>
             <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
-                <tags-widget :tag-list="dataList_1.data" v-model="dataList_1.selected" />
+                <tags-widget v-bind="data_1.props" v-model="data_1.selected" />
             </div>
-            <p>当前所选数据：<code v-for="id of dataList_1.selected">{{id}}</code></p>
+            <p>当前所选数据：<code v-for="id of data_1.selected">{{id}}</code></p>
             <hr>
             <p></p>
         </section>
@@ -19,9 +19,9 @@
             <h5>复选使用</h5>
             <p>数据属性 <code>mode="checkbox"</code> 可以设置复选框操作。</p>
             <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
-                <tags-widget :tag-list="dataList_2.data" v-model="dataList_2.selected" mode="checkbox" />
+                <tags-widget v-bind="data_2.props" v-model="data_2.selected" />
             </div>
-            <p>当前所选数据：<code v-for="id of dataList_2.selected">{{id}}</code></p>
+            <p>当前所选数据：<code v-for="id of data_2.selected">{{id}}</code></p>
             <hr>
             <p></p>
         </section>
@@ -58,40 +58,45 @@
                 },
 
                 //基础渲染数据1
-                dataList_1: {
-                    data: [
-                        {
-                            id: "html",
-                            text: "html"
-                        },
-                        {
-                            id: "css",
-                            text: "css"
-                        },
-                        {
-                            id: "javascript",
-                            text: "javascript"
-                        },
-                    ],
+                data_1: {
+                    props: {
+                        tagList: [
+                            {
+                                id: "html",
+                                text: "html"
+                            },
+                            {
+                                id: "css",
+                                text: "css"
+                            },
+                            {
+                                id: "javascript",
+                                text: "javascript"
+                            },
+                        ]
+                    },
                     selected: []
                 },
 
                 //基础渲染数据2
-                dataList_2: {
-                    data: [
-                        {
-                            id: "html",
-                            text: "html"
-                        },
-                        {
-                            id: "css",
-                            text: "css"
-                        },
-                        {
-                            id: "javascript",
-                            text: "javascript"
-                        },
-                    ],
+                data_2: {
+                    props: {
+                        tagList: [
+                            {
+                                id: "html",
+                                text: "html"
+                            },
+                            {
+                                id: "css",
+                                text: "css"
+                            },
+                            {
+                                id: "javascript",
+                                text: "javascript"
+                            },
+                        ],
+                        mode: "checkbox"
+                    },
                     selected: []
                 },
 

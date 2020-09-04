@@ -1,25 +1,25 @@
 <template>
     <pannel-widget v-model="visible" v-bind="pannel_data">
-        <b-view styles="bg-color-light round-sm pcenter fsize-1.3 color-rgba(24,24,24,.34) shadow">
-            <b-view styles="flex-column flex-5 pad-v-2.5 pad-h-4 color-dgray">
+        <b-view :styles="`round-sm pcenter fsize-1.3 shadow color-rgba(24,24,24,.34) bg-color-${wid_colors.pannel}`">
+            <b-view :styles="`flex-column flex-5 pad-v-2.5 pad-h-4 color-${wid_colors.text}`">
                 <!--图标-->
                 <b-view styles="mrg-b-1 flex-2" v-if="pannel.state">
                     <b-view styles="w-3.2 h-3.2 round fsize-1.7 flex-5"
                             :states="{
                                 success: {
-                                    style: 'bg-color-#e6fff2',
+                                    style: `bg-color-${wid_colors.suucees}`,
                                     state: pannel.state === 'success'
                                 },
                                 fail: {
-                                    style: 'bg-color-#f9f2f4',
+                                    style: `bg-color-${wid_colors.fail}`,
                                     state: pannel.state === 'fail'
                                 },
                                 notic: {
-                                    style: 'bg-color-#e6f5ff',
+                                    style: `bg-color-${wid_colors.notic}`,
                                     state: pannel.state === 'notic'
                                 },
                                 loading: {
-                                    style: 'bg-color-lgray',
+                                    style: `bg-color-${wid_colors.loading}`,
                                     state: pannel.state === 'loading'
                                 },
                             }">
@@ -28,16 +28,16 @@
                 </b-view>
 
                 <!--文字-->
-                <b-view v-html="pannel.text"></b-view>
+                <b-view styles="alpha-.8" v-html="pannel.text"></b-view>
             </b-view>
 
             <!--按钮-->
-            <b-view v-if="pannel.mode !== 'toast'" styles="flex pad-3px">
+            <b-view v-if="pannel.mode !== 'toast'" :styles="`flex pad-3px color-${wid_colors.text}`">
                 <!--alert-->
                 <template v-if="pannel.mode === 'alert'">
                     <b-hot key="a" @on_click="$_close()"
-                        styles="bg-color-lgray color-dgray round-sm pad-1 grow-1"
-                        hover="bg-color-#ddd">
+                           styles="bg-color-neutral round-sm pad-h-1.2 pad-v-.7 grow-1"
+                           hover="bg-color-rgba(134,134,134,0.24)">
                         {{btn_cname[0]}}
                     </b-hot>
                 </template>
@@ -45,13 +45,13 @@
                 <!--confirm-->
                 <template v-else-if="pannel.mode === 'confirm'">
                     <b-hot key="b" @on_click="$_click('ok')"
-                           styles="bg-color-lgray color-dgray round-sm round-l pad-1 grow-1 mrg-r-1px"
-                           hover="bg-color-#ddd">
+                           styles="bg-color-neutral round-sm round-l pad-h-1.2 pad-v-.7 grow-1 mrg-r-1px"
+                           hover="bg-color-rgba(134,134,134,0.24)">
                         {{btn_cname[0]}}
                     </b-hot>
                     <b-hot @on_click="$_click('cancel')"
-                           styles="bg-color-lgray color-dgray round-sm round-r pad-1 grow-1"
-                           hover="bg-color-#ddd">
+                           styles="bg-color-neutral round-sm round-r pad-h-1.2 pad-v-.7 grow-1"
+                           hover="bg-color-rgba(134,134,134,0.24)">
                         {{btn_cname[1]}}
                     </b-hot>
                 </template>
@@ -66,32 +66,82 @@
     import BIcon from "@/components/BTXUI/core/b-icon";
     import PannelWidget from "@/components/BTXUI/pannel/pannel-widget";
 
+    const desc = ["该组件用于显示弹窗提示。", "通常在入口页进行全局实例化绑定，之后可通过相关 API 进行使用：<code>this.$confirm['method']()</code>。"],
+        extend = [],
+        dependent = ["pannel-widget", "b-icon", "b-hot", "b-view"],
+        api = {
+            methods: [
+                {
+                    name: "toast",
+                    ef: "显示提示弹窗",
+                    params: "text, <span class=\"alpha-d7\">[duration=2000, state=\"\"]</span>",
+                    return: "-"
+                },
+                {
+                    name: "alert",
+                    ef: "显示警示弹窗",
+                    params: "text, <span class=\"alpha-d7\">[state=\"\", btn_cname=\"确认\"]</span>",
+                    return: "-"
+                },
+                {
+                    name: "confirm",
+                    ef: "显示确认弹窗",
+                    params: "text, <span class=\"alpha-d7\">[success=null, error=null, state=\"\", btn_cname=[\"确认,取消\"]]</span>",
+                    return: "-"
+                },
+                {
+                    name: "prograss",
+                    ef: "显示加载弹窗",
+                    params: "text, <span class=\"alpha-d7\">[result=false]</span>",
+                    return: "-"
+                }
+            ]
+        },
+        init_data = `{
+        /* colors: {
+            matte: "遮罩颜色",
+            text: "文字颜色（同时支持富文本）",
+            pannel: "面板颜色",
+            suucees: "成功提示图标背景色",
+            fail: "失败提示图标背景色",
+            notic: "信息提示图标背景色",
+            loading: "加载提示图标背景色"
+        } */
+    }`;
+
     export default {
         name: "confirm-widget",
+        introduce: { desc, extend, dependent, api, init_data },
         components: {
             PannelWidget,
             BView,
             BHot,
             BIcon
         },
-        /*
-        * init-data{
-        *   [* matte-color: "遮罩颜色"],
-        * }
-        * */
         props: {
-            matteColor: {
-                type: String,
+            colors: {
+                type: Object,
                 required: false
             },
         },
         data() {
             return {
 
+                //组件配色
+                wid_colors: {
+                    text: "dgray",
+                    pannel: "light",
+                    suucees: "#e6fff2",
+                    fail: "#f9f2f4",
+                    notic: "#e6f5ff",
+                    loading: "lgray",
+                    ...this.colors
+                },
+
                 //pannel-widget 入参
                 pannel_data: {
                     matte: true,
-                    matteColor: this.matteColor,
+                    matteColor: this.colors.matte,
                     matteZIndex: 10
                 },
 

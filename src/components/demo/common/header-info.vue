@@ -35,10 +35,10 @@
             <table v-if="api.methods" class="table">
                 <thead>
                 <tr>
-                    <th>方法</th>
-                    <th>效果</th>
-                    <th>参数</th>
-                    <th>返回值</th>
+                    <th class="ellipsis">方法</th>
+                    <th class="ellipsis">效果</th>
+                    <th class="ellipsis">参数</th>
+                    <th class="ellipsis">返回值</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
                         <code>{{method.name}}</code>
                     </td>
                     <td>{{method.ef}}</td>
-                    <td>{{method.params}}</td>
+                    <td v-html="method.params"></td>
                     <td>
                         <code v-if="method.return !== '-'">{{method.return}}</code>
                         <span v-else>-</span>
@@ -62,7 +62,7 @@
                 <tr>
                     <th>事件</th>
                     <th>触发</th>
-                    <th>参数</th>
+                    <th>回调参数</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -78,6 +78,12 @@
                 </tr>
                 </tbody>
             </table>
+
+            <!--继承文字-->
+            <div v-if="api && typeof(api) === 'string'">
+                <p v-html="api"></p>
+                <hr>
+            </div>
 
         </div>
         <p></p>

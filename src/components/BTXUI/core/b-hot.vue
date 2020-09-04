@@ -113,13 +113,15 @@
             },
 
             //执行点击
-            $_click(){
+            $_click(e){
+                e.stopPropagation();
                 !this.forbid && this.$emit("on_click");
                 this.chapter_link && this.chapter_link.$_go_chapter(this.link.chapter_id); //内部链接
             },
 
             //执行双击
-            $_dblclick(){
+            $_dblclick(e){
+                e.stopPropagation();
                 !this.forbid && this.$emit("on_dblclick");
             },
 

@@ -2,6 +2,7 @@
     <article>
         <header-info v-bind="header_info" />
 
+        <!--选项卡切换使用-->
         <section>
             <h5>选项卡切换使用</h5>
             <p>通过 v-model 绑定响应式数据。</p>
@@ -17,6 +18,7 @@
             <p></p>
         </section>
 
+        <!--自定义颜色方案-->
         <section>
             <h5>自定义颜色方案</h5>
             <p>通过 <code>colors</code> 字段可以配置标签色彩体系。</p>

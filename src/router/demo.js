@@ -5,7 +5,9 @@ import b_input_demo from '@/components/demo/basic/b_input_demo'
 
 //应用组件
 import content_widget_demo from '@/components/demo/content_widget_demo'
+import tag_widget_demo from '@/components/demo/tag_widget_demo'
 import tags_widget_demo from '@/components/demo/tags_widget_demo'
+import checkbox_widget_demo from '@/components/demo/checkbox_widget_demo'
 import tab_widget_demo from '@/components/demo/tab_widget_demo'
 import pannel_widget_demo from '@/components/demo/pannel_widget_demo'
 import form_pannel_widget_demo from '@/components/demo/form_pannel_widget_demo'
@@ -55,8 +57,16 @@ export default [
         component: content_widget_demo
     },
     {
+        path: '/tag_widget_demo',
+        component: tag_widget_demo
+    },
+    {
         path: '/tags_widget_demo',
         component: tags_widget_demo
+    },
+    {
+        path: '/checkbox_widget_demo',
+        component: checkbox_widget_demo
     },
     {
         path: '/tab_widget_demo',

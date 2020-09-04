@@ -1,69 +1,22 @@
 <template>
     <article>
-        <section>
-            <h5><code>confirm-widget</code></h5>
-            <p>该组件用于显示弹窗提示。</p>
-            <p>该组件通常在入口页进行全局实例化绑定，之后可通过相关 API 进行使用：<code>this.$confirm["method"]()</code>。</p>
-            <p>组件继承：无</p>
-            <p>组件依赖：<code>pannel-widget</code>、<code>b-view</code>、<code>b-hot</code>、<code>b-icon</code></p>
-            <p>组件初始化入参：无</p>
-            <hr>
-            <p></p>
-        </section>
-
-        <section>
-            <h5>组件 API：</h5>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>方法</th>
-                    <th>参数</th>
-                    <th>效果</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <code>toast</code>
-                    </td>
-                    <td>text<span class="alpha-d7">, duration=2000, state=""</span></td>
-                    <td>显示提示弹窗</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>alert</code>
-                    </td>
-                    <td>text<span class="alpha-d7">, state="", btn_cname="确认"</span></td>
-                    <td>显示警示弹窗</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>confirm</code>
-                    </td>
-                    <td>text<span class="alpha-d7">, success=null, error=null, state="", btn_cname=["确认,取消"]</span></td>
-                    <td>显示确认弹窗</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>prograss</code>
-                    </td>
-                    <td>text<span class="alpha-d7">, result=false</span></td>
-                    <td>显示加载弹窗</td>
-                </tr>
-                </tbody>
-            </table>
-            <p></p>
-        </section>
+        <header-info v-bind="header_info" />
 
         <section>
             <h5>toast 弹窗</h5>
             <p>使用 toast 方法开启提示弹窗，参数 <code>duration</code> 可设置弹窗持续显示时间；<code>state</code> 可设置弹窗状态图标，其中：success 成功、fail 失败、notic 提示，为动态图标。</p>
-            <span class="color-sub flex">
-                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_show_pannel1">显示 toast 弹窗</a>
-                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light mrg-l-1" @click="$_show_pannel1_fail">fail 弹窗</a>
-                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light mrg-l-1" @click="$_show_pannel1_success">success 弹窗</a>
-                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light mrg-l-1" @click="$_show_pannel1_notic">notic 弹窗</a>
-            </span>
+            <div class="resize flex">
+                <div class="mrg-r-1">
+                    <btn-widget @on_click="$_show_pannel1" btnText="显示 toast 弹窗" />
+                </div>
+                <div class="mrg-r-1">
+                    <btn-widget @on_click="$_show_pannel1_fail" btnText="fail 弹窗" />
+                </div>
+                <div class="mrg-r-1">
+                    <btn-widget @on_click="$_show_pannel1_success" btnText="success 弹窗" />
+                </div>
+                <btn-widget @on_click="$_show_pannel1_notic" btnText="notic 弹窗" />
+            </div>
             <hr>
             <p></p>
         </section>
@@ -71,9 +24,9 @@
         <section>
             <h5>alert 弹窗</h5>
             <p>使用 alert 方法开启警示弹窗，参数 <code>btn_cname</code> 可设置按钮文字，且支持键盘"回车"触发按钮。</p>
-            <span class="color-sub flex">
-                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_show_pannel2">显示 alert 弹窗</a>
-            </span>
+            <div class="resize flex">
+                <btn-widget @on_click="$_show_pannel2" btnText="显示 alert 弹窗" />
+            </div>
             <hr>
             <p></p>
         </section>
@@ -81,9 +34,9 @@
         <section>
             <h5>confirm 弹窗</h5>
             <p>使用 confirm 方法开启确认弹窗，参数 <code>success</code> 可设置确认回调（支持键盘"回车"触发）；<code>error</code> 可设置取消回调。</p>
-            <span class="color-sub flex">
-                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_show_pannel3">显示 confirm 弹窗</a>
-            </span>
+            <div class="resize flex">
+                <btn-widget @on_click="$_show_pannel3" btnText="显示 confirm 弹窗" />
+            </div>
             <p>下一步操作：<span :class="data_3? 'color-green': 'color-red'">{{data_3? '已获取通讯录权限': '未获取权限'}}</span></p>
             <hr>
             <p></p>
@@ -92,10 +45,12 @@
         <section>
             <h5>prograss 弹窗</h5>
             <p>使用 prograss 方法开启加载弹窗，参数 <code>result</code> 可设置加载结束弹窗状态图标（success 成功、fail 失败）。</p>
-            <span class="color-sub flex">
-                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_show_pannel4_success">prograss 弹窗 3 秒加载成功</a>
-                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light mrg-l-1" @click="$_show_pannel4_fail">prograss 弹窗 3 秒加载失败</a>
-            </span>
+            <div class="resize flex">
+                <div class="mrg-r-1">
+                    <btn-widget @on_click="$_show_pannel4_success" btnText="prograss 弹窗 3 秒加载成功" />
+                </div>
+                <btn-widget @on_click="$_show_pannel4_fail" btnText="prograss 弹窗 3 秒加载失败" />
+            </div>
             <p>加载状态：<span :class="`color-${data_4.color}`">{{data_4.text}}</span></p>
             <hr>
             <p></p>
@@ -104,9 +59,9 @@
         <section>
             <h5>prograss 弹窗显示实时加载进度</h5>
             <p>可多次执行 prograss 方法修改其中 text 信息以显示实时加载进度。</p>
-            <span class="color-sub flex">
-                <a href="javascript:;" class="pad-v-d5 pad-h-2 round-sm bg-color-dgray color-light" @click="$_show_pannel5">开始加载</a>
-            </span>
+            <div class="resize flex">
+                <btn-widget @on_click="$_show_pannel5" btnText="开始加载" />
+            </div>
             <p>加载状态：<span :class="data_5 === '加载完成!'? 'color-green': ''">{{data_5}}</span></p>
         </section>
 
@@ -114,10 +69,24 @@
 </template>
 
 <script>
+    import HeaderInfo from "@/components/demo/common/header-info"
+    import BtnWidget from "@/components/BTXUI/btn/btn-widget"
+    import ConfirmWidget from "@/components/BTXUI/confirm/confirm-widget"
+
     export default {
         name: "confirm_widget_demo",
+        components: {
+            HeaderInfo,
+            BtnWidget
+        },
         data(){
             return {
+
+                //初始化入参
+                header_info: {
+                    name: ConfirmWidget.name,
+                    ...ConfirmWidget.introduce,
+                },
 
                 //数据3
                 data_3: false,

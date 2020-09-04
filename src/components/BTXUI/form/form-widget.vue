@@ -97,7 +97,6 @@
             title_wrap: "表单元素标题是否折行",
         } */,
         /* submit: {
-            text: "按钮文字",
             align: "对齐方式：默认 left、center、right",
             callback: "回调函数",
             reset: "启用重置按钮，可缺省",
@@ -174,6 +173,7 @@
 
             //记录表单项验证结果
             $_record_inp_check(result){
+                if(!result) return;
                 let res = this.check_result;
                 if(!result.pass){ //验证有误，记录
                     res[result.name] = result.notic;

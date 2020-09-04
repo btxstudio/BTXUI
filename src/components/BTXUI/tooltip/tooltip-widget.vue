@@ -1,14 +1,24 @@
-<!--19-09-19-->
 <template>
-    <div class="tooltip-widget" :style="translate" v-show="visible">
-        <span class="t-w-line" :style="line_style"></span>
-        <span class="t-w-text" :style="text_style" v-html="text"></span>
-    </div>
+    <b-view :styles="`fixed t-0 l-0 z-9 h-0 ${translate}`" v-show="visible">
+        <b-view styles="abs bg-color-neutral shadow w-2 h-1px origin-left|center" :style="line_style"></b-view>
+        <b-view v-html="text"
+                styles="pad-v-.7 pad-h-1.4 round-sm bg-color-rgba(224,224,224,.97) shadow line line-neutral thick-1" :style="text_style" ></b-view>
+        <!--max-width: 20rem;-->
+        <!--光标点-->
+        <b-view styles="abs round w-1 h-1 l-100px t-f5px shadow"></b-view>
+    </b-view>
 </template>
 
 <script>
+    import BView from "@/components/BTXUI/core/b-view"
+    import BText from "@/components/BTXUI/core/b-text"
+
     export default {
         name: "tooltip-widget",
+        components: {
+            BView,
+            BText
+        },
         data(){
             return {
 
@@ -19,9 +29,7 @@
                 text: "",
 
                 //组件定位
-                translate: {
-                    transform: ""
-                },
+                translate: "",
 
                 //组件样式
                 text_style: {
@@ -78,7 +86,7 @@
 
             //位移提示框
             set_pos(x, y, x_offset, y_offset){
-                this.translate.transform = "translate(" + x + "px, " + y + "px)";
+                this.translate = "translate(" + x + "px, " + y + "px)";
                 x_offset = x_offset || 40;
                 y_offset = y_offset || -40;
                 this.text_style.transform = "translate(" + x_offset + "px, " + y_offset + "px)";
@@ -94,43 +102,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped>
-    .tooltip-widget{
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 99;
-        height: 0;
-
-        .t-w-text{
-            display: block;
-            max-width: 20rem;
-            padding: .7rem 1.4rem;
-            font-size: 1.4rem;
-            border-radius: 7px;
-            background-color: rgba(224,224,224,.97);
-            border: 1px solid #eee;
-            color: #444;
-            box-shadow: 0 7px 14px rgba(0,0,0,.1);
-        }
-        .t-w-line{//连线
-            position: absolute;
-            background-color: #eee;
-            box-shadow: 0 1px 4px rgba(0,0,0,.14);
-            transform-origin: left center;
-            width: 20px;
-            height: 1px;
-        }
-        &::after{//光标点
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            width: 9px;
-            height: 9px;
-            left: 100px;
-            top: -5px;
-            box-shadow: -105px 2px 0 rgba(255,255,0,.24);
-        }
-    }
-</style>

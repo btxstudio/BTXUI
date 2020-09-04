@@ -5,7 +5,7 @@
         <section>
             <h5>基础按钮</h5>
             <p>通过 <code>btn-text</code> 属性实现按钮文字。通过 <b>on_click</b> 事件实现点击回调。</p>
-            <div class="resize">
+            <div class="resize flex">
                 <btn-widget btn-text="点击加一" @on_click="$_click1" />
             </div>
             <p>点击次数：<code>{{data_1.click_count}}</code></p>
@@ -16,7 +16,7 @@
         <section>
             <h5>自定义配色按钮</h5>
             <p>通过 <code>btn-color</code> 属性设置按钮颜色风格。其值参数顺序为：["文字色", "背景色", "描边色", "hover文字色", "hover背景色", "hover描边色"]。该属性可缺省，默认风格为：["dgray", "neutral", "neutral", "light", "blue", "blue"]。</p>
-            <div class="resize">
+            <div class="resize flex">
                 <btn-widget btn-text="自定义风格按钮" :btn-color="data_2.btn_color" />
             </div>
             <hr>
@@ -26,7 +26,7 @@
         <section>
             <h5>大圆角按钮</h5>
             <p>通过 <code>btn-round</code> 属性可设置按钮为大圆角效果。</p>
-            <div class="resize">
+            <div class="resize flex">
                 <btn-widget btn-text="大圆角按钮" :btn-round="data_3.btn_round" />
             </div>
             <hr>
@@ -55,7 +55,7 @@
 
         <section>
             <h5>链接按钮</h5>
-            <p>通过 <code>hot-data</code> 属性的 <b>link</b> 字段可设置按钮链接效果，<b>forbid</b> 字段实现点击禁用。</p>
+            <p>通过 <code>hotData</code> 属性的 <b>link</b> 字段可设置按钮链接效果，<b>forbid</b> 字段实现点击禁用。</p>
             <div class="resize flex">
                 <div class="mrg-r-1">
                     <btn-widget btn-text="跳转七武海官网" :hot-data="data_7.hot_data1" />
@@ -63,6 +63,16 @@
                 <div>
                     <btn-widget btn-text="禁用链接" :hot-data="data_7.hot_data2" />
                 </div>
+            </div>
+            <hr>
+            <p></p>
+        </section>
+
+        <section>
+            <h5>含图标按钮</h5>
+            <p>通过 <code>iconData</code> 属性可以为按钮插入图标。</p>
+            <div class="resize flex">
+                <btn-widget v-bind="data_8" />
             </div>
         </section>
 
@@ -88,12 +98,10 @@
                     ...BtnWidget.introduce,
                 },
 
-                //基础渲染数据1
                 data_1: {
                     click_count: 0
                 },
 
-                //基础渲染数据2
                 data_2: {
                     btn_color: {
                         normal: {
@@ -109,17 +117,14 @@
                     }
                 },
 
-                //基础渲染数据3
                 data_3: {
                     btn_round: true
                 },
 
-                //基础渲染数据4
                 data_4: {
                     btn_width: 17
                 },
 
-                //基础渲染数据5
                 data_5: {
                     btn_round: true,
                     btn_width: 14,
@@ -137,7 +142,6 @@
                     }
                 },
 
-                //基础渲染数据7
                 data_7: {
                     hot_data1: {
                         link: "http://www.75sea.com",
@@ -146,6 +150,13 @@
                         forbid: true
                     }
                 },
+
+                data_8: {
+                    btnText: "删除",
+                    iconData: {
+                        icon: "del"
+                    }
+                }
 
             }
         },

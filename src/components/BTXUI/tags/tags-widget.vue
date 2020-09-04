@@ -1,54 +1,32 @@
 <template>
     <b-view styles="flex">
-        <b-hot v-for="item of tagList" :key="item.id"
-               @on_click="$_click(item.id)"
-               :styles="`pad-h-1.4 pad-v-.4 round-sm mrg-r-.4 color-${tag_colors.normal.text} bg-color-${tag_colors.normal.bg}`"
-               :states="{
-                   act: {
-                       style: `bg-color-${tag_colors.act.bg} color-${tag_colors.act.text}`,
-                       state:  value.indexOf(item.id) > -1
-                   }
-               }"
-               :hover="`bg-color-${tag_colors.hover.bg} color-${tag_colors.hover.text}`">
-            <b-text>
-                {{item.text}}
-            </b-text>
-        </b-hot>
+        <tag-widget v-for="item of tag_list" :key="item.id"
+                    @on_click="$_click"
+                    :id="item.id"
+                    :text="item.text"
+                    v-bind="tag_data"
+                    v-model="item.selected" />
     </b-view>
 </template>
 
 <script>
-    import BHot from "@/components/BTXUI/core/b-hot";
-    import BView from "@/components/BTXUI/core/b-view";
-    import BText from "@/components/BTXUI/core/b-text";
+    import BView from "@/components/BTXUI/core/b-view"
+    import TagWidget from "@/components/BTXUI/tag/tag-widget"
 
     let desc = ["该组件用于进行单选及复选操作。"],
         extend = [],
-        dependent = ["b-hot", "b-text", "b-view"],
+        dependent = ["tag-widget", "b-view"],
         api = null,
         init_data = `{
-        value: "（v-model）当前 tag id 集合",
+        value: "（v-model）当前标签 id 列表",
         tagList: "[
             {
-                id: "数据标识",
-                text: "数据标题",
+                id: "标签 id",
+                text: "标签文字",
             },...
         ]",
-        /* colors: {
-            normal: {
-                text: "默认文字色样式色值",
-                bg: "默认背景色样式色值",
-            },
-            act: {
-                text: "激活文字色样式色值",
-                bg: "激活背景色样式色值",
-            },
-            hover: {
-                text: "悬停文字色样式色值",
-                bg: "悬停背景色样式色值",
-            },
-        } */,
-        /* mode: "勾选模式（默认"radio"：单选、"checkbox"：复选）" */,
+        /* colors: "(参照：tag-widget 组件 colors 参数)" */,
+        /* mode: "(参照：tag-widget 组件 mode 参数)" */,
     }`;
 
     export default {
@@ -56,8 +34,7 @@
         introduce: { desc, extend, dependent, api, init_data },
         components: {
             BView,
-            BText,
-            BHot
+            TagWidget
         },
         model:{
             prop: "value",
@@ -92,26 +69,26 @@
         data(){
             return {
 
-                //色彩方案
-                tag_colors: {
-                    normal: {
-                        text: "dgray",
-                        bg: "light",
-                        ...this.colors.normal
-                    },
-                    hover: {
-                        text: "blue",
-                        bg: "light",
-                        ...this.colors.hover
-                    },
-                    act: {
-                        text: "light",
-                        bg: "blue",
-                        ...this.colors.act
-                    },
+                //标签数据
+                tag_data: {
+                    colors: this.colors,
+                    mode: this.mode
                 }
 
             }
+        },
+        computed: {
+
+            //标签数据列表
+            tag_list(){
+                return this.tagList.map(item=>{
+                    return {
+                        ...item,
+                        selected: this.value.includes(item.id)
+                    };
+                })
+            }
+
         },
         methods: {
 
@@ -123,7 +100,7 @@
                 }else if(this.mode === "radio"){ //单选
                     this.$emit("on_select", [id]);
                 }
-            }
+            },
 
         }
     }

@@ -17,28 +17,32 @@
     import PannelWidget from "@/components/BTXUI/pannel/pannel-widget";
     import FormWidget from "@/components/BTXUI/form/form-widget";
 
+    const desc = ["该组件用于自定义弹窗交互操作。"],
+        extend = [],
+        dependent = ["form-widget", "pannel-widget", "b-list", "b-view"],
+        api = null,
+        init_data = `{
+        pannelInfo: "（model）{
+            visible: "面板显示状态",
+            selected: {
+                name（所选表单元素键名）: value（所选表单元素键值）,...
+            }
+        }",
+        formData: "(参照：form-widget 组件入参)",
+        /* pannelTitle: "面板标题" */,
+        /* pannelStyles: "面板样式" */,
+        /* pannelData: "(参照：pannel-widget 组件入参)" */,
+    }`;
+
     export default {
         name: "form-pannel-widget",
+        introduce: { desc, extend, dependent, api, init_data },
         components: {
             BView,
             BList,
             PannelWidget,
             FormWidget
         },
-        /*
-        * init-data{
-        *   pannel-info（model）: {
-        *       visible: "面板显示状态",
-        *       selected: {
-        *           name（所选表单元素键名）: value（所选表单元素键值）,...
-        *       }
-        *   },
-        *   form-data: (参照：form-widget 组件入参),
-        *   [* pannel-title: "面板标题"],
-        *   [* pannel-styles: "面板样式"],
-        *   [* pannel-data: (参照：pannel-widget 组件入参)],
-        * }
-        * */
         model: {
             prop: "pannelInfo",
             event: "on_click"

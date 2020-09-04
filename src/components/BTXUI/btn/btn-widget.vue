@@ -1,19 +1,32 @@
 <template>
     <b-hot @on_click="$_click"
            v-bind="hotData"
-           :styles="`flex pad-h-1.4 pad-v-.4 line thick-1 ellipsis ${btnRound? 'round-lg': 'round-sm'} ${btnWidth? 'flex-5 w-' + btnWidth: ''} color-${btn_color.normal.text} ${$_set_bg(btn_color.normal.bg)} line-${btn_color.normal.line}`"
+           :styles="`flex-4 pad-h-1.4 pad-v-.4 line thick-1 ellipsis ${btnRound? 'round-lg': 'round-sm'} ${btnWidth? 'flex-5 w-' + btnWidth: ''} color-${btn_color.normal.text} ${$_set_bg(btn_color.normal.bg)} line-${btn_color.normal.line}`"
            :hover="`color-${btn_color.hover.text} ${$_set_bg(btn_color.hover.bg)} line-${btn_color.hover.line}`">
+
+        <!--图标-->
+        <b-icon v-if="iconData" v-bind="iconData" styles="mrg-r-.7" />
+
         {{btnText}}
     </b-hot>
 </template>
 
 <script>
     import BHot from "@/components/BTXUI/core/b-hot";
+    import BIcon from "@/components/BTXUI/core/b-icon";
 
     const desc = ["该组件用于实现按钮交互操作。"],
         extend = [],
-        dependent = ["b-hot"],
-        api = null,
+        dependent = ["b-icon", "b-hot"],
+        api = {
+            event: [
+                {
+                    name: "on_click",
+                    ef: "点击触发",
+                    params: "-"
+                }
+            ]
+        },
         init_data = `{
         btnText: "按钮文字",
         /* btnColor: {
@@ -31,6 +44,7 @@
         /* btnRound: "启用大圆角效果" */,
         /* btnWidth: "按钮固定宽度" */,
         /* hotData: "(参照：b-hot 组件入参)" */,
+        /* iconData: "(参照：b-icon 组件入参)" */
     }`;
 
     export default {
@@ -38,6 +52,7 @@
         introduce: { desc, extend, dependent, api, init_data },
         components: {
             BHot,
+            BIcon
         },
         props: {
             btnText: {
@@ -63,6 +78,10 @@
                 required: false
             },
             hotData: {
+                type: Object,
+                required: false
+            },
+            iconData: {
                 type: Object,
                 required: false
             }

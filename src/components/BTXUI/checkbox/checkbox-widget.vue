@@ -43,7 +43,9 @@
     let desc = ["该组件用于复选框切换选择操作。"],
         extend = ["tag-widget"],
         dependent = ["b-hot", "b-icon", "b-view"],
-        api = "继承自：<code>tag-widget</code> 组件",
+        api = {
+            extend: "继承自：<code>tag-widget</code> 组件"
+        },
         init_data = "继承自：tag-widget 组件入参。text 为非必须参数，colors、mode 入参无效";
 
     export default {

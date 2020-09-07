@@ -2,6 +2,7 @@
 import basic_websit_demo from '@/components/demo/basic/websit_demo'
 import b_hot_demo from '@/components/demo/basic/b_hot_demo'
 import b_input_demo from '@/components/demo/basic/b_input_demo'
+import b_textarea_demo from '@/components/demo/basic/b_textarea_demo'
 
 //应用组件
 import content_widget_demo from '@/components/demo/content_widget_demo'
@@ -49,6 +50,10 @@ export default [
     {
         path: '/b_input_demo',
         component: b_input_demo
+    },
+    {
+        path: '/b_textarea_demo',
+        component: b_textarea_demo
     },
 
     //功能组件

@@ -1,5 +1,5 @@
 <template>
-    <pannel-widget v-bind="pannel_prams" v-model="visible">
+    <pannel-widget v-bind="pannel_prams" v-model="pannelInfo.visible">
         <b-view :styles="pannel_styles">
             <b-view v-if="pannelTitle" styles="pad-l-2">
                 <b-view styles="line-b thick-1 pad-v-.7 line-neutral">{{pannelTitle}}</b-view>
@@ -70,11 +70,16 @@
                 required: false
             }
         },
+        computed: {
+
+            //表单对象
+            former(){
+                return this.$refs.former;
+            }
+
+        },
         data(){
             return {
-
-                //面板显示状态
-                visible: this.pannelInfo.visible,
 
                 //面板初始化样式
                 pannel_styles: `flex-column bg-color-light w-30 round-sm ${this.pannelStyles}`,
@@ -96,13 +101,7 @@
 
             //监听面板显示状态入参
             "pannelInfo.visible"(val){
-                this.visible = val;
-            },
-
-            //监听面板显示状态出参
-            visible(val){
-                if(val === false) this.$refs.former.reset();
-                this.pannelInfo.visible = val;
+                if(val === false) this.former.reset();
             }
 
         }

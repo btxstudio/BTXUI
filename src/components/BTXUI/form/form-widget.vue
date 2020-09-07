@@ -140,6 +140,14 @@
                 required: false
             }
         },
+        computed: {
+
+            //表单项集合
+            inputs(){
+                return this.$refs.input;
+            }
+
+        },
         data(){
             return {
 
@@ -166,7 +174,8 @@
 
             //重置表单
             reset(){
-                this.$refs.input.forEach((inp)=>{
+                let inputs = this.inputs;
+                inputs && this.inputs.forEach((inp)=>{
                     inp.reset();
                 })
             },

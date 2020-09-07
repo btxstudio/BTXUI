@@ -80,8 +80,8 @@
             </table>
 
             <!--继承文字-->
-            <div v-if="api && typeof(api) === 'string'">
-                <p v-html="api"></p>
+            <div v-if="api.extend">
+                <p v-html="api.extend"></p>
                 <hr>
             </div>
 

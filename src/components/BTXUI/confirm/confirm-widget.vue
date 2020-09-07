@@ -7,7 +7,7 @@
                     <b-view styles="w-3.2 h-3.2 round fsize-1.7 flex-5"
                             :states="{
                                 success: {
-                                    style: `bg-color-${wid_colors.suucees}`,
+                                    style: `bg-color-${wid_colors.success}`,
                                     state: pannel.state === 'success'
                                 },
                                 fail: {

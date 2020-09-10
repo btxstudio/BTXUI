@@ -18,16 +18,12 @@
                     name: "on_error",
                     ef: "上传失败",
                     params: "error_code"
-                },
-                {
-                    name: "on_success",
-                    ef: "上传成功",
-                    params: "remote_file_urls"
                 }
             ]
         },
         init_data = `{
         uploadApi: "上传接口",
+        /* remoteFiles: "(model) 上传文件地址集" */,
         /* type: "上传类型，数组格式，支持：jpg、png、text...，默认为所有类型" */,
         /* directUpload: "直接上传，默认为 true" */,
         /* size: "大小限制，默认：2M" */,
@@ -42,10 +38,19 @@
             BtnWidget,
             BView
         },
+        model: {
+            prop: "remoteFiles",
+            event: "on_success"
+        },
         props: {
             uploadApi: {
                 type: String,
                 required: true
+            },
+            remoteFiles: {
+                type: Array,
+                required: false,
+                default: ()=>[]
             },
             type: {
                 type: Array,

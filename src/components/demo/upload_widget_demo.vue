@@ -5,12 +5,12 @@
         <!--基础使用-->
         <section>
             <h5>基础使用</h5>
-            <p>默认为单文件直接上传，仅需配置上传接口 <code>uploadApi</code>。上传结果可以通过 <code>on_error</code> 或 <code>on_success</code> 事件在回调函数参数中捕获。注：默认上传文件大小限制为 2M。</p>
+            <p>通过 <code>v-model</code> 可以初始化及接收上传文件内容。默认为单文件直接上传，仅需配置上传接口 <code>uploadApi</code>。注：默认上传文件大小限制为 2M。</p>
             <p>测试接口：<span class="alpha-d7 color-blue">{{upload_api}}</span></p>
             <div class="resize">
-                <upload-widget v-bind="data_1.props" @on_success="$_upload_success1" />
+                <upload-widget v-bind="data_1.props" v-model="data_1.remote_file"/>
             </div>
-            <p>上传文件地址：<code v-if="data_1.remote_file">{{data_1.remote_file}}</code></p>
+            <p>上传文件地址：<code v-if="data_1.remote_file.length">{{data_1.remote_file[0]}}</code></p>
             <hr>
             <p></p>
         </section>
@@ -21,10 +21,10 @@
             <p>通过 <code>type</code> 字段可以限制上传文件类型，默认可上传任意类型，数组形式设置之后仅支持包含后缀类型。此外通过 <code>btnData</code> 字段可以设置上传按钮。</p>
             <div class="resize">
                 <div class="fsize-1d2">
-                    <upload-widget v-bind="data_2.props" @on_success="$_upload_success2" />
+                    <upload-widget v-bind="data_2.props" v-model="data_2.remote_file" />
                 </div>
             </div>
-            <p>上传文件地址：<code v-if="data_2.remote_file">{{data_2.remote_file}}</code></p>
+            <p>上传文件地址：<code v-if="data_2.remote_file.length">{{data_2.remote_file[0]}}</code></p>
             <hr>
             <p></p>
         </section>
@@ -34,10 +34,10 @@
             <h5>多文件上传</h5>
             <p>通过 <code>multiple</code> 字段可以开启多文件上传。</p>
             <div class="resize">
-                <upload-widget v-bind="data_3.props" @on_success="$_upload_success3" />
+                <upload-widget v-bind="data_3.props" v-model="data_3.remote_files" />
             </div>
             <p>上传文件地址：</p>
-            <ol v-if="data_3.remote_files">
+            <ol v-if="data_3.remote_files.length">
                 <p v-for="file of data_3.remote_files"><code>{{file}}</code></p>
             </ol>
         </section>
@@ -74,7 +74,7 @@
                     props: {
                         uploadApi,
                     },
-                    remote_file: ""
+                    remote_file: []
                 },
 
                 data_2: {
@@ -102,7 +102,7 @@
                             }
                         }
                     },
-                    remote_file: ""
+                    remote_file: []
                 },
 
                 data_3: {
@@ -118,22 +118,6 @@
                 }
 
             }
-        },
-        methods: {
-
-            $_upload_success1(urls){
-                this.data_1.remote_file = urls[0];
-            },
-
-            $_upload_success2(urls){
-                this.data_2.remote_file = urls[0];
-            },
-
-            $_upload_success3(urls){
-                if(typeof(urls) === "string") urls = [urls];
-                this.data_3.remote_files = urls;
-            },
-
         }
     }
 </script>

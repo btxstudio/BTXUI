@@ -5,12 +5,21 @@
         <!--基础使用-->
         <section>
             <h5>基础使用</h5>
-            <p>默认为单文件直接上传，仅需配置上传接口 <code>uploadApi</code>。上传结果可以通过 <code>on_error</code> 或 <code>on_success</code> 事件在回调函数参数中捕获。注：默认上传文件大小限制为 2M。</p>
-            <p>测试接口：<span class="alpha-d7 color-blue">{{upload_api}}</span></p>
+            <p>默认为单图上传，通过 <code>width</code>、<code>height</code> 属性可以设置预览图尺寸，默认为 8 * 5 rem。</p>
             <div class="resize">
-                <imgs-upload-widget v-bind="data_1.props" @on_success="$_upload_success1" />
+                <imgs-upload-widget v-bind="data_1.props" />
             </div>
-            <p>上传文件地址：<code v-if="data_1.remote_file">{{data_1.remote_file}}</code></p>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--初始化默认封面-->
+        <section>
+            <h5>初始化默认封面</h5>
+            <p>通过 <code>v-model</code> 可以初始化及双向绑定上传图片内容。</p>
+            <div class="resize">
+                <imgs-upload-widget v-bind="data_2.props" v-model="data_2.remote_file" />
+            </div>
             <hr>
             <p></p>
         </section>
@@ -46,18 +55,21 @@
                 data_1: {
                     props: {
                         uploadApi,
+                        width: 10,
+                        height: 7
+                    }
+                },
+
+                data_2: {
+                    props: {
+                        uploadApi,
+                        width: 10,
+                        height: 7
                     },
-                    remote_file: ""
+                    remote_file: ["http://localhost/BTXphp/sea/static/img/test/test.jpg"]
                 }
 
             }
-        },
-        methods: {
-
-            $_upload_success1(urls){
-                this.data_1.remote_file = urls[0];
-            },
-
         }
     }
 </script>

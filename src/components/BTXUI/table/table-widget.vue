@@ -43,6 +43,10 @@
                 <!--单元格按钮-->
                 <btn-widget v-if="data.btn_data" v-bind="data.btn_data" @on_click="data.callback" />
 
+                <!--单元格图片-->
+                <b-img v-else-if="data.src" :img="data.src"
+                       :styles="`round-sm w-${data.width || 'auto'} h-${data.height || 'auto'}`" />
+
                 <!--单元格文本-->
                 <b-text v-else v-html="data"></b-text>
 
@@ -52,15 +56,16 @@
 </template>
 
 <script>
-    import BView from "@/components/BTXUI/core/b-view";
-    import BText from "@/components/BTXUI/core/b-text";
-    import BHot from "@/components/BTXUI/core/b-hot";
-    import BtnWidget from "@/components/BTXUI/btn/btn-widget";
-    import CheckboxWidget from "@/components/BTXUI/checkbox/checkbox-widget";
+    import BView from "@/components/BTXUI/core/b-view"
+    import BImg from "@/components/BTXUI/core/b-img"
+    import BText from "@/components/BTXUI/core/b-text"
+    import BHot from "@/components/BTXUI/core/b-hot"
+    import BtnWidget from "@/components/BTXUI/btn/btn-widget"
+    import CheckboxWidget from "@/components/BTXUI/checkbox/checkbox-widget"
 
     const desc = ["该组件用于显示表格数据。"],
         extend = [],
-        dependent = ["checkbox-widget", "btn-widget", "b-hot", "b-text", "b-view"],
+        dependent = ["checkbox-widget", "btn-widget", "b-img", "b-hot", "b-text", "b-view"],
         api = {
             event: [
                 {
@@ -113,6 +118,10 @@
             [ "对应表头标题数据" | {
                 btn_data: "(参照：btn-widget 组件入参)",
                 callback: "点击回调函数"
+            } | {
+                src: "图片地址",
+                width: "图片宽度，可缺省",
+                height: "图片高度，可缺省"
             },... ],...
         ]",
         /* colors: {
@@ -133,6 +142,7 @@
         introduce: { desc, extend, dependent, api, init_data },
         components: {
             BView,
+            BImg,
             BHot,
             BText,
             BtnWidget,

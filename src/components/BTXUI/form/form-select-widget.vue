@@ -48,6 +48,6 @@
 
     export default {
         extends: SelectWidget,
-        name: "select-widget"
+        name: "form-select-widget"
     };
 </script>

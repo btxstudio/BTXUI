@@ -4,7 +4,7 @@
 
         <section>
             <h5>基础输入型表单元素</h5>
-            <p>通过 <code>v-model</code> 可以初始化及单向绑定输入内容。其它属性如：<code>type</code>、<code>name</code>、<code>maxlength</code> 等，在使用上同 input 元素保持一致。</p>
+            <p>通过 <code>v-model</code> 可以初始化及双向绑定输入内容。其它属性如：<code>type</code>、<code>name</code>、<code>maxlength</code> 等，在使用上同 input 元素保持一致。</p>
             <p>
                 <b-input styles="pad-h-1 h-3 bg-color-lgray line line-#ddd thick-1 round-sm" v-bind="data_1.props" v-model="data_1.val" />
             </p>

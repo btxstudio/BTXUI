@@ -39,13 +39,22 @@
                             state: item.input_data.readonly
                         }
                      }">
-                    <b-input styles="fsize-1.1" ref="input" v-bind="item.input_data" v-model="selected[item.input_data.name]" @on_check="$_record_inp_check" />
+                    <component :is="item.input_data.type === 'textarea'? 'b-textarea': 'b-input'"
+                               styles="fsize-1.1" ref="input"
+                               v-bind="item.input_data"
+                               v-model="selected[item.input_data.name]"
+                               @on_check="$_record_inp_check" />
+                </b-view>
+
+                <!--封面上传表单元素-->
+                <b-view v-if="item.cover_upload_data">
+                    <imgs-upload-widget v-bind="item.cover_upload_data" v-model="selected[item.cover_upload_data.name]" />
                 </b-view>
 
                 <!--下拉框表单元素-->
                 <b-view v-if="item.select"
                         styles="grow-1 bg-color-neutral round-sm pad-v-.5 pad-h-1">
-                    <select-widget v-bind="item.select.select_data" v-model="selected[item.select.name]" />
+                    <form-select-widget v-bind="item.select.select_data" v-model="selected[item.select.name]" />
                 </b-view>
 
             </b-view>
@@ -70,18 +79,20 @@
     import BHot from "@/components/BTXUI/core/b-hot";
     import BIcon from "@/components/BTXUI/core/b-icon";
     import BInput from "@/components/BTXUI/core/b-input";
+    import BTextarea from "@/components/BTXUI/core/b-textarea";
     import BtnWidget from "@/components/BTXUI/btn/btn-widget";
-    import SelectWidget from "./select-widget";
+    import ImgsUploadWidget from "@/components/BTXUI/imgsUpload/imgs-upload-widget";
+    import FormSelectWidget from "./form-select-widget";
 
     const desc = ["该组件用于表单构建及操作。"],
         extend = [],
-        dependent = ["select-widget", "btn-widget", "b-input", "b-icon", "b-hot", "b-text", "b-view"],
+        dependent = ["imgs-upload-widget", "form-select-widget", "btn-widget", "b-textarea", "b-input", "b-icon", "b-hot", "b-text", "b-view"],
         api = null,
         init_data = `{
         selected: "（model）{
             'name（所选表单元素键名）': 'value（所选表单元素键值）',...
         }",
-        form-data: [
+        formData: [
             {
                 text: "表单元素字段，可缺省",
                 icon: "表单元素图标，可缺省",
@@ -89,6 +100,10 @@
                     name: "下拉数据键名",
                     select_data: "(参照：select-widget 组件入参)"
                 },
+                cover_upload_data: {
+                    name: "图片数据键名",
+                    uploadApi: "上传接口"
+                }
                 input_data: "(参照：b-input 组件入参)"
             },...
         ],
@@ -112,9 +127,11 @@
             BText,
             BHot,
             BIcon,
+            BTextarea,
             BInput,
             BtnWidget,
-            SelectWidget
+            FormSelectWidget,
+            ImgsUploadWidget
         },
         model: {
             prop: "selected",

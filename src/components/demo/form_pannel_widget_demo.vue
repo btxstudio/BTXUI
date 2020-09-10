@@ -4,7 +4,7 @@
 
         <section>
             <h5>基础使用</h5>
-            <p>通过 v-model 绑定响应式表单选取数据以及面板的显示及隐藏。通过 <code>pannel-title</code> 属性可以设置面板标题。</p>
+            <p>通过 <code>v-model</code> 可以初始化及双向绑定表单选取数据以及面板的显示状态。通过 <code>pannel-title</code> 属性可以设置面板标题。</p>
             <div class="flex resize">
                 <form-pannel-widget v-model="data_1.pannel_info" v-bind="data_1.props" />
                 <btn-widget @on_click="$_toggle_pannel1" btnText="显示表单面板" />

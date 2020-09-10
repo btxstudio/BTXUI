@@ -81,7 +81,7 @@ export default {
 
 <style lang="scss">
 
-    //全局样式 
+    //全局样式
     @import "./sass/btx";
 
     //平板端

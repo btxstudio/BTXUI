@@ -38,10 +38,10 @@
             <p></p>
         </section>
 
-        <!--设置单元格按钮-->
+        <!--设置单元格封面及按钮-->
         <section>
-            <h5>设置单元格按钮</h5>
-            <p>通过 <code>tbody</code> 属性中的 <b>btn</b> 字段可以设置单元格按钮组件，实现点击交互业务。</p>
+            <h5>设置单元格封面及按钮</h5>
+            <p>通过 <code>tbody</code> 属性中的 <b>btn</b> 字段可以设置单元格按钮组件，实现点击交互业务；而 <b>src</b> 字段可以设置单元格封面。</p>
             <div class="resize">
                 <table-widget v-bind="data_4" />
             </div>
@@ -203,6 +203,10 @@
                 data_4: {
                     thead: [
                         {
+                            title: "Cover",
+                            grow: 1,
+                        },
+                        {
                             title: "Name",
                             grow: 1,
                         },
@@ -216,7 +220,10 @@
                         },
                     ],
                     tbody: [
-                        ["nick", "javascript", {
+                        [{
+                            src: require("@/assets/img/head.jpg"),
+                            height: 5
+                        }, "nick", "javascript", {
                             btn_data: {
                                 btnText: "查看详情"
                             },
@@ -224,7 +231,10 @@
                                 this.$_show_detail4("javascript score: 83")
                             }
                         }],
-                        ["nick", "html", {
+                        [{
+                            src: require("@/assets/img/head2.jpg"),
+                            height: 5
+                        }, "nick", "html", {
                             btn_data: {
                                 btnText: "查看详情",
                                 btnColor: {
@@ -244,7 +254,10 @@
                                 this.$_show_detail4("html score: 89")
                             }
                         }],
-                        ["nick", "css", {
+                        [{
+                            src: require("@/assets/img/head.jpg"),
+                            height: 5
+                        }, "nick", "css", {
                             btn_data: {
                                 btnText: "查看详情",
                                 btnColor: {

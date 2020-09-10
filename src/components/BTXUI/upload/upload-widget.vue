@@ -1,0 +1,171 @@
+<template>
+    <b-view styles="flex">
+        <btn-widget @on_click="$_upload" v-bind="btn_data" />
+        <input type="file" style="display: none" ref="uploader" @change="$_exe_upload" :multiple="multiple"/>
+    </b-view>
+</template>
+
+<script>
+    import BView from "@/components/BTXUI/core/b-view"
+    import BtnWidget from "@/components/BTXUI/btn/btn-widget"
+
+    const desc = ["该组件用于文件上传操作。"],
+        extend = [],
+        dependent = ["btn-widget", "b-view"],
+        api = {
+            event: [
+                {
+                    name: "on_error",
+                    ef: "上传失败",
+                    params: "error_code"
+                },
+                {
+                    name: "on_success",
+                    ef: "上传成功",
+                    params: "remote_file_urls"
+                }
+            ]
+        },
+        init_data = `{
+        uploadApi: "上传接口",
+        /* type: "上传类型，数组格式，支持：jpg、png、text...，默认为所有类型" */,
+        /* directUpload: "直接上传，默认为 true" */,
+        /* size: "大小限制，默认：2M" */,
+        /* multiple: "是否多文件上传" */,
+        /* btnData: "(参照：btn-widget 组件入参)" */
+    }`;
+
+    export default {
+        name: "upload-widget",
+        introduce: { desc, extend, dependent, api, init_data },
+        components: {
+            BtnWidget,
+            BView
+        },
+        props: {
+            uploadApi: {
+                type: String,
+                required: true
+            },
+            type: {
+                type: Array,
+                required: false
+            },
+            size: {
+                type: Number,
+                required: false,
+                default: 1024 * 1024 * 2
+            },
+            multiple: {
+                type: Boolean,
+                required: false
+            },
+            directUpload: {
+                type: Boolean,
+                required: false,
+                default: true
+            },
+            btnData: {
+                type: Object,
+                required: false
+            }
+        },
+        computed: {
+
+            //上传元素
+            uploader(){
+                return this.$refs.uploader;
+            }
+
+        },
+        data(){
+            return {
+
+                //上传按钮
+                btn_data: {
+                    btnText: "上传",
+                    ...this.btnData,
+                },
+
+                //上传资源集合
+                upload_file: {
+                    files: null,
+                    form_data: new FormData(),
+                },
+
+            }
+        },
+        methods: {
+
+            //发送上传数据
+            send_upload_data(){
+                this.$axios({
+                    method: 'post',
+                    url: this.uploadApi,
+                    data: this.upload_file.form_data,
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then(res => {
+                    let datas = res.data.datas;
+                    if(datas){
+                        if(res.data.error > 0){ //上传数据有误
+                            this.$confirm.toast(res.data.datas, 2000, "fail");
+                            this.$emit("on_error", res.data.error);
+                        }else{ //上传成功
+                            this.$emit("on_success", datas);
+                        }
+                    }else{
+                        this.$confirm.toast("上传服务有误!", 2000, "fail");
+                    }
+                })
+            },
+
+            //点击上传
+            $_upload(){
+                this.uploader.click();
+            },
+
+            //执行上传
+            $_exe_upload(e){
+                this.upload_file.files = e.currentTarget.files; //表单数据
+
+                //上传文件验证
+                if(this.$_size_check() || (this.type && this.$_type_check())){
+                    e.currentTarget.value = null;
+                    return;
+                };
+
+                for(let i=0; i<this.upload_file.files.length; i++){
+                    this.upload_file.form_data.append(`file_${i}`, this.upload_file.files[i]);
+                }
+                this.directUpload && this.send_upload_data();
+            },
+
+            //类型检测
+            $_type_check(){
+                let type,
+                    name,
+                    result = [].some.call(this.upload_file.files, (file=>{
+                        name = file.name;
+                        type = name.split(".").pop();
+                        return !this.type.includes(type);
+                    }));
+                result && this.$confirm.toast(`${name} 类型有误!`, 2000, "fail");
+                return result;
+            },
+
+            //大小检测
+            $_size_check(){
+                let name,
+                    result = [].some.call(this.upload_file.files, (file=>{
+                        name = file.name;
+                        return file.size > this.size;
+                    }));
+                result && this.$confirm.toast(`${name} 尺寸超过限制!`, 2000, "fail");
+                return result;
+            }
+
+        }
+    }
+</script>

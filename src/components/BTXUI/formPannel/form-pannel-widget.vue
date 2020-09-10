@@ -5,7 +5,7 @@
                 <b-view styles="line-b thick-1 pad-v-.7 line-neutral">{{pannelTitle}}</b-view>
             </b-view>
             <b-list styles="pad-2">
-                <form-widget ref="former" v-bind="formData" :selected="selected" />
+                <form-widget ref="former" v-bind="formData" :selected="pannelInfo.selected" />
             </b-list>
         </b-view>
     </pannel-widget>
@@ -90,10 +90,7 @@
                     matteColor: "rgba(40,40,40,.7)",
                     matteClose: "click",
                     ...this.pannelData,
-                },
-
-                //当前所选数据
-                selected: this.pannelInfo.selected,
+                }
 
             }
         },

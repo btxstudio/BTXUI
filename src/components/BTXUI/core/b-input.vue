@@ -35,7 +35,7 @@
             ]
         },
         init_data = `{
-        type: "表单元素类型",
+        type: "表单元素类型（text：单行文本、password：密码、textarea：多行文本）",
         name: "表单元素数据键名",
         /* styles: "(参照：b-style 组件入参)" */,
         /* inpVal: "(model) 表单输入内容" */,
@@ -119,9 +119,17 @@
             }
         },
         watch: {
+
+            //监听输入
+            inpVal(val){
+                this.value = val;
+            },
+
+            //监听输出
             value(val){
                 this.$emit("on_input", val.trim());
             }
+
         },
         methods: {
 
@@ -148,7 +156,7 @@
 
             //重置表单
             reset(){
-                this.value = this.origin_val || "";
+                this.$emit("on_input", this.origin_val || "");
             }
 
         }

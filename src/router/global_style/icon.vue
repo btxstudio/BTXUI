@@ -130,6 +130,11 @@ export default {
                 scale: "d9"
             },
             {
+                name: "no-data",
+                code: "\e62c",
+                scale: "d9"
+            },
+            {
                 name: "brightness",
                 code: "\e632",
                 scale: "d9"

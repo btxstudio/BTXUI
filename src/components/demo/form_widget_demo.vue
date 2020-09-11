@@ -402,9 +402,11 @@
                     props: {
                         formData: [
                             {
-                                cover_upload_data: {
+                                imgs: {
                                     name: "cover",
-                                    uploadApi
+                                    imgs_upload_data: {
+                                        uploadApi
+                                    }
                                 },
                                 text: "头像",
                             },

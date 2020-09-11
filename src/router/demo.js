@@ -1,5 +1,6 @@
 //核心组件
 import basic_websit_demo from '@/components/demo/basic/websit_demo'
+import b_view_demo from '@/components/demo/basic/b_view_demo'
 import b_hot_demo from '@/components/demo/basic/b_hot_demo'
 import b_input_demo from '@/components/demo/basic/b_input_demo'
 import b_textarea_demo from '@/components/demo/basic/b_textarea_demo'
@@ -44,6 +45,10 @@ export default [
     {
         path: '/basic_websit_demo',
         component: basic_websit_demo
+    },
+    {
+        path: '/b_view_demo',
+        component: b_view_demo
     },
     {
         path: '/b_hot_demo',

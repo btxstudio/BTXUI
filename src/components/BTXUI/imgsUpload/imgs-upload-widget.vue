@@ -10,16 +10,19 @@
             </b-hot>
         </b-view>
 
-        <b-hot v-else :styles="`flex-5 bg-color-neutral alpha-.8 ${round} w-${width} h-${height}`"
+        <b-hot v-else :styles="`flex-5 pcenter pad-2 bg-color-neutral alpha-.8 ${round} w-${width} h-${height}`"
                hover="alpha-1"
                @on_click="$_upload" >
-            <b-icon icon="add" styles="scale-1.5" />
+            <b-view>
+                <b-icon icon="add" styles="scale-1.5" />
+                <b-view v-if="notic" styles="alpha-.4 mrg-t-.7 fsize-.9">{{notic}}</b-view>
+            </b-view>
         </b-hot>
 
         <!--多图上传预览-->
         <template v-if="!solo_cover">
             <b-view v-for="(img,index) of previews" :key="index"
-                    :styles="`bg-size-cover mrg-r-.4 w-${width} h-${height}`" :bg-img="img" />
+                    :styles="`bg-size-cover mrg-l-1 ${round} w-${width} h-${height}`" :bg-img="img" />
         </template>
 
         <input type="file" style="display: none" ref="uploader" @change="$_exe_upload" :multiple="multiple"/>
@@ -41,6 +44,7 @@
         },
         init_data = `{
         "继承自：upload-widget 组件入参。type、btnData 入参无效",
+        /* notic: "提示文字" */,
         /* height: "热点区域高度" */,
         /* width: "热点区域宽度" */,
         /* round: "热点区域圆角" */,
@@ -57,6 +61,10 @@
             BIcon
         },
         props: {
+            notic: {
+                type: String,
+                required: false
+            },
             width: {
                 type: [Number, String],
                 required: false,
@@ -72,30 +80,25 @@
                 required: false,
                 default: "round-sm"
             },
-            multiple: {
-                type: Boolean,
+            type: {
+                type: Array,
                 required: false,
-                default: true
+                default: ()=>["png", "jpg", "jpeg", "gif", "svg"]
             }
         },
         computed: {
 
             //单图封面
             solo_cover(){
-                let cover = this.multiple? (this.previews[0] || this.remoteFiles[0]): false;
-                console.log(cover)
-                return cover;
+                return this.multiple? false: (this.previews[0] || this.remoteFiles[0]);
             },
 
         },
         data(){
             return {
 
-                //文件读取器
-                file_reader: new FileReader(),
-
                 //预览图集合
-                previews: []
+                previews: this.remoteFiles
 
             }
         },
@@ -103,17 +106,13 @@
 
             //监听预览图加载
             "upload_file.files"(imgs){
-                new Promise((resolve, reject)=>{
-                    let covers = [];
-                    this.file_reader.onloadend = (res)=>{
-                        covers.push(res.target.result);
-                    }
-                    resolve(covers);
-                }).then(covers=>{
-                    this.previews = covers;
-                });
+                this.previews = [];
                 [].forEach.call(imgs, img=>{
-                    this.file_reader.readAsDataURL(img);
+                    let file_reader = new FileReader();
+                    file_reader.onload = (res)=>{
+                        this.previews.push(res.target.result);
+                    }
+                    file_reader.readAsDataURL(img);
                 })
             }
 

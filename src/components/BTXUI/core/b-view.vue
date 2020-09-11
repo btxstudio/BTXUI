@@ -7,15 +7,19 @@
 <script>
     import bStyle from "./styles/b-style";
 
+    let desc = ["该组件用于实现基础布局。"],
+        extend = ["b-style"],
+        dependent = [],
+        api = null,
+        init_data = `{
+        /* styles: "(参照：b-style 组件入参)" */,
+        /* bgImg: "背景图" */,
+    }`;
+
     export default {
         extends: bStyle,
         name: "b-view",
-        /*
-        * init-data{
-        *   [* styles: (参照：b-style 组件入参)],
-        *   [* bg-img: "背景图"],
-        * }
-        * */
+        introduce: { desc, extend, dependent, api, init_data },
         props: {
             bgImg: {
                 type: String,
@@ -27,7 +31,15 @@
             //设置背景图
             $_set_bg_style(){
                 let bg_img = this.bgImg;
-                if(bg_img) this.computed_style.backgroundImage = `url(${bg_img})`; //背景图
+                bg_img && this.$set(this.computed_style, "backgroundImage", `url(${bg_img})`); //背景图
+            }
+
+        },
+        watch: {
+
+            //监听背景图设置
+            bgImg(){
+                this.$_set_bg_style();
             }
 
         },

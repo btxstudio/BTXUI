@@ -47,8 +47,8 @@
                 </b-view>
 
                 <!--封面上传表单元素-->
-                <b-view v-if="item.cover_upload_data">
-                    <imgs-upload-widget v-bind="item.cover_upload_data" v-model="selected[item.cover_upload_data.name]" />
+                <b-view v-if="item.imgs">
+                    <imgs-upload-widget v-bind="item.imgs.imgs_upload_data" v-model="selected[item.imgs.name]" />
                 </b-view>
 
                 <!--下拉框表单元素-->
@@ -100,9 +100,9 @@
                     name: "下拉数据键名",
                     select_data: "(参照：select-widget 组件入参)"
                 },
-                cover_upload_data: {
+                imgs: {
                     name: "图片数据键名",
-                    uploadApi: "上传接口"
+                    imgs_upload_data: "(参照：imgs-upload-widget 组件入参)"
                 }
                 input_data: "(参照：b-input 组件入参)"
             },...

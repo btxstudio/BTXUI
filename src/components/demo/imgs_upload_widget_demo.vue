@@ -5,7 +5,8 @@
         <!--基础使用-->
         <section>
             <h5>基础使用</h5>
-            <p>默认为单图上传，通过 <code>width</code>、<code>height</code> 属性可以设置预览图尺寸，默认为 8 * 5 rem。</p>
+            <p>默认为单图上传，通过 <code>width</code>、<code>height</code> 属性可以设置预览图尺寸，默认为 8 * 5 rem。<code>notic</code> 属性可以设置上传提示文字。</p>
+            <p>测试接口：<span class="alpha-d7 color-blue">{{upload_api}}</span></p>
             <div class="resize">
                 <imgs-upload-widget v-bind="data_1.props" />
             </div>
@@ -22,6 +23,25 @@
             </div>
             <hr>
             <p></p>
+        </section>
+
+        <!--多图上传-->
+        <section>
+            <h5>多图上传</h5>
+            <p>通过开启 <code>multiple</code> 属性可以设置多图上传。</p>
+            <div class="resize">
+                <imgs-upload-widget v-bind="data_3.props"/>
+            </div>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--初始化默认多封面-->
+        <section>
+            <h5>初始化默认多封面</h5>
+            <div class="resize">
+                <imgs-upload-widget v-bind="data_4.props" v-model="data_4.remote_files" />
+            </div>
         </section>
 
     </article>
@@ -55,8 +75,9 @@
                 data_1: {
                     props: {
                         uploadApi,
-                        width: 10,
-                        height: 7
+                        width: 16,
+                        height: 9,
+                        notic: "要求尺寸：160 * 90"
                     }
                 },
 
@@ -67,6 +88,28 @@
                         height: 7
                     },
                     remote_file: ["http://localhost/BTXphp/sea/static/img/test/test.jpg"]
+                },
+
+                data_3: {
+                    props: {
+                        uploadApi,
+                        width: 10,
+                        height: 7,
+                        multiple: true
+                    }
+                },
+
+                data_4: {
+                    props: {
+                        uploadApi,
+                        width: 10,
+                        height: 7,
+                        multiple: true
+                    },
+                    remote_files: [
+                        "http://localhost/BTXphp/sea/static/img/test/test.jpg",
+                        "http://localhost/BTXphp/sea/static/img/test/test_1.jpg"
+                    ]
                 }
 
             }

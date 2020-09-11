@@ -9,11 +9,7 @@
         <!--b-view-->
         <section>
             <h5>b-view</h5>
-            <p>其样式规范，基于并扩展 BTX·UI 全局样式语法，相当于 div 的作用，可以接收 styles 属性来应用框架封装样式体系。因此可以像添加标签类属性那样进行样式设置，web 和 app UI 得到统一。</p>
-            <p>【exp】：</p>
-            <p>class 全局样式：<code>&lt;div class="pright fsize-1d5"&gt;hello world&lt;/div&gt;</code></p>
-            <p>styles 组件样式：<code>&lt;b-view styles="pright fsize-1.5"&gt;hello world&lt;/b-view&gt;</code>
-            </p>
+            <p>其样式规范，基于并扩展 BTX·UI 全局样式语法，web 和 app UI 得到统一。</p>
             <p></p>
         </section>
 
@@ -397,6 +393,11 @@
                 <tr>
                     <td><code>bg-*</code></td>
                     <td>综合背景样式</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>bg-fixed</code></td>
+                    <td>背景图固定式定位</td>
                     <td>-</td>
                 </tr>
                 <tr>

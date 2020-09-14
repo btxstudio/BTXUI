@@ -1,6 +1,6 @@
 <template>
     <b-view>
-        <b-view>
+        <b-view styles="rel t-4px">
             <tags-widget v-bind="tags_data" v-model="cur_tab"/>
         </b-view>
         <b-view v-for="item of tags_data.tagList" v-show="item.id === cur_tab[0]" :key="item.id">
@@ -12,7 +12,7 @@
 <script>
     import BView from "@/components/BTXUI/core/b-view";
     import BText from "@/components/BTXUI/core/b-text";
-    import TagsWidget from "./tags-widget";
+    import TagsWidget from "@/components/BTXUI/tags/tags-widget";
 
     let desc = ["该组件用于进行标签切换交互操作。"],
         extend = [],

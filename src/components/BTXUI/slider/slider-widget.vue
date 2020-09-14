@@ -1,62 +1,140 @@
 <template>
-    <div class="slider-widget relative" :style="'height:' + view.height + '; background-color:' + view.bg_color">
-        <div class="s-w-view relative" :style="'height:' + view.height">
+    <b-view :styles="`rel h-${view.height} bg-color-${view.bg_color}`">
+        <b-view :styles="`rel no-scroll h-${view.height}`">
             <ul class="s-w-bar flex max-h"
                 @touchstart="$_touch_start"
                 @touchmove="$_touch_move"
                 @touchend="$_touch_end"
                 @transitionend="$_flip_over"
                 :style="'width:' + slider_bar_width + 'px; height:' + view.height + '; transform:translateX(' + touch_point.x + 'px); transition-duration:' + flip_speed">
-                <li class="flex-column max" :ref="'$' + page.id" v-for="page of slider_pages" :state="page.state">
-                    <div class="grow-1 auto-scroll">
+                <b-view styles="flex-column max" :ref="'$' + page.id"
+                        v-for="page of slider_pages"
+                        :state="page.state">
+                    <component :is="view.height > 0? 'b-list': 'b-view'" styles="grow-1">
                         <slot :name="page.id"></slot>
-                    </div>
-                </li>
+                    </component>
+                </b-view>
             </ul>
-        </div>
+        </b-view>
 
         <!--计数点-->
-        <div class="flex-5 absolute z1 b0 max-w h-0 ani-scale-fade-in" v-if="showDot" :style="'bottom:' + showDot.bottom">
-            <span class="round mrg-h-d5 w-d5 h-d5" v-for="(page,index) of slider_pages"
-                  @click="$_dot_click(index + 1)"
-                  :key="index"
-                  :data-s="page.state"
-                  :data-page="index + 1"
-                  :style="'background-color:' + (page.state === 'act'?showDot.act_color:showDot.color)">
-            </span>
-        </div>
+        <b-view :styles="`flex-5 abs z1 max-w h-0 b-${showDot.bottom}`" v-if="showDot">
+            <b-hot v-for="(page,index) of slider_pages" :key="index"
+                   :styles="`round mrg-h-.5 w-.5 h-.5 bg-color-${showDot.color}`"
+                   :states="{
+                        act: {
+                            style: `bg-color-${showDot.act_color}`,
+                            state: page.state === 'act'
+                        }
+                   }"
+                   @on_click="$_dot_click(index + 1)"
+                   :data-s="page.state"
+                   :data-page="index + 1">
+            </b-hot>
+        </b-view>
 
         <!--切换按钮-->
-        <div class="s-w-btn absolute pcenter fsize-2d5" data-dir="left" v-if="show_flip_btn" @click="prev"><i class="ico-arrow-left"></i></div>
-        <div class="s-w-btn absolute pcenter fsize-2d5" data-dir="right" v-if="show_flip_btn" @click="next"><i class="ico-arrow-right"></i></div>
-    </div>
+        <template v-if="show_flip_btn" >
+            <b-hot styles="color-neutral abs t-50% l-0 w-4 h-4 mrg-t-f4 pcenter fsize-2.5"
+                   hover="color-rgba(134,134,134,.7)"
+                   @on_click="prev('.4s')">
+                <b-icon icon="arrow-left" />
+            </b-hot>
+            <b-hot styles="color-neutral abs t-50% r-0 w-4 h-4 mrg-t-f4 pcenter fsize-2.5"
+                   hover="color-rgba(134,134,134,.7)"
+                   @on_click="next('.4s')">
+                <b-icon icon="arrow-right" />
+            </b-hot>
+        </template>
+    </b-view>
 </template>
 
 <script>
+    import BView from "@/components/BTXUI/core/b-view"
+    import BHot from "@/components/BTXUI/core/b-hot"
+    import BIcon from "@/components/BTXUI/core/b-icon"
+    import BList from "@/components/BTXUI/core/b-list"
+
+    const desc = ["该组件用于设置内容轮播。"],
+        extend = [],
+        dependent = ["b-list", "b-hot", "b-icon", "b-view"],
+        api = {
+            event: [
+                {
+                    name: "on_click",
+                    ef: "单元行点击触发",
+                    params: "row_index"
+                }
+            ],
+            methods: [
+                {
+                    name: "prev",
+                    ef: "向前翻页",
+                    params: "speed",
+                    return: "-"
+                },
+                {
+                    name: "next",
+                    ef: "向后翻页",
+                    params: "speed",
+                    return: "-"
+                },
+                {
+                    name: "smooth_flip",
+                    ef: "平滑翻页",
+                    params: "page, speed",
+                    return: "-"
+                },
+                {
+                    name: "flip",
+                    ef: "翻页",
+                    params: "page",
+                    return: "-"
+                },
+                {
+                    name: "stop_auto_play",
+                    ef: "停止自动播放",
+                    params: "-",
+                    return: "-"
+                },
+                {
+                    name: "forbid_touch",
+                    ef: "禁止触控滑动",
+                    params: "if_forbid",
+                    return: "-"
+                }
+            ]
+        },
+        init_data = `{
+        pages: "[
+            {
+                id: "内容标识"
+            },...
+        ]",
+        view: {
+            height: "轮播器高度（默认为 auto，由内容撑起）",
+            bg_color: "轮播器背景色（默认为透明）"
+        },
+        /* showDot: {
+            bottom: "底边位移",
+            color: "点颜色",
+            act_color: "点激活颜色"
+        } */,
+        /* showFlipBtn: "显示切换按钮" */,
+        /* autoPlayDuration: "自动播放时间间隔（毫秒）" */,
+        /* loop: "是否循环播放" */,
+        /* keyboardFlip: "是否启用键盘切换" */
+    }`;
+
     export default {
         name: "slider-widget",
-        /*
-        * init-data{
-        *   pages: [
-        *       {
-        *           id: "内容名"
-        *       }...
-        *   ],
-        *   view: {
-        *       [* height: "组件高度（可缺省，由内容撑起）",]
-        *       [* bg_color: "组件背景色（缺省透明）"]
-        *   },
-        *   [* show-dot: {
-        *       bottom: "底边位移",
-        *       color: "点颜色",
-        *       act_color: "点激活颜色",
-        *   },]
-        *   [* show-flip-btn: "显示切换按钮",]
-        *   [* auto-play-duration: "自动播放时间间隔（毫秒）",]
-        *   [* loop: "是否循环播放",]
-        *   [* keyboard-flip: "是否启用键盘切换",]
-        * }
-        * */
+        introduce: { desc, extend, dependent, api, init_data },
+        components: {
+            BHot,
+            BIcon,
+            BView,
+            BList
+        },
         props: {
             pages: {
                 type: Array,
@@ -79,7 +157,7 @@
                 required: false
             },
             loop: {
-                type: String,
+                type: Boolean,
                 required: false
             },
             keyboardFlip: {
@@ -155,7 +233,6 @@
             //翻页
             flip(page){
                 let page_len = this.slider_pages.length;
-                this.point.prev = this.point.cur;
 
                 //设置播放模式（point:索引，page:页码）
                 if(this.loop){//循环
@@ -179,7 +256,7 @@
                     //设置分页激活状态
                     this.slider_pages[this.point.prev].state = "";
                     cur_page_data.state = "act";
-
+                    this.point.prev = this.point.cur;
                 }
                 this.auto_play(this.point.cur === page_len - 1? true: false);
             },
@@ -188,7 +265,7 @@
             auto_play(restart){
                 if(this.auto_play_data.enable === true){
                     this.auto_play_data.interval = setInterval(()=>{
-                        restart? this.smooth_flip(1): this.next();
+                        restart? this.smooth_flip(1, ".4s"): this.next(".4s");
                     }, this.auto_play_data.duration)
                 }
             },
@@ -327,34 +404,10 @@
     }
 </script>
 
-<style lang="scss" scoped>
-    .slider-widget{
-        .s-w-view{
-            overflow: hidden;
-
-            .s-w-bar{
-                touch-action: none;
-                transition-property: transform;
-                transition-timing-function: ease-out;
-            }
-        }
-
-        //分页按钮
-        .s-w-btn{
-            top: 50%;
-            width: 4rem;
-            height: 4rem;
-            line-height: 4rem;
-            margin-top: -2rem;
-            color: rgba(200,200,200,.57);
-
-            &[data-dir="left"]{
-                left: 0;
-            }
-            &[data-dir="right"]{
-                right: 0;
-            }
-        }
-
+<style scoped>
+    .s-w-bar{
+        touch-action: none;
+        transition-property: transform;
+        transition-timing-function: ease-out;
     }
 </style>

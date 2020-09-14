@@ -1,7 +1,7 @@
 <template>
     <b-view :styles="`line thick-1 pleft round-sm no-scroll line-${colors.outline}`">
         <!--表头-->
-        <b-view :styles="`flex bold bg-color-${colors.thead}`">
+        <b-view :styles="`flex-4 bold bg-color-${colors.thead}`">
 
             <!--复选表头单元格-->
             <b-view :styles="`flex-4 alpha-0 trans-fast w-0 thick-1 line-r line-${colors.line}`"

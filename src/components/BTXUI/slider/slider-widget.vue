@@ -8,7 +8,7 @@
                 @transitionend="$_flip_over"
                 :style="'width:' + slider_bar_width + 'px; height:' + view.height + '; transform:translateX(' + touch_point.x + 'px); transition-duration:' + flip_speed">
                 <b-view styles="flex-column max" :ref="'$' + page.id"
-                        v-for="page of slider_pages"
+                        v-for="page of slider_pages" :key="page.id"
                         :state="page.state">
                     <component :is="view.height > 0? 'b-list': 'b-view'" styles="grow-1">
                         <slot :name="page.id"></slot>

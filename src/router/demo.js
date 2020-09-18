@@ -21,6 +21,7 @@ import select_widget_demo from '@/components/demo/select_widget_demo'
 import upload_widget_demo from '@/components/demo/upload_widget_demo'
 import imgs_upload_widget_demo from '@/components/demo/imgs_upload_widget_demo'
 import slider_widget_demo from '@/components/demo/slider_widget_demo'
+import drawer_widget_demo from '@/components/demo/drawer_widget_demo'
 
 //项目测试
 import zk2861_demo1 from '@/components/pro/zk2861/demo1'
@@ -123,5 +124,9 @@ export default [
     {
         path: '/slider_widget_demo',
         component: slider_widget_demo
+    },
+    {
+        path: '/drawer_widget_demo',
+        component: drawer_widget_demo
     },
 ]

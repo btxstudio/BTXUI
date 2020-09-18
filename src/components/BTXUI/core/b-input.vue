@@ -43,7 +43,7 @@
         /* placeholder: "输入提示（限输入型表单元素）" */,
         /* readonly: "只读" */,
         /* rule: {
-            type: "自定义正则验证，或预置正则验证（包括：required、uname、email、tel、url）",
+            type: "自定义正则验证，或预置正则验证（包括：required、tel、email、url、uname、zh、uid）",
             notic: "验证报错提示"
         } */
     }`;

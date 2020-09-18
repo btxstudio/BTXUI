@@ -396,11 +396,6 @@
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-fixed</code></td>
-                    <td>背景图固定式定位</td>
-                    <td>-</td>
-                </tr>
-                <tr>
                     <td><code>bg-repeat</code></td>
                     <td>背景图水平及垂直平铺</td>
                     <td>-</td>

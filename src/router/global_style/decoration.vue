@@ -18,7 +18,7 @@
                 <td>
                     <code>.bg-fixed</code>
                 </td>
-                <td>背景图固定式定位</td>
+                <td>背景图固定式定位（手机端无效）</td>
             </tr>
             <tr>
                 <td>

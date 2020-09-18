@@ -23,6 +23,9 @@
         },
         init_data = `{
         uploadApi: "上传接口",
+        /* formData: {
+            "其它数据字段": "数据值",...
+        } */,
         /* remoteFiles: "(model) 上传文件地址集" */,
         /* type: "上传类型，数组格式，支持：jpg、png、text...，默认为所有类型" */,
         /* directUpload: "直接上传，默认为 true" */,
@@ -46,6 +49,10 @@
             uploadApi: {
                 type: String,
                 required: true
+            },
+            formData: {
+                type: Object,
+                required: false
             },
             remoteFiles: {
                 type: Array,
@@ -104,6 +111,9 @@
 
             //发送上传数据
             send_upload_data(){
+                for(let key in this.formData){
+                    this.upload_file.form_data.append(key, this.formData[key]);
+                }
                 this.$axios({
                     method: 'post',
                     url: this.uploadApi,

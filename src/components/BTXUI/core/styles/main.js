@@ -125,7 +125,6 @@ export default {
     "no-scroll": { overflow: "hidden" },
 
     //背景
-    "bg-fixed": { backgroundAttachment: "fixed" },
     "bg-repeat": { backgroundRepeat: "repeat" },
     "bg-repeat-x": { backgroundRepeat: "repeat-x" },
     "bg-repeat-y": { backgroundRepeat: "repeat-y" },

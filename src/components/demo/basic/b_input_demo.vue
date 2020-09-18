@@ -2,6 +2,7 @@
     <article>
         <header-info v-bind="header_info" />
 
+        <!--基础输入型表单元素-->
         <section>
             <h5>基础输入型表单元素</h5>
             <p>通过 <code>v-model</code> 可以初始化及双向绑定输入内容。其它属性如：<code>type</code>、<code>name</code>、<code>maxlength</code> 等，在使用上同 input 元素保持一致。</p>
@@ -16,6 +17,7 @@
             <p></p>
         </section>
 
+        <!--初始化输入内容-->
         <section>
             <h5>初始化输入内容</h5>
             <p>
@@ -29,6 +31,7 @@
             <p></p>
         </section>
 
+        <!--表单输入验证-->
         <section>
             <h5>表单输入验证</h5>
             <p>通过 <code>rule</code> 属性可设置表单项验证，其中 <b>type</b> 字段可以自定义正则验证，也可以使用框架预置的一些常用正则方案，包括：emil：验证邮箱、url：验证网址、tel：验证手机号、uid：验证身份证号、zh：验证中文字符、uname：验证一般账户名，英文、数字、下划线、required：非空验证（英文、数字、下划线、中文、.）。</p>

@@ -8,12 +8,21 @@
                }
            }"
            :hover="`bg-color-${tag_colors.hover.bg} color-${tag_colors.hover.text}`">
-        {{tag_text}}
+        <b-text styles="scale-.9"
+                :states="{
+                    act: {
+                        style: 'scale-1',
+                        state: selected
+                    }
+                }">
+            {{tag_text}}
+        </b-text>
     </b-hot>
 </template>
 
 <script>
-    import BHot from "@/components/BTXUI/core/b-hot";
+    import BHot from "@/components/BTXUI/core/b-hot"
+    import BText from "@/components/BTXUI/core/b-text"
 
     let desc = ["该组件用于进行标签选择，分为 “单选” 和 “复选” 两种方式。“单选（once）” 仅限一次性点击，不可通过点击撤回；“复选（toggle）” 则可以反复进行点击切换。"],
         extend = [],
@@ -53,7 +62,8 @@
         name: "tag-widget",
         introduce: { desc, extend, dependent, api, init_data },
         components: {
-            BHot
+            BHot,
+            BText
         },
         model:{
             prop: "selected",

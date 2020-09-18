@@ -1,5 +1,5 @@
 <template>
-    <span :style="computed_style">
+    <span :style="{display: 'inline-block', ...computed_style}">
         <slot/>
     </span>
 </template>

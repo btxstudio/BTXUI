@@ -2,6 +2,7 @@
 import basic_websit_demo from '@/components/demo/basic/websit_demo'
 import b_view_demo from '@/components/demo/basic/b_view_demo'
 import b_hot_demo from '@/components/demo/basic/b_hot_demo'
+import b_img_demo from '@/components/demo/basic/b_img_demo'
 import b_input_demo from '@/components/demo/basic/b_input_demo'
 import b_textarea_demo from '@/components/demo/basic/b_textarea_demo'
 
@@ -54,6 +55,10 @@ export default [
     {
         path: '/b_hot_demo',
         component: b_hot_demo
+    },
+    {
+        path: '/b_img_demo',
+        component: b_img_demo
     },
     {
         path: '/b_input_demo',

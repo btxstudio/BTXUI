@@ -2,13 +2,13 @@
     <b-view styles="flex">
 
         <!--单图上传预览-->
-        <b-view v-if="solo_cover" :styles="`no-scroll bg-color-dgray ${round}`">
-            <b-hot styles="flex alpha-.9"
-                   hover="alpha-1"
-                   @on_click="$_upload">
-                <b-view :styles="`bg-size-cover w-${width} h-${height}`" :bg-img="solo_cover" />
-            </b-hot>
-        </b-view>
+        <b-hot v-if="solo_cover" :styles="`flex bg-color-dgray alpha-.9 ${round}`"
+               key="solo"
+               hover="alpha-1"
+               @on_click="$_upload">
+            <b-img :styles="`w-${width} h-${height} ${round}`"
+                   :img="solo_cover" />
+        </b-hot>
 
         <b-hot v-else :styles="`flex-5 pcenter pad-2 bg-color-neutral alpha-.8 ${round} w-${width} h-${height}`"
                hover="alpha-1"
@@ -21,8 +21,9 @@
 
         <!--多图上传预览-->
         <template v-if="!solo_cover">
-            <b-view v-for="(img,index) of previews" :key="index"
-                    :styles="`bg-size-cover mrg-l-1 ${round} w-${width} h-${height}`" :bg-img="img" />
+            <b-img v-for="(img,index) of previews" :key="index"
+                   :styles="`mrg-l-1 w-${width} h-${height} ${round}`"
+                   :img="img" />
         </template>
 
         <input type="file" style="display: none" ref="uploader" @change="$_exe_upload" :multiple="multiple"/>
@@ -47,7 +48,7 @@
         /* notic: "提示文字" */,
         /* height: "热点区域高度" */,
         /* width: "热点区域宽度" */,
-        /* round: "热点区域圆角" */,
+        /* round: "热点区域圆角" */
     }`;
 
     export default {

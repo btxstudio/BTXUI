@@ -20,7 +20,7 @@
         <b-view styles="no-scroll h-0 trans-fast" ref="cont"
                 :states="{
                     spread: {
-                        style: 'h-20',
+                        style: `h-${cont_h}`,
                         state: spread
                     }
                 }">
@@ -61,23 +61,23 @@
                 required: false
             }
         },
-        computed: {
-
-            //内容区域
-            cont(){
-                return this.$refs.cont;
-            }
-
-        },
         data(){
             return {
 
                 //展开状态
                 spread: false,
 
-                //从容区高度
-                cont_h: 0,
+                //内容区域
+                $cont: null,
 
+                //从容区高度
+                cont_h: "0",
+
+            }
+        },
+        watch: {
+            "$cont.scrollHeight"(){
+                this.$_set_height();
             }
         },
         methods: {
@@ -85,10 +85,18 @@
             //切换展开与收起
             $_toggle(){
                 this.spread = !this.spread;
-                console.log(this.cont);
-                if(this.spread) this.cont_h = this.cont.clientHeight;
+            },
+
+            //设置容器高度
+            $_set_height(){
+                this.cont_h = `${this.$cont.scrollHeight}px`;
+                console.log(this.cont_h)
             }
 
+        },
+        mounted(){
+            this.$cont = this.$refs.cont.$el;
+            this.$_set_height();
         }
     }
 </script>

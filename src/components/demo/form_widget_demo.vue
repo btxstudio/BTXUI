@@ -405,7 +405,7 @@
                                 imgs: {
                                     name: "cover",
                                     imgs_upload_data: {
-                                        uploadApi
+                                        uploadApi,
                                     }
                                 },
                                 text: "头像",

@@ -3,9 +3,11 @@
         <b-view styles="rel t-4px">
             <tags-widget v-bind="tags_data" v-model="cur_tab"/>
         </b-view>
-        <b-view v-for="item of tags_data.tagList" v-show="item.id === cur_tab[0]" :key="item.id">
-            <slot :name="item.id" />
-        </b-view>
+        <keep-alive>
+            <b-view v-for="item of tags_data.tagList" v-if="item.id === cur_tab[0]" :key="item.id">
+                <slot :name="item.id" />
+            </b-view>
+        </keep-alive>
     </b-view>
 </template>
 

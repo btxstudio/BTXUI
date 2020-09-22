@@ -1,27 +1,14 @@
 <template>
-    <b-view>
+    <b-view styles="max-w">
         <!--标题-->
-        <b-hot styles="flex-between pad-v-1 pad-h-1.5 round-sm round-t" @on_click="$_toggle">
-            <b-view>
-                <b-icon v-if="iconData" v-bind="iconData" styles="mrg-r-1" />
-                <b-view v-html="title"></b-view>
-            </b-view>
-            <b-icon icon="arrow-right"
-                    styles="mrg-l-1.5 trans-fast alpha-.6"
-                    :states="{
-                        spread: {
-                            style: 'rotate-90',
-                            state: spread
-                        }
-                    }" />
-        </b-hot>
+        <title-tag-widget v-bind="tagData" :icon-data="iconData" v-model="tag_spread" />
 
         <!--内容-->
-        <b-view styles="no-scroll h-0 trans-fast" ref="cont"
+        <b-view styles="rel no-scroll h-0 trans-fast t-f2px alpha-0" ref="cont"
                 :states="{
                     spread: {
-                        style: `h-${cont_h}`,
-                        state: spread
+                        style: '',
+                        state: tag_spread
                     }
                 }">
             <slot />
@@ -33,13 +20,14 @@
     import BHot from "@/components/BTXUI/core/b-hot"
     import BIcon from "@/components/BTXUI/core/b-icon"
     import BView from "@/components/BTXUI/core/b-view"
+    import TitleTagWidget from "./title-tag-widget"
 
     const desc = ["该组件用于实现内容的展开与收起。"],
         extend = [],
-        dependent = ["b-view", "b-icon", "b-hot"],
+        dependent = ["title-tag-widget", "b-view", "b-icon", "b-hot"],
         api = null,
         init_data = `{
-        title: "组件标题，支持富文本",
+        tagData: "(参照：tag-widget 组件入参)",
         /* iconData: "(参照：b-icon 组件入参)" */
     }`;
 
@@ -49,54 +37,63 @@
         components: {
             BHot,
             BIcon,
-            BView
+            BView,
+            TitleTagWidget
+        },
+        model: {
+            prop: "spread",
+            event: "on_toggle"
         },
         props: {
-            title: {
-                type: String,
+            tagData: {
+                type: Object,
                 required: true,
             },
             iconData: {
                 type: Object,
+                required: false
+            },
+            spread: {
+                type: Boolean,
                 required: false
             }
         },
         data(){
             return {
 
-                //展开状态
-                spread: false,
-
-                //内容区域
-                $cont: null,
-
-                //从容区高度
-                cont_h: "0",
+                //抽屉展开状态
+                tag_spread: this.spread
 
             }
         },
-        watch: {
-            "$cont.scrollHeight"(){
-                this.$_set_height();
+        computed: {
+
+            //内容区域
+            cont(){
+                return this.$refs.cont;
             }
+
         },
         methods: {
 
-            //切换展开与收起
-            $_toggle(){
-                this.spread = !this.spread;
-            },
+            //动态设置内容展开状态高度
+            $_set_cont_height(){
+                const cont = this.cont;
+                cont.append_style(`h-${cont.$el.scrollHeight}px alpha-1`, "spread");
+                this.tag_spread && cont.toggle_style("spread");
+            }
 
-            //设置容器高度
-            $_set_height(){
-                this.cont_h = `${this.$cont.scrollHeight}px`;
-                console.log(this.cont_h)
+        },
+        watch: {
+
+            //监听抽屉展开状态
+            tag_spread(val){
+                this.$emit("on_toggle", val);
             }
 
         },
         mounted(){
-            this.$cont = this.$refs.cont.$el;
-            this.$_set_height();
+            this.$_set_cont_height();
         }
     }
 </script>

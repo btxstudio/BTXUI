@@ -61,7 +61,6 @@
                 this.computed_style = {
                     ...style_stack["origin"],
                     ...states.reduce((total, state)=>{
-                        console.log(style_stack[state]);
                         total = {...total, ...style_stack[state]}
                         return total;
                     }, {})

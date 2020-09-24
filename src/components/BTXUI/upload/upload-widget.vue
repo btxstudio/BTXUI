@@ -22,13 +22,12 @@
             ]
         },
         init_data = `{
-        uploadApi: "上传接口",
+        /* uploadApi: "直接上传接口" */,
         /* formData: {
             "其它数据字段": "数据值",...
         } */,
         /* remoteFiles: "(model) 上传文件地址集" */,
         /* type: "上传类型，数组格式，支持：jpg、png、text...，默认为所有类型" */,
-        /* directUpload: "直接上传，默认为 true" */,
         /* size: "大小限制，默认：2M" */,
         /* multiple: "是否多文件上传" */,
         /* btnData: "(参照：btn-widget 组件入参)" */
@@ -48,7 +47,7 @@
         props: {
             uploadApi: {
                 type: String,
-                required: true
+                required: false
             },
             formData: {
                 type: Object,
@@ -71,11 +70,6 @@
             multiple: {
                 type: Boolean,
                 required: false
-            },
-            directUpload: {
-                type: Boolean,
-                required: false,
-                default: true
             },
             btnData: {
                 type: Object,
@@ -165,7 +159,7 @@
                 for(let i=0; i<this.upload_file.files.length; i++){
                     this.upload_file.form_data.append(`file_${i}`, this.upload_file.files[i]);
                 }
-                this.directUpload && this.send_upload_data();
+                this.uploadApi && this.send_upload_data();
             },
 
             //类型检测

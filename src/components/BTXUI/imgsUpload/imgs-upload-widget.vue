@@ -10,6 +10,7 @@
                    :img="solo_cover" />
         </b-hot>
 
+        <!--上传按钮-->
         <b-hot v-else :styles="`flex-5 pcenter pad-2 bg-color-neutral alpha-.8 ${round} w-${width} h-${height}`"
                hover="alpha-1"
                @on_click="$_upload" >
@@ -87,22 +88,42 @@
                 default: ()=>["png", "jpg", "jpeg", "gif", "svg"]
             }
         },
+        data(){
+            return {
+
+                //文件读取器
+                file_reader: new FileReader(),
+
+                //预览图
+                preview: ""
+
+            }
+        },
         computed: {
 
             //单图封面
             solo_cover(){
-                const img = this.multiple? false: this.remote_files[0];
-                return img;
-            },
+                if(this.uploadApi){ //直接上传
+                    return this.multiple? false: this.remote_files[0];
+                }else { //后续上传
+                    return this.preview? this.preview: this.remote_files[0];
+                }
+            }
 
         },
-        data(){
-            return {
+        watch: {
 
-                //预览图
-                preview: null
+            //监听上传文件进行预览
+            "upload_file.files"(){
+                if(!this.multiple && !this.uploadApi){
+                    const file_reader = this.file_reader;
+                    file_reader.onload = (res)=>{
+                        this.preview = res.target.result;
+                    }
+                    file_reader.readAsDataURL(this.upload_file.files[0]);
+                }
+            },
 
-            }
         }
     }
 </script>

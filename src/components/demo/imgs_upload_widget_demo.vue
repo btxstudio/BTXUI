@@ -42,6 +42,17 @@
             <div class="resize">
                 <imgs-upload-widget v-bind="data_4.props" v-model="data_4.remote_files" />
             </div>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--单图上传预览-->
+        <section>
+            <h5>单图上传预览</h5>
+            <p>设置后续上传时，且关闭 <code>multiple</code> 属性，可进行图片上传前预览。</p>
+            <div class="resize">
+                <imgs-upload-widget v-bind="data_5.props" v-model="data_5.remote_files" />
+            </div>
         </section>
 
     </article>
@@ -109,6 +120,17 @@
                     remote_files: [
                         "http://localhost/BTXphp/sea/static/img/test/test.jpg",
                         "http://localhost/BTXphp/sea/static/img/test/test_1.jpg"
+                    ]
+                },
+
+                data_5: {
+                    props: {
+                        width: 10,
+                        height: 7,
+                        multiple: false,
+                    },
+                    remote_files: [
+                        "http://localhost/BTXphp/sea/static/img/test/test.jpg"
                     ]
                 }
 

@@ -135,6 +135,7 @@
         },
         model: {
             prop: "selected",
+            event: "on_reset"
         },
         props: {
             formData: {
@@ -159,7 +160,7 @@
         },
         computed: {
 
-            //表单项集合
+            //输入型表单项集合
             inputs(){
                 return this.$refs.input;
             }
@@ -167,6 +168,9 @@
         },
         data(){
             return {
+
+                //初始选择
+                ori_selected: {...this.selected},
 
                 //表单验证结果
                 check_result: {},
@@ -191,10 +195,7 @@
 
             //重置表单
             reset(){
-                let inputs = this.inputs;
-                inputs && this.inputs.forEach((inp)=>{
-                    inp.reset();
-                })
+                this.$emit("on_reset", {...this.ori_selected});
             },
 
             //记录表单项验证结果
@@ -210,7 +211,7 @@
 
             //提交表单
             $_submit(){
-                this.$refs.input.forEach((inp)=>{
+                this.inputs.forEach((inp)=>{
                     this.$_record_inp_check(inp.check());
                 })
                 this.submit && this.submit.callback(this.selected, this.check_result);

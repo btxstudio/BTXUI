@@ -73,7 +73,7 @@
             <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
                 <form-widget v-bind="dataList_6.props" v-model="dataList_6.selected" />
             </div>
-            <p>当前所选数据：<code class="mrg-r-d5" v-for="(val, key) of dataList_6.selected"><b>{{key}}</b>:{{val}}</code></p>
+            <p>表单提交数据：<code class="mrg-r-d5" v-for="(val, key) of dataList_6.submit_data"><b>{{key}}</b>:{{val}}</code></p>
         </section>
 
     </article>
@@ -468,9 +468,38 @@
                         ],
                         layout: {
                             title_width: 10
+                        },
+                        submit: {
+                            callback: (form_data)=>{
+                                let result = {},
+                                    val;
+                                for(let pro in form_data){
+                                    val = form_data[pro];
+                                    if(val) result[pro] = val;
+                                }
+                                if(!Object.values(result).join("")) result = { result: "暂无数据" };
+                                this.dataList_6.submit_data = result;
+                            },
+                            btn_data: {
+                                btnText: "提交表单",
+                                btnColor: {
+                                    normal: {
+                                        text: "dgray",
+                                        bg: "light",
+                                        line: "none",
+                                    },
+                                    hover: {
+                                        text: "light",
+                                        bg: "blue",
+                                        line: "none",
+                                    },
+                                }
+                            },
+                            reset: true
                         }
                     },
-                    selected: {}
+                    selected: {},
+                    submit_data: {}
                 },
 
             }

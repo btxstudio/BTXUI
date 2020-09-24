@@ -18,12 +18,6 @@
                     ef: "表单验证",
                     params: "-",
                     return: "{name:'表单项属性', notic:'报错提示', pass:'是否通过'}"
-                },
-                {
-                    name: "reset",
-                    ef: "重置表单",
-                    params: "-",
-                    return: "-"
                 }
             ],
             event: [
@@ -77,9 +71,6 @@
         },
         data(){
             return {
-
-                //初始值
-                origin_val: this.inpVal,
 
                 //输入文字
                 value: this.inpVal,
@@ -153,11 +144,6 @@
             $_check(){
                 this.$emit("on_check", this.check());
             },
-
-            //重置表单
-            reset(){
-                this.$emit("on_input", this.origin_val || "");
-            }
 
         }
     }

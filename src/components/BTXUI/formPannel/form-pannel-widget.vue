@@ -5,7 +5,7 @@
                 <b-view styles="line-b thick-1 pad-v-.7 line-neutral">{{pannelTitle}}</b-view>
             </b-view>
             <b-list styles="pad-2">
-                <form-widget ref="former" v-bind="formData" :selected="pannelInfo.selected" />
+                <form-widget ref="former" v-bind="formData" v-model="pannelInfo.selected" />
             </b-list>
         </b-view>
     </pannel-widget>
@@ -44,8 +44,7 @@
             FormWidget
         },
         model: {
-            prop: "pannelInfo",
-            event: "on_click"
+            prop: "pannelInfo"
         },
         props: {
             pannelInfo: {
@@ -70,14 +69,6 @@
                 required: false
             }
         },
-        computed: {
-
-            //表单对象
-            former(){
-                return this.$refs.former;
-            }
-
-        },
         data(){
             return {
 
@@ -90,15 +81,23 @@
                     matteColor: "rgba(40,40,40,.7)",
                     matteClose: "click",
                     ...this.pannelData,
-                }
+                },
 
             }
+        },
+        computed: {
+
+            //表单对象
+            former(){
+                return this.$refs.former;
+            }
+
         },
         watch: {
 
             //监听面板显示状态入参
             "pannelInfo.visible"(val){
-                if(val === false) this.former.reset();
+                val === false && this.former.reset();
             }
 
         }

@@ -55,7 +55,7 @@
                 required: false
             },
             remoteFiles: {
-                type: Array,
+                type: [Array, String],
                 required: false,
                 default: ()=>[]
             },
@@ -82,14 +82,6 @@
                 required: false
             }
         },
-        computed: {
-
-            //上传元素
-            uploader(){
-                return this.$refs.uploader;
-            }
-
-        },
         data(){
             return {
 
@@ -106,6 +98,20 @@
                 },
 
             }
+        },
+        computed: {
+
+            //上传文件
+            remote_files(){
+                const files = this.remoteFiles;
+                return typeof(files) === "string"? [files]: files;
+            },
+
+            //上传元素
+            uploader(){
+                return this.$refs.uploader;
+            }
+
         },
         methods: {
 
@@ -128,9 +134,12 @@
                             this.$confirm.toast(res.data.datas, 2000, "fail");
                             this.$emit("on_error", res.data.error);
                         }else{ //上传成功
-                            this.$emit("on_success", datas.map(url=>{
-                                return `${url}?tmp=${Math.round(Math.random() * 1000)}`
-                            }));
+                            this.uploader.value = "";
+                            this.remoteFiles.length = 0;
+                            datas.forEach(url=>{
+                                this.remoteFiles.push(`${url}?tmp=${Math.round(Math.random() * 1000)}`);
+                            })
+                            this.$emit("on_success", this.remoteFiles);
                         }
                     }else{
                         this.$confirm.toast("上传服务有误!", 2000, "fail");

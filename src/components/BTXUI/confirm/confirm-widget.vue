@@ -131,7 +131,7 @@
                 wid_colors: {
                     text: "dgray",
                     pannel: "light",
-                    suucees: "#e6fff2",
+                    success: "#e6fff2",
                     fail: "#f9f2f4",
                     notic: "#e6f5ff",
                     loading: "lgray",

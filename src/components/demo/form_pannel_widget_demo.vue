@@ -2,6 +2,7 @@
     <article>
         <header-info v-bind="header_info" />
 
+        <!--基础使用-->
         <section>
             <h5>基础使用</h5>
             <p>通过 <code>v-model</code> 可以初始化及双向绑定表单选取数据以及面板的显示状态。通过 <code>pannel-title</code> 属性可以设置面板标题。</p>
@@ -13,6 +14,7 @@
             <p></p>
         </section>
 
+        <!--自定义含滚动条样式弹窗-->
         <section>
             <h5>自定义含滚动条样式弹窗</h5>
             <p>通过 <code>pannel-styles</code> 属性可以对弹出面板进行样式自定义设置，通常设置固定高度当内容溢出时会产生滚动条效果。</p>
@@ -24,6 +26,7 @@
             <p></p>
         </section>
 
+        <!--自定义弹窗样式-->
         <section>
             <h5>自定义弹窗样式</h5>
             <p>通过 <code>pannel-styles</code> 属性可以对弹出面板进行样式自定义设置。此外通过 <code>pannel-data</code> 属性可以设置弹窗面板的基础布局样式，包括遮罩背景色、面板定位、面板位移、启用关闭按钮...（可参考：<code>pannel-widget</code> 组件入参）。</p>
@@ -35,6 +38,7 @@
             <p></p>
         </section>
 
+        <!--设置含提交按钮弹窗-->
         <section>
             <h5>设置含提交按钮弹窗</h5>
             <p>通过 <code>form-data</code> 属性的 <b>submit</b> 字段可以设置表单面板的"提交"按钮。（可参考：<code>form-widget</code> 组件入参）。</p>

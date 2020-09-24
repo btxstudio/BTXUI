@@ -1,5 +1,5 @@
 <template>
-    <img v-else-if="img" :src="src" :style="{...computed_style, objectFit: objFit}">
+    <img :src="src" :style="{...computed_style, objectFit: objFit}">
 </template>
 
 <script>
@@ -42,6 +42,14 @@
                 src: this.defaultSrc,
 
             }
+        },
+        watch: {
+
+            //监听图像源
+            img(){
+                this.$_load();
+            }
+
         },
         methods: {
 

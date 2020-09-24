@@ -21,7 +21,7 @@
 
         <!--多图上传预览-->
         <template v-if="!solo_cover">
-            <b-img v-for="(img,index) of previews" :key="index"
+            <b-img v-for="(img,index) of remote_files" :key="index"
                    :styles="`mrg-l-1 w-${width} h-${height} ${round}`"
                    :img="img" />
         </template>
@@ -91,32 +91,18 @@
 
             //单图封面
             solo_cover(){
-                return this.multiple? false: (this.previews[0] || this.remoteFiles[0]);
+                const img = this.multiple? false: this.remote_files[0];
+                return img;
             },
 
         },
         data(){
             return {
 
-                //预览图集合
-                previews: this.remoteFiles
+                //预览图
+                preview: null
 
             }
-        },
-        watch: {
-
-            //监听预览图加载
-            "upload_file.files"(imgs){
-                this.previews = [];
-                [].forEach.call(imgs, img=>{
-                    let file_reader = new FileReader();
-                    file_reader.onload = (res)=>{
-                        this.previews.push(res.target.result);
-                    }
-                    file_reader.readAsDataURL(img);
-                })
-            }
-
         }
     }
 </script>

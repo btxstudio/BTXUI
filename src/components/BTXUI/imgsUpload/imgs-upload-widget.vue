@@ -22,7 +22,7 @@
 
         <!--多图上传预览-->
         <template v-if="!solo_cover">
-            <b-img v-for="(img,index) of remote_files" :key="index"
+            <b-img v-for="(img,index) of previews" :key="index"
                    :styles="`mrg-l-1 w-${width} h-${height} ${round}`"
                    :img="img" />
         </template>
@@ -42,7 +42,15 @@
         extend = ["upload-widget"],
         dependent = ["b-icon", "b-img", "b-hot", "b-view"],
         api = {
-            extend: "继承自：<code>upload-widget</code> 组件"
+            extend: "继承自：<code>upload-widget</code> 组件",
+            methods: [
+                {
+                    name: "clear_preview",
+                    ef: "清除预览图",
+                    params: "-",
+                    return: "-"
+                }
+            ]
         },
         init_data = `{
         "继承自：upload-widget 组件入参。type、btnData 入参无效",
@@ -91,38 +99,48 @@
         data(){
             return {
 
-                //文件读取器
-                file_reader: new FileReader(),
-
-                //预览图
-                preview: ""
+                //预览图源
+                img_res: null
 
             }
         },
         computed: {
 
-            //单图封面
+            //预览图
+            previews(){
+                return this.img_res? this.img_res: this.remote_files;
+            },
+
+            //单预览图
             solo_cover(){
-                if(this.uploadApi){ //直接上传
-                    return this.multiple? false: this.remote_files[0];
-                }else { //后续上传
-                    return this.preview? this.preview: this.remote_files[0];
-                }
-            }
+                return this.multiple? false: this.previews[0];
+            },
 
         },
         watch: {
 
             //监听上传文件进行预览
             "upload_file.files"(){
-                if(!this.multiple && !this.uploadApi){
-                    const file_reader = this.file_reader;
-                    file_reader.onload = (res)=>{
-                        this.preview = res.target.result;
-                    }
-                    file_reader.readAsDataURL(this.upload_file.files[0]);
+                if(!this.uploadApi){
+                    this.img_res = [];
+                    [].forEach.call(this.upload_file.files, file=>{
+                        const file_reader = new FileReader();
+                        file_reader.onload = (res)=>{
+                            this.img_res.push(res.target.result);
+                        }
+                        file_reader.readAsDataURL(file);
+                    })
                 }
             },
+
+        },
+        methods: {
+
+            //清除预览图
+            clear_preview(){
+                this.img_res = null;
+                this.uploader.value = "";
+            }
 
         }
     }

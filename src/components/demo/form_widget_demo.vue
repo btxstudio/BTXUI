@@ -41,13 +41,13 @@
             <p></p>
         </section>
 
-        <!--表单提交按钮-->
+        <!--其它表单元素及提交-->
         <section>
-            <h5>表单提交按钮</h5>
-            <p>通过 <code>submit</code> 属性可设置表单"提交"按钮和其对齐方式，以及点击操作所执行的回调函数，函数中自变量为表单选择数据。<b>btnColor</b> 字段可以设置按钮颜色风格。（可参考：<code>btn-widget</code> 组件入参）。</p>
-            <p>通过 <code>reset</code> 属性可设置表单"恢复"按钮，初始化表单元素数据。</p>
+            <h5>其它表单元素及提交</h5>
+            <p>通过 <code>submit</code> 属性可设置表单"提交"按钮和其对齐方式，以及点击操作所执行的回调函数，函数中自变量为表单选择数据。<b>btnColor</b> 字段可以设置按钮颜色风格。（可参考：<code>btn-widget</code> 组件入参）。通过 <code>reset</code> 属性可设置表单"恢复"按钮，初始化表单元素数据。</p>
+            <p>通过 <code>select</code> 属性可设置下拉框表单元素；<code>input_data</code> 属性 <b>type="textarea"</b> 可设置多行文本输入表单元素；<code>imgs</code> 属性可设置图片上传。</p>
             <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
-                <form-widget :form-data="dataList_4.data" :submit="dataList_4.submit" v-model="dataList_4.selected" />
+                <form-widget v-bind="dataList_4.props" v-model="dataList_4.selected" />
             </div>
             <p>表单提交数据：<code class="mrg-r-d5" v-for="(val, key) of dataList_4.submit_data"><b>{{key}}</b>:{{val}}</code></p>
             <hr>
@@ -62,18 +62,6 @@
                 <form-widget :form-data="dataList_5.data" :layout="dataList_5.layout" :submit="dataList_5.submit" v-model="dataList_5.selected" />
             </div>
             <p>表单提交数据：<code class="mrg-r-d5" v-for="(val, key) of dataList_5.submit_data"><b>{{key}}</b>:{{val}}</code></p>
-            <hr>
-            <p></p>
-        </section>
-
-        <!--其它表单元素-->
-        <section>
-            <h5>其它表单元素</h5>
-            <p>通过 <code>select</code> 属性可设置下拉框表单元素。<code>input_data</code> 属性 <b>type="textarea"</b> 可设置多行文本输入表单元素。</p>
-            <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
-                <form-widget v-bind="dataList_6.props" v-model="dataList_6.selected" />
-            </div>
-            <p>表单提交数据：<code class="mrg-r-d5" v-for="(val, key) of dataList_6.submit_data"><b>{{key}}</b>:{{val}}</code></p>
         </section>
 
     </article>
@@ -209,56 +197,105 @@
                 },
 
                 dataList_4: {
-                    data: [
-                        {
-                            input_data: {
-                                type: "text",
-                                name: "uname",
-                                placeholder: "请输入英文字母、下划线或数字"
+                    props: {
+                        formData: [
+                            {
+                                imgs: {
+                                    name: "cover",
+                                    imgs_upload_data: {}
+                                },
+                                text: "头像",
                             },
-                            text: "账号",
-                        },
-                        {
-                            input_data: {
-                                type: "password",
-                                name: "pwd",
-                                maxlength: 6,
-                                placeholder: "请输入您的账号密码"
+                            {
+                                input_data: {
+                                    type: "text",
+                                    name: "uname",
+                                    placeholder: "请输入英文字母、下划线或数字",
+                                    rule: {
+                                        type: "uname",
+                                        notic: "账号输入内容不合法"
+                                    }
+                                },
+                                text: "账号",
                             },
-                            text: "密码",
+                            {
+                                select: {
+                                    name: "city",
+                                    select_data: {
+                                        listData: [
+                                            {
+                                                text: "北京",
+                                                val: "bj"
+                                            },
+                                            {
+                                                text: "上海",
+                                                val: "sh"
+                                            },
+                                            {
+                                                text: "深圳",
+                                                val: "sz"
+                                            }
+                                        ],
+                                        placeholder: "请选择所在城市"
+                                    }
+                                },
+                                text: "所在城市",
+                            },
+                            {
+                                input_data: {
+                                    type: "text",
+                                    name: "zh_name",
+                                    placeholder: "请输入真实中文名",
+                                    rule: {
+                                        type: "zh"
+                                    }
+                                },
+                                text: "真实姓名",
+                            },
+                            {
+                                input_data: {
+                                    type: "textarea",
+                                    name: "about",
+                                    placeholder: "请输入个人简介...",
+                                    rows: 5
+                                },
+                                text: "关于自己",
+                            }
+                        ],
+                        layout: {
+                            title_width: 10
                         },
-                    ],
+                        submit: {
+                            callback: (form_data)=>{
+                                let result = {},
+                                    val;
+                                for(let pro in form_data){
+                                    val = form_data[pro];
+                                    if(val) result[pro] = val;
+                                }
+                                if(!Object.values(result).join("")) result = { result: "暂无数据" };
+                                this.dataList_4.submit_data = result;
+                            },
+                            btn_data: {
+                                btnText: "提交表单",
+                                btnColor: {
+                                    normal: {
+                                        text: "dgray",
+                                        bg: "light",
+                                        line: "none",
+                                    },
+                                    hover: {
+                                        text: "light",
+                                        bg: "blue",
+                                        line: "none",
+                                    },
+                                }
+                            },
+                            reset: true
+                        }
+                    },
                     selected: {
                         uname: "Steve Jobs"
-                    },
-                    submit: {
-                        callback: (form_data)=>{
-                            let result = {},
-                                val;
-                            for(let pro in form_data){
-                                val = form_data[pro];
-                                if(val) result[pro] = val;
-                            }
-                            if(!Object.values(result).join("")) result = { result: "暂无数据" };
-                            this.dataList_4.submit_data = result;
-                        },
-                        btn_data: {
-                            btnText: "提交表单",
-                            btnColor: {
-                                normal: {
-                                    text: "dgray",
-                                    bg: "light",
-                                    line: "none",
-                                },
-                                hover: {
-                                    text: "light",
-                                    bg: "blue",
-                                    line: "none",
-                                },
-                            }
-                        },
-                        align: "left",
-                        reset: true
                     },
                     submit_data: {}
                 },
@@ -395,110 +432,6 @@
                             btnRound: true
                         },
                     },
-                    submit_data: {}
-                },
-
-                dataList_6: {
-                    props: {
-                        formData: [
-                            {
-                                imgs: {
-                                    name: "cover",
-                                    imgs_upload_data: {
-                                        uploadApi,
-                                    }
-                                },
-                                text: "头像",
-                            },
-                            {
-                                input_data: {
-                                    type: "text",
-                                    name: "uname",
-                                    placeholder: "请输入英文字母、下划线或数字",
-                                    rule: {
-                                        type: "uname",
-                                        notic: "账号输入内容不合法"
-                                    }
-                                },
-                                text: "账号",
-                            },
-                            {
-                                select: {
-                                    name: "city",
-                                    select_data: {
-                                        listData: [
-                                            {
-                                                text: "北京",
-                                                val: "bj"
-                                            },
-                                            {
-                                                text: "上海",
-                                                val: "sh"
-                                            },
-                                            {
-                                                text: "深圳",
-                                                val: "sz"
-                                            }
-                                        ],
-                                        placeholder: "请选择所在城市"
-                                    }
-                                },
-                                text: "所在城市",
-                            },
-                            {
-                                input_data: {
-                                    type: "text",
-                                    name: "zh_name",
-                                    placeholder: "请输入真实中文名",
-                                    rule: {
-                                        type: "zh"
-                                    }
-                                },
-                                text: "真实姓名",
-                            },
-                            {
-                                input_data: {
-                                    type: "textarea",
-                                    name: "about",
-                                    placeholder: "请输入个人简介...",
-                                    rows: 5
-                                },
-                                text: "关于自己",
-                            }
-                        ],
-                        layout: {
-                            title_width: 10
-                        },
-                        submit: {
-                            callback: (form_data)=>{
-                                let result = {},
-                                    val;
-                                for(let pro in form_data){
-                                    val = form_data[pro];
-                                    if(val) result[pro] = val;
-                                }
-                                if(!Object.values(result).join("")) result = { result: "暂无数据" };
-                                this.dataList_6.submit_data = result;
-                            },
-                            btn_data: {
-                                btnText: "提交表单",
-                                btnColor: {
-                                    normal: {
-                                        text: "dgray",
-                                        bg: "light",
-                                        line: "none",
-                                    },
-                                    hover: {
-                                        text: "light",
-                                        bg: "blue",
-                                        line: "none",
-                                    },
-                                }
-                            },
-                            reset: true
-                        }
-                    },
-                    selected: {},
                     submit_data: {}
                 },
 

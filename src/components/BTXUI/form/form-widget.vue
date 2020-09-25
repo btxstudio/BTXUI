@@ -46,9 +46,12 @@
                                @on_check="$_record_inp_check" />
                 </b-view>
 
-                <!--封面上传表单元素-->
+                <!--图片上传表单元素-->
                 <b-view v-if="item.imgs">
-                    <imgs-upload-widget v-bind="item.imgs.imgs_upload_data" v-model="selected[item.imgs.name]" />
+                    <imgs-upload-widget v-bind="item.imgs.imgs_upload_data"
+                                        v-model="selected[item.imgs.name]"
+                                        ref="imgs_upload"
+                                        @on_change="$_append_file"/>
                 </b-view>
 
                 <!--下拉框表单元素-->
@@ -102,7 +105,7 @@
                 },
                 imgs: {
                     name: "图片数据键名",
-                    imgs_upload_data: "(参照：imgs-upload-widget 组件入参)"
+                    imgs_upload_data: "(参照：imgs-upload-widget 组件入参。推荐使用后续上传)"
                 }
                 input_data: "(参照：b-input 组件入参)"
             },...
@@ -113,7 +116,9 @@
         } */,
         /* submit: {
             align: "对齐方式：默认 left、center、right",
-            callback: "回调函数",
+            callback(selected, check_result, form_data){
+                "提交回调函数..."
+            },
             reset: "启用重置按钮，可缺省",
             btn_data: "(参照：btn-widget 组件入参)"
         } */
@@ -187,7 +192,10 @@
                             break;
                         default: return 1;
                     }
-                })(): null
+                })(): null,
+
+                //formData
+                form_data: new FormData(),
 
             }
         },
@@ -195,7 +203,11 @@
 
             //重置表单
             reset(){
+                const imgs_upload = this.$refs.imgs_upload;
                 this.$emit("on_reset", {...this.ori_selected});
+                imgs_upload && imgs_upload.forEach(wid=>{
+                    wid.clear_preview();
+                })
             },
 
             //记录表单项验证结果
@@ -214,8 +226,19 @@
                 this.inputs.forEach((inp)=>{
                     this.$_record_inp_check(inp.check());
                 })
-                this.submit && this.submit.callback(this.selected, this.check_result);
+                for(let pro in this.selected){
+                    this.form_data.append(pro, this.selected[pro]);
+                }
+                this.submit && this.submit.callback(this.selected, this.check_result, this.form_data);
+                this.form_data = new FormData();
             },
+
+            //添加 formData 数据
+            $_append_file(files){
+                for(let i=0; i<files.length; i++){
+                    this.form_data.append(`file_${i}`, files[i]);
+                }
+            }
 
         }
     }

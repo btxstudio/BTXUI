@@ -2,7 +2,19 @@
     <section>
         <div>
             <h5><code>{{name}}</code></h5>
-            <p v-for="text of desc" v-html="text"></p>
+            <template v-for="item of desc">
+                <!--图片-->
+                <div v-if="item.cover">
+                    <img :src="require(`@/assets/img/mechanism/${item.cover}`)"
+                         class="round-sm"/>
+                    <div class="pcenter">
+                        <span class="line-b thick-1 line-lgray pad-b-d5 fsize-d9">{{item.title}}</span>
+                    </div>
+                </div>
+
+                <!--文字-->
+                <p v-else v-html="item"></p>
+            </template>
             <p v-if="extend.length">组件继承：<code v-for="ext of extend">{{ext}}</code></p>
             <p v-if="dependent.length">组件依赖：<code v-for="dep of dependent">{{dep}}</code></p>
             <p>组件初始化入参：</p>

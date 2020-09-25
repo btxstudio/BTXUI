@@ -44,7 +44,7 @@
                 <btn-widget v-if="data.btn_data" v-bind="data.btn_data" @on_click="data.callback" />
 
                 <!--单元格图片-->
-                <b-img v-else-if="data.src" :img="data.src"
+                <b-img v-else-if="data.src" :img="data.src + '?tmp=' + Date.now()"
                        :styles="`round-sm w-${data.width || 'auto'} h-${data.height || 'auto'}`" />
 
                 <!--单元格文本-->

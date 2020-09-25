@@ -49,9 +49,20 @@
         <!--单图上传预览-->
         <section>
             <h5>单图上传预览</h5>
-            <p>设置后续上传时，且关闭 <code>multiple</code> 属性，可进行图片上传前预览。</p>
+            <p>设置后续上传时，且关闭 <code>multiple</code> 属性，可进行单张图片上传前预览。</p>
             <div class="resize">
                 <imgs-upload-widget v-bind="data_5.props" v-model="data_5.remote_files" />
+            </div>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--多图上传预览-->
+        <section>
+            <h5>多图上传预览</h5>
+            <p>设置后续上传时，且开启 <code>multiple</code> 属性，可进行多张图片上传前预览。</p>
+            <div class="resize">
+                <imgs-upload-widget v-bind="data_6.props" v-model="data_6.remote_files" />
             </div>
         </section>
 
@@ -126,12 +137,20 @@
                 data_5: {
                     props: {
                         width: 10,
-                        height: 7,
-                        multiple: false,
+                        height: 7
                     },
                     remote_files: [
                         "http://localhost/BTXphp/sea/static/img/test/test.jpg"
                     ]
+                },
+
+                data_6: {
+                    props: {
+                        width: 10,
+                        height: 7,
+                        multiple: true
+                    },
+                    remote_files: []
                 }
 
             }

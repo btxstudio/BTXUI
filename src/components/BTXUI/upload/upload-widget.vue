@@ -9,7 +9,10 @@
     import BView from "@/components/BTXUI/core/b-view"
     import BtnWidget from "@/components/BTXUI/btn/btn-widget"
 
-    const desc = ["该组件用于文件上传操作。"],
+    const desc = ["该组件用于文件上传操作，分为 “直接上传” 和 “间接（后续）上传” 2 类流程。", {
+            cover: "upload-widget.png",
+            title: "执行机制原理"
+        }],
         extend = [],
         dependent = ["btn-widget", "b-view"],
         api = {
@@ -18,6 +21,11 @@
                     name: "on_error",
                     ef: "上传失败",
                     params: "error_code"
+                },
+                {
+                    name: "on_change",
+                    ef: "上传文件改变",
+                    params: "files"
                 }
             ]
         },
@@ -29,7 +37,7 @@
         /* remoteFiles: "(model) 上传文件地址集" */,
         /* type: "上传类型，数组格式，支持：jpg、png、text...，默认为所有类型" */,
         /* size: "大小限制，默认：2M" */,
-        /* multiple: "是否多文件上传" */,
+        /* multiple: "是否多文件上传，默认 false" */,
         /* btnData: "(参照：btn-widget 组件入参)" */
     }`;
 
@@ -149,6 +157,7 @@
             //执行上传
             $_exe_upload(e){
                 this.upload_file.files = e.currentTarget.files; //表单数据
+                this.$emit("on_change", this.upload_file.files);
 
                 //上传文件验证
                 if(this.$_size_check() || (this.type && this.$_type_check())){
@@ -156,10 +165,13 @@
                     return;
                 };
 
-                for(let i=0; i<this.upload_file.files.length; i++){
-                    this.upload_file.form_data.append(`file_${i}`, this.upload_file.files[i]);
+                //直接上传
+                if(this.uploadApi){
+                    for(let i=0; i<this.upload_file.files.length; i++){
+                        this.upload_file.form_data.append(`file_${i}`, this.upload_file.files[i]);
+                    }
+                    this.send_upload_data();
                 }
-                this.uploadApi && this.send_upload_data();
             },
 
             //类型检测

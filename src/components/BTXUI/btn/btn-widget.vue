@@ -1,7 +1,7 @@
 <template>
     <b-hot @on_click="$_click"
            v-bind="hotData"
-           :styles="`flex-4 pad-h-1.4 pad-v-.4 line thick-1 ellipsis ${btnRound? 'round-lg': 'round-sm'} ${btnWidth? 'flex-5 w-' + btnWidth: ''} color-${btn_color.normal.text} ${$_set_bg(btn_color.normal.bg)} line-${btn_color.normal.line}`"
+           :styles="`flex-5 pad-h-1.4 pad-v-.4 line thick-1 ellipsis ${btnRound? 'round-lg': 'round-sm'} ${btnWidth? 'w-' + btnWidth: ''} color-${btn_color.normal.text} ${$_set_bg(btn_color.normal.bg)} line-${btn_color.normal.line}`"
            :hover="`color-${btn_color.hover.text} ${$_set_bg(btn_color.hover.bg)} line-${btn_color.hover.line}`">
 
         <!--图标-->

@@ -41,7 +41,7 @@
         <!--设置单元格封面及按钮-->
         <section>
             <h5>设置单元格封面及按钮</h5>
-            <p>通过 <code>tbody</code> 属性中的 <b>btn</b> 字段可以设置单元格按钮组件，实现点击交互业务；而 <b>src</b> 字段可以设置单元格封面。</p>
+            <p><code>tbody</code> 属性对应的数据元素可以设置为 "纯文本"、"btn-widget"、"tag-widget" 以及 "b-img"。</p>
             <div class="resize">
                 <table-widget v-bind="data_4" />
             </div>
@@ -84,6 +84,30 @@
             tagWidget
         },
         data(){
+            const tag_data = {
+                id: "a",
+                text: "考试通过",
+                actText: "考试未过",
+                colors: {
+                    normal: {
+                        text: "dgray",
+                        bg: "neutral",
+                    },
+                    act: {
+                        text: "light",
+                        bg: "green",
+                    },
+                    hover: {
+                        text: "dgray",
+                        bg: "#ddd",
+                    }
+                },
+                mode: "checkbox"
+            },
+                show_pass = (index)=>{
+                    this.$confirm.toast(index);
+                }
+
             return {
 
                 //初始化入参
@@ -216,8 +240,12 @@
                         },
                         {
                             title: "Rank",
-                            grow: 3,
+                            grow: 1,
                         },
+                        {
+                            title: "pass",
+                            grow: 1,
+                        }
                     ],
                     tbody: [
                         [{
@@ -230,6 +258,10 @@
                             callback: ()=>{
                                 this.$_show_detail4("javascript score: 83")
                             }
+                        }, {
+                            tag_data,
+                            selected: false,
+                            callback: show_pass
                         }],
                         [{
                             src: require("@/assets/img/head2.jpg"),
@@ -253,6 +285,10 @@
                             callback: ()=>{
                                 this.$_show_detail4("html score: 89")
                             }
+                        }, {
+                            tag_data,
+                            selected: false,
+                            callback: show_pass
                         }],
                         [{
                             src: require("@/assets/img/head.jpg"),
@@ -276,6 +312,10 @@
                             callback: ()=>{
                                 this.$_show_detail4("css score: 99")
                             }
+                        }, {
+                            tag_data,
+                            selected: false,
+                            callback: show_pass
                         }],
                     ]
                 },
@@ -331,7 +371,7 @@
                 this.$refs.table_2[state? 'enable_row_click': 'disable_row_click']();
             },
 
-            $_show_detail4(arg){
+            $_show_detail4(arg) {
                 this.$confirm.toast(arg);
             },
 

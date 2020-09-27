@@ -41,7 +41,7 @@
         <!--设置单元格封面及按钮-->
         <section>
             <h5>设置单元格封面及按钮</h5>
-            <p><code>tbody</code> 属性对应的数据元素可以设置为 "纯文本"、"btn-widget"、"tag-widget" 以及 "b-img"。</p>
+            <p><code>tbody</code> 属性对应的数据元素可以设置为 "纯文本"、"tag-widget" 以及 "b-img"。</p>
             <div class="resize">
                 <table-widget v-bind="data_4" />
             </div>
@@ -85,7 +85,6 @@
         },
         data(){
             const tag_data = {
-                id: "a",
                 text: "考试通过",
                 actText: "考试未过",
                 colors: {
@@ -103,10 +102,7 @@
                     }
                 },
                 mode: "checkbox"
-            },
-                show_pass = (index)=>{
-                    this.$confirm.toast(index);
-                }
+            };
 
             return {
 
@@ -239,10 +235,6 @@
                             grow: 2,
                         },
                         {
-                            title: "Rank",
-                            grow: 1,
-                        },
-                        {
                             title: "pass",
                             grow: 1,
                         }
@@ -252,70 +244,25 @@
                             src: require("@/assets/img/head.jpg"),
                             height: 5
                         }, "nick", "javascript", {
-                            btn_data: {
-                                btnText: "查看详情"
-                            },
-                            callback: ()=>{
-                                this.$_show_detail4("javascript score: 83")
-                            }
-                        }, {
                             tag_data,
                             selected: false,
-                            callback: show_pass
+                            callback: this.$_show_pass4
                         }],
                         [{
                             src: require("@/assets/img/head2.jpg"),
                             height: 5
                         }, "nick", "html", {
-                            btn_data: {
-                                btnText: "查看详情",
-                                btnColor: {
-                                    normal: {
-                                        text: "light",
-                                        bg: "red",
-                                        line: "#b7072c",
-                                    },
-                                    hover: {
-                                        text: "#ffcc00",
-                                        bg: "#444",
-                                        line: "#222",
-                                    },
-                                }
-                            },
-                            callback: ()=>{
-                                this.$_show_detail4("html score: 89")
-                            }
-                        }, {
                             tag_data,
                             selected: false,
-                            callback: show_pass
+                            callback: this.$_show_pass4
                         }],
                         [{
                             src: require("@/assets/img/head.jpg"),
                             height: 5
                         }, "nick", "css", {
-                            btn_data: {
-                                btnText: "查看详情",
-                                btnColor: {
-                                    normal: {
-                                        text: "light",
-                                        bg: ["blue", "green"],
-                                        line: "none",
-                                    },
-                                    hover: {
-                                        text: "#ffcc00",
-                                        bg: ["#222", "#555"],
-                                        line: "none",
-                                    },
-                                }
-                            },
-                            callback: ()=>{
-                                this.$_show_detail4("css score: 99")
-                            }
-                        }, {
                             tag_data,
                             selected: false,
-                            callback: show_pass
+                            callback: this.$_show_pass4
                         }],
                     ]
                 },
@@ -371,8 +318,9 @@
                 this.$refs.table_2[state? 'enable_row_click': 'disable_row_click']();
             },
 
-            $_show_detail4(arg) {
-                this.$confirm.toast(arg);
+            $_show_pass4(row, state) {
+                const subject = this.data_4.tbody[row][2];
+                this.$confirm.toast(`<b>${subject}</b> 学科${state? '通过': '未通过'}考试`, 2000, state? "success": "notic");
             },
 
             $_toggle_row_select5(id, state){

@@ -40,11 +40,8 @@
             <b-view v-for="(data, k) of tr" :key="k"
                     :styles="`flex-4 pad-h-.7 pad-v-.4 thick-1 ${k>0? 'line-l': ''} line-${colors.line} ${k==0? 'bg-color-' + colors.row.head: ''} ${$_set_td_width(thead[k])}`" >
 
-                <!--单元格按钮-->
-                <btn-widget v-if="data.btn_data" v-bind="data.btn_data" @on_click="data.callback" />
-
                 <!--单元格标签按钮-->
-                <tag-widget v-else-if="data.tag_data" :id="i" v-bind="data.tag_data" v-model="data.selected" @on_click="data.callback" />
+                <tag-widget v-if="data.tag_data" :id="i" v-bind="data.tag_data" v-model="data.selected" @on_click="data.callback" />
 
                 <!--单元格图片-->
                 <b-img v-else-if="data.src" :img="data.src + '?tmp=' + Date.now()"
@@ -63,13 +60,12 @@
     import BImg from "@/components/BTXUI/core/b-img"
     import BText from "@/components/BTXUI/core/b-text"
     import BHot from "@/components/BTXUI/core/b-hot"
-    import BtnWidget from "@/components/BTXUI/btn/btn-widget"
     import TagWidget from "@/components/BTXUI/tag/tag-widget"
     import CheckboxWidget from "@/components/BTXUI/checkbox/checkbox-widget"
 
     const desc = ["该组件用于显示表格数据。"],
         extend = [],
-        dependent = ["checkbox-widget", "btn-widget", "tag-widget", "b-img", "b-hot", "b-text", "b-view"],
+        dependent = ["checkbox-widget", "tag-widget", "b-img", "b-hot", "b-text", "b-view"],
         api = {
             event: [
                 {
@@ -120,14 +116,11 @@
         ]",
         tbody: "[
             [ "对应表头标题数据" | {
-                btn_data: "(参照：btn-widget 组件入参)",
-                callback: "点击回调函数"
-            } | {
                 src: "图片地址",
                 width: "图片宽度，可缺省",
                 height: "图片高度，可缺省"
             } | {
-                tag_data: "(参照：btn-widget 组件入参)",
+                tag_data: "(参照：tag-widget 组件入参，id 字段无效，自动设置为行索引)",
                 selected: "默认选中状态"
                 callback: "点击回调函数"
             },... ],...
@@ -154,7 +147,6 @@
             BHot,
             BText,
             TagWidget,
-            BtnWidget,
             CheckboxWidget
         },
         props: {

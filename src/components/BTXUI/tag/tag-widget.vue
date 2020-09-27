@@ -79,7 +79,7 @@
                 required: true
             },
             selected: {
-                type: Boolean,
+                type: [Boolean, Number],
                 required: false
             },
             actText: {
@@ -125,6 +125,9 @@
                     },
                 },
 
+                //参数类型
+                data_type: typeof(this.selected)
+
             }
         },
         computed: {
@@ -146,6 +149,7 @@
                     if(this.selected === true) return;
                     state = true;
                 }
+                if(this.data_type === "number") state = state? 1: 0;
                 this.$emit("on_select", state);
                 this.$emit("on_click", this.id, state);
             }

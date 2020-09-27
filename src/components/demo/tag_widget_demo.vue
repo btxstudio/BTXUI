@@ -25,7 +25,7 @@
         <!--双向绑定默认值-->
         <section>
             <h5>双向绑定默认值</h5>
-            <p>通过 <code>v-model</code> 可以初始化及双向绑定标签状态。通过外部设置可以将单选按钮重新复位。</p>
+            <p>通过 <code>v-model</code> 可以初始化及双向绑定标签状态，状态值可以是布尔值或对应的数字（true: 1, false: 0）。通过外部设置可以将单选按钮重新复位。</p>
             <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
                 <tag-widget v-bind="data_3.props" v-model="data_3.selected" />
             </div>
@@ -93,7 +93,7 @@
                         actText: "选中状态",
                         mode: "radio"
                     },
-                    selected: true
+                    selected: 1
                 },
 
                 data_4: {

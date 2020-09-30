@@ -19,21 +19,21 @@
 
 
     //组件类
-    function Widget(selector){
-        this.$widget = $(selector);         //组件封装
+    function Wid(selector){
+        this.$wid = $(selector);         //组件封装
         this.mode_lib = {"all":null};       //子组件库
         this.action_lib = {};               //动作库
     }
-    Widget.prototype = {
+    Wid.prototype = {
 
         //【隐藏组件】
         "hide":function(){
-            this.$widget.ani("hide");
+            this.$wid.ani("hide");
         },
 
         //【显示组件】
         "show":function(){
-            this.$widget.ani("show");
+            this.$wid.ani("show");
         },
 
         /*
@@ -42,7 +42,7 @@
          */
         "record_once":function(para){
             try{
-                if(this.mode_lib["all"]) throw "widget.record_once 仅限单次调用";
+                if(this.mode_lib["all"]) throw "wid.record_once 仅限单次调用";
             }catch(e){
                 console.error(e);
             }
@@ -52,11 +52,11 @@
                 if(typeof(para[i]) == "function"){//添加动作
                     this.action_lib[i] = para[i];
                 }else{//添加子组件
-                    this.mode_lib[i] = this.$widget.find(para[i]);
+                    this.mode_lib[i] = this.$wid.find(para[i]);
                     _sel += (para[i]+",");
                 }
             }
-            this.mode_lib["all"] = this.$widget.find( _sel.rtrim(",") );
+            this.mode_lib["all"] = this.$wid.find( _sel.rtrim(",") );
         },
 
         /*
@@ -71,7 +71,7 @@
 
         //【执行预置动作】
         "do":function(action_name, para){
-            this.action_lib[action_name].call(this.$widget, para);
+            this.action_lib[action_name].call(this.$wid, para);
             return this;
         },
 

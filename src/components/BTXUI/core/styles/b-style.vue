@@ -118,19 +118,21 @@
                             }else if(r3) {
 
                                 //样式三段赋值
-                                let rule_3 = preset_style.rule_3[r2],
-                                    {unit, tmp, extra, escape} = rule_3;
-                                rule_3.pro.forEach(dir=>{ //方向及复合属性相关样式
-                                    style[`${preset_style.rule_2[r1].pro}${dir}`] = this.$_set_style_val(r3, unit, tmp);
-                                    style = {...style, ...this.$_set_extra_style(r3, extra, escape)};
-                                })
+                                const rule_3 = preset_style.rule_3[r2];
+                                if(rule_3){
+                                    const {unit, tmp, extra, escape} = rule_3;
+                                    rule_3.pro.forEach(dir=>{ //方向及复合属性相关样式
+                                        style[`${preset_style.rule_2[r1].pro}${dir}`] = this.$_set_style_val(r3, unit, tmp);
+                                        style = {...style, ...this.$_set_extra_style(r3, extra, escape)};
+                                    })
+                                }
 
                             } else if(r2){
 
                                 //样式二段赋值
-                                let rule_2 = preset_style.rule_2[r1];
+                                const rule_2 = preset_style.rule_2[r1];
                                 if(rule_2){
-                                    let {unit, tmp, extra, escape} = rule_2;
+                                    const {unit, tmp, extra, escape} = rule_2;
                                     style[rule_2.pro] = this.$_set_style_val(r2, unit, tmp);
                                     style = {...style, ...this.$_set_extra_style(r2, extra, escape)};
                                 }

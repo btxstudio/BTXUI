@@ -55,14 +55,14 @@
 <script>
     import HeaderInfo from "@/components/demo/common/header-info"
     import BInput from "@/components/BTXUI/core/b-input"
-    import BtnWidget from "@/components/BTXUI/btn/btn-widget"
+    import BtnWid from "@/components/BTXUI/btn/btn-wid"
 
     export default {
         name: "b_input_demo",
         components: {
             HeaderInfo,
             BInput,
-            BtnWidget
+            BtnWid
         },
         data(){
             return {

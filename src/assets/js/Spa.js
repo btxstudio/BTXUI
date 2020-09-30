@@ -117,7 +117,7 @@
             complete = _complete;
 
             /*模版获取*/
-            tpl_url = (tpl_url.indexOf(".") !== 0 && tpl_url.indexOf("/") !== 0)? (APP + "home/widget/" + tpl_url): tpl_url;
+            tpl_url = (tpl_url.indexOf(".") !== 0 && tpl_url.indexOf("/") !== 0)? (APP + "home/wid/" + tpl_url): tpl_url;
             $.get(tpl_url + ".tpl?r=" + Math.round(Math.random()*1000), function(tpl){
                 _page_generate_(tpl, data);
             });
@@ -250,7 +250,7 @@
                     "var arg_obj = datas[arg]; " +
                     "return typeof(arg_obj) === 'object'?arg_obj" + arg_behind + ":arg_obj; ")(arg_front, datas);
             });
-            tpl = (_tpl_name.indexOf(".") !== 0 && _tpl_name.indexOf("/") !== 0)? (APP + "home/widget/" + _tpl_name): _tpl_name; //系统tpl缺省目录|自定义路径
+            tpl = (_tpl_name.indexOf(".") !== 0 && _tpl_name.indexOf("/") !== 0)? (APP + "home/wid/" + _tpl_name): _tpl_name; //系统tpl缺省目录|自定义路径
 
             /*嵌套加载*/
             if(spa_lib.include_lib.indexOf(_tpl_name) >-1){//禁止重复加载

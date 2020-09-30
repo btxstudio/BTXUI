@@ -1,15 +1,15 @@
 //基础后台管理组件
-function StageWidget($dom, opt){
+function StageWid($dom, opt){
     this["operate_lib"] = {};
 
     /*组件*/
-    this.$widget = $dom;
-    this.$tbody = this.$widget.find(".mod-table-list>tbody");
-    this.$thead = this.$widget.find(".mod-table-list>thead>tr");
-    this.$utils_list = this.$widget.find(".utils-list");                                    //三级工具菜单
-    this.$msg_info_widget = this.$widget.find(".msg_info_widget");
-    this.$msg_info_widget_title = this.$msg_info_widget.find("h3>small");
-    this.$msg_info_widget_cover = this.$msg_info_widget.find(".msg-info-w-cover img");
+    this.$wid = $dom;
+    this.$tbody = this.$wid.find(".mod-table-list>tbody");
+    this.$thead = this.$wid.find(".mod-table-list>thead>tr");
+    this.$utils_list = this.$wid.find(".utils-list");                                    //三级工具菜单
+    this.$msg_info_wid = this.$wid.find(".msg_info_wid");
+    this.$msg_info_wid_title = this.$msg_info_wid.find("h3>small");
+    this.$msg_info_wid_cover = this.$msg_info_wid.find(".msg-info-w-cover img");
     this.$cur_tr;
     this.cur_id;
 
@@ -23,9 +23,9 @@ function StageWidget($dom, opt){
         )
     }else{ this.editer = null }
 
-    this._init_msg_info_widget_(opt.width);
+    this._init_msg_info_wid_(opt.width);
 }
-StageWidget.prototype = {
+StageWid.prototype = {
 
     //正常状态(Edit点击)
     "normal_state": function($btn){
@@ -48,28 +48,28 @@ StageWidget.prototype = {
     //新增数据编辑
     "append_edit": function($btn){
         this.click($btn, function(p){
-            p._info_widget_("新增信息", null, "add");
+            p._info_wid_("新增信息", null, "add");
         })
     },
 
     //新增文章数据编辑
     "append_article_edit": function($btn){
         this.click($btn, function(p){
-            p._info_widget_("新增信息", null, "add");
+            p._info_wid_("新增信息", null, "add");
         })
     },
 
     //修改数据编辑
     "mod_edit":function(){
         this.click(this.$tbody, "tr", function(p){
-            p._info_widget_("修改信息", $(this), "mod");
+            p._info_wid_("修改信息", $(this), "mod");
         })
     },
 
     //修改状态数据编辑
     "mod_state_edit":function(){
         this.click(this.$tbody, "tr", function(p){
-            p._info_widget_("修改信息", $(this), "mod");
+            p._info_wid_("修改信息", $(this), "mod");
             p._change_state_();
         })
     },
@@ -77,7 +77,7 @@ StageWidget.prototype = {
     //修改文章数据编辑
     "mod_article_edit": function(){
         this.click(this.$tbody, "tr", function(p){
-            p._info_widget_("修改信息", $(this), "mod");
+            p._info_wid_("修改信息", $(this), "mod");
             if(p.$tbody.attr("state") === "edit") p._init_ueditor_();
         })
     },
@@ -91,7 +91,7 @@ StageWidget.prototype = {
     "operate_delete": function($btn, config){
         this.click($btn, function(p){
             var exe_del = function(){
-                p._operate_delete_($B.get_form_data(p.$msg_info_widget))
+                p._operate_delete_($B.get_form_data(p.$msg_info_wid))
             }
 
             if(config === true){
@@ -102,13 +102,13 @@ StageWidget.prototype = {
 
     //执行新增
     "operate_append": function($btn){
-        this.click($btn, function(p){ p._operate_append_($B.get_form_data(p.$msg_info_widget)) });
+        this.click($btn, function(p){ p._operate_append_($B.get_form_data(p.$msg_info_wid)) });
     },
 
     //执行文章新增
     "operate_article_append": function($btn){
         this.click($btn, function(p){
-            p._operate_append_($B.get_form_data(p.$msg_info_widget), function(data){
+            p._operate_append_($B.get_form_data(p.$msg_info_wid), function(data){
                 p._append_article_(data["article_id"], data["type"]);
             });
         });
@@ -116,13 +116,13 @@ StageWidget.prototype = {
 
     //执行修改
     "operate_mod": function($btn){
-        this.click($btn, function(p){ p._operate_mod_($B.get_form_data(p.$msg_info_widget)) });
+        this.click($btn, function(p){ p._operate_mod_($B.get_form_data(p.$msg_info_wid)) });
     },
 
     //执行文章修改
     "operate_article_mod": function($btn){
         this.click($btn, function(p){
-            p._operate_mod_($B.get_form_data(p.$msg_info_widget), function(data){
+            p._operate_mod_($B.get_form_data(p.$msg_info_wid), function(data){
                 p._append_article_(data["article_id"], data["type"]);
             });
         });
@@ -131,8 +131,8 @@ StageWidget.prototype = {
     //-------------------------------------内部方法----------------------------------------
 
     //初始化模态化窗口控件
-    "_init_msg_info_widget_": function(width){
-        var x, y, offset_x, offset_y,enable = false, miw = this.$msg_info_widget,
+    "_init_msg_info_wid_": function(width){
+        var x, y, offset_x, offset_y,enable = false, miw = this.$msg_info_wid,
             drag_move = function(e){
                 e.preventDefault();
                 if(enable === true){
@@ -184,8 +184,8 @@ StageWidget.prototype = {
         }
     },
 
-    //开启msg_info_widget面板
-    "_info_widget_": function(msg, $tr, state){
+    //开启msg_info_wid面板
+    "_info_wid_": function(msg, $tr, state){
         var sw = false, id;
 
         /*初始化操作数据项id*/
@@ -193,8 +193,8 @@ StageWidget.prototype = {
             this.$cur_tr = $tr;
             this.cur_id = id;
         }
-        msg && this.$msg_info_widget_title.text(msg);//控件标题
-        this.$msg_info_widget.attr("state", state);
+        msg && this.$msg_info_wid_title.text(msg);//控件标题
+        this.$msg_info_wid.attr("state", state);
 
         /*控件数据初始化*/
         if(state === "mod" && this.$tbody.attr("state") === "edit"){//修改数据
@@ -210,9 +210,9 @@ StageWidget.prototype = {
                 }
             })
             for(var name in datas){
-                var $inp = this.$msg_info_widget.find("[data-name='"+ name +"']");//优先获取data-name="name"表单元素
+                var $inp = this.$msg_info_wid.find("[data-name='"+ name +"']");//优先获取data-name="name"表单元素
 
-                if($inp.length === 0) $inp = this.$msg_info_widget.find("[name='"+ name +"']");//其次获取name="name"表单元素
+                if($inp.length === 0) $inp = this.$msg_info_wid.find("[name='"+ name +"']");//其次获取name="name"表单元素
                 if($inp.size() > 0){
                     if($inp.parents(".mi-w-cont-p").hasClass("mi-w-only-add")) $inp.attr("disabled", true);//禁用“仅加”项
 
@@ -238,12 +238,12 @@ StageWidget.prototype = {
             sw = true;
         }else if(state === "add"){//新增数据
             /*复位模态窗组件数据*/
-            var $cover_img = this.$msg_info_widget_cover;
+            var $cover_img = this.$msg_info_wid_cover;
 
             $cover_img && $cover_img.attr("src", CDN + "res/upload.png");//上传封面
 
             /*复位可填表单项*/
-            this.$msg_info_widget.find("input, textarea").not("[type='hidden']").val("").each(function(i, inp){
+            this.$msg_info_wid.find("input, textarea").not("[type='hidden']").val("").each(function(i, inp){
                 var $inp = $(inp);
 
                 $inp.attr("disabled", $inp.parents(".mi-w-cont-p").hasClass("mi-w-only-mod")? true: false);//禁用“仅改”项及“禁用”项
@@ -252,7 +252,7 @@ StageWidget.prototype = {
             if(this.editer) this.editer.setContent("");//复位超文本编辑器
             sw = true
         }
-        if(sw === true) $B.toggle(this.$msg_info_widget, true, {"view_center":true});
+        if(sw === true) $B.toggle(this.$msg_info_wid, true, {"view_center":true});
 
     },
 
@@ -261,7 +261,7 @@ StageWidget.prototype = {
      * 数据接口：?Cms/get_article
      */
     "_init_ueditor_": function(){
-        var editer = this.editer, post_data = $B.get_form_data(this.$msg_info_widget);
+        var editer = this.editer, post_data = $B.get_form_data(this.$msg_info_wid);
 
         post_data["article_id"] = this.cur_id;
         $B.request("?Cms/get_article", post_data, function(art){
@@ -275,7 +275,7 @@ StageWidget.prototype = {
         var _this = this;
 
         $B.request(post_data, function(data){
-            $B.toggle(_this.$msg_info_widget, true, {"callback": function(){
+            $B.toggle(_this.$msg_info_wid, true, {"callback": function(){
                 var tr = '<tr data-btn>', $tr, role;
 
                 /*配置新增模版*/
@@ -319,7 +319,7 @@ StageWidget.prototype = {
 
         post_data["id"] = this.cur_id;
         $B.request(post_data, function(){
-            $B.toggle(_this.$msg_info_widget, true, {"callback": function(){
+            $B.toggle(_this.$msg_info_wid, true, {"callback": function(){
                 $cur_tr && $cur_tr.ani("hide", {"callback":function(){
                     $cur_tr.detach();
                     $B.toast("删除成功!", "success");
@@ -335,7 +335,7 @@ StageWidget.prototype = {
         post_data["_id"] = this.cur_id;
         $B.request(post_data, function(data){
             success && success(data);
-            $B.toggle(_this.$msg_info_widget, true, {"callback": function(){
+            $B.toggle(_this.$msg_info_wid, true, {"callback": function(){
                 _this._pad_data_to_tr_($tr, data);
                 $B.toast("修改成功!", "success");
             }});

@@ -7,42 +7,25 @@ import b_input_demo from '@/components/demo/basic/b_input_demo'
 import b_textarea_demo from '@/components/demo/basic/b_textarea_demo'
 
 //应用组件
-import content_widget_demo from '@/components/demo/content_widget_demo'
-import tag_widget_demo from '@/components/demo/tag_widget_demo'
-import tags_widget_demo from '@/components/demo/tags_widget_demo'
-import checkbox_widget_demo from '@/components/demo/checkbox_widget_demo'
-import tab_widget_demo from '@/components/demo/tab_widget_demo'
-import pannel_widget_demo from '@/components/demo/pannel_widget_demo'
-import form_pannel_widget_demo from '@/components/demo/form_pannel_widget_demo'
-import form_widget_demo from '@/components/demo/form_widget_demo'
-import btn_widget_demo from '@/components/demo/btn_widget_demo'
-import confirm_widget_demo from '@/components/demo/confirm_widget_demo'
-import table_widget_demo from '@/components/demo/table_widget_demo'
-import select_widget_demo from '@/components/demo/select_widget_demo'
-import upload_widget_demo from '@/components/demo/upload_widget_demo'
-import imgs_upload_widget_demo from '@/components/demo/imgs_upload_widget_demo'
-import slider_widget_demo from '@/components/demo/slider_widget_demo'
-import drawer_widget_demo from '@/components/demo/drawer_widget_demo'
-
-//项目测试
-import zk2861_demo1 from '@/components/pro/zk2861/demo1'
-import zk2861_demo2 from '@/components/pro/zk2861/demo2'
-import zk2861_demo3 from '@/components/pro/zk2861/demo3'
+import content_wid_demo from '@/components/demo/content_wid_demo'
+import tag_wid_demo from '@/components/demo/tag_wid_demo'
+import tags_wid_demo from '@/components/demo/tags_wid_demo'
+import checkbox_wid_demo from '@/components/demo/checkbox_wid_demo'
+import tab_wid_demo from '@/components/demo/tab_wid_demo'
+import pannel_wid_demo from '@/components/demo/pannel_wid_demo'
+import form_pannel_wid_demo from '@/components/demo/form_pannel_wid_demo'
+import form_wid_demo from '@/components/demo/form_wid_demo'
+import btn_wid_demo from '@/components/demo/btn_wid_demo'
+import confirm_wid_demo from '@/components/demo/confirm_wid_demo'
+import table_wid_demo from '@/components/demo/table_wid_demo'
+import select_wid_demo from '@/components/demo/select_wid_demo'
+import upload_wid_demo from '@/components/demo/upload_wid_demo'
+import imgs_upload_wid_demo from '@/components/demo/imgs_upload_wid_demo'
+import slider_wid_demo from '@/components/demo/slider_wid_demo'
+import drawer_wid_demo from '@/components/demo/drawer_wid_demo'
+import tooltip_wid_demo from '@/components/demo/tooltip_wid_demo'
 
 export default [
-    {
-        path: '/zk2861_demo1',
-        component: zk2861_demo1
-    },
-    {
-        path: '/zk2861_demo2',
-        component: zk2861_demo2
-    },
-    {
-        path: '/zk2861_demo3',
-        component: zk2861_demo3
-    },
-
     //基础组件
     {
         path: '/basic_websit_demo',
@@ -71,67 +54,71 @@ export default [
 
     //功能组件
     {
-        path: '/content_widget_demo',
-        component: content_widget_demo
+        path: '/content_wid_demo',
+        component: content_wid_demo
     },
     {
-        path: '/tag_widget_demo',
-        component: tag_widget_demo
+        path: '/tag_wid_demo',
+        component: tag_wid_demo
     },
     {
-        path: '/tags_widget_demo',
-        component: tags_widget_demo
+        path: '/tags_wid_demo',
+        component: tags_wid_demo
     },
     {
-        path: '/checkbox_widget_demo',
-        component: checkbox_widget_demo
+        path: '/checkbox_wid_demo',
+        component: checkbox_wid_demo
     },
     {
-        path: '/tab_widget_demo',
-        component: tab_widget_demo
+        path: '/tab_wid_demo',
+        component: tab_wid_demo
     },
     {
-        path: '/pannel_widget_demo',
-        component: pannel_widget_demo
+        path: '/pannel_wid_demo',
+        component: pannel_wid_demo
     },
     {
-        path: '/form_pannel_widget_demo',
-        component: form_pannel_widget_demo
+        path: '/form_pannel_wid_demo',
+        component: form_pannel_wid_demo
     },
     {
-        path: '/form_widget_demo',
-        component: form_widget_demo
+        path: '/form_wid_demo',
+        component: form_wid_demo
     },
     {
-        path: '/btn_widget_demo',
-        component: btn_widget_demo
+        path: '/btn_wid_demo',
+        component: btn_wid_demo
     },
     {
-        path: '/confirm_widget_demo',
-        component: confirm_widget_demo
+        path: '/confirm_wid_demo',
+        component: confirm_wid_demo
     },
     {
-        path: '/table_widget_demo',
-        component: table_widget_demo
+        path: '/table_wid_demo',
+        component: table_wid_demo
     },
     {
-        path: '/select_widget_demo',
-        component: select_widget_demo
+        path: '/select_wid_demo',
+        component: select_wid_demo
     },
     {
-        path: '/upload_widget_demo',
-        component: upload_widget_demo
+        path: '/upload_wid_demo',
+        component: upload_wid_demo
     },
     {
-        path: '/imgs_upload_widget_demo',
-        component: imgs_upload_widget_demo
+        path: '/imgs_upload_wid_demo',
+        component: imgs_upload_wid_demo
     },
     {
-        path: '/slider_widget_demo',
-        component: slider_widget_demo
+        path: '/slider_wid_demo',
+        component: slider_wid_demo
     },
     {
-        path: '/drawer_widget_demo',
-        component: drawer_widget_demo
+        path: '/drawer_wid_demo',
+        component: drawer_wid_demo
+    },
+    {
+        path: '/tooltip_wid_demo',
+        component: tooltip_wid_demo
     },
 ]

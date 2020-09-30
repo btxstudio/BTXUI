@@ -8,7 +8,7 @@
             <div class="resize">
                 <b-textarea ref="textarea" styles="pad-1 bg-color-lgray line line-#ddd thick-1 round-sm" v-bind="data_1.props" v-model="data_1.val" />
                 <p class="flex">
-                    <btn-widget @on_click="$_trans_html1" btnText="获取当前输入内容" />
+                    <btn-wid @on_click="$_trans_html1" btnText="获取当前输入内容" />
                 </p>
             </div>
             <p>
@@ -23,14 +23,14 @@
 <script>
     import HeaderInfo from "@/components/demo/common/header-info"
     import BTextarea from "@/components/BTXUI/core/b-textarea"
-    import BtnWidget from "@/components/BTXUI/btn/btn-widget"
+    import BtnWid from "@/components/BTXUI/btn/btn-wid"
 
     export default {
         name: "b_textarea_demo",
         components: {
             HeaderInfo,
             BTextarea,
-            BtnWidget
+            BtnWid
         },
         data(){
             return {

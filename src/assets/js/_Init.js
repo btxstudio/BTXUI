@@ -232,11 +232,11 @@ Init.prototype = {
      *  需作用于div或thead元素,常同smarty结果集联用,需注意其使用顺序,exp:
      *  <!--smarty初始化数据-->
      *      {//section name=n loop=$datas.list}
-     *         {//include "widget_info.tpl"}
+     *         {//include "wid_info.tpl"}
      *      {///section}
      *  <!--Init异步获取数据-->
-     *      <thead data-clone-section="btx_clone_section-WidgetInfo">
-     *         {//include "widget_info.tpl"}
+     *      <thead data-clone-section="btx_clone_section-WidInfo">
+     *         {//include "wid_info.tpl"}
      *      </thead>
      * 使用: 服务端需协同BTXphp框架 -> Controller -> ajax_data()使用
      * 使用: 循环创建dom是基于框架服务端L()返回datas["list"]数据集合,或基于服务端返回array("list"=>array(datas...))结构数据
@@ -1368,7 +1368,7 @@ Init.prototype = {
      * event_init: Static | target
      * external: data-search-callback
      * media: All
-     * 配合属性: 伪form: data-search="btx_search", data-search-action="cgi脚本定位", data-search-clone-section="clone_section_name"搜索结果显示依赖于data-clone-section组件, data-clone-section="btx_clone_section-自定义名", data-clone="btx_clone"(列表项标识), data-clone="btx_clone-对应数据键名", data-no-result-clone="btx_no_result_clone", data-search-notice="搜索提示(可选)", data-search-callback="callback"外接函数(可选), data-search-btn="yes"(自动创建) | 搜索组件: data-search-widget="btx_search_widget", data-search-width="width"(组件宽度,默认100%,支持百分比值、定值,可选)
+     * 配合属性: 伪form: data-search="btx_search", data-search-action="cgi脚本定位", data-search-clone-section="clone_section_name"搜索结果显示依赖于data-clone-section组件, data-clone-section="btx_clone_section-自定义名", data-clone="btx_clone"(列表项标识), data-clone="btx_clone-对应数据键名", data-no-result-clone="btx_no_result_clone", data-search-notice="搜索提示(可选)", data-search-callback="callback"外接函数(可选), data-search-btn="yes"(自动创建) | 搜索组件: data-search-wid="btx_search_wid", data-search-width="width"(组件宽度,默认100%,支持百分比值、定值,可选)
      * style: search.css
      * 使用: 默认为block,100%宽;设置有data-search-width则为inline-block,定宽
      * 使用: 搜索数据由post形式传输
@@ -1380,7 +1380,7 @@ Init.prototype = {
     "btx_search":function(){
         var _style, btn_style, _width;
         //样式初始化
-        this.__init__("data-search-widget", function(){
+        this.__init__("data-search-wid", function(){
             if(_width = $(this).attr("data-search-width")){
                 $(this).css({"width":_width, "display":"inline-block"});
             }
@@ -1399,13 +1399,13 @@ Init.prototype = {
         })
         //btx_btn按钮功能绑定
         this.external_fns["btx_search"] = function(data){
-            var widget = data["self"].parents("[data-search='btx_search']"),
-                request_url = widget.attr("data-search-action"),
-                search_notice = widget.attr("data-search-notice") || "搜索中...",
-                search_clone_section = widget.attr("data-search-clone-section");
+            var wid = data["self"].parents("[data-search='btx_search']"),
+                request_url = wid.attr("data-search-action"),
+                search_notice = wid.attr("data-search-notice") || "搜索中...",
+                search_clone_section = wid.attr("data-search-clone-section");
             init.ajax_request(request_url, function(send){
-                /^\s*$/.test(widget.find(":text").val())?btx_toast("搜索空值!", 2000, "error"):send();
-            }, null, search_notice, widget, {"clone_name":search_clone_section, "success_fn":init.external_fns[widget.attr("data-search-callback")]});
+                /^\s*$/.test(wid.find(":text").val())?btx_toast("搜索空值!", 2000, "error"):send();
+            }, null, search_notice, wid, {"clone_name":search_clone_section, "success_fn":init.external_fns[wid.attr("data-search-callback")]});
         }
     },
 
@@ -2379,12 +2379,12 @@ function TimePicker(format, before_curyear, show_box){
 	this.output_timedata;//输出时间数据
 	this.output_timestamp;//确定时间戳
 	//定义组件
-	this.picker_widget;
-	this.picker_widget_navs;
-	this.picker_widget_preview;
-	this.picker_widget_sec;
-	this.picker_widget_okbtn;
-	this.picker_widget_cancelbtn;
+	this.picker_wid;
+	this.picker_wid_navs;
+	this.picker_wid_preview;
+	this.picker_wid_sec;
+	this.picker_wid_okbtn;
+	this.picker_wid_cancelbtn;
 	//分配显示
 	this.timeformat_arr = ["Year","Month","Date","Hour","Minute","Second"];
 	this.timepreview_arr = ["<span>"+new Date().getFullYear()+"</span>", "-<span>01</span>", "-<span>01</span>", "&nbsp;&nbsp;<span>00</span>", ":<span>00</span>", ":<span>00</span>"];
@@ -2413,32 +2413,32 @@ function TimePicker(format, before_curyear, show_box){
 	}
 TimePicker.prototype = {
 	"__mk_ui__":function(){//生成UI组件(兼容手机端)
-		this.picker_widget = $("<div class='btx_toast_basicbox'><table id='btx_timepicker_table' class='btx_toast_nav'><tr></tr></table><div class='btx_toast_select'><select id='btx_timepicker_sec'></select></div><div id='btx_timepicker_preview' class='btx_toast_preview'></div><div class='btx_toast_widgetbox'><button id='btx_toast_okbtn' class='button_2' data-btn='btx_btn'>OK</button><button class='button_2_1' data-btn='btx_btn' id='btx_toast_cancelbtn'>Cancel</button></div></div>");
-		this.picker_widget_okbtn = this.picker_widget.find("#btx_toast_okbtn");
-		this.picker_widget_cancelbtn = this.picker_widget.find("#btx_toast_cancelbtn");
-		this.picker_widget_sec = this.picker_widget.find("#btx_timepicker_sec");
-		this.picker_widget_preview = this.picker_widget.find("#btx_timepicker_preview");
-		this.picker_widget_navs = this.picker_widget.find("#btx_timepicker_table");
+		this.picker_wid = $("<div class='btx_toast_basicbox'><table id='btx_timepicker_table' class='btx_toast_nav'><tr></tr></table><div class='btx_toast_select'><select id='btx_timepicker_sec'></select></div><div id='btx_timepicker_preview' class='btx_toast_preview'></div><div class='btx_toast_widbox'><button id='btx_toast_okbtn' class='button_2' data-btn='btx_btn'>OK</button><button class='button_2_1' data-btn='btx_btn' id='btx_toast_cancelbtn'>Cancel</button></div></div>");
+		this.picker_wid_okbtn = this.picker_wid.find("#btx_toast_okbtn");
+		this.picker_wid_cancelbtn = this.picker_wid.find("#btx_toast_cancelbtn");
+		this.picker_wid_sec = this.picker_wid.find("#btx_timepicker_sec");
+		this.picker_wid_preview = this.picker_wid.find("#btx_timepicker_preview");
+		this.picker_wid_navs = this.picker_wid.find("#btx_timepicker_table");
 		for(var i=0; i<this.fnav; i++)
 		{
-			this.picker_widget_navs.find("tr").append($("<td><button class='button_14' data-btn='btx_btn' data-btn-name='btx_timepicker_nav'>"+this.timeformat_arr[i]+"</button></td>"));
-			this.picker_widget_preview.append(this.timepreview_arr[i]);
+			this.picker_wid_navs.find("tr").append($("<td><button class='button_14' data-btn='btx_btn' data-btn-name='btx_timepicker_nav'>"+this.timeformat_arr[i]+"</button></td>"));
+			this.picker_wid_preview.append(this.timepreview_arr[i]);
 			}
-		this.picker_widget_navs.find("td:first button").addClass("button_14_down");
+		this.picker_wid_navs.find("td:first button").addClass("button_14_down");
 		this.__insert_option__("Year");
-		$("body").prepend(this.picker_widget);
-		center_ele(this.picker_widget)//居中定位
+		$("body").prepend(this.picker_wid);
+		center_ele(this.picker_wid)//居中定位
 		},
 	"__cancel__":function(){//取消操作
 		var _this = this;
-		this.picker_widget_cancelbtn.on("click",function(){
+		this.picker_wid_cancelbtn.on("click",function(){
 			_this.hide();
 			})
 		},
 	"__ok__":function(){//确认操作
 		var _this = this;
-		this.picker_widget_okbtn.on("click",function(){
-			_this.output_timedata = _this.picker_widget_preview.text();
+		this.picker_wid_okbtn.on("click",function(){
+			_this.output_timedata = _this.picker_wid_preview.text();
 			if(_this.show_box[0].tagName.toLowerCase() == "input" || _this.show_box[0].tagName.toLowerCase() == "textarea")
 			{
 				_this.show_box.val(_this.output_timedata);
@@ -2454,7 +2454,7 @@ TimePicker.prototype = {
 		},
 	"__nav_click__":function(){//导航点击效果
 		var _this=this;
-		this.picker_widget_navs.find("td").on("click",function(){
+		this.picker_wid_navs.find("td").on("click",function(){
 			_this.__insert_option__($(this).text());
 			})
 		},
@@ -2478,8 +2478,8 @@ TimePicker.prototype = {
 				}
 				else
 				{
-					this.picker_widget_sec.empty();
-					this.picker_widget_sec.append($("<option>请优先设置年份及月份 !</option>"));
+					this.picker_wid_sec.empty();
+					this.picker_wid_sec.append($("<option>请优先设置年份及月份 !</option>"));
 					return false;
 					}
 			break;
@@ -2489,16 +2489,16 @@ TimePicker.prototype = {
 			break;
 			case "Second":limit=60;_unit="秒";_stime =0;
 			}
-		this.picker_widget_sec.empty();
+		this.picker_wid_sec.empty();
 		for(var i=Math.min(_stime+limit, _stime); i<Math.max(_stime+limit, _stime+1); i++)
 		{
 			_select = this.timedata[_unit] == i?"selected":"";
-			this.picker_widget_sec.append($("<option "+_select+">"+i+"  "+_unit+"</option>"));
+			this.picker_wid_sec.append($("<option "+_select+">"+i+"  "+_unit+"</option>"));
 			}
 		},
 	"__option_click__":function(){//option点击时间选择效果
 		var arr = [], _this=this, _i;
-		this.picker_widget_sec.on("click",function(){
+		this.picker_wid_sec.on("click",function(){
 			arr = $(this).val().split(/\s+/);
 			_this.timedata[arr[1]] = arr[0]*1;//内存记录时间数据
 			switch(arr[1])
@@ -2516,7 +2516,7 @@ TimePicker.prototype = {
 				case "秒":_i=5;
 				break;
 				}
-			_this.picker_widget_preview.find("span").eq(_i).text(BTXUtils.pad_zero(arr[0]*1, 2));
+			_this.picker_wid_preview.find("span").eq(_i).text(BTXUtils.pad_zero(arr[0]*1, 2));
 			})
 		},
 	"__mktimestamp__":function(){//生成时间戳
@@ -2537,31 +2537,31 @@ TimePicker.prototype = {
  继承自Toast类方法;
  private_funcs:
  继承自Toast类方法;
- __mk_widget__(price_limit, price) 构建金额选择器输入输出组件;
+ __mk_wid__(price_limit, price) 构建金额选择器输入输出组件;
  __key_press__() 键入操作;
  __mk_price__() 输出金额;
  注:最高位限制为亿
  */
 function PricePicker(){
-    this.widget;
+    this.wid;
     this.screen;
     this.keyboard;
     this.price = "";
     this.format_price = "";
     this.__mk_box__();
-    this.__mk_widget__();
-    this.inner_data(this.widget);
+    this.__mk_wid__();
+    this.inner_data(this.wid);
     this.bind_event(this.__show_price__);
     this.__key_press__();
 }
 PricePicker.prototype = new Toast();//继承自Toast类
-PricePicker.prototype.__mk_widget__ = function(){//构建金额IO组件
+PricePicker.prototype.__mk_wid__ = function(){//构建金额IO组件
     //生成键盘
     this.keyboard = $("<div class='btx_toast_keyboard'><p><button>C</button><button >Back</button></p><p><button>0</button><button>about_us</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button></p></div>");
     this.keyboard.find("button").addClass("button_1").attr("data-btn","btx_btn");
     //生成显示屏
     this.screen = $("<div class='btx_toast_screen'>0.00</div>");
-    this.widget = $("<div></div>").append(this.screen).append(this.keyboard);
+    this.wid = $("<div></div>").append(this.screen).append(this.keyboard);
 }
 PricePicker.prototype.__key_press__ = function(){//键入操作
     var _this = this, _t;

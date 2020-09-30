@@ -8,12 +8,12 @@
  */
 function Slider($dom, setting){
     this.setting = $.extend({}, Slider.SETTING, setting);                                   //组件参数
-    this.$widget = $dom.addClass("slider_widget");                                          //获取组件
+    this.$wid = $dom.addClass("slider_wid");                                          //获取组件
     this.pointer = 0;                                                                       //图片定位指针
     this.$view = $("<div class='sw_view'>");                                                //视口
     this.view_width;                                                                        //视口宽度
     this.$cont_box = $("<div class='sw_cont_box'>");                                        //内容容器
-    this.cont_num = this.$widget.children().size();                                         //内容数量
+    this.cont_num = this.$wid.children().size();                                         //内容数量
     this.$dot_box = $("<div class='sw_dot_box'>");                                          //轮播点容器
     this.clickbefore = 0;                                                                   //前次点击指针
     this.interval;                                                                          //循环播放开关
@@ -61,7 +61,7 @@ Slider.prototype = {
     },
 
     "scrollEffects":function(){//图片外框滚动效果（需配合jquery mobile ）未完成
-        this.$widget.on("scrollstop",function(){
+        this.$wid.on("scrollstop",function(){
             var stoppos = this.scrollLeft
             var midpos = _this.view_width/2;
             var offset = stoppos % _this.view_width;
@@ -72,7 +72,7 @@ Slider.prototype = {
                     if(offset > 0)
                     {
                         offset -= 3;
-                        _this.$widget.get(0).scrollLeft -= 3;
+                        _this.$wid.get(0).scrollLeft -= 3;
                     }
                     else
                     {
@@ -89,7 +89,7 @@ Slider.prototype = {
     "swipeEffects":function(){//针对手机浏览器的触摸滑动效果（需配合jquery.touchwipe.js)
         var _this = this;
         var maxnum = this.cont_num;
-        this.$widget.touchwipe({
+        this.$wid.touchwipe({
             wipeLeft: function() {
                 if(_this.pointer < maxnum-1)
                 {
@@ -127,8 +127,8 @@ Slider.prototype = {
     "_set_size_": function(){
         var h_percent = this.setting.h_percent;
 
-        if(h_percent && h_percent.search("%")>0) this.$widget.height(view_height() * (h_percent.rtrim("%")/100));//相对于视口的百分比高度定位
-        this.view_width = this.$widget.width();
+        if(h_percent && h_percent.search("%")>0) this.$wid.height(view_height() * (h_percent.rtrim("%")/100));//相对于视口的百分比高度定位
+        this.view_width = this.$wid.width();
         this.$cont_box.children().css("width", this.view_width);
         this.$cont_box.width(this.cont_num * this.view_width);
     },
@@ -138,10 +138,10 @@ Slider.prototype = {
         var _this = this;
 
         /*构建结构*/
-        this.$widget.children().wrapAll(this.$cont_box);
-        this.$cont_box = this.$widget.children("div");
-        this.$widget.children().wrapAll(this.$view);
-        this.$view = this.$widget.children("div");
+        this.$wid.children().wrapAll(this.$cont_box);
+        this.$cont_box = this.$wid.children("div");
+        this.$wid.children().wrapAll(this.$view);
+        this.$view = this.$wid.children("div");
 
         this._set_size_();
 
@@ -196,7 +196,7 @@ Slider.prototype = {
             var _this = this;
 
             for(var i =0;i<this.cont_num;i++){ this.$dot_box.append(i===0?$("<span class='act'>"):$("<span>")) }
-            this.$widget.prepend(this.$dot_box);
+            this.$wid.prepend(this.$dot_box);
 
             /*轮播点绑定触控事件*/
             if(clickenable == "click" || clickenable == "mouseover"){

@@ -2,7 +2,7 @@
 
 function NavMenu($dom, opt){
     this.menu = $dom.find("#Menu");                         //导航菜单面板
-    this.$erweima = $dom.find(".erweima-widget img");       //二维码
+    this.$erweima = $dom.find(".erweima-wid img");       //二维码
     this.nav_selector = ".nav-l-anchor";                    //导航按钮选择器
     this.hover_selector = ".share-w-anchor";                //分享按钮选择器
 }

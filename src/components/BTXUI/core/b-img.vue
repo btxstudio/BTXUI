@@ -1,5 +1,5 @@
 <template>
-    <img :src="src" :style="{...computed_style, objectFit: objFit}">
+    <img :src="src" :style="{...computed_style, objectFit: objFit}" :alt="alt">
 </template>
 
 <script>
@@ -14,6 +14,7 @@
         /* styles: "(参照：b-style 组件入参)" */,
         /* objFit: "object-fit 样式值，默认：cover" */,
         /* defaultSrc: "默认图，加载失败或初始加载时显示" */,
+        /* alt: "图片说明提示" */
     }`;
 
     export default {
@@ -31,6 +32,10 @@
                 default: "cover"
             },
             defaultSrc: {
+                type: String,
+                required: false
+            },
+            alt: {
                 type: String,
                 required: false
             }

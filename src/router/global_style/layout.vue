@@ -1,4 +1,4 @@
-<template>
+ <template>
     <article>
         <!--盒子模型-->
         <section>
@@ -556,9 +556,9 @@
             <p></p>
         </section>
 
-        <!--定位-->
+        <!--定位方式-->
         <section>
-            <h5>定位</h5>
+            <h5>定位方式</h5>
             <table class="table">
                 <thead>
                 <tr>
@@ -640,6 +640,18 @@
                 </tr>
                 <tr>
                     <td>
+                        <code>.translateX-*</code>
+                    </td>
+                    <td>基于自身宽度百分比水平位移</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.translateY-*</code>
+                    </td>
+                    <td>基于自身高度百分比垂直位移</td>
+                </tr>
+                <tr>
+                    <td>
                         <code>.scale-*</code>
                     </td>
                     <td>放缩</td>
@@ -656,7 +668,8 @@
             <p>位移：</p>
             <p>位移微调的单位支持 px 和 rem，由于框架标准字号是基于 12px 的（手机端为 10px），因此预置的微调位移值值域范围都是 0 — 11，比如基于上侧向下位移 5 像素，类名为 <code>.t-5px</code>。</p>
             <p>如果要进行反向移动，可以通过 "f" 设置负值，比如基于左侧向左位移 2rem，类名为 <code>.t-f2rem</code>。</p>
-            <p>还可以相对父容器尺寸进行百分比位移，使用单位 "p"。预置的比率值：10%、20%、30%、40%、50%、60%、70%、80%、90%、100%、200%。</p>
+            <p>可以相对父容器尺寸进行百分比位移，使用单位 "p"。预置的比率值：10%、20%、30%、40%、50%、60%、70%、80%、90%、100%、200%。</p>
+            <p>还可以相对自身尺寸进行百分比位移，使用单位 "p"。预置的比率值：10%、25%、50%、100%、200%、500%。</p>
             <p>【示例】基础位移：</p>
             <div class="grid fsize-d8">
                 <div class="col-3">
@@ -694,6 +707,24 @@
                 </div>
                 <div class="bg-color-mgray round-sm w-10">
                     <div class="rel l-f50p w-10 h-8 bg-color-lgray flex-5 flex-column round-sm alpha-d9">向左位移容器宽度<b>50%</b><code>.l-f50p</code></div>
+                </div>
+            </div>
+            <p>【示例】基于自身宽高百分比位移：</p>
+            <div class="flex-between fsize-d8">
+                <div class="bg-color-mgray round-sm w-10">
+                    <div class="translateX-50 w-15 h-8 bg-color-lgray flex-5 flex-column round-sm alpha-d9">
+                        向右位移自身宽度<b>50%</b><code>translateX-50</code>
+                    </div>
+                </div>
+                <div class="bg-color-mgray round-sm w-10">
+                    <div class="translateY-f10 w-15 h-8 bg-color-lgray flex-5 flex-column round-sm alpha-d9">
+                        向上位移自身高度<b>10%</b><code>translateY-f10</code>
+                    </div>
+                </div>
+                <div class="bg-color-mgray round-sm w-10">
+                    <div class="translateX-f25 w-15 h-8 bg-color-lgray flex-5 flex-column round-sm alpha-d9">
+                        向左位移自身宽度<b>25%</b><code>translateX-f25</code>
+                    </div>
                 </div>
             </div>
             <p></p>

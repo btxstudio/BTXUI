@@ -8,13 +8,13 @@ class ChapterLink {
     }
 
     //跳转指定 dom 章节
-    $_go_chapter(id){
+    go_chapter(id){
         let $chapter = document.querySelector("#" + id);
-        this.$_go_top($chapter.offsetParent, $chapter.offsetTop + this.offset);
+        this.go_top($chapter.offsetParent, $chapter.offsetTop + this.offset);
     }
 
     //跳转指定位置
-    $_go_top($box, top){
+    go_top($box, top){
         top = Math.min(Math.max(0, top), $box.scrollHeight - $box.offsetHeight); //校正滚动范围
         if($box.nodeName === "BODY") $box = document.documentElement;
         if(this.ani_speed > 0){ //平滑跳转
@@ -23,7 +23,10 @@ class ChapterLink {
             window.onmousewheel = window.ontouchstart = this.$_stop_scroll;
             ChapterLink.t = setInterval(()=>{
                 offset = (top - $box.scrollTop) * this.ani_speed;
-                offset === 0 && this.$_scroll_over();
+                if(offset === 0){
+                    this.$_scroll_over();
+                    return;
+                }
                 if(Math.abs(offset) < 1) offset = offset < 0? -1: 1;
                 $box.scrollTop += offset;
             }, 17);

@@ -153,7 +153,11 @@
             $_set_style_val(val, unit, tmp){
                 val = theme[val] || val; //使用预置主题色
                 val = val.split("|").map((v)=>{ //竖号解析空格
-                    return v[0] === "f" || v.search(/\(f/) > -1 ? v.replace("f", "-"): v; //使用负数值，exp：l-f1、transform-translateX(f10)
+
+                    //解析负数值，exp：l-f1、transform-translate(f10,f20)
+                    v = v[0] === "f"? v.replace("f", "-"): v;
+                    return v.replace(/([\(,])f/g, "$1-");
+
                 }).join(" ");
                 if(tmp){ //使用 tmp 模板
                     val = tmp.replace("%{}%", val.split(",").map((color)=>{ //渐变色使用预置主题色

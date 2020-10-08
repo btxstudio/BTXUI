@@ -6,6 +6,7 @@
 
 @import "./response/flex_mixin.scss";
 
-@include auto_gen_grid_class();
-@include auto_gen_grid_class(-m);
-@include auto_gen_grid_class(-s);
+$medias: "", -m, -s;
+@each $media in $medias{
+  @include auto_gen_grid_class($media);
+}

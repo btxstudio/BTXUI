@@ -1,15 +1,6 @@
 <template>
-    <div :style="bg_style? {...computed_style, position: 'relative', overflow: 'hidden'}: computed_style">
-        <!--含背景图容器-->
-        <template v-if="bg_style" >
-            <div :style="bg_style"></div>
-            <div style="position: relative">
-                <slot />
-            </div>
-        </template>
-
-        <!--普通容器-->
-        <slot v-else />
+    <div :style="computed_style">
+        <slot/>
     </div>
 </template>
 
@@ -23,7 +14,6 @@
         init_data = `{
         /* styles: "(参照：b-style 组件入参)" */,
         /* bgImg: "背景图" */,
-        /* filters: [ "背景图滤镜函数",... ] */,
     }`;
 
     export default {
@@ -34,36 +24,27 @@
             bgImg: {
                 type: String,
                 required: false
-            },
-            filters: {
-                type: Array,
-                required: false
-            },
+            }
         },
-        computed: {
+        methods: {
 
-            //背景图样式
-            bg_style(){
-                let bg_img = this.bgImg,
-                    bg = ["backgroundSize", "backgroundPosition", "backgroundRepeat", "backgroundAttachment"].reduce((total, style)=>{
-                        total[style] = this.computed_style[style];
-                        delete this.computed_style[style];
-                        return total;
-                    }, {});
-                if(bg_img){
-                    return {
-                        ...bg,
-                        backgroundImage: `url(${bg_img})`,
-                        position: "absolute",
-                        left: 0,
-                        top: 0,
-                        width: "100%",
-                        height: "100%",
-                        filter: this.filters,
-                    }
-                }
+            //设置背景图
+            $_set_bg_style(){
+                let bg_img = this.bgImg;
+                bg_img && this.$set(this.computed_style, "backgroundImage", `url(${bg_img})`); //背景图
             }
 
+        },
+        watch: {
+
+            //监听背景图设置
+            bgImg(){
+                this.$_set_bg_style();
+            }
+
+        },
+        mounted(){
+            this.$_set_bg_style();
         }
     }
 </script>

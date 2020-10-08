@@ -340,13 +340,23 @@
                     <td>任意合法值，缺省单位 rem</td>
                 </tr>
                 <tr>
+                    <td><code>translateX-*</code></td>
+                    <td>基于自身宽度百分比水平位移</td>
+                    <td>任意合法值，单位 %</td>
+                </tr>
+                <tr>
+                    <td><code>translateY-*</code></td>
+                    <td>基于自身高度百分比垂直位移</td>
+                    <td>任意合法值，单位 %</td>
+                </tr>
+                <tr>
                     <td><code>scale-*</code></td>
-                    <td>放缩元素</td>
+                    <td>放缩</td>
                     <td>任意合法值</td>
                 </tr>
                 <tr>
                     <td><code>rotate-*</code></td>
-                    <td>旋转元素</td>
+                    <td>旋转</td>
                     <td>任意合法值</td>
                 </tr>
                 </tbody>
@@ -423,6 +433,16 @@
                 <tr>
                     <td><code>bg-size-max</code></td>
                     <td>背景图尺寸撑满容器</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>bg-size-max-h</code></td>
+                    <td>背景图高度尺寸撑满容器</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>bg-size-max-w</code></td>
+                    <td>背景图宽度尺寸撑满容器</td>
                     <td>-</td>
                 </tr>
                 <tr>
@@ -643,6 +663,107 @@
                         <code>shadow-relief</code>
                     </td>
                     <td>浮雕阴影效果</td>
+                    <td>-</td>
+                </tr>
+                </tbody>
+            </table>
+            <p></p>
+        </section>
+
+        <!--滤镜相关样式-->
+        <section>
+            <p>滤镜相关样式：</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>样式类</th>
+                    <th>效果</th>
+                    <th>值备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <code>.blur-no</code>
+                    </td>
+                    <td>无模糊效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.blur-sm</code>
+                    </td>
+                    <td>轻度模糊效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.blur-md</code>
+                    </td>
+                    <td>中度模糊效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.blur-lg</code>
+                    </td>
+                    <td>重度模糊效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.dark-no</code>
+                    </td>
+                    <td>原始明度效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.dark-sm</code>
+                    </td>
+                    <td>轻度低明度效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.dark-md</code>
+                    </td>
+                    <td>中度低明度效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.dark-lg</code>
+                    </td>
+                    <td>重度低明度效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.gray-no</code>
+                    </td>
+                    <td>原始纯度效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.gray-sm</code>
+                    </td>
+                    <td>轻度低纯度效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.gray-md</code>
+                    </td>
+                    <td>中度低纯度效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.gray-lg</code>
+                    </td>
+                    <td>重度低纯度效果</td>
                     <td>-</td>
                 </tr>
                 </tbody>

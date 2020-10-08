@@ -105,7 +105,7 @@
             //初始化内链控制器
             $_init_chapter_link(){
                 if(this.link && typeof(this.link) === "object"){
-                    let {ani_speed, offset, callback} = this.link.chapter_link_data;
+                    let {ani_speed, offset, callback} = this.link.chapter_link_data || {};
                     return new ChapterLink(ani_speed, offset, callback);
                 }else {
                     return null;
@@ -116,7 +116,7 @@
             $_click(e){
                 e.stopPropagation();
                 !this.forbid && this.$emit("on_click");
-                this.chapter_link && this.chapter_link.$_go_chapter(this.link.chapter_id); //内部链接
+                this.chapter_link && this.chapter_link.go_chapter(this.link.chapter_id); //内部链接
             },
 
             //执行双击

@@ -34,6 +34,9 @@
     //放缩比率
     @include auto_gen_scale_class($suffix);
 
+    //translate平移
+    @include auto_gen_translate_class($suffix);
+
     //位移
     @include auto_gen_offset_class($suffix);
 

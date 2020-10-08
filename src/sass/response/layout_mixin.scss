@@ -107,6 +107,27 @@
     }
 }
 
+//生成 translate 平移类
+@mixin auto_gen_translate_class($suffix:""){
+    $percent: (10 10%), (25 25%), (50 50%), (100 100%), (200 200%), (500 500%);
+    @for $i from 0 to 12{
+        @each $p in $percent{
+            .translateX-#{nth($p, 1)}#{$suffix} {
+                transform: translateX(nth($p, 2));
+            }
+            .translateX-f#{nth($p, 1)}#{$suffix} {
+                transform: translateX(nth($p, 2) * -1);
+            }
+            .translateY-#{nth($p, 1)}#{$suffix} {
+                transform: translateY(nth($p, 2));
+            }
+            .translateY-f#{nth($p, 1)}#{$suffix} {
+                transform: translateY(nth($p, 2) * -1);
+            }
+        }
+    }
+}
+
 //生成位移类
 @mixin auto_gen_offset_class($suffix:""){
     $dirs: (l left), (r right), (t top), (b bottom);

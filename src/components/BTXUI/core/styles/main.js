@@ -29,9 +29,7 @@ export default {
     },
     "flex-column": {
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "stretch",
+        flexDirection: "column"
     },
     "flex-1": {
         display: "flex",
@@ -131,6 +129,8 @@ export default {
     "bg-size-cover": { backgroundSize: "cover" },
     "bg-size-contain": { backgroundSize: "contain" },
     "bg-size-max": { backgroundSize: "100% 100%" },
+    "bg-size-max-h": { backgroundSize: "auto 100%" },
+    "bg-size-max-w": { backgroundSize: "100% auto" },
     "bg-pos-1": { backgroundPosition: "left top" },
     "bg-pos-2": { backgroundPosition: "center top" },
     "bg-pos-3": { backgroundPosition: "right top" },
@@ -193,6 +193,24 @@ export default {
     "trans": { transition: "all .7s" },
     "trans-fast": { transition: "all .4s" },
     "trans-slow": { transition: "all 1.4s" },
+
+    //模糊滤镜
+    "blur-no": { filter: "blur(0px)" },
+    "blur-sm": { filter: "blur(2px)" },
+    "blur-md": { filter: "blur(7px)" },
+    "blur-lg": { filter: "blur(14px)" },
+
+    //明度滤镜
+    "dark-no": { filter: "brightness(100%)" },
+    "dark-sm": { filter: "brightness(80%)" },
+    "dark-md": { filter: "brightness(50%)" },
+    "dark-lg": { filter: "brightness(20%)" },
+
+    //纯度滤镜
+    "gray-no": { filter: "grayscale(0%)" },
+    "gray-sm": { filter: "grayscale(40%)" },
+    "gray-md": { filter: "grayscale(70%)" },
+    "gray-lg": { filter: "grayscale(100%)" },
 
         //二段赋值-----------------------------------------------------------------------------------
 
@@ -296,6 +314,18 @@ export default {
                 pro: "bottom",
                 tmp: "%{}%",
                 unit: "rem"
+            },
+
+            //水平位移
+            "translateX": {
+                pro: "transform",
+                tmp: "translateX(%{}%%)",
+            },
+
+            //垂直位移
+            "translateY": {
+                pro: "transform",
+                tmp: "translateY(%{}%%)",
             },
 
             //放缩

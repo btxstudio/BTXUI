@@ -21,6 +21,12 @@
 .bg-size-max {
     background-size: 100% 100%;
 }
+.bg-size-max-h {
+    background-size: auto 100%;
+}
+.bg-size-max-w {
+    background-size: 100% auto;
+}
 
 
 //九宫格背景图定位
@@ -190,3 +196,22 @@ $dirs: (l left), (r right), (t top), (b bottom);
         }
     }
 }
+
+
+//模糊滤镜
+.blur-no { filter: blur(0px) }
+.blur-sm { filter: blur(2px) }
+.blur-md { filter: blur(7px) }
+.blur-lg { filter: blur(14px) }
+
+//明度滤镜
+.dark-no { filter: brightness(100%) }
+.dark-sm { filter: brightness(80%) }
+.dark-md { filter: brightness(50%) }
+.dark-lg { filter: brightness(20%) }
+
+//纯度滤镜
+.gray-no { filter: grayscale(0%) }
+.gray-sm { filter: grayscale(40%) }
+.gray-md { filter: grayscale(70%) }
+.gray-lg { filter: grayscale(100%) }

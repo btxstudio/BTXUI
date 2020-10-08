@@ -2,6 +2,7 @@
     <article>
         <header-info v-bind="header_info" />
 
+        <!--基础按钮-->
         <section id="sec_1">
             <h5>基础按钮</h5>
             <p>可以设计为按钮样式，并通过 <code>@on_click</code> 事件绑定点击回调，此外可以通过 <code>hover</code> 属性设置鼠标悬停样式。</p>
@@ -17,6 +18,7 @@
             <p></p>
         </section>
 
+        <!--基础链接-->
         <section>
             <h5>基础链接</h5>
             <p>通过 <code>link</code> 属性可以设置外链或 vue 组件路由；而 <code>forbid</code> 属性则可以禁用链接跳转功能。</p>
@@ -28,6 +30,7 @@
             <p></p>
         </section>
 
+        <!--hover 鼠标悬停效果-->
         <section>
             <h5>hover 鼠标悬停效果</h5>
             <p>通过 <code>@on_enter</code> 事件绑定鼠标移入回调；<code>@on_leave</code> 事件绑定鼠标移出回调。</p>
@@ -42,6 +45,7 @@
             <p></p>
         </section>
 
+        <!--内链跳转定位-->
         <section>
             <h5>内链跳转定位</h5>
             <p>通过 <code>link</code> 属性可配置内部链接跳转。其中 <b>chapter_id</b> 字段决定跳转元素位置。<b>chapter_link_data</b> 字段则包含了：ani_speed：平移动画缓动速率、offset：位移偏移、callback：滚动完成回调函数（直接硬跳转无效）。</p>

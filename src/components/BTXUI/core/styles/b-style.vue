@@ -151,7 +151,7 @@
 
             //设置样式值
             $_set_style_val(val, unit, tmp){
-                val = theme[val] || val; //使用预置主题色
+                val = theme.preset[val] || val; //使用预置主题色
                 val = val.split("|").map((v)=>{ //竖号解析空格
 
                     //解析负数值，exp：l-f1、transform-translate(f10,f20)
@@ -161,7 +161,7 @@
                 }).join(" ");
                 if(tmp){ //使用 tmp 模板
                     val = tmp.replace("%{}%", val.split(",").map((color)=>{ //渐变色使用预置主题色
-                        return theme[color] || color
+                        return theme.preset[color] || color
                     }));
                 }
                 return isNaN(val)? val: `${val}${unit || ""}`;

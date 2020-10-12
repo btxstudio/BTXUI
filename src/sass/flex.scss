@@ -23,9 +23,11 @@
 .flex-between{                           //主轴均分排列，两端对齐
     @extend .flex;
     justify-content: space-between !important;
+    align-items: center;
 }
 
 .flex-around{                            //主轴均分排列
     @extend .flex;
     justify-content: space-around !important;
+    align-items: center;
 }

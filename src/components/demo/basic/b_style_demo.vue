@@ -1,15 +1,14 @@
 <template>
     <article>
         <section>
-            <p>BTX·UI 推荐使用组件取代全局样式作为前端视图层开发的基础，秉持组件复用而非样式复用可以让开发更为高效且易于管理。框架在组件分层设计上分为了
-                "核心组件"、"无状态组件"、"有状态组件"。</p>
-            <p></p>
-        </section>
-
-        <!--b-view-->
-        <section>
-            <h5>b-view</h5>
-            <p>其样式规范，基于并扩展 BTX·UI 全局样式语法，web 和 app UI 得到统一。</p>
+            <p>BTX·UI 推荐使用组件取代全局样式作为前端视图层开发的基础，秉持组件复用而非样式复用可以让开发更为高效且易于管理。框架在组件分层设计上分为了 "基础组件"、"功能组件"、"项目组件"。</p>
+            <p><code>b-style</code> 是样式处理的底层模块，所有基础组件均继承自该模块，可通过 <b>styles</b> 属性进行样式绑定，其样式规范，基于并扩展 BTX·UI 全局样式语法，因此可以像添加标签类属性那样进行样式设置，目的是为了让 web 和 webApp 在样式语法上尽可能的统一。</p>
+            <p>【exp】：</p>
+            <p>class 全局样式：<code>&lt;div class="pright fsize-1d5"&gt;hello world&lt;/div&gt;</code></p>
+            <p>styles 组件样式：<code>&lt;b-view styles="pright fsize-1.5"&gt;hello world&lt;/b-view&gt;</code></p>
+            <p>组件样式使用时需要注意两点：</p>
+            <p><b>1.</b> 部分样式值添加顺序会影响样式优先级，比如添加上侧圆角样式，应该先设置尺寸，再设置方向，否则方向设置会被覆盖而无效。<br>【exp】：<code>&lt;b-view styles="round-sm round-t"&gt;&lt;/b-view&gt;</code></p>
+            <p><b>2.</b> 部分样式值需要通过组件结构嵌套进行复合使用，比如同时添加模糊和低明度滤镜样式。<br>【exp】：<code>&lt;b-view styles="blur-sm"&gt;&lt;b-view styles="dark-sm"&gt;&lt;/b-view&gt;&lt;/b-view&gt;</code></p>
             <p></p>
         </section>
 
@@ -46,6 +45,11 @@
                     <td>-</td>
                 </tr>
                 <tr>
+                    <td><code>font-*</code></td>
+                    <td>指定字体</td>
+                    <td>字体名（需引入对应字体样式文件）</td>
+                </tr>
+                <tr>
                     <td><code>fsize-*</code></td>
                     <td>字符间距</td>
                     <td>任意合法值，缺省单位 em</td>
@@ -68,13 +72,9 @@
         <!--颜色相关样式-->
         <section>
             <p>颜色相关样式：</p>
-            <p>
-                可以使用框架预置主题色，包括：none、main、sub、light、dgray、mgray、lgray、dark、red、green、blue、yellow、neutral。色值效果可参考
-                <b>"全局样式 - 色彩"</b>。</p>
-            <p>也可以定制扩展及修改主题色，此外任意标准 web 色彩模式都可以直接使用。</p>
-            <p>【exp】：</p>
-            <p>使用预置主题色：<code>&lt;b-view styles="bg-main"&gt;hello world&lt;/b-view&gt;</code></p>
-            <p>使用其它 web 标准色：<code>&lt;b-view styles="bg-#ffcc00"&gt;hello world&lt;/b-view&gt;</code></p>
+            <p>可以使用框架预置主题色，包括：none、main、sub、light、dgray、mgray、lgray、dark、red、green、blue、yellow、neutral。色值效果可参考 <b>"全局样式 - 色彩"</b>，此外其它任意标准 web 色彩模式都可以直接使用。</p>
+            <p>主题色支持扩展及修改，通常可在全局文件 <b>main.js</b> 引入 <code>BTXUI/core/styles/theme.js</code> 模块，执行 <code>append(colors)</code> 方法扩展。</p>
+            <p>【exp】扩展深红色：<code>Theme.append({ deep_red: "#ae0014" })</code></p>
             <table class="table">
                 <thead>
                 <tr>
@@ -87,17 +87,17 @@
                 <tr>
                     <td><code>bg-color-*</code></td>
                     <td>背景色</td>
-                    <td>-</td>
+                    <td>任意合法值或主题色</td>
                 </tr>
                 <tr>
                     <td><code>color-*</code></td>
                     <td>文字色</td>
-                    <td>-</td>
+                    <td>任意合法值或主题色</td>
                 </tr>
                 <tr>
                     <td><code>line-*</code></td>
                     <td>描边色</td>
-                    <td>-</td>
+                    <td>任意合法值或主题色</td>
                 </tr>
                 <tr>
                     <td><code>alpha-*</code></td>
@@ -821,6 +821,6 @@
 
 <script>
     export default {
-        name: "core"
+        name: "b_style_demo"
     }
 </script>

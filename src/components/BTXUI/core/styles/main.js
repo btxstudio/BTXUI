@@ -78,11 +78,13 @@ export default {
     },
     "flex-between": {
         display: "flex",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        alignItems: "center"
     },
     "flex-around": {
         display: "flex",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        alignItems: "center"
     },
     "grid": {
         display: "flex",
@@ -215,6 +217,11 @@ export default {
         //二段赋值-----------------------------------------------------------------------------------
 
         "rule_2": {
+
+            //字体
+            "font": {
+                pro: "fontFamily"
+            },
 
             //字号
             "fsize": {

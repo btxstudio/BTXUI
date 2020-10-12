@@ -1,12 +1,20 @@
-//核心组件
+//基础组件
 import basic_websit_demo from '@/components/demo/basic/websit_demo'
+import b_style_demo from '@/components/demo/basic/b_style_demo'
 import b_view_demo from '@/components/demo/basic/b_view_demo'
 import b_hot_demo from '@/components/demo/basic/b_hot_demo'
 import b_img_demo from '@/components/demo/basic/b_img_demo'
+import b_icon_demo from '@/components/demo/basic/b_icon_demo'
 import b_input_demo from '@/components/demo/basic/b_input_demo'
 import b_textarea_demo from '@/components/demo/basic/b_textarea_demo'
+import b_list_demo from '@/components/demo/basic/b_list_demo'
+import b_app_demo from '@/components/demo/basic/b_app_demo'
+import b_app_data_demo from '@/components/demo/basic/b_app/data_demo'
+import b_app_download_demo from '@/components/demo/basic/b_app/download_demo'
+import b_app_list_demo from '@/components/demo/basic/b_app/list_demo'
+import b_app_system_demo from '@/components/demo/basic/b_app/system_demo'
 
-//应用组件
+//功能组件
 import content_wid_demo from '@/components/demo/content_wid_demo'
 import tag_wid_demo from '@/components/demo/tag_wid_demo'
 import tags_wid_demo from '@/components/demo/tags_wid_demo'
@@ -32,6 +40,10 @@ export default [
         component: basic_websit_demo
     },
     {
+        path: '/b_style_demo',
+        component: b_style_demo
+    },
+    {
         path: '/b_view_demo',
         component: b_view_demo
     },
@@ -44,12 +56,42 @@ export default [
         component: b_img_demo
     },
     {
+        path: '/b_icon_demo',
+        component: b_icon_demo
+    },
+    {
         path: '/b_input_demo',
         component: b_input_demo
     },
     {
         path: '/b_textarea_demo',
         component: b_textarea_demo
+    },
+    {
+        path: '/b_list_demo',
+        component: b_list_demo
+    },
+    {
+        path: '/b_app_demo',
+        component: b_app_demo,
+        children: [
+            {
+                path: 'data',
+                component: b_app_data_demo
+            },
+            {
+                path: 'download',
+                component: b_app_download_demo
+            },
+            {
+                path: 'list',
+                component: b_app_list_demo
+            },
+            {
+                path: 'system',
+                component: b_app_system_demo
+            }
+        ]
     },
 
     //功能组件

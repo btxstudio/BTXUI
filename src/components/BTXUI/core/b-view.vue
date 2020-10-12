@@ -7,7 +7,7 @@
 <script>
     import bStyle from "./styles/b-style";
 
-    let desc = ["该组件用于实现基础布局。"],
+    let desc = ["该组件是用于布局的基础组件，相当于 html 中 div 的作用，可以接收 <code>styles</code> 属性来应用框架封装样式体系。"],
         extend = ["b-style"],
         dependent = [],
         api = null,

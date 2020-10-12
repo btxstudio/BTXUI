@@ -8,7 +8,15 @@
     let desc = ["该组件用于实现图片显示。"],
         extend = ["b-style"],
         dependent = [],
-        api = null,
+        api = {
+            event: [
+                {
+                    name: "on_load",
+                    ef: "图片加载完成",
+                    params: "-",
+                }
+            ]
+        },
         init_data = `{
         img: "图像资源",
         /* styles: "(参照：b-style 组件入参)" */,
@@ -63,6 +71,7 @@
                 const img = new Image();
                 img.onload = ()=>{
                     this.src = this.img;
+                    this.$emit("on_load");
                 }
                 img.src = this.img;
             }

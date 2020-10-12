@@ -12,10 +12,6 @@ import decoration from '@/router/global_style/decoration'       //装饰
 import icon from '@/router/global_style/icon'                   //图标
 import animation from '@/router/global_style/animation'         //动画
 
-//组件
-import core from '@/router/components/core'                     //核心
-import b_list from '@/router/components/b_list'                 //内容滚动
-
 //测试
 import demo from '@/router/demo'
 
@@ -54,14 +50,6 @@ export default new Router({
         {
             path: '/animation',
             component: animation
-        },
-        {
-            path: '/core',
-            component: core
-        },
-        {
-            path: '/b_list',
-            component: b_list
         },
         ...demo
     ]

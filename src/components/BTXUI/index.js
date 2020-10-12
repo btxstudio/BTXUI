@@ -2,7 +2,6 @@ import Vue from "vue"
 
 const components = {
     core: [
-        "b-app",
         "b-grid",
         "b-hot",
         "b-icon",
@@ -30,7 +29,8 @@ const components = {
         "tag",
         "tags",
         "tooltip",
-        "upload"
+        "upload",
+        "app",
     ]
 }
 

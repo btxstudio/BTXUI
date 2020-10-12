@@ -5,6 +5,9 @@ import App from './App'
 import axios from 'axios'
 import router from './router'
 
+//站点图标
+document.querySelector("#FAVICON_ICO").href = require("./assets/img/favicon.gif");
+
 //代码高亮
 import VueHighlightJS from 'vue-highlightjs'
 import 'highlight.js/styles/atom-one-dark-reasonable.css'

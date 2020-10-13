@@ -13,12 +13,13 @@
                @on_dblclick="matteClose === 'dblclick' && $_close()"
                :forbid="matteClose? false: true"
                :styles="`abs max t-0 l-0 bg-color-${matteColor}`">
+            <b-view styles="max bg-repeat" :bg-img="mattePattern"></b-view>
         </b-hot>
 
-        <b-view :styles="`rel trans-fast scale-0 bg-use ${max_pannel_styles} l-${offsetStyles.x} t-${offsetStyles.y}`"
+        <b-view :styles="`rel trans-fast bg-use ${max_pannel_styles} l-${offset.x} t-${offset.y} ${transition.out_styles}`"
             :states="{
                 show: {
-                    style: `alpha-1 scale-1 ${matte? 'trans-delay-.4': ''}`,
+                    style: `${matte? 'trans-delay-.4': ''} ${transition.in_styles}`,
                     state: visible
                 }
             }">
@@ -46,12 +47,17 @@
         init_data = `{
         visible: "（model）面板显示状态",
         /* pos: "面板定位（基于视口九宫格定位: 1-9）" */,
-        /* offsetStyles: {
-            x: "水平方向位移样式，默认单位 rem",
-            y: "垂直方向位移样式，默认单位 rem",
+        /* offset: {
+            x: "水平方向位移样式值，默认单位 rem",
+            y: "垂直方向位移样式值，默认单位 rem",
+        } */,
+        /* transition: {
+            in_styles: "入场样式值",
+            out_styles: "出场样式值"
         } */,
         /* matte: "是否启用遮罩，默认不启用" */,
         /* matteColor: "遮罩颜色" */,
+        /* mattePattern: "遮罩图案" */,
         /* matteZIndex: "遮罩 z 轴层级，默认为 9" */,
         /* closeBtn: "是否启用关闭按钮" */,
         /* matteClose: "遮罩自身点击关闭面板：click 单击、dblclick 双击" */,
@@ -80,11 +86,21 @@
                 required: false,
                 default: 5
             },
-            offsetStyles: {
+            offset: {
                 type: Object,
                 required: false,
-                default: () => {
+                default: ()=>{
                     return {x:0, y:0}
+                }
+            },
+            transition: {
+                type: Object,
+                required: false,
+                default: ()=>{
+                    return {
+                        in_styles: "alpha-1 scale-1",
+                        out_styles: "alpha-0 scale-0"
+                    }
                 }
             },
             visible: {
@@ -96,6 +112,10 @@
                 required: false
             },
             matteColor: {
+                type: String,
+                required: false
+            },
+            mattePattern: {
                 type: String,
                 required: false
             },

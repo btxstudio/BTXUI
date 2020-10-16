@@ -1,12 +1,12 @@
 <template>
     <b-view :styles="`rel h-${view.height} bg-color-${view.bg_color}`">
         <b-view :styles="`rel no-scroll h-${view.height}`">
-            <ul class="s-w-bar flex max-h"
-                @touchstart="$_touch_start"
-                @touchmove="$_touch_move"
-                @touchend="$_touch_end"
-                @transitionend="$_flip_over"
-                :style="'width:' + slider_bar_width + 'px; height:' + view.height + '; transform:translateX(' + touch_point.x + 'px); transition-duration:' + flip_speed">
+            <b-view :styles="`flex max-h w-${slider_bar_width}px`"
+                    ref="container"
+                    @touchstart="$_touch_start"
+                    @touchmove="$_touch_move"
+                    @touchend="$_touch_end"
+                    @transitionend="$_flip_over">
                 <b-view styles="flex-column max" :ref="'$' + page.id"
                         v-for="page of slider_pages" :key="page.id"
                         :state="page.state">
@@ -14,7 +14,7 @@
                         <slot :name="page.id"></slot>
                     </component>
                 </b-view>
-            </ul>
+            </b-view>
         </b-view>
 
         <!--计数点-->
@@ -35,13 +35,13 @@
 
         <!--切换按钮-->
         <template v-if="show_flip_btn" >
-            <b-hot styles="color-neutral abs t-50% l-0 w-4 h-4 mrg-t-f4 pcenter fsize-2.5"
-                   hover="color-rgba(134,134,134,.7)"
+            <b-hot styles="round bg-color-neutral translateY-f50 flex-5 abs t-50% l-1 w-4 h-4 fsize-2"
+                   hover="bg-color-rgba(255,255,255,.4)"
                    @on_click="prev('.4s')">
                 <b-icon icon="arrow-left" />
             </b-hot>
-            <b-hot styles="color-neutral abs t-50% r-0 w-4 h-4 mrg-t-f4 pcenter fsize-2.5"
-                   hover="color-rgba(134,134,134,.7)"
+            <b-hot styles="round bg-color-neutral translateY-f50 flex-5 abs t-50% r-1 w-4 h-4 fsize-2"
+                   hover="bg-color-rgba(255,255,255,.4)"
                    @on_click="next('.4s')">
                 <b-icon icon="arrow-right" />
             </b-hot>
@@ -106,15 +106,15 @@
             ]
         },
         init_data = `{
-        pages: "[
+        pages: [
             {
                 id: "内容标识"
             },...
-        ]",
-        view: {
+        ],
+        /* view: {
             height: "轮播器高度（默认为 auto，由内容撑起）",
             bg_color: "轮播器背景色（默认为透明）"
-        },
+        } */,
         /* showDot: {
             bottom: "底边位移",
             color: "点颜色",
@@ -142,7 +142,13 @@
             },
             view: {
                 type: Object,
-                required: true
+                required: false,
+                default: ()=>{
+                    return {
+                        height: "auto",
+                        bg_color: "none"
+                    }
+                }
             },
             showDot: {
                 type: Object,
@@ -161,7 +167,7 @@
                 required: false
             },
             keyboardFlip: {
-                type: String,
+                type: Boolean,
                 required: false
             },
         },
@@ -200,8 +206,8 @@
                     }
                 },
 
-                //翻页速度
-                flip_speed: "0s",
+                //翻页缓动
+                flip_ani: false,
 
                 //滑动启用状态
                 touch_move_enable: true,
@@ -210,6 +216,14 @@
                 show_flip_btn: false
 
             }
+        },
+        computed: {
+
+            //轮播容器
+            container(){
+                return this.$refs.container;
+            }
+
         },
         methods: {
 
@@ -224,9 +238,9 @@
             },
 
             //平滑翻页
-            smooth_flip(page, speed){
+            smooth_flip(page, flip_ani){
                 clearInterval(this.auto_play_data.interval);
-                if(speed) this.flip_speed = speed;
+                this.flip_speed = flip_ani;
                 this.flip(page);
             },
 
@@ -249,6 +263,8 @@
 
                 //位移修正
                 this.touch_point.x = this.touch_point.left = -this.point.cur * this.$el.clientWidth;
+                this.container.append_style(`translateX-f${this.touch_point.x}px ${this.flip_ani? 'trans-fast': ''}`, "move");
+                this.container.toggle_style("move");
 
                 if(this.point.prev !== this.point.cur){
                     let cur_page_data = this.slider_pages[this.point.cur];
@@ -358,7 +374,7 @@
 
             //滑动结束
             $_flip_over(){
-                this.flip_speed = "0s";
+                this.flip_ani = false;
                 this.$emit("on_flip", this.point.cur);
             },
 
@@ -407,7 +423,5 @@
 <style scoped>
     .s-w-bar{
         touch-action: none;
-        transition-property: transform;
-        transition-timing-function: ease-out;
     }
 </style>

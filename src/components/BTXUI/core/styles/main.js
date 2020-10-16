@@ -200,7 +200,7 @@ export default {
     "blur-no": { filter: "blur(0px)" },
     "blur-sm": { filter: "blur(2px)" },
     "blur-md": { filter: "blur(7px)" },
-    "blur-lg": { filter: "blur(14px)" },
+    "blur-lg": { filter: "blur(17px)" },
 
     //明度滤镜
     "dark-no": { filter: "brightness(100%)" },
@@ -227,6 +227,18 @@ export default {
             "fsize": {
                 pro: "fontSize",
                 unit: "em"
+            },
+
+            //行高
+            "lh": {
+                pro: "lineHeight",
+            },
+
+            //单行省略文本
+            "ellipsis": {
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "no-wrap"
             },
 
             //字符间距
@@ -298,41 +310,39 @@ export default {
             //基于容器左侧水平位移
             "l": {
                 pro: "left",
-                tmp: "%{}%",
                 unit: "rem"
             },
 
             //基于容器右侧水平位移
             "r": {
                 pro: "right",
-                tmp: "%{}%",
                 unit: "rem"
             },
 
             //基于容器上侧垂直位移
             "t": {
                 pro: "top",
-                tmp: "%{}%",
                 unit: "rem"
             },
 
             //基于容器下侧垂直位移
             "b": {
                 pro: "bottom",
-                tmp: "%{}%",
                 unit: "rem"
             },
 
             //水平位移
             "translateX": {
                 pro: "transform",
-                tmp: "translateX(%{}%%)",
+                tmp: "translateX(%{}%)",
+                unit: "%"
             },
 
             //垂直位移
             "translateY": {
                 pro: "transform",
-                tmp: "translateY(%{}%%)",
+                tmp: "translateY(%{}%)",
+                unit: "%"
             },
 
             //放缩
@@ -344,7 +354,8 @@ export default {
             //旋转
             "rotate": {
                 pro: "transform",
-                tmp: "rotate(%{}%deg)"
+                tmp: "rotate(%{}%)",
+                unit: "deg"
             },
 
             //变形
@@ -354,8 +365,7 @@ export default {
 
             //变形中心点
             "origin": {
-                pro: "transformOrigin",
-                tmp: "%{}%"
+                pro: "transformOrigin"
             },
 
             //描边粗细

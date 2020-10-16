@@ -8,11 +8,6 @@ import b_icon_demo from '@/components/demo/basic/b_icon_demo'
 import b_input_demo from '@/components/demo/basic/b_input_demo'
 import b_textarea_demo from '@/components/demo/basic/b_textarea_demo'
 import b_list_demo from '@/components/demo/basic/b_list_demo'
-import b_app_demo from '@/components/demo/basic/b_app_demo'
-import b_app_data_demo from '@/components/demo/basic/b_app/data_demo'
-import b_app_download_demo from '@/components/demo/basic/b_app/download_demo'
-import b_app_list_demo from '@/components/demo/basic/b_app/list_demo'
-import b_app_system_demo from '@/components/demo/basic/b_app/system_demo'
 
 //功能组件
 import content_wid_demo from '@/components/demo/content_wid_demo'
@@ -32,6 +27,11 @@ import imgs_upload_wid_demo from '@/components/demo/imgs_upload_wid_demo'
 import slider_wid_demo from '@/components/demo/slider_wid_demo'
 import drawer_wid_demo from '@/components/demo/drawer_wid_demo'
 import tooltip_wid_demo from '@/components/demo/tooltip_wid_demo'
+import app_wid_demo from '@/components/demo/app_wid_demo'
+import app_wid_data_demo from '@/components/demo/app/data_demo'
+import app_wid_download_demo from '@/components/demo/app/download_demo'
+import app_wid_list_demo from '@/components/demo/app/list_demo'
+import app_wid_system_demo from '@/components/demo/app/system_demo'
 
 export default [
     //基础组件
@@ -70,28 +70,6 @@ export default [
     {
         path: '/b_list_demo',
         component: b_list_demo
-    },
-    {
-        path: '/b_app_demo',
-        component: b_app_demo,
-        children: [
-            {
-                path: 'data',
-                component: b_app_data_demo
-            },
-            {
-                path: 'download',
-                component: b_app_download_demo
-            },
-            {
-                path: 'list',
-                component: b_app_list_demo
-            },
-            {
-                path: 'system',
-                component: b_app_system_demo
-            }
-        ]
     },
 
     //功能组件
@@ -162,5 +140,27 @@ export default [
     {
         path: '/tooltip_wid_demo',
         component: tooltip_wid_demo
+    },
+    {
+        path: '/app_wid_demo',
+        component: app_wid_demo,
+        children: [
+            {
+                path: 'data',
+                component: app_wid_data_demo
+            },
+            {
+                path: 'download',
+                component: app_wid_download_demo
+            },
+            {
+                path: 'list',
+                component: app_wid_list_demo
+            },
+            {
+                path: 'system',
+                component: app_wid_system_demo
+            }
+        ]
     },
 ]

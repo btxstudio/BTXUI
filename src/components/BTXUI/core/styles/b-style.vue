@@ -159,12 +159,13 @@
                     return v.replace(/([\(,])f/g, "$1-");
 
                 }).join(" ");
+                val = isNaN(val)? val: `${val}${unit || ""}`; //添加单位
                 if(tmp){ //使用 tmp 模板
                     val = tmp.replace("%{}%", val.split(",").map((color)=>{ //渐变色使用预置主题色
                         return theme.preset[color] || color
                     }));
                 }
-                return isNaN(val)? val: `${val}${unit || ""}`;
+                return val;
             },
 
             //设置额外样式值

@@ -42,7 +42,7 @@
         },
         init_data = `{
         /* styles: "(参照：b-style 组件入参)" */,
-        /* link: "外部链接 | 组件路由 | {
+        /* link: "外部链接 | 组件路由 | 手机拨号 | {
             chapter_id: "内部链接元素 id",
             chapter_link_data: "(参照：ChapterLink 类构造函数)"
         }" */,
@@ -92,9 +92,10 @@
                         return link;
                     }else if(link.search("/") === 0){ //组件路由
                         return `#${link}`;
+                    }else if(link.search("tel:") === 0){ //手机拨号
+                        return link;
                     }
-                }
-                else{ //内部链接
+                } else{ //内部链接
                     return `#${this.$route.path}`;
                 }
             },

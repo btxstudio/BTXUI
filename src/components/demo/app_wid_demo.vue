@@ -48,7 +48,7 @@
     import AppWid from "@/components/BTXUI/app/app-wid"
 
     export default {
-        name: "b_app_demo",
+        name: "app_wid_demo",
         components: {
             HeaderInfo,
             AppWid,
@@ -61,7 +61,7 @@
                         icon: "data"
                     },
                     hot_data: {
-                        link: "/b_app_demo/data"
+                        link: "/app_wid_demo/data"
                     },
                     text: "data",
                 },
@@ -71,7 +71,7 @@
                         icon: "download"
                     },
                     hot_data: {
-                        link: "/b_app_demo/download"
+                        link: "/app_wid_demo/download"
                     },
                     text: "download",
                 },
@@ -81,7 +81,7 @@
                         icon: "list"
                     },
                     hot_data: {
-                        link: "/b_app_demo/list"
+                        link: "/app_wid_demo/list"
                     },
                     text: "list",
                 },
@@ -91,7 +91,7 @@
                         icon: "system"
                     },
                     hot_data: {
-                        link: "/b_app_demo/system"
+                        link: "/app_wid_demo/system"
                     },
                     text: "system",
                 },
@@ -107,7 +107,10 @@
 
                 data_1: {
                     props1: {
-                        spread
+                        spread,
+                        colors: {
+                            bg: "main"
+                        }
                     },
                     props2: {
                         center: {
@@ -154,7 +157,7 @@
                                 }
                             },
                             hot_data: {
-                                link: "/b_app_demo/data"
+                                link: "/app_wid_demo/data"
                             },
                             text: "data",
                         },
@@ -166,11 +169,14 @@
                                 }
                             },
                             hot_data: {
-                                link: "/b_app_demo/download"
+                                link: "/app_wid_demo/download"
                             },
                             text: "download",
                         }
-                    ]
+                    ],
+                    colors: {
+                        bg: "main"
+                    }
                 }
 
             }

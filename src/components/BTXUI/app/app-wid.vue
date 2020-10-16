@@ -1,12 +1,15 @@
 <template>
-    <b-view :styles="`max pcenter flex-column color-light bg-color-${color_style.bg}`">
+    <b-view :styles="`max flex-column color-light bg-color-${color_style.bg}`">
         <!--中部内容区域-->
         <b-list styles="grow-1">
-            <router-view />
+            <keep-alive v-if="keepAlive">
+                <router-view />
+            </keep-alive>
+            <router-view v-else />
         </b-list>
 
         <!--底部导航栏-->
-        <b-view :styles="`flex h-4.7 ${round? 'round-md round-t': ''} bg-color-${color_style.bar}`">
+        <b-view :styles="`pcenter flex h-4.7 ${round? 'round-md round-t': ''} bg-color-${color_style.bar}`">
             <b-hot v-for="(nav,i) of navs" :key="i" v-bind="nav.hot_data"
                    @on_click="$_click(nav.nav_id)"
                    styles="grow-1 flex rel pad-v-4px">
@@ -79,7 +82,8 @@
                 act: "文字激活颜色"
             }
         } */,
-        /* round: "是否启用圆角，默认 true" */
+        /* round: "是否启用圆角，默认 true" */,
+        /* keepAlive: "缓存页面，默认 true" */
     }`;
 
     export default {
@@ -109,6 +113,11 @@
                 type: Boolean,
                 required: false,
                 default: true
+            },
+            keepAlive: {
+                type: Boolean,
+                required: false,
+                default: true
             }
         },
         computed: {
@@ -131,7 +140,7 @@
             //色彩风格
             color_style(){
                 return {
-                    bg: "main",
+                    bg: "none",
                     bar: "dgray",
                     center: {
                         bg: "#444",

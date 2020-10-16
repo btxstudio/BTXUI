@@ -1,6 +1,6 @@
 <template>
   <article>
-    <p>BTX·UI 提供了一套常用的字体图标集合。其类名都是以 <code>.ico-*</code> 作为前缀的，比如删除图标：<code>.ico-del</code>。</p>
+    <p>BTX·UI 精选了一套常用的字体图标集合。其类名都是以 <code>.ico-*</code> 作为前缀的，比如删除图标：<code>.ico-del</code>。</p>
     <p>在实际项目中为了灵活控制字体图标大小，推荐使用 <code>&lt;i&gt;</code> 标签进行样式类绑定，可配合字号样式类 <code>.fsize-*</code> 及放缩微调类 <code>.scale-*</code> 协同使用。</p>
     <p></p>
 
@@ -208,7 +208,108 @@ export default {
             {
                 name: "btxstudio-round",
                 code: "\e60d"
-            }
+            },
+            {
+                name: "qq",
+                code: "\e63f"
+            },
+            {
+                name: "weibo2",
+                code: "\e64c"
+            },
+            {
+                name: "email",
+                code: "\e619",
+                scale: "1d1"
+            },
+            {
+                name: "tel",
+                code: "\e768"
+            },
+            {
+                name: "fix",
+                code: "\e614"
+            },
+            {
+                name: "website",
+                code: "\e63d",
+                scale: "1d1"
+            },
+            {
+                name: "wechat2",
+                code: "\e62a",
+                scale: "1d1"
+            },
+            {
+                name: "eye",
+                code: "\e7d3"
+            },
+            {
+                name: "brand",
+                code: "\e610"
+            },
+            {
+                name: "chart",
+                code: "\e6cc"
+            },
+            {
+                name: "addr",
+                code: "\e613"
+            },
+            {
+                name: "space",
+                code: "\e89f"
+            },
+            {
+                name: "directory",
+                code: "\e666"
+            },
+            {
+                name: "mail-list",
+                code: "\e645"
+            },
+            {
+                name: "book",
+                code: "\e68b"
+            },
+            {
+                name: "tesk",
+                code: "\e601"
+            },
+            {
+                name: "talk",
+                code: "\e81a"
+            },
+            {
+                name: "trophy",
+                code: "\e723"
+            },
+            {
+                name: "edit",
+                code: "\eed2"
+            },
+            {
+                name: "work",
+                code: "\eee0"
+            },
+            {
+                name: "circle",
+                code: "\e633",
+                scale: "1d1"
+            },
+            {
+                name: "shop",
+                code: "\e699",
+                scale: "1d1"
+            },
+            {
+                name: "group",
+                code: "\e68f"
+            },
+            {
+                name: "about",
+                code: "\e674"
+            },
         ]
 
       }

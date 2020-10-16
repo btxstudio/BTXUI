@@ -341,13 +341,13 @@
                 </tr>
                 <tr>
                     <td><code>translateX-*</code></td>
-                    <td>基于自身宽度百分比水平位移</td>
-                    <td>任意合法值，单位 %</td>
+                    <td>基于自身水平位移</td>
+                    <td>任意合法值，缺省单位 %</td>
                 </tr>
                 <tr>
                     <td><code>translateY-*</code></td>
-                    <td>基于自身高度百分比垂直位移</td>
-                    <td>任意合法值，单位 %</td>
+                    <td>基于自身垂直位移</td>
+                    <td>任意合法值，缺省单位 %</td>
                 </tr>
                 <tr>
                     <td><code>scale-*</code></td>

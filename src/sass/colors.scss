@@ -24,9 +24,6 @@ $yellow: #fdba00;                       //橙黄
 
 $neutral: rgba(130,130,130,.15);        //中性色
 
-.bg-none { pointer-events: none; }      //背景点透效果
-.bg-use { pointer-events: auto; }       //背景常规效果（非点透）
-
 //生成色彩（文字、填充、描边）类
 @mixin auto_gen_color_class {
     $colors: (none $none), (sub $sub), (main $main), (light $light), (dark $dark), (dgray $dgray), (mgray $mgray), (lgray $lgray), (blue $blue), (green $green), (yellow $yellow), (red $red), (neutral, $neutral);

@@ -2,19 +2,62 @@
     import preset_style from "./main";
     import theme from "./theme";
 
+    let desc = [
+        "BTX·UI 推荐使用组件取代全局样式作为前端视图层开发的基础，秉持组件复用而非样式复用可以让开发更为高效且易于管理。框架在组件分层设计上分为了 “基础组件”、“功能组件”、“项目组件”。",
+        "<code>b-style</code> 是样式处理的底层模块，所有基础组件均继承自该模块，可通过 <b>styles</b> 属性进行样式绑定，其样式规范，基于并扩展 BTX·UI 全局样式语法，因此可以像添加标签类属性那样进行样式设置，目的是为了让 web 和 webApp 在样式语法上尽可能的统一。",
+        {
+            cover: "b-style.png",
+            title: "样式解析机制原理"
+        },
+        "【exp】：",
+        "class 全局样式：<code>&lt;div class=\"pright fsize-1d5\"&gt;hello world&lt;/div&gt;</code>",
+        "styles 组件样式：<code>&lt;b-view styles=\"pright fsize-1.5\"&gt;hello world&lt;/b-view&gt;</code>",
+        "组件样式使用时需要注意两点：",
+        "<b>1.</b> 部分样式值添加顺序会影响样式优先级，比如添加上侧圆角样式，应该先设置尺寸，再设置方向，否则方向设置会被覆盖而无效。<br>【exp】：<code>&lt;b-view styles=\"round-sm round-t\"&gt;&lt;/b-view&gt;</code>",
+        "<b>2.</b> 部分样式值需要通过组件结构嵌套进行复合使用，比如同时添加模糊和低明度滤镜样式。<br>【exp】：<code>&lt;b-view styles=\"blur-sm\"&gt;&lt;b-view styles=\"dark-sm\"&gt;&lt;/b-view&gt;&lt;/b-view&gt;</code>"
+        ],
+        extend = [],
+        dependent = [],
+        api = {
+            methods: [
+                {
+                    name: "toggle_style",
+                    ef: "切换状态样式",
+                    params: "states",
+                    return: "-"
+                },
+                {
+                    name: "reset_style",
+                    ef: "恢复原始样式",
+                    params: "-",
+                    return: "-"
+                },
+                {
+                    name: "has_state",
+                    ef: "判断是否具备某项样式状态",
+                    params: "state",
+                    return: "bool"
+                },
+                {
+                    name: "append_state",
+                    ef: "追加样式状态",
+                    params: "styles, state",
+                    return: "-"
+                }
+            ]
+        },
+        init_data = `{
+        /* styles: "样式值规范" */,
+        /* states: {
+            state: "样式状态",
+            style: "样式值规范"
+        }... */,
+        /* dynamic: "动态样式值规范" */
+    }`;
+
     export default {
         name: "b-style",
-        /*
-        * init-data{
-        *   [* styles: [
-        *       样式规范，基于并扩展 btx·UI 全局样式语法,...
-        *   ]],
-        *   [* states: {
-        *       样式状态名: 样式规范,
-        *       ...
-        *   }]
-        * }
-        * */
+        introduce: { desc, extend, dependent, api, init_data },
         props: {
             styles: {
                 type: String,
@@ -25,6 +68,10 @@
                 type: Object,
                 required: false
             },
+            dynamic: {
+                type: String,
+                required: false
+            }
         },
         data(){
             return {
@@ -36,28 +83,31 @@
                 computed_style: {},
 
                 //当前样式状态
-                cur_state: []
+                cur_states: []
 
             }
         },
         watch: {
 
-            //监听样式状态
+            //监听静态状态
             states(){
-                this.$_init_style();
+                this.$_filter_styles();
+            },
+
+            //监听动态状态
+            dynamic(val){
+                this.append_state(val, "dynamic");
+                this.toggle_style([...this.cur_states, "dynamic"]);
             }
 
         },
         methods: {
 
-            //切换样式状态
-            /*
-            * states: 状态:String | 状态列表:Array
-            */
+            //切换状态样式
             toggle_style(states){
                 let style_stack = this.style_stack;
                 if(typeof(states) === "string") states = [states];
-                this.cur_state = states;
+                this.cur_states = states; //状态:String | 状态列表:Array
                 this.computed_style = {
                     ...style_stack["origin"],
                     ...states.reduce((total, state)=>{
@@ -67,14 +117,9 @@
                 };
             },
 
-            //追加样式
-            append_style(styles, state){
-                styles && this.$_parse_style(styles, state);
-            },
-
-            //恢复样式
+            //恢复原始样式
             reset_style(){
-                this.cur_state = [];
+                this.cur_states = [];
                 this.computed_style = this.style_stack["origin"];
             },
 
@@ -83,25 +128,33 @@
                 return this.style_stack[state]? true: false;
             },
 
-            //初始化样式状态
-            $_init_states(){
-                for(let state in this.states){
-                    this.append_style(this.states[state].style, state);
-                }
-                this.$_parse_style(this.styles);
+            //追加样式状态
+            append_state(styles, state){
+                this.$_stack_state(this.$_parse_style(styles), state);
             },
 
             //初始化样式
             $_init_style(){
+                this.append_state(this.styles);
+            },
+
+            //初始化样式状态
+            $_init_states(){
+                this.$_filter_styles(true);
+            },
+
+            //筛选样式
+            $_filter_styles(append){
                 let states = [];
                 for(let state in this.states){
+                    append && this.append_state(this.states[state].style, state);
                     if(this.states[state].state) states.push(state);
                 }
                 this.toggle_style(states);
             },
 
             //样式解析
-            $_parse_style(styles, state="origin"){
+            $_parse_style(styles){
                 let style = {};
                 if(styles){
                     styles.split(" ").forEach(rule=>{
@@ -146,6 +199,11 @@
                         }
                     })
                 }
+                return style;
+            },
+
+            //堆栈样式
+            $_stack_state(style, state="origin"){
                 this.style_stack[state] = style;
             },
 
@@ -175,8 +233,8 @@
 
         },
         mounted(){
-            this.$_init_states();
             this.$_init_style();
+            this.$_init_states();
         }
     }
 </script>

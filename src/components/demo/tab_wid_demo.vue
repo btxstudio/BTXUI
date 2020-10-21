@@ -29,6 +29,21 @@
                     </div>
                 </tab-wid>
             </div>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--滑动切换-->
+        <section>
+            <h5>滑动切换</h5>
+            <p>通过 <code>colors</code> 字段可以配置标签色彩体系。</p>
+            <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
+                <tab-wid v-bind="data_3.props" v-model="data_3.cur_tab">
+                    <div class="h-10 bg-color-light round-b round-sm shadow-sm color-neutral pad-2" :slot="item.id" v-for="item of data_3.props.tagsData.tagList" :key="item.id">
+                        <span class="color-mgray">{{data_3.content[item.id]}}</span>
+                    </div>
+                </tab-wid>
+            </div>
         </section>
 
     </article>
@@ -53,7 +68,6 @@
                     ...TabWid.introduce,
                 },
 
-                //基础渲染数据1
                 dataList_1: {
                     props: {
                         tagsData: {
@@ -81,7 +95,6 @@
                     }
                 },
 
-                //基础渲染数据2
                 dataList_2: {
                     props: {
                         tagsData: {
@@ -123,9 +136,34 @@
                     }
                 },
 
+                data_3: {
+                    props: {
+                        tagsData: {
+                            tagList: [
+                                {
+                                    id: "html",
+                                    text: "html"
+                                },
+                                {
+                                    id: "css",
+                                    text: "css"
+                                },
+                                {
+                                    id: "javascript",
+                                    text: "javascript"
+                                },
+                            ]
+                        }
+                    },
+                    cur_tab: "css",
+                    content: {
+                        html: "html 是用于网页布局的标记语言",
+                        css: "css 是用于网页样式的语言",
+                        javascript: "javascript 是用于网页交互行为的脚本语言"
+                    }
+                }
+
             }
-        },
-        methods: {
         }
     }
 </script>

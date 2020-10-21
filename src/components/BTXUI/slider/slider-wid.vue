@@ -1,18 +1,22 @@
 <template>
-    <b-view :styles="`rel h-${view.height} bg-color-${view.bg_color}`">
+    <b-view :styles="`rel h-${view.height} bg-color-${view.bg_color}`"
+            @on_enter="stop_auto_play"
+            @on_leave="auto_play_data.enable && auto_play()">
         <b-view :styles="`rel no-scroll h-${view.height}`">
-            <b-view :styles="`flex max-h w-${slider_bar_width}px`"
-                    ref="container"
-                    @touchstart="$_touch_start"
-                    @touchmove="$_touch_move"
-                    @touchend="$_touch_end"
-                    @transitionend="$_flip_over">
+            <b-view v-if="slider_bar_width"
+                    ref="sliderBar"
+                    :styles="`flex max-h touch-none w-${slider_bar_width}px`"
+                    :dynamic="`translateX-f${this.touch_point.x}px ${this.flip_ani? 'trans-fast': ''}`"
+                    @on_touchstart="$_touch_start"
+                    @on_touchmove="$_touch_move"
+                    @on_touchend="$_touch_end"
+                    @on_transitionend="$_flip_over">
                 <b-view styles="flex-column max" :ref="'$' + page.id"
                         v-for="page of slider_pages" :key="page.id"
                         :state="page.state">
-                    <component :is="view.height > 0? 'b-list': 'b-view'" styles="grow-1">
+                    <b-list styles="grow-1">
                         <slot :name="page.id"></slot>
-                    </component>
+                    </b-list>
                 </b-view>
             </b-view>
         </b-view>
@@ -37,12 +41,12 @@
         <template v-if="show_flip_btn" >
             <b-hot styles="round bg-color-neutral translateY-f50 flex-5 abs t-50% l-1 w-4 h-4 fsize-2"
                    hover="bg-color-rgba(255,255,255,.4)"
-                   @on_click="prev('.4s')">
+                   @on_click="prev">
                 <b-icon icon="arrow-left" />
             </b-hot>
             <b-hot styles="round bg-color-neutral translateY-f50 flex-5 abs t-50% r-1 w-4 h-4 fsize-2"
                    hover="bg-color-rgba(255,255,255,.4)"
-                   @on_click="next('.4s')">
+                   @on_click="next">
                 <b-icon icon="arrow-right" />
             </b-hot>
         </template>
@@ -61,34 +65,34 @@
         api = {
             event: [
                 {
-                    name: "on_click",
-                    ef: "单元行点击触发",
-                    params: "row_index"
+                    name: "on_flip",
+                    ef: "分页完成",
+                    params: "cur_page"
                 }
             ],
             methods: [
                 {
                     name: "prev",
                     ef: "向前翻页",
-                    params: "speed",
+                    params: "flip_ani",
                     return: "-"
                 },
                 {
                     name: "next",
                     ef: "向后翻页",
-                    params: "speed",
-                    return: "-"
-                },
-                {
-                    name: "smooth_flip",
-                    ef: "平滑翻页",
-                    params: "page, speed",
+                    params: "flip_ani",
                     return: "-"
                 },
                 {
                     name: "flip",
                     ef: "翻页",
-                    params: "page",
+                    params: "page, flip_ani",
+                    return: "-"
+                },
+                {
+                    name: "auto_play",
+                    ef: "自动播放",
+                    params: "restart",
                     return: "-"
                 },
                 {
@@ -178,9 +182,9 @@
                 slider_pages: [],
 
                 //滑动条宽度
-                slider_bar_width: "0",
+                slider_bar_width: 0,
 
-                //指针
+                //索引指针
                 point: {
                     prev: 0,
                     cur: 0,
@@ -207,7 +211,7 @@
                 },
 
                 //翻页缓动
-                flip_ani: false,
+                flip_ani: true,
 
                 //滑动启用状态
                 touch_move_enable: true,
@@ -220,32 +224,25 @@
         computed: {
 
             //轮播容器
-            container(){
-                return this.$refs.container;
+            slider_bar(){
+                return this.$refs.sliderBar;
             }
 
         },
         methods: {
 
             //向前翻页
-            prev(speed){
-                this.smooth_flip(this.point.cur, speed);
+            prev(flip_ani){
+                this.flip(this.point.cur, flip_ani);
             },
 
             //向后翻页
-            next(speed){
-                this.smooth_flip(this.point.cur + 2, speed);
-            },
-
-            //平滑翻页
-            smooth_flip(page, flip_ani){
-                clearInterval(this.auto_play_data.interval);
-                this.flip_speed = flip_ani;
-                this.flip(page);
+            next(flip_ani){
+                this.flip(this.point.cur + 2, flip_ani);
             },
 
             //翻页
-            flip(page){
+            flip(page, flip_ani=true){
                 let page_len = this.slider_pages.length;
 
                 //设置播放模式（point:索引，page:页码）
@@ -260,35 +257,30 @@
                 }else{//定向
                     this.point.cur = Math.min(page_len - 1, Math.max(0, page - 1));
                 }
+                this.touch_point.x = this.touch_point.left = this.point.cur * this.$el.clientWidth; //位移
 
-                //位移修正
-                this.touch_point.x = this.touch_point.left = -this.point.cur * this.$el.clientWidth;
-                this.container.append_style(`translateX-f${this.touch_point.x}px ${this.flip_ani? 'trans-fast': ''}`, "move");
-                this.container.toggle_style("move");
-
+                //设置分页激活状态
                 if(this.point.prev !== this.point.cur){
                     let cur_page_data = this.slider_pages[this.point.cur];
-
-                    //设置分页激活状态
                     this.slider_pages[this.point.prev].state = "";
                     cur_page_data.state = "act";
                     this.point.prev = this.point.cur;
                 }
-                this.auto_play(this.point.cur === page_len - 1? true: false);
+
+                //设置分页缓动
+                !flip_ani && this.$emit("on_flip", this.point.cur + 1);
+                this.flip_ani = flip_ani;
             },
 
             //自动播放
             auto_play(restart){
-                if(this.auto_play_data.enable === true){
-                    this.auto_play_data.interval = setInterval(()=>{
-                        restart? this.smooth_flip(1, ".4s"): this.next(".4s");
-                    }, this.auto_play_data.duration)
-                }
+                this.auto_play_data.interval = setInterval(()=>{
+                    restart? this.flip(1): this.next(true);
+                }, this.auto_play_data.duration)
             },
 
             //停止自动播放
             stop_auto_play(){
-                this.auto_play_data.enable = false;
                 clearInterval(this.auto_play_data.interval);
             },
 
@@ -367,7 +359,7 @@
                     }else if(flip_dir === "left" && overflow_x >= touch_point.threshold){//向左滑动:下一页
                         page++;
                     }
-                    this.smooth_flip(page, ".24s");
+                    this.flip(page, true);
                     touch_point.offset = 0;
                 }
             },
@@ -375,7 +367,7 @@
             //滑动结束
             $_flip_over(){
                 this.flip_ani = false;
-                this.$emit("on_flip", this.point.cur);
+                this.$emit("on_flip", this.point.cur + 1);
             },
 
             //滑动方向判断
@@ -397,7 +389,7 @@
 
             //计数点点击
             $_dot_click(page){
-                this.smooth_flip(page, ".54s");
+                this.flip(page, true);
             },
 
             //绑定键盘翻页事件
@@ -419,9 +411,3 @@
         }
     }
 </script>
-
-<style scoped>
-    .s-w-bar{
-        touch-action: none;
-    }
-</style>

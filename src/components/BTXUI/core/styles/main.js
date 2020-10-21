@@ -142,8 +142,6 @@ export default {
     "bg-pos-7": { backgroundPosition: "left bottom" },
     "bg-pos-8": { backgroundPosition: "center bottom" },
     "bg-pos-9": { backgroundPosition: "right bottom" },
-    "bg-none": { pointerEvents: "none" },
-    "bg-use": { pointerEvents: "auto" },
 
     //圆角
     "round": { borderRadius: "50%" },
@@ -213,6 +211,11 @@ export default {
     "gray-sm": { filter: "grayscale(40%)" },
     "gray-md": { filter: "grayscale(70%)" },
     "gray-lg": { filter: "grayscale(100%)" },
+
+    //特殊
+    "bg-none": { pointerEvents: "none" },
+    "bg-use": { pointerEvents: "auto" },
+    "touch-none": { touchAction: "none" },
 
         //二段赋值-----------------------------------------------------------------------------------
 

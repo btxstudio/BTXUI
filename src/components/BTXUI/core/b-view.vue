@@ -1,5 +1,11 @@
 <template>
-    <div :style="computed_style">
+    <div :style="computed_style"
+         @mouseenter="$emit('on_enter')"
+         @mouseleave="$emit('on_leave')"
+         @touchstart="$emit('on_touchstart')"
+         @touchmove="$emit('on_touchmove')"
+         @touchend="$emit('on_touchend')"
+         @transitionend="$emit('on_transitionend')">
         <slot/>
     </div>
 </template>
@@ -10,7 +16,30 @@
     let desc = ["该组件是用于布局的基础组件，相当于 html 中 div 的作用，可以接收 <code>styles</code> 属性来应用框架封装样式体系。"],
         extend = ["b-style"],
         dependent = [],
-        api = null,
+        api = {
+            event: [
+                {
+                    name: "on_touchstart",
+                    ef: "触控开始",
+                    params: "-"
+                },
+                {
+                    name: "on_touchmove",
+                    ef: "触控移动",
+                    params: "-"
+                },
+                {
+                    name: "on_touchend",
+                    ef: "触控结束",
+                    params: "-"
+                },
+                {
+                    name: "on_transitionend",
+                    ef: "过渡动画结束",
+                    params: "-"
+                }
+            ]
+        },
         init_data = `{
         /* styles: "(参照：b-style 组件入参)" */,
         /* bgImg: "背景图" */,

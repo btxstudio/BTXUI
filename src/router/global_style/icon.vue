@@ -94,15 +94,19 @@ export default {
             },
             {
                 name: "weibo",
-                code: "\e64e"
-            },
-            {
-                name: "wechat",
                 code: "\e609"
             },
             {
-                name: "baidu",
-                code: "\e64d"
+                name: "wechat",
+                code: "\e62d"
+            },
+            {
+                name: "dy",
+                code: "\e615"
+            },
+            {
+                name: "bili",
+                code: "\e617"
             },
             {
                 name: "github",

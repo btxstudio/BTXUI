@@ -128,19 +128,19 @@
 
             //鼠标移入
             $_enter(){
-                !this.cur_state.length && this.toggle_style("hover"); //仅限默认状态下
+                !this.cur_states.length && this.toggle_style("hover"); //仅限默认状态下
                 this.$emit("on_enter");
             },
 
             //鼠标移出
             $_leave(){
-                this.cur_state[0] === "hover" && this.reset_style(); //仅限 hover 状态下
+                this.cur_states[0] === "hover" && this.reset_style(); //仅限 hover 状态下
                 this.$emit("on_leave");
             }
 
         },
         mounted(){
-            this.append_style(this.hover, "hover");
+            this.append_state(this.hover, "hover");
         }
     }
 </script>

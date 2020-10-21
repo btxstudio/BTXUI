@@ -14,6 +14,8 @@
        
 @import "./icons.scss";
 
+@import "./special.scss";
+
 @import "./response/main.scss";
 
 @include auto_gen_response_class();

@@ -1,16 +1,6 @@
 <template>
     <article>
-        <section>
-            <p>BTX·UI 推荐使用组件取代全局样式作为前端视图层开发的基础，秉持组件复用而非样式复用可以让开发更为高效且易于管理。框架在组件分层设计上分为了 "基础组件"、"功能组件"、"项目组件"。</p>
-            <p><code>b-style</code> 是样式处理的底层模块，所有基础组件均继承自该模块，可通过 <b>styles</b> 属性进行样式绑定，其样式规范，基于并扩展 BTX·UI 全局样式语法，因此可以像添加标签类属性那样进行样式设置，目的是为了让 web 和 webApp 在样式语法上尽可能的统一。</p>
-            <p>【exp】：</p>
-            <p>class 全局样式：<code>&lt;div class="pright fsize-1d5"&gt;hello world&lt;/div&gt;</code></p>
-            <p>styles 组件样式：<code>&lt;b-view styles="pright fsize-1.5"&gt;hello world&lt;/b-view&gt;</code></p>
-            <p>组件样式使用时需要注意两点：</p>
-            <p><b>1.</b> 部分样式值添加顺序会影响样式优先级，比如添加上侧圆角样式，应该先设置尺寸，再设置方向，否则方向设置会被覆盖而无效。<br>【exp】：<code>&lt;b-view styles="round-sm round-t"&gt;&lt;/b-view&gt;</code></p>
-            <p><b>2.</b> 部分样式值需要通过组件结构嵌套进行复合使用，比如同时添加模糊和低明度滤镜样式。<br>【exp】：<code>&lt;b-view styles="blur-sm"&gt;&lt;b-view styles="dark-sm"&gt;&lt;/b-view&gt;&lt;/b-view&gt;</code></p>
-            <p></p>
-        </section>
+        <header-info v-bind="header_info" />
 
         <!--文本相关样式-->
         <section>
@@ -103,16 +93,6 @@
                     <td><code>alpha-*</code></td>
                     <td>不透明度</td>
                     <td>值域范围：0 - 1</td>
-                </tr>
-                <tr>
-                    <td><code>bg-none</code></td>
-                    <td>背景点透效果</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><code>bg-use</code></td>
-                    <td>背景常规效果（非点透）</td>
-                    <td>-</td>
                 </tr>
                 </tbody>
             </table>
@@ -816,11 +796,59 @@
             <p></p>
         </section>
 
+        <!--特殊样式控制-->
+        <section>
+            <p>特殊样式控制：</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>样式值</th>
+                    <th>效果</th>
+                    <th>值备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><code>bg-none</code></td>
+                    <td>背景点透效果</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>bg-use</code></td>
+                    <td>背景常规效果（非点透）</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>touch-none</code></td>
+                    <td>默认触控禁止</td>
+                    <td>-</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
     </article>
 </template>
 
 <script>
+    import HeaderInfo from "@/components/demo/common/header-info"
+    import BStyle from "@/components/BTXUI/core/styles/b-style"
+
     export default {
-        name: "b_style_demo"
+        name: "b_style_demo",
+        components: {
+            HeaderInfo
+        },
+        data() {
+            return {
+
+                //初始化入参
+                header_info: {
+                    name: BStyle.name,
+                    ...BStyle.introduce,
+                }
+
+            }
+        }
     }
 </script>

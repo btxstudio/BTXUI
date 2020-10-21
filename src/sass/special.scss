@@ -1,0 +1,3 @@
+.bg-none { pointer-events: none; }          //背景点透效果
+.bg-use { pointer-events: auto; }           //背景常规效果（非点透）
+.touch-none { touch-action: none; }         //默认触控禁止

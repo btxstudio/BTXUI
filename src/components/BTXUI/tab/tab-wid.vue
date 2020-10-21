@@ -15,10 +15,11 @@
     import BView from "@/components/BTXUI/core/b-view";
     import BText from "@/components/BTXUI/core/b-text";
     import TagsWid from "@/components/BTXUI/tags/tags-wid";
+    import SliderWid from "@/components/BTXUI/slider/slider-wid";
 
     let desc = ["该组件用于进行标签切换交互操作。"],
         extend = [],
-        dependent = ["tags-wid", "b-text", "b-view"],
+        dependent = ["slider-wid", "tags-wid", "b-text", "b-view"],
         api = null,
         init_data = `{
         curTab: "（v-model）当前 tag id",
@@ -31,7 +32,8 @@
         components: {
             BView,
             BText,
-            TagsWid
+            TagsWid,
+            SliderWid
         },
         model:{
             prop: "curTab",

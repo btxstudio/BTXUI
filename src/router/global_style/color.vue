@@ -27,14 +27,6 @@
                   <td><code>.line-*</code></td>
                   <td>描边色</td>
               </tr>
-              <tr>
-                  <td><code>.bg-none</code></td>
-                  <td>背景点透效果</td>
-              </tr>
-              <tr>
-                  <td><code>.bg-use</code></td>
-                  <td>背景常规效果（非点透）</td>
-              </tr>
               </tbody>
           </table>
           <p></p>

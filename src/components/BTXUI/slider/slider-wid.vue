@@ -2,22 +2,22 @@
     <b-view :styles="`rel h-${view.height} bg-color-${view.bg_color}`"
             @on_enter="stop_auto_play"
             @on_leave="auto_play_data.enable && auto_play()">
+
+        <!--轮播内容-->
         <b-view :styles="`rel no-scroll h-${view.height}`">
             <b-view v-if="slider_bar_width"
                     ref="sliderBar"
-                    :styles="`flex max-h touch-none w-${slider_bar_width}px`"
+                    :styles="`flex touch-none h-${view.height} w-${slider_bar_width}px`"
                     :dynamic="`translateX-f${this.touch_point.x}px ${this.flip_ani? 'trans-fast': ''}`"
                     @on_touchstart="$_touch_start"
                     @on_touchmove="$_touch_move"
                     @on_touchend="$_touch_end"
                     @on_transitionend="$_flip_over">
-                <b-view styles="flex-column max" :ref="'$' + page.id"
-                        v-for="page of slider_pages" :key="page.id"
+                <b-list v-for="page of slider_pages" :key="page.id"
+                        styles="grow-1"
                         :state="page.state">
-                    <b-list styles="grow-1">
-                        <slot :name="page.id"></slot>
-                    </b-list>
-                </b-view>
+                    <slot :name="page.id"></slot>
+                </b-list>
             </b-view>
         </b-view>
 
@@ -50,6 +50,7 @@
                 <b-icon icon="arrow-right" />
             </b-hot>
         </template>
+
     </b-view>
 </template>
 
@@ -68,6 +69,11 @@
                     name: "on_flip",
                     ef: "分页完成",
                     params: "cur_page"
+                },
+                {
+                    name: "on_load",
+                    ef: "分页结构生成",
+                    params: "-"
                 }
             ],
             methods: [
@@ -305,6 +311,12 @@
                 this.slider_bar_width = this.slider_pages.length * this.$el.clientWidth;//组件宽度
                 this.$_init_auto_play();
                 if(this.keyboardFlip) this.$_bind_keyboard_flip_event();
+
+                //分页结构生成
+                this.$nextTick(()=>{
+                    this.$emit("on_load");
+                })
+
             },
 
             //初始化自动播放
@@ -342,6 +354,7 @@
                         touch_point.offset = offset = touch.pageX - touch_point.start;
                         e.preventDefault();
                         touch_point.x = touch_point.left + offset;
+                        console.log(touch_point.x)
                     }
                 }
             },

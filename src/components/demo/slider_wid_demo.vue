@@ -9,8 +9,7 @@
             <div class="resize">
                 <slider-wid v-bind="data_1">
                     <div v-for="page of data_1.pages" :key="page.id" :slot="page.id"
-                         class="pad-t-6 pcenter fsize-1d4 alpha-d7">
-                        {{page.text}}
+                         class="pad-t-4 pcenter fsize-1d4 alpha-d7" v-html="page.text">
                     </div>
                 </slider-wid>
             </div>
@@ -25,8 +24,7 @@
             <div class="resize">
                 <slider-wid v-bind="data_2.props" ref="slider2" @on_flip="$_show_page2">
                     <div v-for="page of data_2.props.pages" :key="page.id" :slot="page.id"
-                         class="pad-t-6 pcenter fsize-1d4 alpha-d7">
-                        {{page.text}}
+                         class="pad-t-4 pcenter fsize-1d4 alpha-d7" v-html="page.text">
                     </div>
                 </slider-wid>
                 <div class="flex-between w-40 mrg-v-1">
@@ -57,8 +55,8 @@
         },
         data(){
             const pages = [
-                { id: "a", text: "html + css" },
-                { id: "b", text: "javascript" },
+                { id: "a", text: "javascript" },
+                { id: "b", text: "css<br>Cascading Style Sheets<br>层叠样式表" },
                 { id: "c", text: "php" }
             ];
 
@@ -100,11 +98,10 @@
                             act_color: "blue"
                         },
                         autoPlayDuration: 3000,
-                        loop: true,
-                        keyboardFlip: true
+                        loop: true
                     },
                     cur_page: 1
-                }
+                },
 
             }
         },

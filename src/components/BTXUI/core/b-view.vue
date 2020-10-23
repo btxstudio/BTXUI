@@ -1,11 +1,11 @@
 <template>
     <div :style="computed_style"
-         @mouseenter="$emit('on_enter')"
-         @mouseleave="$emit('on_leave')"
-         @touchstart="$emit('on_touchstart')"
-         @touchmove="$emit('on_touchmove')"
-         @touchend="$emit('on_touchend')"
-         @transitionend="$emit('on_transitionend')">
+         @mouseenter="$emit('on_enter', $event)"
+         @mouseleave="$emit('on_leave', $event)"
+         @touchstart="$emit('on_touchstart', $event)"
+         @touchmove="$emit('on_touchmove', $event)"
+         @touchend="$emit('on_touchend', $event)"
+         @transitionend="$emit('on_transitionend', $event)">
         <slot/>
     </div>
 </template>

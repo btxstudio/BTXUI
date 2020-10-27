@@ -4,7 +4,9 @@
             <tags-wid v-bind="tags_data" v-model="cur_tab"/>
         </b-view>
         <b-view styles="rel">
-            <slider-wid :pages="tags_data.tagList" ref="slider" @on_load="$_init_page">
+            <slider-wid :pages="tags_data.tagList" ref="slider"
+                        @on_flip="$_page_flip"
+                        @on_load="$_init_page">
                 <slot v-for="page of tags_data.tagList"
                       :slot="page.id"
                       :name="page.id" />
@@ -94,6 +96,12 @@
                 this.slider.flip(this.tags_data.tagList.findIndex((item)=>{
                     return item.id === this.cur_tab[0]
                 }) + 1, false);
+            },
+
+            //触控分页
+            $_page_flip(page){
+                const val = this.tagsData.tagList[page - 1].id;
+                if(this.cur_tab[0] !== val) this.cur_tab = [val];
             }
 
         }

@@ -8,7 +8,7 @@
             <b-view v-if="slider_bar_width"
                     ref="sliderBar"
                     :styles="`flex touch-none h-${view.height} w-${slider_bar_width}px`"
-                    :dynamic="`translateX-f${this.touch_point.x}px ${this.flip_ani? 'trans-fast': ''}`"
+                    :dynamic="`translateX-${this.touch_point.x.toString().replace('-', 'f')}px ${this.flip_ani? 'trans-fast': ''}`"
                     @on_touchstart="$_touch_start"
                     @on_touchmove="$_touch_move"
                     @on_touchend="$_touch_end"
@@ -60,7 +60,10 @@
     import BIcon from "@/components/BTXUI/core/b-icon"
     import BList from "@/components/BTXUI/core/b-list"
 
-    const desc = ["该组件用于设置内容轮播。"],
+    const desc = ["该组件用于设置内容轮播。",{
+            cover: "slider-wid.png",
+            title: "轮播执行机制原理"
+        }],
         extend = [],
         dependent = ["b-list", "b-hot", "b-icon", "b-view"],
         api = {
@@ -263,7 +266,7 @@
                 }else{//定向
                     this.point.cur = Math.min(page_len - 1, Math.max(0, page - 1));
                 }
-                this.touch_point.x = this.touch_point.left = this.point.cur * this.$el.clientWidth; //位移
+                this.touch_point.x = this.touch_point.left = -this.point.cur * this.$el.clientWidth; //位移
 
                 //设置分页激活状态
                 if(this.point.prev !== this.point.cur){
@@ -336,11 +339,14 @@
             $_touch_start(e){
                 this.touch_point.start = e.touches[0].pageX;
                 this.touch_point.direction.enable = true;
+                this.flip_ani = false;
+                this.stop_auto_play();
             },
 
             //触控结束手势
             $_touch_end(){
                 this.$_flip_as_threshold();
+                this.auto_play_data.enable && this.auto_play()
             },
 
             //触控滑动手势
@@ -352,9 +358,8 @@
                     this.$_flip_direction(touch, touch_point);
                     if(touch_point.direction.dir === "horizontal"){
                         touch_point.offset = offset = touch.pageX - touch_point.start;
-                        e.preventDefault();
+                        e.cancelable && e.preventDefault();
                         touch_point.x = touch_point.left + offset;
-                        console.log(touch_point.x)
                     }
                 }
             },
@@ -362,7 +367,7 @@
             //触控分页阈值处理
             $_flip_as_threshold(){
                 let touch_point = this.touch_point;
-                if(touch_point.offset !== 0){//无位移,不执行
+                if(touch_point.offset !== 0){ //无位移,不执行
                     let flip = Math.abs(touch_point.x / this.$el.clientWidth),
                         flip_dir = touch_point.x < touch_point.left? "left": "right",
                         page = this.point.cur + 1,
@@ -379,7 +384,6 @@
 
             //滑动结束
             $_flip_over(){
-                this.flip_ani = false;
                 this.$emit("on_flip", this.point.cur + 1);
             },
 
@@ -387,12 +391,12 @@
             $_flip_direction(touch, touch_point){
                 let direction = touch_point.direction;
                 if(direction.enable){
-                    if(direction.offset){//方向判断
+                    if(direction.offset){ //方向判断
                         let offset_x = Math.abs(touch.pageX - direction.x),
                             offset_y = Math.abs(touch.pageY - direction.y);
                         direction.dir = offset_x >= offset_y? "horizontal": "vertical";
                         direction.offset = direction.enable = false;
-                    }else{
+                    }else{ //定位起始坐标
                         direction.x = touch.pageX;
                         direction.y = touch.pageY;
                         direction.offset = true;

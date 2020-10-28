@@ -65,3 +65,12 @@
         }
     }
 }
+
+//生成项目排序元素类
+@mixin auto_gen_order_class($suffix:"") {
+    @for $i from 0 to 6 {
+        .order-#{$i}#{$suffix}{
+            order: $i;
+        }
+    }
+}

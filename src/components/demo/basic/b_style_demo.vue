@@ -157,6 +157,11 @@
                     <td>任意合法值</td>
                 </tr>
                 <tr>
+                    <td><code>order-*</code></td>
+                    <td>弹性布局项目排序</td>
+                    <td>任意合法值</td>
+                </tr>
+                <tr>
                     <td><code>pad-*</code></td>
                     <td>内边距</td>
                     <td>任意合法值，缺省单位 rem</td>

@@ -286,6 +286,11 @@ export default {
                 },
             },
 
+            //弹性布局项目排序
+            "order": {
+                pro: "order"
+            },
+
             //内边距
             "pad": {
                 pro: "padding",

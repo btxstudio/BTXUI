@@ -89,6 +89,7 @@
         <section>
             <h5>flex 弹性布局</h5>
             <p>BTX·UI 框架的布局核心是基于 flex 的，<code>.flex</code> 及 <code>.flex-*</code> 样式类，可以对容器内的元素进行九宫格式对齐定位。<code>.flex-between</code> 及 <code>.flex-around</code> 样式类可以设置元素均分排列。而 <code>.flex-column</code> 可以设置纵向生长弹性布局容器。此外框架还提供了 <code>.grow-*</code> 样式类，值域为 0 - 9，共 10 档，用于设置元素的自生长比率。</p>
+            <p>通过 <code>.order-*</code> 可以设置弹性布局的项目排序。预置的排序值：0、1、2、3、4、5。</p>
             <p>【示例】：横向生长九宫格对齐定位</p>
             <div class="grid fsize-d9 pcenter">
                 <div class="col-4 pad-1">
@@ -375,9 +376,8 @@
         <!--内边距-->
         <section>
             <h5>内边距</h5>
-            <p>通过<code>pad-*</code> 可以使用预置的内边距方案。</p>
-            <p>预置的内边距值：0、0.5、1、1.5、2、2.5、3、3.5、4、5、6、7、8、9、10，单位 rem。数值 "." 使用 "d" 代替，"0" 使用 ""
-                空字符串代替。比如 0.5 rem 内边距，类名为<code>.pad-d5</code>。</p>
+            <p>通过<code>.pad-*</code> 可以使用预置的内边距方案。</p>
+            <p>预置的内边距值：0、0.5、1、1.5、2、2.5、3、3.5、4、5、6、7、8、9、10，单位 rem。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如 0.5 rem 内边距，类名为<code>.pad-d5</code>。</p>
             <table class="table">
                 <thead>
                 <tr>

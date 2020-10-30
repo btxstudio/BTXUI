@@ -118,10 +118,11 @@
         <!--省略文本-->
         <section>
             <h5>省略文本</h5>
-            <p>通过 <code>.ellipsis</code> 可以设置单行文本溢出隐藏。</p>
+            <p>通过 <code>.ellipsis</code> 可以设置单行文本溢出省略。</p>
             <p>【示例】：</p>
-            <p><abbr title="javascript 和 php 谁是世界上最好的语言呢？" class="ellipsis w-15">javascript 和 php
-                谁是世界上最好的语言呢？</abbr></p>
+            <p class="ellipsis w-15">
+                <abbr title="javascript 和 php 谁是世界上最好的语言呢？">javascript 和 php 谁是世界上最好的语言呢？</abbr>
+            </p>
             <p></p>
         </section>
 

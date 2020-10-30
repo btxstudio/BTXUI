@@ -54,6 +54,11 @@
                     <td>重置初始字号及行高</td>
                     <td>-</td>
                 </tr>
+                <tr>
+                    <td><code>ellipsis</code></td>
+                    <td>单行文本溢出省略</td>
+                    <td>-</td>
+                </tr>
                 </tbody>
             </table>
             <p></p>

@@ -183,6 +183,13 @@ export default {
         textShadow: "1px 0 0 rgba(200, 200, 200, .5), -1px 0 0 rgba(200, 200, 200, .5), 0 1px 0 rgba(200, 200, 200, .5), 0 -1px 0 rgba(200, 200, 200, .5)"
     },
 
+    //单行省略文本
+    "ellipsis": {
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap"
+    },
+
     //阴影
     "shadow": { boxShadow: "0 4px 17px" },
     "shadow-sm": { boxShadow: "0 2px 4px" },
@@ -235,13 +242,6 @@ export default {
             //行高
             "lh": {
                 pro: "lineHeight",
-            },
-
-            //单行省略文本
-            "ellipsis": {
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "no-wrap"
             },
 
             //字符间距

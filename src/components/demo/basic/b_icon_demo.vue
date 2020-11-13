@@ -30,9 +30,10 @@
         <!--图片图标-->
         <section>
             <h5>图片图标</h5>
-            <p>通过 <code>imgData</code> 属性即可设置图片图标。</p>
+            <p>通过 <code>bgImg</code> 属性即可设置图片图标。</p>
             <div>
-                <b-icon :img-data="{ img: require('@/assets/img/home_ico.png') }" styles="rel l-4px scale-1.1" />
+                <b-icon :bg-img="require('@/assets/img/home_ico.png')"
+                        styles="bg-pos-center w-10 h-5 round-sm line line-lgray thick-1" />
             </div>
             <hr>
             <p></p>

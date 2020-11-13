@@ -59,7 +59,7 @@
 
             //设置背景图
             $_set_bg_style(){
-                let bg_img = this.bgImg;
+                const bg_img = this.bgImg;
                 bg_img && this.$set(this.computed_style, "backgroundImage", `url(${bg_img})`); //背景图
             }
 

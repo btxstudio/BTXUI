@@ -18,12 +18,11 @@
     <i v-else-if="icon" :class="`ico-${icon}`" :style="computed_style"></i>
 
     <!--图片图标-->
-    <b-img v-else-if="imgData" v-bind="imgData" :style="computed_style" />
+    <b-view v-else-if="bgImg" :bg-img="bgImg" :style="computed_style" />
 </template>
 
 <script>
     import bStyle from "./styles/b-style";
-    import BImg from "./b-img";
     import BView from "./b-view";
     import BText from "./b-text";
     import AniSuccess from "./anis/ani-success";
@@ -33,12 +32,12 @@
 
     let desc = ["该组件用于显示图标，包括 “字体图标”、“图片图标”、“css 动画图标”。"],
         extend = ["b-style"],
-        dependent = ["b-img", "b-view", "b-text", "ani-success", "ani-fail", "ani-notic", "ani-loading"],
+        dependent = ["b-view", "b-text", "ani-success", "ani-fail", "ani-notic", "ani-loading"],
         api = null,
         init_data = `{
         /* styles: "(参照：b-style 组件入参)" */,
         /* icon: "字体图标名（无需 ico 前缀）| 动态图标（ani_success、ani_fail、ani_notic）" */,
-        /* imgData: "(参照：b-img 组件入参)" */,
+        /* bgImg: "图片地址" */,
     }`;
 
     export default {
@@ -46,7 +45,6 @@
         name: "b-icon",
         introduce: { desc, extend, dependent, api, init_data },
         components: {
-            BImg,
             BView,
             BText,
             AniSuccess,
@@ -61,6 +59,10 @@
             },
             imgData: {
                 type: Object,
+                required: false
+            },
+            bgImg: {
+                type: String,
                 required: false
             }
         }

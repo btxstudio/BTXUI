@@ -16,11 +16,11 @@
 }
 
 .ico-about:before {
-  content: "\e65d";
+  content: "\e65d" !important;
 }
 
 .ico-tel:before {
-  content: "\e7e2";
+  content: "\e7e2" !important;
 }
 
 .ico-integral:before {

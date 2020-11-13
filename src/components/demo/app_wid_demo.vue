@@ -143,35 +143,40 @@
                     center: {
                         nav_id: "",
                         icon_data: {
-                            imgData: {
-                                img: require("@/assets/img/home_ico.png")
-                            }
+                            bgImg: require("@/assets/img/icons.svg")
+                        },
+                        bg_styles: {
+                            normal: "bg-size-500% bg-pos-25%|65%"
                         }
                     },
                     spread: [
                         {
                             nav_id: "data",
                             icon_data: {
-                                imgData: {
-                                    img: require("@/assets/img/icons.svg")
-                                }
+                                bgImg: require("@/assets/img/icons.svg")
+                            },
+                            bg_styles: {
+                                normal: "bg-size-500% bg-pos-0|0",
+                                act: "bg-size-500% bg-pos-0|32%"
                             },
                             hot_data: {
                                 link: "/app_wid_demo/data"
                             },
-                            text: "data",
+                            text: "Home",
                         },
                         {
                             nav_id: "download",
                             icon_data: {
-                                imgData: {
-                                    img: require("@/assets/img/icons.svg")
-                                }
+                                bgImg: require("@/assets/img/icons.svg")
+                            },
+                            bg_styles: {
+                                normal: "bg-size-500% bg-pos-100%|0",
+                                act: "bg-size-500% bg-pos-100%|32%"
                             },
                             hot_data: {
                                 link: "/app_wid_demo/download"
                             },
-                            text: "download",
+                            text: "About",
                         }
                     ],
                     colors: {

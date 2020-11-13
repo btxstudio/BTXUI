@@ -16,19 +16,26 @@
 
                 <!--居中主按钮-->
                 <b-view v-if="nav.main"
-                        :styles="`rel pad-.7 mrg-h-auto flex-5 line thick-2 w-5 h-5 round t-f1 line-${color_style.center.line} bg-color-${color_style.center.bg}`">
-                    <b-icon v-bind="nav.icon_data" styles="fsize-1.7" />
+                        :styles="`rel mrg-h-auto flex-5 line thick-2 w-5 h-5 round t-f1 line-${color_style.center.line} bg-color-${color_style.center.bg}`">
+                    <b-icon v-bind="nav.icon_data" :styles="`max flex-5 fsize-1.7 ${nav.bg_styles && nav.bg_styles.normal}`" />
                 </b-view>
 
                 <!--常规分布按钮-->
-                <b-view v-else :styles="`mrg-h-auto flex-column color-${color_style.text.normal}`"
+                <b-view v-else :styles="`flex-column flex-5 max-w color-${color_style.text.normal}`"
                         :states="{
                             act: {
                                 state: cur_route === nav.hot_data.link,
                                 style: `color-${color_style.text.act}`
                             }
                         }">
-                    <b-icon v-bind="nav.icon_data" styles="grow-1 fsize-1.7" />
+                    <b-icon v-bind="nav.icon_data"
+                            :styles="`w-2.7 h-2.7 trans-fast fsize-1.7 ${nav.bg_styles && nav.bg_styles.normal}`"
+                            :states="{
+                                act: {
+                                    state: cur_route === nav.hot_data.link,
+                                    style: nav.bg_styles && nav.bg_styles.act
+                                }
+                            }"/>
                     <b-text v-if="nav.text" styles="fsize-.8">{{nav.text}}</b-text>
                 </b-view>
 
@@ -61,6 +68,10 @@
             {
                 nav_id: "导航标识",
                 icon_data: "(参照：b-icon 组件入参)",
+                bg_styles: {
+                    normal: "常规状态背景图样式值",
+                    act: "激活状态背景图样式值"
+                },
                 hot_data: "(参照：b-hot 组件入参)",
                 text: "图标文字，可缺省"
             },...
@@ -141,9 +152,9 @@
             color_style(){
                 return {
                     bg: "none",
-                    bar: "dgray",
+                    bar: "dark",
                     center: {
-                        bg: "#444",
+                        bg: "dgray",
                         line: "neutral"
                     },
                     text: {

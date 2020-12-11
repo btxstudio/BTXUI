@@ -137,7 +137,7 @@
 
             //位移提示框
             set_pos(x, y){
-                this.tooltip.append_style(`l-${x}px t-${y}px`, "move");
+                this.tooltip.append_state(`l-${x}px t-${y}px`, "move");
                 this.tooltip.toggle_style("move");
             }
 

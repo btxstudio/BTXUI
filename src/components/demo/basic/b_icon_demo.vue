@@ -17,8 +17,8 @@
             </div>
             <p>自定义扩展字体图标：</p>
             <div class="flex-between fsize-2 w-40">
-                <b-icon styles="font-iconfont" icon="about" />
-                <b-icon styles="font-iconfont" icon="tel" />
+                <b-icon styles="font-iconfont" icon="info" />
+                <b-icon styles="font-iconfont" icon="phone" />
                 <b-icon styles="font-iconfont" icon="integral" />
                 <b-icon styles="font-iconfont" icon="assets" />
                 <b-icon styles="font-iconfont" icon="readed" />

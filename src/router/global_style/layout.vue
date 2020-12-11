@@ -788,7 +788,33 @@
         <!--内容溢出-->
         <section>
             <h5>内容溢出</h5>
-            <p>框架重置了默认滚动条样式，其风格更靠近 IOS，<code>.auto-scroll</code> 样式类可设置垂直溢出滚动；<code>.auto-h-scroll</code> 可设置水平溢出滚动；<code>.no-scroll</code> 可设置溢出隐藏。</p>
+            <p>框架重置了默认滚动条样式，其风格更靠近 IOS。</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>样式类</th>
+                    <th>效果</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><code>.auto-scroll | .over-scroll</code></td>
+                    <td>内容溢出滚动</td>
+                </tr>
+                <tr>
+                    <td><code>.no-scroll | .over-hide</code></td>
+                    <td>内容溢出隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.auto-h-scroll</code></td>
+                    <td>内容水平方向溢出滚动</td>
+                </tr>
+                <tr>
+                    <td><code>.over-show</code></td>
+                    <td>内容溢出显示</td>
+                </tr>
+                </tbody>
+            </table>
         </section>
 
     </article>

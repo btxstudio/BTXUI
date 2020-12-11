@@ -46,10 +46,11 @@
             <h5>其它表单元素及提交</h5>
             <p>通过 <code>submit</code> 属性可设置表单"提交"按钮和其对齐方式，以及点击操作所执行的回调函数，函数中自变量为表单选择数据。<b>btnColor</b> 字段可以设置按钮颜色风格。（可参考：<code>btn-wid</code> 组件入参）。通过 <code>reset</code> 属性可设置表单"恢复"按钮，初始化表单元素数据。</p>
             <p>通过 <code>select</code> 属性可设置下拉框表单元素；<code>input_data</code> 属性 <b>type="textarea"</b> 可设置多行文本输入表单元素；<code>imgs</code> 属性可设置图片上传。</p>
+            <p>通过 <code>colors</code> 属性可设置输入型表单元素及下拉列表的颜色风格，包括常规（normal）和激活（focus）两种状态。注：下拉列表无激活状态。</p>
             <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
-                <form-wid v-bind="dataList_4.props" v-model="dataList_4.selected" />
+                <form-wid v-bind="data_4.props" v-model="data_4.selected" />
             </div>
-            <p>表单提交数据：<code class="mrg-r-d5" v-for="(val, key) of dataList_4.submit_data"><b>{{key}}</b>:{{val}}</code></p>
+            <p>表单提交数据：<code class="mrg-r-d5" v-for="(val, key) of data_4.submit_data"><b>{{key}}</b>:{{val}}</code></p>
             <hr>
             <p></p>
         </section>
@@ -196,7 +197,7 @@
                     selected: {},
                 },
 
-                dataList_4: {
+                data_4: {
                     props: {
                         formData: [
                             {
@@ -236,7 +237,10 @@
                                                 val: "sz"
                                             }
                                         ],
-                                        placeholder: "请选择所在城市"
+                                        placeholder: "请选择所在城市",
+                                        colors: {
+                                            text: "mgray"
+                                        }
                                     }
                                 },
                                 text: "所在城市",
@@ -274,7 +278,7 @@
                                     if(val) result[pro] = val;
                                 }
                                 if(!Object.values(result).join("")) result = { result: "暂无数据" };
-                                this.dataList_4.submit_data = result;
+                                this.data_4.submit_data = result;
                             },
                             btn_data: {
                                 btnText: "提交表单",
@@ -292,6 +296,16 @@
                                 }
                             },
                             reset: true
+                        },
+                        colors: {
+                            normal: {
+                                text: "mgray",
+                                bg: "light"
+                            },
+                            focus: {
+                                text: "blue",
+                                bg: "rgba(255,255,255,.5)"
+                            }
                         }
                     },
                     selected: {

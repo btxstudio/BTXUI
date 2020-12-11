@@ -25,38 +25,36 @@
                     <b-icon v-if="item.icon" :icon="item.icon"
                             styles="mrg-r-1 fsize-1.4"/>
                     <b-text v-if="item.text"
-                            styles="mrg-r-1">
-                        {{item.text}}
-                    </b-text>
+                            styles="mrg-r-1"
+                            v-html="item.text" />
                 </b-view>
 
                 <!--输入型表单元素-->
-                <b-view v-if="item.input_data"
-                        styles="grow-1 bg-color-neutral round-sm pad-v-.5 pad-h-1"
-                        :states="{
-                        readonly: {
-                            style: 'bg-color-none alpha-.8',
-                            state: item.input_data.readonly
-                        }
-                     }">
-                    <component :is="item.input_data.type === 'textarea'? 'b-textarea': 'b-input'"
-                               styles="fsize-1.1" ref="input"
-                               v-bind="item.input_data"
-                               v-model="selected[item.input_data.name]"
-                               @on_check="$_record_inp_check" />
-                </b-view>
+                <component v-if="item.input_data"
+                           :is="item.input_data.type === 'textarea'? 'b-textarea': 'b-input'"
+                           :styles="`fsize-1.1 grow-1 round-sm pad-v-.5 pad-h-1 bg-color-${item_colors.normal.bg} color-${item_colors.normal.text}`"
+                           :states="{
+                               readonly: {
+                                   style: 'bg-color-none alpha-.8',
+                                   state: item.input_data.readonly
+                               }
+                           }"
+                           ref="input"
+                           v-bind="{...item.input_data, focus: `bg-color-${item_colors.focus.bg} color-${item_colors.focus.text}`}"
+                           v-model="selected[item.input_data.name]"
+                           @on_check="$_record_inp_check" />
 
                 <!--图片上传表单元素-->
                 <b-view v-if="item.imgs">
                     <imgs-upload-wid v-bind="item.imgs.imgs_upload_data"
-                                        v-model="selected[item.imgs.name]"
-                                        ref="imgs_upload"
-                                        @on_change="$_append_file"/>
+                                     v-model="selected[item.imgs.name]"
+                                     ref="imgs_upload"
+                                     @on_change="$_append_file"/>
                 </b-view>
 
                 <!--下拉框表单元素-->
                 <b-view v-if="item.select"
-                        styles="grow-1 bg-color-neutral round-sm pad-v-.5 pad-h-1">
+                        :styles="`grow-1 round-sm pad-v-.5 pad-h-1 bg-color-${item_colors.normal.bg} color-${item_colors.normal.text}`">
                     <form-select-wid v-bind="item.select.select_data" v-model="selected[item.select.name]" />
                 </b-view>
 
@@ -121,6 +119,16 @@
             },
             reset: "启用重置按钮，可缺省",
             btn_data: "(参照：btn-wid 组件入参)"
+        } */,
+        /* colors: {
+            normal: {
+                text: "常规状态文字颜色",
+                bg: "常规状态背景颜色"
+            },
+            focus: {
+                text: "激活状态文字颜色",
+                bg: "激活状态背景颜色"
+            }
         } */
     }`;
 
@@ -161,6 +169,16 @@
             submit: {
                 type: Object,
                 required: false
+            },
+            colors: {
+                type: Object,
+                required: false,
+                default: () => {
+                    return {
+                        normal: {},
+                        focus: {}
+                    }
+                }
             }
         },
         computed: {
@@ -196,6 +214,20 @@
 
                 //formData
                 form_data: new FormData(),
+
+                //表单项颜色
+                item_colors: {
+                    normal: {
+                        text: "dgray",
+                        bg: "neutral",
+                        ...this.colors.normal
+                    },
+                    focus: {
+                        text: "dgray",
+                        bg: "rgba(134,134,134,.24);",
+                        ...this.colors.focus
+                    }
+                }
 
             }
         },

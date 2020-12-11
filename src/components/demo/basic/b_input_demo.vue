@@ -31,9 +31,9 @@
             <p></p>
         </section>
 
-        <!--表单输入验证-->
+        <!--输入验证-->
         <section>
-            <h5>表单输入验证</h5>
+            <h5>输入验证</h5>
             <p>通过 <code>rule</code> 属性可设置表单项验证，其中 <b>type</b> 字段可以自定义正则验证，也可以使用框架预置的一些常用正则方案，包括：emil：验证邮箱、url：验证网址、tel：验证手机号、uid：验证身份证号、zh：验证中文字符、uname：验证一般账户名，英文、数字、下划线、required：非空验证（英文、数字、下划线、中文、.）。</p>
             <div class="resize">
                 <p>
@@ -46,6 +46,17 @@
             <p>当前输入内容：
                 <code v-if="data_3.final_val">{{data_3.final_val}}</code>
                 <span v-else class="alpha-d5">暂无内容</span>
+            </p>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--激活样式-->
+        <section>
+            <h5>激活样式</h5>
+            <p>通过 <code>focus</code> 属性可设置表单项激活样式值。</p>
+            <p>
+                <b-input styles="pad-h-1 h-3 bg-color-lgray line line-#ddd thick-1 round-sm" v-bind="data_4.props" v-model="data_4.val" />
             </p>
         </section>
 
@@ -73,7 +84,6 @@
                     ...BInput.introduce,
                 },
 
-                //按钮数据1
                 data_1: {
                     props: {
                         type: "text",
@@ -83,7 +93,6 @@
                     val: ""
                 },
 
-                //按钮数据2
                 data_2: {
                     props: {
                         type: "text",
@@ -93,7 +102,6 @@
                     val: "neo"
                 },
 
-                //按钮数据3
                 data_3: {
                     props: {
                         type: "text",
@@ -106,6 +114,16 @@
                     },
                     val: "",
                     final_val: ""
+                },
+
+                data_4: {
+                    props: {
+                        type: "text",
+                        name: "uname",
+                        placeholder: "请输入用户名",
+                        focus: "color-blue bg-color-light"
+                    },
+                    val: "neo"
                 },
 
             }

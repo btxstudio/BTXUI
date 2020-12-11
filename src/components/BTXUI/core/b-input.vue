@@ -1,5 +1,7 @@
 <template>
     <input :style="computed_style" :type="type" :name="name"
+           @focus="$_focus"
+           @blur="$_blur"
            @change="$_check"
            v-model="value"
            autocomplete="off" />
@@ -25,6 +27,16 @@
                     name: "on_check",
                     ef: "表单输入变化",
                     params: "{name:'表单项属性', notic:'报错提示', pass:'是否通过'}",
+                },
+                {
+                    name: "on_focus",
+                    ef: "表单聚焦",
+                    params: "-",
+                },
+                {
+                    name: "on_blur",
+                    ef: "表单失焦",
+                    params: "-",
                 }
             ]
         },
@@ -39,7 +51,8 @@
         /* rule: {
             type: "自定义正则验证，或预置正则验证（包括：required、tel、email、url、uname、zh、uid）",
             notic: "验证报错提示"
-        } */
+        } */,
+        /* focus: "激活样式值" */,
     }`;
 
     export default {
@@ -67,6 +80,11 @@
             rule: {
                 type: Object,
                 required: false,
+            },
+            focus: {
+                type: String,
+                required: false,
+                default: "color-dark bg-color-rgba(134,134,134,.24)"
             }
         },
         data(){
@@ -105,7 +123,7 @@
                         regexp: /^\d{15}(\d{2}[0-9x])?$/i,
                         notic: "身份证号输入有误!"
                     }
-                }
+                },
 
             }
         },
@@ -145,6 +163,21 @@
                 this.$emit("on_check", this.check());
             },
 
+            //表单聚焦
+            $_focus(){
+                this.toggle_style("focus");
+                this.$emit("on_focus");
+            },
+
+            //表单失焦
+            $_blur(){
+                this.reset_style();
+                this.$emit("on_blur");
+            },
+
+        },
+        mounted(){
+            this.append_state(this.focus, "focus");
         }
     }
 </script>

@@ -51,7 +51,7 @@
 }
 
 //纵向滚动条
-.auto-scroll{                           
+.auto-scroll, .over-scroll {
     overflow-y: auto;
     @extend %relative;
 
@@ -101,6 +101,11 @@
 }
 
 //溢出隐藏
-.no-scroll{
+.no-scroll, .over-hide{
     overflow: hidden;
+}
+
+//溢出显示
+.over-show{
+    overflow: visible;
 }

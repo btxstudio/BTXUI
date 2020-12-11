@@ -15,12 +15,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ico-about:before {
-  content: "\e65d" !important;
+.ico-info:before {
+  content: "\e65d";
 }
 
-.ico-tel:before {
-  content: "\e7e2" !important;
+.ico-phone:before {
+  content: "\e7e2";
 }
 
 .ico-integral:before {

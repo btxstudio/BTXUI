@@ -20,6 +20,7 @@
 </template>
 
 <script>
+    import ChapterLink from "./lib/ChapterLink"
     import BView from "./b-view";
 
     export default {
@@ -57,6 +58,14 @@
             }
 
         },
+        data(){
+            return {
+
+                //定位器
+                chapter_link: new ChapterLink()
+
+            }
+        },
         computed: {
 
             //溢出样式
@@ -73,6 +82,11 @@
 
         },
         methods: {
+
+            //重置定位
+            reset(){
+                this.chapter_link.go_top(this.$el, 0);
+            },
 
             //滚动定位监听
             $_watch_pos(){

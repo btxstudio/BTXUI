@@ -33,6 +33,7 @@ h6 {
 article {
     font-size: 1.21rem;
     line-height: 2;
+    word-break: break-all;
 
     //编辑模式
     &[contenteditable]{

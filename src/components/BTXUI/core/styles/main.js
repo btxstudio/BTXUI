@@ -122,7 +122,12 @@ export default {
     "z8": { zIndex: 8 },
     "z9": { zIndex: 9 },
     "z10": { zIndex: 10 },
+
+    //溢出处理
     "no-scroll": { overflow: "hidden" },
+    "over-show": { overflow: "visible" },
+    "over-scroll": { overflow: "scroll" },
+    "over-hide": { overflow: "hidden" },
 
     //背景
     "bg-repeat": { backgroundRepeat: "repeat" },

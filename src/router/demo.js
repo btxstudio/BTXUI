@@ -19,6 +19,7 @@ import pannel_wid_demo from '@/components/demo/pannel_wid_demo'
 import form_pannel_wid_demo from '@/components/demo/form_pannel_wid_demo'
 import form_wid_demo from '@/components/demo/form_wid_demo'
 import btn_wid_demo from '@/components/demo/btn_wid_demo'
+import search_wid_demo from '@/components/demo/search_wid_demo'
 import confirm_wid_demo from '@/components/demo/confirm_wid_demo'
 import table_wid_demo from '@/components/demo/table_wid_demo'
 import select_wid_demo from '@/components/demo/select_wid_demo'
@@ -108,6 +109,10 @@ export default [
     {
         path: '/btn_wid_demo',
         component: btn_wid_demo
+    },
+    {
+        path: '/search_wid_demo',
+        component: search_wid_demo
     },
     {
         path: '/confirm_wid_demo',

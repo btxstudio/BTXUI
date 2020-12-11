@@ -287,8 +287,18 @@
                     <td>值域范围：-1 - 10</td>
                 </tr>
                 <tr>
-                    <td><code>no-scroll</code></td>
+                    <td><code>no-scroll | over-hide</code></td>
                     <td>内容溢出隐藏</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>over-show</code></td>
+                    <td>内容溢出显示</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>over-scroll</code></td>
+                    <td>内容溢出滚动</td>
                     <td>-</td>
                 </tr>
                 </tbody>

@@ -1,6 +1,8 @@
 <template>
     <textarea :style="computed_style" :type="type" :name="name"
               class="auto-scroll"
+              @focus="$_focus"
+              @blur="$_blur"
               @change="$_check"
               v-model="value"
               autocomplete="off"

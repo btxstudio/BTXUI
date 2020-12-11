@@ -4,6 +4,7 @@
        @touchstart="$_enter" @touchend="$_leave"
        :href="url"
        :target="target"
+       :download="download"
        :style="computed_style" >
         <slot />
     </a>
@@ -45,8 +46,11 @@
         /* link: "外部链接 | 组件路由 | 手机拨号 | {
             chapter_id: "内部链接元素 id",
             chapter_link_data: "(参照：ChapterLink 类构造函数)"
+        } | {
+            download: "下载文件名",
+            res: "下载资源地址"
         }" */,
-        /* hover: "悬停样式" */,
+        /* hover: "悬停样式值" */,
         /* forbid: "鼠标点击事件及链接禁用，默认 false，不禁用" */,
     }`;
 
@@ -74,6 +78,9 @@
                 //链接开启方式
                 target: null,
 
+                //下载地址
+                download: null,
+
                 //内链控制器
                 chapter_link: this.$_init_chapter_link()
 
@@ -91,12 +98,17 @@
                         this.target = "_blank";
                         return link;
                     }else if(link.search("/") === 0){ //组件路由
-                        return `#${link}`;
-                    }else if(link.search("tel:") === 0){ //手机拨号
+                        return (this.$router.mode === "history"? "": "#") + link;
+                    }else if(link.search(/^(tel|mailto):/) === 0){ //手机拨号 | 邮件
                         return link;
                     }
-                } else{ //内部链接
-                    return `#${this.$route.path}`;
+                } else{
+                    if(link.download){ //文件下载
+                        this.download = link.download;
+                        return link.res;
+                    }else { //内部链接
+                        return `#${this.$route.path}`;
+                    }
                 }
             },
 
@@ -105,7 +117,7 @@
 
             //初始化内链控制器
             $_init_chapter_link(){
-                if(this.link && typeof(this.link) === "object"){
+                if(this.link && this.link.chapter_id){
                     let {ani_speed, offset, callback} = this.link.chapter_link_data || {};
                     return new ChapterLink(ani_speed, offset, callback);
                 }else {

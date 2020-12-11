@@ -24,6 +24,7 @@ const components = {
         "pannel",
         "select",
         "slider",
+        "search",
         "tab",
         "table",
         "tag",

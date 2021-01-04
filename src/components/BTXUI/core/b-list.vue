@@ -62,7 +62,7 @@
             return {
 
                 //定位器
-                chapter_link: new ChapterLink()
+                chapter_link: new ChapterLink(0)
 
             }
         },
@@ -100,6 +100,9 @@
         },
         mounted(){
             this.watchPos && this.$_watch_pos();
+        },
+        updated(){
+            this.reset();
         }
     }
 </script>

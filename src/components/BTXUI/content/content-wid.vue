@@ -1,88 +1,117 @@
 <template>
     <b-view>
+        <!--提示框组件-->
+        <tooltip-wid ref="tooltip" v-bind="tooltipData" />
 
-        <!-- 提示框组件 -->
-        <tooltip-wid ref="tooltip" class="data-center-pro" line-enable :offset="{x:40, y:-110}" />
-        
-        <b-view styles="mrg-b-1" v-if="title">{{title}}</b-view>
-        <b-view styles="grow-1">
-            <b-view styles="round-sm pad-r-d5" @mousemove="$_show_tooltip">
-
-                <!--树形目录组件-->
-                <content-node-wid v-for="data of dataTree"
-                                     :key="data.id"
-                                     :data-node="data"
-                                     :select-filter="selectFilter"
-                                     :radio-mode="radioMode"
-                                     @on_select="$_select" />
-
-            </b-view>
-        </b-view>
+        <!--目录结构组件-->
+        <content-node-wid :tree-data="tree_data"
+                          @on_select="$_select"
+                          @on_tooltip_show="$_show_tooltip"
+                          @on_tooltip_move="$_move_tooltip"
+                          @on_tooltip_hide="$_hide_tooltip" />
     </b-view>
 </template>
 
 <script>
-    import BView from "@/components/BTXUI/core/b-view";
-    import TooltipWid from "@/components/BTXUI/tooltip/tooltip-wid";
-    import ContentNodeWid from "./content-node-wid";
+    import BView from "@/components/BTXUI/core/b-view"
+    import TooltipWid from "@/components/BTXUI/tooltip/tooltip-wid"
+    import ContentNodeWid from "./content-node-wid"
+
+    const desc = ["该组件用于处理树形结构数据的可视化及交互操作。"],
+        extend = [],
+        dependent = ["tooltip-wid", "content-node-wid", "b-view"],
+        api = {
+            methods: [
+                {
+                    name: "clear_selected",
+                    ef: "清空所选数据",
+                    params: "-",
+                    return: "-"
+                }
+            ],
+            event: [
+                {
+                    name: "on_select",
+                    ef: "执行数据项点选",
+                    params: "selected_data_id"
+                }
+            ]
+        },
+        init_data = `{
+        dataTree: [
+            {
+                id: "数据标识【注：必须满足树形嵌套结构，即：dataID + 结构层级索引。exp：dataID_1_2_1_1】" ,
+                text: "数据标题",
+                tooltip: "悬停提示文本（支持超文本），缺省无提示",
+                checkbox: "是否显示复选框，缺省仅显示文字",
+                selected: "是否选中，缺省不选中",
+                children: "嵌套结构，可缺省",
+                spread: "是否展开子级，缺省关闭",
+                spread_fixed: "展开固定，禁止层级塌陷，缺省关闭",
+            },...
+        ],
+        /* mode: "选择模式（默认"radio"：单选、"checkbox"：复选）" */,
+        /* colors: "(参照：tag-wid 组件 colors 入参)" */,
+        /* tooltipData: "(参照：tooltip-wid 组件入参)" */,
+    }`;
 
     export default {
         name: "content-wid",
+        introduce: { desc, extend, dependent, api, init_data },
         components: {
             BView,
             ContentNodeWid,
             TooltipWid
         },
-        /*
-        * init-data{
-        *   data-tree: [
-        *       {
-        *           id: "数据标识" 【注：必须满足树形嵌套结构，即：dataID + 结构层级索引。exp：dataID_1_2_1_1】,
-        *           text: "数据标题",
-        *           [* children: ["同外层结构",...]],
-        *           [* checkbox: "是否显示复选框"],
-        *           [* spread: "是否展开子级（默认关闭）"],
-        *           [* spread_fixed: "展开固定，禁止层级塌陷"],
-        *           [* tooltip: "悬停提示文本（支持超文本）"],
-        *           [* flag: "扩展标识符：key:value"],
-        *           [* selected: "是否选中（默认未选中）"]
-        *       },...
-        *   ],
-        *   [* title: "标题"],
-        *   [* select-filter: "选择过滤回调函数，返回 true 执行勾选"],
-        *   [* radio-mode: "是否启用单选模式（默认复选）"],
-        * }
-        * */
         props: {
             dataTree: {
-                type: Array,
-                required: true
+                required: true,
+                type: Array
             },
-            title: {
-                type: String,
-                required: false
-            },
-            selectFilter: {
-                type: Function,
+            mode: {
                 required: false,
-                default: () => true
+                type: String,
+                default: "radio"
             },
-            radioMode: {
-                type: Boolean,
-                required: false
+            colors: {
+                required: false,
+                type: Object,
+                default: ()=>{
+                    return {
+                        normal: {
+                            text: "dgray",
+                            bg: "none",
+                        },
+                        act: {
+                            text: "blue",
+                            bg: "none",
+                        },
+                        hover: {
+                            text: "blue",
+                            bg: "none",
+                        }
+                    }
+                }
+            },
+            tooltipData: {
+                required: false,
+                type: Object
             }
         },
         data(){
             return {
 
-                //索引化展开数据
-                indexed_data: {},
+                //单选数据
+                selected_data: "",
 
-                //选取数据集合
-                selected_collection: {},
+                //多选数据
+                selected_datas: [],
 
-                //单选当前数据项
-                cur_selected: null
+                //树形数据
+                tree_data: [],
+
+                //索引数据
+                index_data: {}
 
             }
         },
@@ -95,106 +124,101 @@
 
         },
         watch: {
-            dataTree(){
-                this.$_init_data();
-            }
+
         },
         methods: {
 
-            //清空数据
-            clear_selected(){
-                for(let id in this.selected_collection){
-                    this.$set(this.indexed_data[id], "selected", false);
-                }
-                this.selected_collection = {};
-            },
-
             //初始化数据
             $_init_data(){
-                this.$_indexed_data(this.dataTree);
+                this.tree_data = this.$_gen_data(this.dataTree);
             },
 
-            //索引化数据
-            $_indexed_data(data_tree){
-                var reduce = data_tree.reduce((total, item)=>{
-                    if(item.children){
-                        this.$_indexed_data(item.children);
+            //构造数据
+            $_gen_data(tree_data){
+                return tree_data.map((data)=>{
+                    let {id, text, tooltip, checkbox, children, selected, spread, spread_fixed} = data,
+                        mode = this.mode,
+                        colors = {...this.colors},
+                        sub_data;
+
+                    //初始化数据
+                    if(selected){
+                        if(mode === "checkbox" && checkbox){ //复选模式
+                            this.selected_datas.push(id)
+                        }else if(mode === "radio"){
+                            this.selected_data = id;
+                        }
                     }
-                    total[item.id.split("_")[0]] = item;
-                    return total;
-                }, {});
-                this.indexed_data = {
-                    ...this.indexed_data,
-                    ...reduce
-                }
-            },
 
-            //基于 node 显示提示信息
-            $_show_tooltip(e){
-                let tip = e.target.dataset.tooltip;
-                if(tip){
-                    this.tooltip.set_pos(e.pageX, e.pageY);
-                    this.tooltip.show(tip);
-                }else{
-                    this.tooltip.hide();
-                }
-            },
+                    //下级折叠处理
+                    if(children){
+                        sub_data = this.$_gen_data(children);
+                        colors.act = {
+                            text: colors.normal.text,
+                            bg: colors.normal.bg
+                        }
+                        if(spread_fixed){ //强制展开
+                            spread = true;
+                            mode = "radio"
+                        }else{
+                            mode = "checkbox"
+                        }
+                    }
 
-            //选择操作
-            $_select(data){
-                //获取当前操作数据
-                let cur_data_ids = data.key.split("_"),
-                    data_k = cur_data_ids.shift(),
-                    cur_data = { children: this.dataTree };
-                cur_data_ids.forEach((index)=>{
-                    cur_data = cur_data.children[index - 1]; //id 索引从 1 起则减 1，从 0 起则保持 index
+                    const tag_data = {
+                        id,
+                        text,
+                        mode,
+                        colors
+                    }, index_data = {
+                        tag_data,
+                        selected,
+                    };
+                    this.index_data[id] = index_data;
+                    return {
+                        index_data,
+                        spread,
+                        tooltip,
+                        checkbox,
+                        sub_data
+                    }
                 })
-
-                this.radioMode? this.$_solo_select(data_k, data, cur_data): this.$_multi_select(data, cur_data);
-                this.$emit("on_select", this.selected_collection);
             },
 
-            //执行单选
-            $_solo_select(data_k, data, cur_data){
-                this.cur_selected && this.$set(this.cur_selected, "selected", false); //取消选择
-
-                //添加选择
-                this.cur_selected = cur_data;
-                this.$set(cur_data, "selected", true);
-                this.selected_collection = data;
-            },
-
-            //执行复选
-            $_multi_select(data, cur_data){
-                //生成勾选操作方式
-                let oper_method = (()=>{
-                    if(data.val){ //选中
-                        return (cur_data, id, text)=>{
-                            this.$set(cur_data, "selected", true);
-                            this.selected_collection[id] = text;
-                        }
-                    }else{ //取消
-                        return (cur_data, id)=>{
-                            this.$set(cur_data, "selected", false);
-                            delete this.selected_collection[id];
-                        }
+            //执行选择
+            $_select(id, state){
+                if(this.mode === "radio"){ //单选数据
+                    if(this.selected_data){
+                        this.index_data[this.selected_data].selected = false;
                     }
-                })();
-
-                //基于当前操作数据进行子级递归勾选
-                this.$_oper_selet(cur_data, oper_method);
+                    this.selected_data = id;
+                    this.$emit("on_select", this.selected_data);
+                }else if(this.mode === "checkbox"){ //多选数据
+                    if(state){ //添加
+                        this.selected_datas.push(id);
+                    }else{ //移除
+                        this.selected_datas.splice(this.selected_datas.findIndex((val)=>{
+                            return val === id;
+                        }), 1);
+                    }
+                    this.$emit("on_select", this.selected_datas);
+                }
             },
 
-            //执行递归勾选
-            $_oper_selet(cur_data, oper_method){
-                let children = cur_data.children;
-                oper_method(cur_data, cur_data.id.split("_")[0], cur_data.text);
-                if(children){
-                    children.forEach((data)=>{
-                        this.$_oper_selet(data, oper_method);
-                    })
-                }
-            }
+            //显示浮框
+            $_show_tooltip(text){
+                this.tooltip.show(text);
+            },
+
+            //移动浮框
+            $_move_tooltip(e){
+                this.tooltip.set_pos(e.pageX, e.pageY);
+            },
+
+            //隐藏浮框
+            $_hide_tooltip(){
+                this.tooltip.hide();
+            },
 
         },
         mounted(){

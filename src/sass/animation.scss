@@ -13,13 +13,14 @@ $slow_duration: 1.4s;
 .trans {                                //中速过度动画
     transition: all $duration;
 }
-
 .trans-fast {                           //快速过度动画
     transition: all $fast_duration;
 }
-
 .trans-slow {                           //慢速过度动画
     transition: all $slow_duration;
+}
+.trans-no {                             //无过度动画
+    transition: none;
 }
 
 

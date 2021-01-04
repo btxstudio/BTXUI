@@ -1,5 +1,5 @@
 <template>
-    <b-view ref="tooltip" styles="fixed bg-none z-9" v-show="visible">
+    <b-view ref="tooltip" styles="fixed bg-none z9" v-show="visible">
         <!--连线-->
         <b-view :styles="`abs h-1px alpha-.5 shadow-sm color-rgba(40,40,40,.2) origin-left|center bg-${color_styles.bg} w-${line_len} rotate-${line_rotate}`"></b-view>
 

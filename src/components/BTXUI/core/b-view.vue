@@ -2,6 +2,7 @@
     <div :style="computed_style"
          @mouseenter="$emit('on_enter', $event)"
          @mouseleave="$emit('on_leave', $event)"
+         @mousemove="$emit('on_move', $event)"
          @touchstart="$emit('on_touchstart', $event)"
          @touchmove="$emit('on_touchmove', $event)"
          @touchend="$emit('on_touchend', $event)"
@@ -19,24 +20,39 @@
         api = {
             event: [
                 {
+                    name: "on_enter",
+                    ef: "鼠标移入",
+                    params: "event"
+                },
+                {
+                    name: "on_leave",
+                    ef: "鼠标移出",
+                    params: "event"
+                },
+                {
+                    name: "on_move",
+                    ef: "鼠标移动",
+                    params: "event"
+                },
+                {
                     name: "on_touchstart",
                     ef: "触控开始",
-                    params: "-"
+                    params: "event"
                 },
                 {
                     name: "on_touchmove",
                     ef: "触控移动",
-                    params: "-"
+                    params: "event"
                 },
                 {
                     name: "on_touchend",
                     ef: "触控结束",
-                    params: "-"
+                    params: "event"
                 },
                 {
                     name: "on_transitionend",
                     ef: "过渡动画结束",
-                    params: "-"
+                    params: "event"
                 }
             ]
         },

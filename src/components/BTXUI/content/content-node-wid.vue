@@ -1,169 +1,118 @@
 <template>
-    <b-view>
-        <b-view styles="flex-4 pad-v-.5"
-            :data-id="dataNode.id"
-            :data-tooltip="dataNode.tooltip"
-            :data-flag="dataNode.flag" >
+    <b-view styles="flex-column">
+        <template v-for="item of treeData">
+            <!--子级-->
+            <b-view v-if="item.sub_data" styles="mrg-b-2px">
+                <drawer-wid :ref="`drawer_${item.index_data.tag_data.id}`"
+                            :tag-data="item.index_data.tag_data"
+                            :spread="item.spread"
+                            :arrow-fixed="false"
+                            @on_title_enter="item.tooltip && $_show_tooltip(item.tooltip, $event)"
+                            @on_title_move="item.tooltip && $_move_tooltip($event)"
+                            @on_title_leave="item.tooltip && $_hide_tooltip()"
+                            @on_toggle="$_content_toggle">
+                    <b-view styles="pad-l-3 pad-t-4px">
+                        <content-node-wid :tree-data="item.sub_data"
+                                          :content-id="item.index_data.tag_data.id"
+                                          @on_tooltip_show="$_show_tooltip"
+                                          @on_tooltip_move="$_move_tooltip"
+                                          @on_tooltip_hide="$_hide_tooltip"
+                                          @on_select="$_item_select"
+                                          @on_toggle="$_drawer_resize" />
+                    </b-view>
+                </drawer-wid>
+            </b-view>
 
-            <!--选框-->
-            <b-hot v-if="dataNode.checkbox"
-                   styles="w-2 h-2 bg-color-neutral round-sm mrg-r-2 flex-5"
-                   :states="{
-                        selected: {
-                            style: 'bg-color-blue shadow-sm color-blue',
-                            state: dataNode.selected
-                        }
-                    }"
-                   @on_click="$_select">
-                <b-icon v-show="dataNode.selected" styles="color-light" icon="success" />
-            </b-hot>
+            <!--选项-->
+            <b-view v-else styles="mrg-b-2px" :key="item.index_data.tag_data.id">
+                <!--单选-->
+                <content-tag-wid v-if="item.index_data.tag_data.mode === 'radio'"
+                                 v-bind="item.index_data.tag_data"
+                                 v-model="item.index_data.selected"
+                                 @on_click="$_item_select"
+                                 @on_enter="item.tooltip && $_show_tooltip(item.tooltip, $event)"
+                                 @on_move="item.tooltip && $_move_tooltip($event)"
+                                 @on_leave="item.tooltip && $_hide_tooltip()" />
 
-            <!--文字-->
-            <b-hot v-html="dataNode.text"
-                   hover="color-blue"
-                   :states="{
-                        selected: {
-                            style: 'color-blue',
-                            state: dataNode.selected
-                        }
-                    }"
-                   @on_click="$_text_click" />
-
-            <!--下级冒号-->
-            <b-text v-if="has_children && dataNode.spread_fixed" styles="mrg-l-1">:</b-text>
-
-            <!--下拉箭头-->
-            <b-icon v-else-if="has_children"
-                    icon="arrow-right"
-                    styles="mrg-l-1.5 trans-fast alpha-.6"
-                    :states="{
-                        spread: {
-                            style: 'rotate-90',
-                            state: spread
-                        }
-                    }" />
-        </b-view>
-        <b-view v-if="has_children" styles="pad-.5 pad-l-3" v-show="spread">
-
-            <!--组件递归-->
-            <content-node-wid v-for="child_data of dataNode.children"
-                                 :key="child_data.id"
-                                 :data-node="child_data"
-                                 :select-filter="selectFilter"
-                                 :radio-mode="radioMode"
-                                 @on_select="$_send_select" />
-
-        </b-view>
+                <!--多选-->
+                <content-checkbox-wid v-else-if="item.index_data.tag_data.mode === 'checkbox' && item.checkbox"
+                                      v-bind="item.index_data.tag_data"
+                                      v-model="item.index_data.selected"
+                                      @on_click="$_item_select"
+                                      @on_enter="item.tooltip && $_show_tooltip(item.tooltip, $event)"
+                                      @on_move="item.tooltip && $_move_tooltip($event)"
+                                      @on_leave="item.tooltip && $_hide_tooltip()" />
+                <b-view v-else
+                        :styles="`flex max-w pad-h-1.4 pad-v-.5 round-sm color-${item.index_data.tag_data.colors.normal.text} bg-color-${item.index_data.tag_data.colors.normal.bg}`">
+                    {{item.index_data.tag_data.text}}
+                </b-view>
+            </b-view>
+        </template>
     </b-view>
 </template>
 
 <script>
     import BView from "@/components/BTXUI/core/b-view";
-    import BText from "@/components/BTXUI/core/b-text";
-    import BIcon from "@/components/BTXUI/core/b-icon";
-    import BHot from "@/components/BTXUI/core/b-hot";
-    import contentNodeWid from "./content-node-wid";
+    import DrawerWid from "@/components/BTXUI/drawer/drawer-wid"
+    import ContentTagWid from "./content-tag-wid"
+    import ContentCheckboxWid from "./content-checkbox-wid"
+    import ContentNodeWid from "./content-node-wid";
 
     export default {
         name: "content-node-wid",
         components: {
-            BHot,
+            DrawerWid,
+            ContentTagWid,
+            ContentCheckboxWid,
+            ContentNodeWid,
             BView,
-            BIcon,
-            BText,
-            contentNodeWid
         },
-        /*
-        * init-data{
-        *   data-node: {
-        *       id: "数据标识",
-        *       text: "数据标题",
-        *       [* children: ["同外层结构",...]],
-        *       [* checkbox: "是否显示复选框"],
-        *       [* spread: "是否展开子级（默认关闭），fixed: 展开固定"],
-        *       [* spread_fixed: "展开固定，禁止层级塌陷"],
-        *       [* tooltip: "悬停提示文本（支持超文本）"],
-        *       [* flag: "扩展标识符：key:value"],
-        *       [* selected: "是否选中（默认未选中）"]
-        *   },
-        *   [* select-filter: "选择过滤回调函数，返回 true 执行勾选"],
-        *   [* radio-mode: "是否启用单选模式（默认复选）"],
-        * }
-        * */
         props: {
-            dataNode: {
-                type: Object,
-                required: true
+            treeData: {
+                required: true,
+                type: Array
             },
-            selectFilter: {
-                type: Function,
+            contentId: {
                 required: false,
-                default: () => true
+                type: [String, Number]
             },
-            radioMode: {
-                type: Boolean,
-                required: false
-            }
         },
         data(){
             return {
 
-                //节点折叠状态
-                spread: this.dataNode.spread_fixed || this.dataNode.spread,
-
             }
-        },
-        computed: {
-
-            //返回该节点是否含有下级
-            has_children(){
-                return this.dataNode.children;
-            }
-
         },
         methods: {
 
-            //文字点击
-            $_text_click(){
-                if(this.has_children){ //折叠子级
-                    if(!this.dataNode.spread_fixed) this.spread = !this.spread;
-                }else { //执行选中
-                    this.$_select();
-                }
+            //透传数据选择
+            $_item_select(id, state){
+                this.$emit("on_select", id, state);
             },
 
-            //执行选中
-            $_select(){
-                let select_data = {
-                    key: this.dataNode.id,
-                    extra: this.dataNode.flag
-                };
-                if(this.selectFilter(select_data)){
-                    this[this.radioMode? "$_onece_select": "$_toggle_select"](select_data);
-                }
+            //透传子级展开状态
+            $_content_toggle(state){
+                this.$emit("on_toggle", state, this.contentId);
             },
 
-            //执行切换选择
-            $_toggle_select(select_data){
-                let new_selected = !this.dataNode.selected;
-                this.$set(this.dataNode, "selected", new_selected);
-                select_data.val = new_selected? this.dataNode.text: null;
-                this.$emit("on_select", select_data);
+            //重置下级内容高度
+            $_drawer_resize(state, content_id){
+                this.$refs[`drawer_${content_id}`][0].comp_height();
             },
 
-            //执行一次性选择
-            $_onece_select(select_data){
-                if(!this.dataNode.selected){
-                    this.$set(this.dataNode, "selected", true);
-                    select_data.val = this.dataNode.text;
-                    this.$emit("on_select", select_data);
-                }
+            //显示浮框
+            $_show_tooltip(text){
+                this.$emit("on_tooltip_show", text);
             },
 
-            //递归透传选中数据
-            $_send_select(select_data){
-                this.$emit("on_select", select_data);
-            }
+            //移动浮框
+            $_move_tooltip(e){
+                this.$emit("on_tooltip_move", e);
+            },
+
+            //隐藏浮框
+            $_hide_tooltip(){
+                this.$emit("on_tooltip_hide");
+            },
 
         }
     }

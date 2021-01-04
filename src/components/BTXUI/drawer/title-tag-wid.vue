@@ -1,19 +1,32 @@
 <template>
-    <b-hot :styles="`flex-4 pad-v-1 pad-h-1.5 round-sm color-${tag_colors.normal.text} bg-color-${tag_colors.normal.bg}`"
+    <b-hot @on_click="$_click"
+           @on_move="$emit('on_move', $event)"
+           @on_enter="$emit('on_enter', $event)"
+           @on_leave="$emit('on_leave', $event)"
+           :styles="`flex-4 pad-v-.7 pad-h-1.4 round-sm color-${tag_colors.normal.text} bg-color-${tag_colors.normal.bg}`"
            :states="{
                act: {
                    style: `bg-color-${tag_colors.act.bg} color-${tag_colors.act.text}`,
                    state: selected
                }
            }"
-           :hover="`bg-color-${tag_colors.hover.bg} color-${tag_colors.hover.text}`"
-           @on_click="$_click">
+           :hover="`bg-color-${tag_colors.hover.bg} color-${tag_colors.hover.text}`" >
         <b-view styles="flex-4 grow-1">
             <b-icon v-if="iconData" v-bind="iconData" styles="mrg-r-1 scale-1.5" />
             <b-text v-html="tag_text"></b-text>
+            <b-icon v-if="!arrowFixed"
+                    icon="arrow-right"
+                    styles="mrg-l-1.5 trans-fast alpha-.6"
+                    :states="{
+                    act: {
+                        style: 'rotate-90',
+                        state: selected
+                    }
+                }" />
         </b-view>
-        <b-icon icon="arrow-right"
-                styles="mrg-l-1.5 trans-fast alpha-.6"
+        <b-icon v-if="arrowFixed"
+                icon="arrow-right"
+                styles="trans-fast alpha-.6"
                 :states="{
                     act: {
                         style: 'rotate-90',
@@ -48,6 +61,11 @@
                 type: String,
                 required: false,
                 default: "checkbox"
+            },
+            arrowFixed: {
+                type: Boolean,
+                required: false,
+                default: true
             }
         },
         data(){
@@ -73,6 +91,6 @@
                 },
 
             }
-        },
+        }
     }
 </script>

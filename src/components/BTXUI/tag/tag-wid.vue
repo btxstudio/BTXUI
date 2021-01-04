@@ -1,5 +1,8 @@
 <template>
     <b-hot @on_click="$_click"
+           @on_move="$emit('on_move', $event)"
+           @on_enter="$emit('on_enter', $event)"
+           @on_leave="$emit('on_leave', $event)"
            :styles="`pad-h-1.4 pad-v-.4 round-sm mrg-r-.4 color-${tag_colors.normal.text} bg-color-${tag_colors.normal.bg}`"
            :states="{
                act: {
@@ -14,9 +17,8 @@
                         style: 'scale-1',
                         state: selected
                     }
-                }">
-            {{tag_text}}
-        </b-text>
+                }"
+                v-html="tag_text" />
     </b-hot>
 </template>
 
@@ -32,15 +34,30 @@
                 {
                     name: "on_click",
                     ef: "点击触发",
-                    params: "id, selected"
+                    params: "id, selected, event"
+                },
+                {
+                    name: "on_enter",
+                    ef: "鼠标移入或手指按下（悬停）",
+                    params: "event"
+                },
+                {
+                    name: "on_leave",
+                    ef: "鼠标移出或手指抬起",
+                    params: "event"
+                },
+                {
+                    name: "on_move",
+                    ef: "鼠标移动",
+                    params: "event"
                 }
             ]
         },
         init_data = `{
         id: "标签 id",
-        text: "标签未选中状态文字",
+        text: "标签未选中状态文字（支持富文本）",
         /* selected: "（v-model）选中状态" */,
-        /* actText: "标签选中状态文字" */,
+        /* actText: "标签选中状态文字（支持富文本）" */,
         /* colors: {
             normal: {
                 text: "默认文字色样式色值",
@@ -101,7 +118,7 @@
                 type: String,
                 required: false,
                 default: "radio"
-            },
+            }
         },
         data(){
             return {
@@ -141,7 +158,7 @@
         methods: {
 
             //点击事件
-            $_click(){
+            $_click(e){
                 let state;
                 if(this.mode === "checkbox"){ //复选
                     state = !this.selected;
@@ -151,7 +168,7 @@
                 }
                 if(this.data_type === "number") state = state? 1: 0;
                 this.$emit("on_select", state);
-                this.$emit("on_click", this.id, state);
+                this.$emit("on_click", this.id, state, e);
             }
 
         }

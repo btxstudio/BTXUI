@@ -2,6 +2,7 @@
     <a @click="$_click" @dblclick="$_dblclick"
        @mouseenter="$_enter" @mouseleave="$_leave"
        @touchstart="$_enter" @touchend="$_leave"
+       @mousemove="$emit('on_move', $event)"
        :href="url"
        :target="target"
        :download="download"
@@ -22,22 +23,27 @@
                 {
                     name: "on_click",
                     ef: "左键单击",
-                    params: "",
+                    params: "event",
                 },
                 {
                     name: "on_dblclick",
                     ef: "左键双击",
-                    params: "",
+                    params: "event",
                 },
                 {
                     name: "on_enter",
                     ef: "鼠标移入或手指按下（悬停）",
-                    params: "",
+                    params: "event",
                 },
                 {
                     name: "on_leave",
                     ef: "鼠标移出或手指抬起",
-                    params: "",
+                    params: "event",
+                },
+                {
+                    name: "on_move",
+                    ef: "鼠标移动",
+                    params: "event",
                 }
             ]
         },
@@ -128,26 +134,26 @@
             //执行点击
             $_click(e){
                 e.stopPropagation();
-                !this.forbid && this.$emit("on_click");
+                !this.forbid && this.$emit("on_click", e);
                 this.chapter_link && this.chapter_link.go_chapter(this.link.chapter_id); //内部链接
             },
 
             //执行双击
             $_dblclick(e){
                 e.stopPropagation();
-                !this.forbid && this.$emit("on_dblclick");
+                !this.forbid && this.$emit("on_dblclick", e);
             },
 
             //鼠标移入
-            $_enter(){
+            $_enter(e){
                 !this.cur_states.length && this.toggle_style("hover"); //仅限默认状态下
-                this.$emit("on_enter");
+                this.$emit("on_enter", e);
             },
 
             //鼠标移出
-            $_leave(){
+            $_leave(e){
                 this.cur_states[0] === "hover" && this.reset_style(); //仅限 hover 状态下
-                this.$emit("on_leave");
+                this.$emit("on_leave", e);
             }
 
         },

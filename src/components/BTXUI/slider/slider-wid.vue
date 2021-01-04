@@ -5,10 +5,9 @@
 
         <!--轮播内容-->
         <b-view :styles="`rel no-scroll h-${view.height}`">
-            <b-view v-if="slider_bar_width"
-                    ref="sliderBar"
-                    :styles="`flex touch-none h-${view.height} w-${slider_bar_width}px`"
-                    :dynamic="`translateX-${this.touch_point.x.toString().replace('-', 'f')}px ${this.flip_ani? 'trans-fast': ''}`"
+            <b-view ref="sliderBar"
+                    :styles="`flex touch-none h-${view.height}`"
+                    :dynamic="`w-${slider_bar_width}px translateX-${this.touch_point.x.toString().replace('-', 'f')}px ${this.flip_ani? 'trans-fast': 'trans-no'}`"
                     @on_touchstart="$_touch_start"
                     @on_touchmove="$_touch_move"
                     @on_touchend="$_touch_end"
@@ -60,7 +59,7 @@
     import BIcon from "@/components/BTXUI/core/b-icon"
     import BList from "@/components/BTXUI/core/b-list"
 
-    const desc = ["该组件用于设置内容轮播。",{
+    const desc = ["该组件用于设置内容轮播，支持页面 resize 时自动校正尺寸。",{
             cover: "slider-wid.png",
             title: "轮播执行机制原理"
         }],
@@ -311,7 +310,7 @@
                         state: i==0?"act":""
                     };
                 })
-                this.slider_bar_width = this.slider_pages.length * this.$el.clientWidth;//组件宽度
+                this.$_set_slider_bar_width();
                 this.$_init_auto_play();
                 if(this.keyboardFlip) this.$_bind_keyboard_flip_event();
 
@@ -415,6 +414,11 @@
                     if(e.key === "ArrowLeft") this.prev(".54s");
                     if(e.key === "ArrowRight") this.next(".54s");
                 });
+            },
+
+            //设置 slider_bar 宽度
+            $_set_slider_bar_width(){
+                this.slider_bar_width = this.slider_pages.length * this.$el.clientWidth;
             }
 
         },
@@ -425,6 +429,10 @@
         },
         mounted(){
             this.$_init_data();
+            window.addEventListener("resize", this.$_set_slider_bar_width)
+        },
+        destroyed(){
+            window.removeEventListener("resize", this.$_set_slider_bar_width);
         }
     }
 </script>

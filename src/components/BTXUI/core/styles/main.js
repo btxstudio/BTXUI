@@ -205,6 +205,7 @@ export default {
     "trans": { transition: "all .7s" },
     "trans-fast": { transition: "all .4s" },
     "trans-slow": { transition: "all 1.4s" },
+    "trans-no": { transition: "none" },
 
     //模糊滤镜
     "blur-no": { filter: "blur(0px)" },

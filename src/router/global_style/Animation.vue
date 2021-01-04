@@ -31,6 +31,12 @@
                 </td>
                 <td>慢速过度动画（1.4s）</td>
             </tr>
+            <tr>
+                <td>
+                    <code>.trans-no</code>
+                </td>
+                <td>无过度动画</td>
+            </tr>
             </tbody>
         </table>
         <p></p>

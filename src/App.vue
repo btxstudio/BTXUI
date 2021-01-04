@@ -29,16 +29,16 @@
 
             <!-- 左侧目录 -->
             <div class="flex-column w-30 bg-color-lgray">
-                <div class="grow-1 auto-scroll pad-2d5 color-main fsize-1d2">
-                    <content-wid v-if="content_data" :data-tree="content_data" @on_select="$_nav_select" />
+                <div class="grow-1 auto-scroll pad-h-1 pad-t-2 pad-b-4 color-main fsize-1d1">
+                    <content-wid :data-tree="content_data" @on_select="$_nav_select" />
                 </div>
             </div>
             
             <!-- 右侧介绍 -->
             <div class="grow-1 flex-column">
-                <div class="grow-1 auto-scroll fsize-1d2 pad-2d5">
+                <b-list styles="grow-1 fsize-1.2 pad-2.5">
                     <router-view class="container pad-b-7" md />
-                </div>
+                </b-list>
             </div>
 
         </div>
@@ -46,12 +46,15 @@
 </template>
 
 <script>
+import BList from "@/components/BTXUI/core/b-list"
 import ContentWid from "@/components/BTXUI/content/content-wid"
 import ConfirmWid from "@/components/BTXUI/confirm/confirm-wid"
+import content_data from "@/router/content"
 
 export default {
     name: "App",
     components: {
+        BList,
         ConfirmWid,
         ContentWid
     },
@@ -59,22 +62,17 @@ export default {
         return {
 
             //目录导航
-            content_data: null
+            content_data
 
         }
     },
     methods: {
 
-        //导航选择
+        //导航路由
         $_nav_select(route){
-            console.log(route)
+            this.$router.push(route);
         }
 
-    },
-    mounted(){
-        this.$axios.get("/static/setting.json").then(res => {
-            this.content_data = res.data
-        })
     }
 }
 </script>

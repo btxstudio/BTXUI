@@ -96,8 +96,11 @@
 
             //监听动态状态
             dynamic(val){
-                this.append_state(val, "dynamic");
-                this.toggle_style([...this.cur_states, "dynamic"]);
+                this.$_stack_state({
+                    ...this.style_stack["origin"],
+                    ...this.$_parse_style(val)
+                });
+                this.$_filter_styles();
             }
 
         },

@@ -2,59 +2,75 @@
     <article>
         <header-info v-bind="header_info" />
 
+        <!--基础使用-->
         <section>
-            <p>长内容通常使用 <code>b-list</code> 组件进行封装，可以通过 scroll 属性设置溢出滚动及隐藏效果，此外还具备滚动条定位监听及懒加载接口。</p>
+            <h5>基础使用</h5>
+            <p>长内容通常使用 <code>b-list</code> 组件进行封装，通过 <code>scroll</code> 属性可以设置溢出滚动及隐藏效果。</p>
+            <div class="resize grid color-mgray">
+                <div class="col-6 pad-r-3 line-r thick-1 line-lgray">
+                    <b-list scroll="hide" styles="h-10 bg-color-lgray">
+                        <div class="bg-color-dgray pad-2 round-sm round-b">
+                            <h5>溢出隐藏</h5>
+                            <p>When it comes to a secure website and passwords it is all in your hands to create a password that a hacker simply cannot crack.</p>
+                            <div class="pright alpha-d5">—— btxstudio</div>
+                        </div>
+                    </b-list>
+                </div>
+                <div class="col-6 pad-l-3">
+                    <b-list scroll="y" styles="h-10 bg-color-lgray">
+                        <div class="bg-color-dgray pad-2 round-sm round-b">
+                            <h5>溢出滚动</h5>
+                            <p>When it comes to a secure website and passwords it is all in your hands to create a password that a hacker simply cannot crack.</p>
+                            <div class="pright alpha-d5">—— btxstudio</div>
+                        </div>
+                    </b-list>
+                </div>
+            </div>
+            <hr>
             <p></p>
+        </section>
 
-            <p>数据接口：</p>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>数据接口</th>
-                    <th>类型</th>
-                    <th>必须</th>
-                    <th>值</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><code>scroll</code></td>
-                    <td>String</td>
-                    <td>false</td>
-                    <td><b>y</b>：垂直溢出滚动（默认）；<br><b>x</b>：水平溢出滚动；<br><b>hide</b>：溢出隐藏；</td>
-                </tr>
-                <tr>
-                    <td><code>watch-pos</code></td>
-                    <td>Boolean</td>
-                    <td>false</td>
-                    <td><b>false</b>：不监听（默认）；<br><b>true</b>：监听；</td>
-                </tr>
-                </tbody>
-            </table>
+        <!--宽滚动条-->
+        <section>
+            <h5>宽滚动条</h5>
+            <p>通过 <code>wide</code> 属性可以设置加宽滚动条，易于拖动。</p>
+            <div class="resize color-mgray">
+                <b-list scroll="y" :wide="true" styles="h-15 bg-color-lgray">
+                    <div class="bg-color-dgray pad-2 round-sm round-b">
+                        <h5>宽滚动条</h5>
+                        <p>When it comes to a secure website and passwords.</p>
+                        <p>it is all in your hands to create a password.</p>
+                        <p>that a hacker simply cannot crack.</p>
+                        <p class="pright alpha-d5 mrg-t-6">—— btxstudio</p>
+                    </div>
+                </b-list>
+            </div>
+            <hr>
             <p></p>
+        </section>
 
-            <p>API：</p>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>事件</th>
-                    <th>参数</th>
-                    <th>触发条件</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><code>on_to_top</code></td>
-                    <td>-</td>
-                    <td>watch-pos 设置为 true，滚动置顶时；</td>
-                </tr>
-                <tr>
-                    <td><code>on_to_bottom</code></td>
-                    <td>-</td>
-                    <td>watch-pos 设置为 true，滚动置底时；</td>
-                </tr>
-                </tbody>
-            </table>
+        <!--滚动置顶、置底监听-->
+        <section>
+            <h5>滚动置顶、置底监听</h5>
+            <p>开启 <code>watchPos</code> 滚动位置监听属性时，通过 <code>on_to_top</code>、<code>on_to_bottom</code> API 可以监听滚动条滚动置顶及置底状态。</p>
+            <div class="resize color-mgray">
+                <b-list scroll="y"
+                        :wide="true"
+                        :watch-pos="true"
+                        @on_to_top="$_scroll_to_top"
+                        @on_to_bottom="$_scroll_to_bottom"
+                        styles="h-15 bg-color-lgray">
+                    <div class="bg-color-dgray pad-2 round-sm round-b">
+                        <h5>滚动监听</h5>
+                        <p>When it comes to a secure website and passwords.</p>
+                        <p>it is all in your hands to create a password.</p>
+                        <p>that a hacker simply cannot crack.</p>
+                        <p class="pright alpha-d5 mrg-t-6">—— btxstudio</p>
+                    </div>
+                </b-list>
+            </div>
+            <hr>
+            <p></p>
         </section>
 
     </article>
@@ -75,10 +91,23 @@
 
                 //初始化入参
                 header_info: {
-                    name: BInput.name,
-                    ...BInput.introduce,
+                    name: BList.name,
+                    ...BList.introduce,
                 },
             }
+        },
+        methods: {
+
+            //滚动置顶
+            $_scroll_to_top(){
+                this.$confirm.toast("滚动置顶了！");
+            },
+
+            //滚动置底
+            $_scroll_to_bottom(){
+                this.$confirm.toast("滚动到底了！");
+            },
+
         }
     }
 </script>

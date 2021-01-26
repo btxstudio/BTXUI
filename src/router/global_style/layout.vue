@@ -1,4 +1,4 @@
- <template>
+  <template>
     <article>
         <!--盒子模型-->
         <section>
@@ -670,6 +670,7 @@
             <p>如果要进行反向移动，可以通过 "f" 设置负值，比如基于左侧向左位移 2rem，类名为 <code>.t-f2rem</code>。</p>
             <p>可以相对父容器尺寸进行百分比位移，使用单位 "p"。预置的比率值：10%、20%、30%、40%、50%、60%、70%、80%、90%、100%、200%。</p>
             <p>还可以相对自身尺寸进行百分比位移，使用单位 "p"。预置的比率值：10%、25%、50%、100%、200%、500%。</p>
+            <p>最后也支持 auto 值设置：<code>.t-auto</code>、<code>.b-auto</code>、<code>.l-auto</code>、<code>.r-auto</code>。</p>
             <p>【示例】基础位移：</p>
             <div class="grid fsize-d8">
                 <div class="col-3">
@@ -702,7 +703,7 @@
                 <div class="bg-color-mgray round-sm w-10">
                     <div class="rel l-100p w-10 h-8 bg-color-lgray flex-5 flex-column round-sm alpha-d9">向右位移容器宽度<b>100%</b><code>.l-100p</code></div>
                 </div>
-                <div class="bg-color-mgray round-sm w-10">
+                <div class="bg-color-mgray round-sm w-10 h-8">
                     <div class="rel t-f10p w-10 h-8 bg-color-lgray flex-5 flex-column round-sm alpha-d9">向上位移容器高度<b>10%</b><code>.t-f10p</code></div>
                 </div>
                 <div class="bg-color-mgray round-sm w-10">
@@ -799,7 +800,11 @@
                 <tbody>
                 <tr>
                     <td><code>.auto-scroll | .over-scroll</code></td>
-                    <td>内容溢出滚动</td>
+                    <td>内容垂直方向溢出滚动</td>
+                </tr>
+                <tr>
+                    <td><code>.wide-auto-scroll</code></td>
+                    <td>内容垂直方向溢出滚动（宽滚动条）</td>
                 </tr>
                 <tr>
                     <td><code>.no-scroll | .over-hide</code></td>

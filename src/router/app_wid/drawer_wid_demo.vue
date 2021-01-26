@@ -43,6 +43,29 @@
                     </div>
                 </drawer-wid>
             </div>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--启用复选框-->
+        <section>
+            <h5>启用复选框</h5>
+            <p>组件 <code>checkbox</code> 属性可以启用标签复选框。</p>
+            <div class="resize flex-column bg-color-lgray">
+                <drawer-wid v-bind="data" v-for="(data,i) of data_3.list" :key="i">
+                    <div class="bg-color-dgray color-mgray pad-2 round-sm round-b line-t thick-1 line-light">
+                        <h5>hello {{data.tagData.text}}</h5>
+                        <p>When it comes to a secure website and passwords it is all in your hands to create a password that a hacker simply cannot crack.</p>
+                        <div class="pright alpha-d5">—— btxstudio</div>
+                    </div>
+                </drawer-wid>
+            </div>
+            <p>当前选择数据：
+                <template v-if="data_3.selected.length">
+                    <code v-for="data of data_3.selected">{{data}}</code>
+                </template>
+                <span v-else class="alpha-d4">暂无</span>
+            </p>
         </section>
 
     </article>
@@ -97,7 +120,34 @@
                         icon: "data"
                     },
                     arrowFixed: false
-                }
+                },
+
+                data_3: {
+                    list: [
+                        {
+                            tagData: {
+                                id: "a",
+                                text: "HTML + CSS",
+                            },
+                            checkbox: true
+                        },
+                        {
+                            tagData: {
+                                id: "b",
+                                text: "PHP + Mysql",
+                            },
+                            checkbox: true
+                        },
+                        {
+                            tagData: {
+                                id: "c",
+                                text: "Node.js + Mongodb",
+                            },
+                            checkbox: true
+                        }
+                    ],
+                    selected: []
+                },
 
             }
         }

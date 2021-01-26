@@ -77,11 +77,6 @@
                 type: [String, Number]
             },
         },
-        data(){
-            return {
-
-            }
-        },
         methods: {
 
             //透传数据选择

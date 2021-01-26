@@ -29,14 +29,14 @@
 
             <!-- 左侧目录 -->
             <div class="flex-column w-30 bg-color-lgray">
-                <div class="grow-1 auto-scroll pad-h-1 pad-t-2 pad-b-4 color-main fsize-1d1">
-                    <content-wid :data-tree="content_data" @on_select="$_nav_select" />
+                <div class="grow-1 auto-scroll pad-h-1 pad-t-2 pad-b-4 fsize-1d1">
+                    <content-wid v-bind="nav" @on_select="$_nav_select" />
                 </div>
             </div>
             
             <!-- 右侧介绍 -->
             <div class="grow-1 flex-column">
-                <b-list styles="grow-1 fsize-1.2 pad-2.5">
+                <b-list styles="grow-1 fsize-1.2 pad-2.5" :wide="true">
                     <router-view class="container pad-b-7" md />
                 </b-list>
             </div>
@@ -62,7 +62,23 @@ export default {
         return {
 
             //目录导航
-            content_data
+            nav: {
+                dataTree: content_data,
+                colors: {
+                    normal: {
+                        text: "#777",
+                        bg: "none",
+                    },
+                    act: {
+                        text: "blue",
+                        bg: "none",
+                    },
+                    hover: {
+                        text: "dgray",
+                        bg: "none",
+                    }
+                },
+            }
 
         }
     },

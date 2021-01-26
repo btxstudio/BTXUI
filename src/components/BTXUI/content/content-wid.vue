@@ -40,7 +40,7 @@
         init_data = `{
         dataTree: [
             {
-                id: "数据标识【注：必须满足树形嵌套结构，即：dataID + 结构层级索引。exp：dataID_1_2_1_1】" ,
+                id: "数据标识",
                 text: "数据标题",
                 tooltip: "悬停提示文本（支持超文本），缺省无提示",
                 checkbox: "是否显示复选框，缺省仅显示文字",
@@ -107,10 +107,13 @@
                 //多选数据
                 selected_datas: [],
 
-                //树形数据
+                //树形数据（视图渲染）
                 tree_data: [],
 
-                //索引数据
+                //展开数据（多级关联选择）
+                spread_data: [],
+
+                //索引数据（操作数据）
                 index_data: {}
 
             }
@@ -134,11 +137,12 @@
             },
 
             //构造数据
-            $_gen_data(tree_data){
-                return tree_data.map((data)=>{
+            $_gen_data(tree_data, id_prefix=""){
+                return tree_data.map((data, i)=>{
                     let {id, text, tooltip, checkbox, children, selected, spread, spread_fixed} = data,
                         mode = this.mode,
                         colors = {...this.colors},
+                        _id = id_prefix? `${id_prefix}_${i}`: i,
                         sub_data;
 
                     //初始化数据
@@ -152,7 +156,6 @@
 
                     //下级折叠处理
                     if(children){
-                        sub_data = this.$_gen_data(children);
                         colors.act = {
                             text: colors.normal.text,
                             bg: colors.normal.bg
@@ -171,10 +174,16 @@
                         mode,
                         colors
                     }, index_data = {
+                        _id,
                         tag_data,
                         selected,
                     };
                     this.index_data[id] = index_data;
+                    this.spread_data.push(index_data);
+
+                    //下级递归数据处理
+                    if(children) sub_data = this.$_gen_data(children, _id);
+
                     return {
                         index_data,
                         spread,

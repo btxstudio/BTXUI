@@ -28,6 +28,12 @@
     .h-d5#{$suffix} {
         height: .5rem;
     }
+    .max-w#{$suffix} { //满宽
+        width: 100%;
+    }
+    .max-h#{$suffix} { //满高
+        height: 100%;
+    }
     @for $i from 1 to 11{
         .w-#{$i}#{$suffix} {
             width: #{$i}rem;
@@ -161,6 +167,13 @@
             .#{nth($dir, 1)}-f#{$v}p { //负数
                 #{nth($dir, 2)}: -#{$v + '%'};
             }
+        }
+    }
+
+    //auto 值
+    @each $dir in $dirs{
+        .#{nth($dir, 1)}-auto#{$suffix} {
+            #{nth($dir, 2)}: auto;
         }
     }
 }

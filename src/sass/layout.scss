@@ -32,17 +32,9 @@
     }
 }
 
-.max-w{                                 //满宽
-    width: 100%;
-}
-
-.max-h{                                 //满高
-    height: 100%;
-}
-
 .max{                                   //满屏
-    @extend .max-w;
-    @extend .max-h;
+    width: 100%;
+    height: 100%;
 }
 
 .max-screen{                            //满屏

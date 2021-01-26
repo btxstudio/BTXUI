@@ -1,7 +1,11 @@
 <template>
     <b-view styles="max-w">
         <!--标题-->
-        <title-tag-wid v-bind="tagData" :icon-data="iconData" :arrow-fixed="arrowFixed" v-model="tag_spread"
+        <title-tag-wid v-bind="tagData"
+                       :icon-data="iconData"
+                       :arrow-fixed="arrowFixed"
+                       :checkbox="checkbox"
+                       v-model="tag_spread"
                        @on_move="$emit('on_title_move', $event)"
                        @on_enter="$emit('on_title_enter', $event)"
                        @on_leave="$emit('on_title_leave', $event)" />
@@ -63,7 +67,8 @@
         tagData: "(参照：tag-wid 组件入参)",
         /* spread: "展开状态，默认关闭" */,
         /* iconData: "(参照：b-icon 组件入参)" */,
-        /* arrowFixed: "下拉图标位置固定右侧，默认 true" */
+        /* arrowFixed: "下拉图标位置固定右侧，默认 true" */,
+        /* checkbox: "启用复选框，默认 false" */,
     }`;
 
     export default {
@@ -90,6 +95,10 @@
                 type: Boolean,
                 required: false,
                 default: true
+            },
+            checkbox: {
+                type: Boolean,
+                required: false
             }
         },
         data(){

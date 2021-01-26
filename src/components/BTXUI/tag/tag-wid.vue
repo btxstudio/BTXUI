@@ -160,6 +160,7 @@
             //点击事件
             $_click(e){
                 let state;
+                e.stopPropagation();
                 if(this.mode === "checkbox"){ //复选
                     state = !this.selected;
                 }else if(this.mode === "radio"){ //单选

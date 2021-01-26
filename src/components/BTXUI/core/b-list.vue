@@ -23,27 +23,57 @@
     import ChapterLink from "./lib/ChapterLink"
     import BView from "./b-view";
 
+    const desc = ["该组件用于实现长内容的溢出滚动及隐藏效果，此外还具备滚动条定位监听及懒加载接口。"],
+        extend = [],
+        dependent = ["ChapterLink", "b-view"],
+        api = {
+            methods: [
+                {
+                    name: "reset",
+                    ef: "重置定位",
+                    params: "-",
+                    return: "-"
+                }
+            ],
+            event: [
+                {
+                    name: "on_to_top",
+                    ef: "滚动置顶",
+                    params: "spread"
+                },
+                {
+                    name: "on_to_bottom",
+                    ef: "滚动置底",
+                    params: "event"
+                }
+            ]
+        },
+        init_data = `{
+        /* styles: "(参照：b-style 组件入参)" */,
+        /* wide: "加宽滚动条，默认 false" */,
+        /* scroll: "溢出滚动。y：垂直溢出滚动（默认）；x：水平溢出滚动；hide：溢出隐藏" */,
+        /* watchPos: "滚动位置监听，默认 false" */,
+    }`;
+
     export default {
         name: "b-list",
+        introduce: { desc, extend, dependent, api, init_data },
         components: {
             BView
         },
-        /*
-        * init-data{
-        *   [* styles: (参照：b-style 组件入参)],
-        *   [* scroll: "溢出滚动。y：垂直溢出滚动（默认）；x：水平溢出滚动；hide：溢出隐藏],
-        *   [* watch-pos: "滚动位置监听],
-        * }
-        * */
         props: {
             styles: {
                 type: String,
-                required: true
+                required: false
             },
             scroll: {
                 type: String,
                 required: false,
                 default: "y"
+            },
+            wide: {
+                type: Boolean,
+                required: false
             },
             watchPos: {
                 type: Boolean,
@@ -73,9 +103,11 @@
                 switch(this.scroll){
                     case "x":
                         return "auto-h-scroll";
+                        break;
                     case "y":
-                        return "auto-scroll";
-                    case "hiden":
+                        return this.wide? "wide-auto-scroll": "auto-scroll";
+                        break;
+                    case "hide":
                         return "no-scroll";
                 }
             }
@@ -92,8 +124,8 @@
             $_watch_pos(){
                 this.$el.onscroll = (e)=>{
                     let st = e.target.scrollTop;
-                    if(st === 0) this.$emit("on_to_top"); //滚动置顶
-                    if(st === e.target.scrollHeight - e.target.offsetHeight) this.$emit("on_to_bottom"); //滚动置底
+                    if(st === 0) this.$emit("on_to_top", e); //滚动置顶
+                    if(st === e.target.scrollHeight - e.target.offsetHeight) this.$emit("on_to_bottom", e); //滚动置底
                 }
             },
 

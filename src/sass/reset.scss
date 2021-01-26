@@ -72,6 +72,7 @@ input[type="text"], input[type="password"], input[type="number"], textarea {
     &:focus, &:active, &:hover {
         outline: none;
         box-shadow: none;
+        border: none;
     }
 }
 

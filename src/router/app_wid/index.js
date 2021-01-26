@@ -12,6 +12,7 @@ import search_wid_demo from './search_wid_demo'
 import confirm_wid_demo from './confirm_wid_demo'
 import table_wid_demo from './table_wid_demo'
 import select_wid_demo from './select_wid_demo'
+import range_wid_demo from './range_wid_demo'
 import upload_wid_demo from './upload_wid_demo'
 import imgs_upload_wid_demo from './imgs_upload_wid_demo'
 import slider_wid_demo from './slider_wid_demo'
@@ -63,6 +64,11 @@ export default [
         path: '/select_wid_demo',
         component: select_wid_demo,
         text: "<b>select_wid</b> 下拉选择"
+    },
+    {
+        path: '/range_wid_demo',
+        component: range_wid_demo,
+        text: "<b>range_wid</b> 范围选择"
     },
     {
         path: '/upload_wid_demo',

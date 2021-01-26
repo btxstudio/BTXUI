@@ -42,7 +42,7 @@
         background: rgba(140,140,140,.2);
     }
     &::-webkit-scrollbar-track{
-        background: rgba(140,140,140,.1);
+        background: transparent;
     }
 }
 
@@ -50,9 +50,7 @@
     position: relative;
 }
 
-//纵向滚动条
-.auto-scroll, .over-scroll {
-    overflow-y: auto;
+@mixin scroll_base($wide:3px){
     @extend %relative;
 
     //IE 设置
@@ -60,44 +58,35 @@
 
     //webkit 设置
     &::-webkit-scrollbar{
-        width: 3px;
-        height: 3px;  
+        width: $wide;
+        height: $wide;
     }
-    @extend %webkit-set; 
+    @extend %webkit-set;
 
     &:hover, &:focus{
 
         //IE hovre 设置
-        @extend %ie-hover-set; 
+        @extend %ie-hover-set;
 
         //webkit hovre 设置
         @extend %webkit-hover-set;
     }
 }
+
+//纵向滚动条
+.auto-scroll, .over-scroll {
+    overflow-y: auto;
+    @include scroll_base();
+}
+.wide-auto-scroll { //（易于拖动）
+    overflow-y: auto;
+    @include scroll_base(14px);
+}
  
 //横向滚动条（易于拖动）
 .auto-h-scroll{                           
     overflow-x: auto;
-    @extend %relative;
-
-    //IE 设置
-    @extend %ie-set; 
-
-    //webkit 设置
-    &::-webkit-scrollbar{
-        width: 14px;
-        height: 14px;
-    }
-    @extend %webkit-set; 
-
-    &:hover, &:focus{
-
-        //IE hovre 设置
-        @extend %ie-hover-set; 
-
-        //webkit hovre 设置
-        @extend %webkit-hover-set;
-    }
+    @include scroll_base(14px);
 }
 
 //溢出隐藏

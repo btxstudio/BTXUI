@@ -4,6 +4,7 @@ import tag_wid_demo from './tag_wid_demo'
 import tags_wid_demo from './tags_wid_demo'
 import checkbox_wid_demo from './checkbox_wid_demo'
 import tab_wid_demo from './tab_wid_demo'
+import page_flip_wid_demo from './page_flip_wid_demo'
 import pannel_wid_demo from './pannel_wid_demo'
 import form_pannel_wid_demo from './form_pannel_wid_demo'
 import form_wid_demo from './form_wid_demo'
@@ -28,97 +29,102 @@ export default [
     {
         path: '/btn_wid_demo',
         component: btn_wid_demo,
-        text: "<b>btn_wid</b> 基础按钮"
+        text: "<b>btn-wid</b> 基础按钮"
     },
     {
         path: '/table_wid_demo',
         component: table_wid_demo,
-        text: "<b>table_wid</b> 表格"
+        text: "<b>table-wid</b> 表格"
     },
     {
         path: '/tag_wid_demo',
         component: tag_wid_demo,
-        text: "<b>tag_wid</b> 标签"
+        text: "<b>tag-wid</b> 标签"
     },
     {
         path: '/tags_wid_demo',
         component: tags_wid_demo,
-        text: "<b>tags_wid</b> 标签组"
+        text: "<b>tags-wid</b> 标签组"
     },
     {
         path: '/checkbox_wid_demo',
         component: checkbox_wid_demo,
-        text: "<b>checkbox_wid</b> 复选框"
+        text: "<b>checkbox-wid</b> 复选框"
     },
     {
         path: '/tab_wid_demo',
         component: tab_wid_demo,
-        text: "<b>tab_wid</b> 标签切换"
+        text: "<b>tab-wid</b> 标签切换"
     },
     {
         path: '/search_wid_demo',
         component: search_wid_demo,
-        text: "<b>search_wid</b> 搜索栏"
+        text: "<b>search-wid</b> 搜索栏"
     },
     {
         path: '/select_wid_demo',
         component: select_wid_demo,
-        text: "<b>select_wid</b> 下拉选择"
+        text: "<b>select-wid</b> 下拉选择"
     },
     {
         path: '/range_wid_demo',
         component: range_wid_demo,
-        text: "<b>range_wid</b> 范围选择"
+        text: "<b>range-wid</b> 范围选择"
     },
     {
         path: '/upload_wid_demo',
         component: upload_wid_demo,
-        text: "<b>upload_wid</b> 文件上传"
+        text: "<b>upload-wid</b> 文件上传"
     },
     {
         path: '/imgs_upload_wid_demo',
         component: imgs_upload_wid_demo,
-        text: "<b>imgs_upload_wid</b> 图片上传"
+        text: "<b>imgs-upload-wid</b> 图片上传"
     },
     {
         path: '/pannel_wid_demo',
         component: pannel_wid_demo,
-        text: "<b>pannel_wid</b> 浮动面板"
+        text: "<b>pannel-wid</b> 浮动面板"
+    },
+    {
+        path: '/page_flip_wid_demo',
+        component: page_flip_wid_demo,
+        text: "<b>page-flip-wid</b> 分页导航"
     },
     {
         path: '/form_wid_demo',
         component: form_wid_demo,
-        text: "<b>form_wid</b> 表单"
+        text: "<b>form-wid</b> 表单"
     },
     {
         path: '/form_pannel_wid_demo',
         component: form_pannel_wid_demo,
-        text: "<b>form_pannel_wid</b> 浮动表单面板"
+        text: "<b>form-pannel-wid</b> 浮动表单面板"
     },
     {
         path: '/confirm_wid_demo',
         component: confirm_wid_demo,
-        text: "<b>confirm_wid</b> 确认弹窗"
+        text: "<b>confirm-wid</b> 确认弹窗"
     },
     {
         path: '/slider_wid_demo',
         component: slider_wid_demo,
-        text: "<b>slider_wid</b> 轮播器"
+        text: "<b>slider-wid</b> 轮播器"
     },
     {
         path: '/drawer_wid_demo',
         component: drawer_wid_demo,
-        text: "<b>drawer_wid</b> 抽屉折叠"
+        text: "<b>drawer-wid</b> 抽屉折叠"
     },
     {
         path: '/tooltip_wid_demo',
         component: tooltip_wid_demo,
-        text: "<b>tooltip_wid</b> 悬浮提示"
+        text: "<b>tooltip-wid</b> 悬浮提示"
     },
     {
         path: '/content_wid_demo',
         component: content_wid_demo,
-        text: "<b>content_wid</b> 树形目录"
+        text: "<b>content-wid</b> 树形目录"
     },
     {
         path: '/app_wid_demo',
@@ -141,6 +147,6 @@ export default [
                 component: app_wid_system_demo
             }
         ],
-        text: "<b>app_wid</b> app 基础布局"
+        text: "<b>app-wid</b> app 基础布局"
     },
 ]

@@ -21,6 +21,7 @@ const components = {
         "form",
         "formPannel",
         "imgsUpload",
+        "pageFlip",
         "pannel",
         "select",
         "slider",

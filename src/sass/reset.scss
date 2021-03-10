@@ -45,6 +45,7 @@ video, audio {
     display: block;
     width: 100%;
     object-fit: fill;
+    outline: none;
 }
 
 input[type="text"], input[type="password"], input[type="number"], textarea, select, option,

@@ -3,6 +3,7 @@
            @focus="$_focus"
            @blur="$_blur"
            @change="$_check"
+           @keyup.enter="$_enter"
            v-model="value"
            autocomplete="off" />
 </template>
@@ -37,6 +38,11 @@
                     name: "on_blur",
                     ef: "表单失焦",
                     params: "-",
+                },
+                {
+                    name: "on_enter",
+                    ef: "聚焦时键盘按下回车",
+                    params: "text、event",
                 }
             ]
         },
@@ -173,6 +179,11 @@
             $_blur(){
                 this.reset_style();
                 this.$emit("on_blur");
+            },
+
+            //表单回车
+            $_enter(e){
+                this.$emit("on_enter", this.inpVal, e);
             },
 
         },

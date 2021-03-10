@@ -58,6 +58,20 @@
             <p>
                 <b-input styles="pad-h-1 h-3 bg-color-lgray line line-#ddd thick-1 round-sm" v-bind="data_4.props" v-model="data_4.val" />
             </p>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--回车输入-->
+        <section>
+            <h5>回车输入</h5>
+            <p>输入框激活状态时，按下键盘回车键，可触发 <code>on_enter</code> 事件。</p>
+            <p>
+                <b-input styles="pad-h-1 h-3 bg-color-lgray line line-#ddd thick-1 round-sm"
+                         @on_enter="$_enter5"
+                         v-bind="data_5.props"
+                         v-model="data_5.val" />
+            </p>
         </section>
 
     </article>
@@ -126,17 +140,30 @@
                     val: "neo"
                 },
 
+                data_5: {
+                    props: {
+                        type: "text",
+                        name: "uname",
+                        placeholder: "请输入用户名",
+                        focus: "color-blue bg-color-light"
+                    },
+                    val: "Lily"
+                },
+
             }
         },
         methods: {
 
-            //表单验证
             $_check3(res){
                 if(res.pass){
                     this.data_3.final_val = this.data_3.val;
                 }else{
                     this.$confirm.toast(res.notic, 3000, "fail");
                 }
+            },
+
+            $_enter5(text, e){
+                this.$confirm.toast(`当前输入内容：${text}`, 2000)
             }
 
         }

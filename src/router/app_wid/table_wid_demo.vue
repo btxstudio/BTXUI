@@ -66,6 +66,17 @@
                 </template>
                 <span v-else class="alpha-d5">暂无选择</span>
             </p>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--单元行折叠-->
+        <section>
+            <h5>单元行折叠</h5>
+            <p>通过 <code>collapse</code> 属性可设置单元行折叠显示行数。</p>
+            <div class="resize">
+                <table-wid v-bind="data_6.props"/>
+            </div>
         </section>
 
     </article>
@@ -304,6 +315,36 @@
                     },
                     selected: [],
                     enable: false
+                },
+
+                data_6: {
+                    props: {
+                        thead: [
+                            {
+                                title: "Name"
+                            },
+                            {
+                                title: "subject"
+                            },
+                            {
+                                title: "Rank"
+                            },
+                        ],
+                        tbody: [
+                            ["nick", "javascript", 78],
+                            ["nick", "html", 99],
+                            ["nick", "css", 100],
+                            ["nick", "php", 89],
+                            ["nick", "typescript", 91],
+                        ],
+                        collapse: {
+                            rows: 3,
+                            tag_data: {
+                                text: "Spread",
+                                actText: "Collapse",
+                            }
+                        },
+                    }
                 },
 
             }

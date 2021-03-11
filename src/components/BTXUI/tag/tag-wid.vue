@@ -56,7 +56,7 @@
         init_data = `{
         id: "标签 id",
         text: "标签未选中状态文字（支持富文本）",
-        /* selected: "（v-model）选中状态" */,
+        selected: "（v-model）选中状态",
         /* actText: "标签选中状态文字（支持富文本）" */,
         /* colors: {
             normal: {

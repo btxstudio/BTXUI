@@ -21,7 +21,7 @@
         </b-view>
 
         <!--表身-->
-        <component v-for="(tr, i) of tbody" :key="i" :is="hover_tr_color? 'b-hot': 'b-view'"
+        <component v-for="(tr, i) of tbody.slice(0, show_rows)" :key="i" :is="hover_tr_color? 'b-hot': 'b-view'"
                    :styles="`flex line-t thick-1 line-${colors.line} bg-color-${i%2? colors.row.even: colors.row.odd}`"
                    :hover="hover_tr_color? 'bg-color-' + hover_tr_color: ''"
                    @on_click="$_click(i)">
@@ -52,6 +52,11 @@
 
             </b-view>
         </component>
+
+        <!--折叠按钮-->
+        <b-view v-if="collapse" styles="flex-2 pad-v-2">
+            <tag-wid v-bind="toggle_tag.data" v-model="toggle_tag.selected" />
+        </b-view>
     </b-view>
 </template>
 
@@ -135,7 +140,11 @@
             },
             line: "表格描边色",
             outline: "表格轮廓色"
-        } */
+        } */,
+        /* collapse: {
+            rows: "折叠显示单元行数目",
+            tag_data: "(参照：tag-wid 组件入参，id 字段无效，自动设置为随机数)"
+        } */,
     }`;
 
     export default {
@@ -174,6 +183,10 @@
                         outline: "none"
                     }
                 }
+            },
+            collapse: {
+                type: Object,
+                required: false
             }
         },
         data(){
@@ -191,7 +204,30 @@
                 }),
 
                 //全选状态
-                select_all_state: false
+                select_all_state: false,
+
+                //折叠按钮
+                toggle_tag: {
+                    data: {
+                        text: "展开表格",
+                        actText: "收起表格",
+                        colors: {
+                            normal: {
+                                bg: "rgba(170,170,170,.4)"
+                            },
+                            act: {
+                                bg: "blue"
+                            },
+                            hover: {
+                                bg: "neutral"
+                            },
+                        },
+                        ...(this.collapse? this.collapse.tag_data: {}),
+                        id: Math.floor(Math.random() * 1000),
+                        mode: "checkbox",
+                    },
+                    selected: false
+                }
 
             }
         },
@@ -219,6 +255,15 @@
                 this.tbody_data = this.tbody_data.map(()=>{
                     return select;
                 })
+            }
+
+        },
+        computed: {
+
+            //表格显示单元行数
+            show_rows(){
+                if(!this.collapse) return this.tbody.length;
+                return this.toggle_tag.selected? this.tbody.length: this.collapse.rows;
             }
 
         },

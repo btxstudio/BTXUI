@@ -10,7 +10,7 @@ class ChapterLink {
     //跳转指定 dom 章节
     go_chapter(id){
         let $chapter = document.querySelector("#" + id);
-        this.go_top($chapter.offsetParent, $chapter.offsetTop + this.offset);
+        $chapter && this.go_top($chapter.offsetParent, $chapter.offsetTop + this.offset);
     }
 
     //跳转指定位置

@@ -27,7 +27,7 @@
         </b-view>
 
         <!--文字-->
-        <b-view v-if="tag_text" styles="mrg-l-1">
+        <b-view v-if="tag_text" styles="mrg-l-1 ellipsis">
             {{tag_text}}
         </b-view>
 

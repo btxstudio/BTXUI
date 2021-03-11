@@ -17,6 +17,7 @@ const components = {
         "btn",
         "checkbox",
         "content",
+        "carousel",
         "drawer",
         "form",
         "formPannel",

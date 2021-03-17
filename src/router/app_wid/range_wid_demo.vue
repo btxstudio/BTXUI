@@ -56,19 +56,20 @@
                 -->
             </p>
         </section>
-
     </article>
 </template>
 
 <script>
     import HeaderInfo from "@/components/header-info"
     import RangeWid from "@/components/BTXUI/range/range-wid"
+    import BView from "@/components/BTXUI/core/b-view"
 
     export default {
         name: "range_wid_demo",
         components: {
             HeaderInfo,
-            RangeWid
+            RangeWid,
+            BView
         },
         data(){
             return {

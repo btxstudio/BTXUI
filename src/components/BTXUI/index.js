@@ -11,6 +11,7 @@ const components = {
         "b-text",
         "b-textarea",
         "b-view",
+        "b-video",
         "b-webview"
     ],
     wids: [

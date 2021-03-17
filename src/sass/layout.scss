@@ -21,13 +21,13 @@
 
 .container {                            //版心
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
+    max-width: 1200px;
 
-    &[md]{
+    &[md], .container-md {
         max-width: 960px; 
     }
-    &[sm]{
+    &[sm], .container-sm {
         max-width: 736px;
     }
 }
@@ -43,6 +43,12 @@
     @extend .no-scroll;
     left: 0;
     top: 0;
+}
+
+.item{                                  //多列布局元素
+    break-inside: avoid;
+    -moz-page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
 }
 
 

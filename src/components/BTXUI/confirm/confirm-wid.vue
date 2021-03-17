@@ -1,6 +1,6 @@
 <template>
     <pannel-wid v-model="visible" v-bind="pannel_data">
-        <b-view :styles="`round-sm pcenter fsize-1.3 shadow color-rgba(24,24,24,.34) bg-color-${wid_colors.pannel}`">
+        <b-view :styles="`round-sm pcenter fsize-1.1 shadow color-rgba(24,24,24,.34) bg-color-${wid_colors.pannel}`">
             <b-view :styles="`flex-column flex-5 pad-v-2.5 pad-h-4 color-${wid_colors.text}`">
                 <!--图标-->
                 <b-view styles="mrg-b-1 flex-2" v-if="pannel.state">
@@ -28,7 +28,7 @@
                 </b-view>
 
                 <!--文字-->
-                <b-view styles="alpha-.8" v-html="pannel.text"></b-view>
+                <b-view styles="alpha-.9" v-html="pannel.text"></b-view>
             </b-view>
 
             <!--按钮-->

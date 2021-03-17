@@ -107,6 +107,11 @@ export default {
         left: 0,
         top: 0
     },
+    "item": {
+        breakInside: "avoid",
+        mozPageBreakInside: "avoid",
+        webkitColumnBreakInside: "avoid"
+    },
     "fixed": { position: "fixed" },
     "rel": { position: "relative" },
     "abs": { position: "absolute" },
@@ -297,6 +302,14 @@ export default {
                 pro: "order"
             },
 
+            //多列布局容器
+            "column": {
+                pro: "columnCount",
+                extra: {
+                    columnGap: 0
+                },
+            },
+
             //内边距
             "pad": {
                 pro: "padding",
@@ -318,6 +331,30 @@ export default {
             //高度
             "h": {
                 pro: "height",
+                unit: "rem"
+            },
+
+            //最大宽
+            "rw": {
+                pro: "maxWidth",
+                unit: "rem"
+            },
+
+            //最小宽
+            "lw": {
+                pro: "minWidth",
+                unit: "rem"
+            },
+
+            //最大高
+            "th": {
+                pro: "maxHeight",
+                unit: "rem"
+            },
+
+            //最小高
+            "bh": {
+                pro: "minHeight",
                 unit: "rem"
             },
 

@@ -3,14 +3,14 @@
            @on_move="$emit('on_move', $event)"
            @on_enter="$emit('on_enter', $event)"
            @on_leave="$emit('on_leave', $event)"
-           :styles="`pad-h-1.4 pad-v-.4 round-sm mrg-r-.4 color-${tag_colors.normal.text} bg-color-${tag_colors.normal.bg}`"
+           :styles="`pad-h-1.4 pad-v-.4 round-sm mrg-r-.4 mrg-b-.4 line thick-1 line-${tag_colors.normal.line} color-${tag_colors.normal.text} bg-color-${tag_colors.normal.bg}`"
            :states="{
                act: {
-                   style: `bg-color-${tag_colors.act.bg} color-${tag_colors.act.text}`,
+                   style: `line thick-1 line-${tag_colors.act.line} bg-color-${tag_colors.act.bg} color-${tag_colors.act.text}`,
                    state: selected
                }
            }"
-           :hover="`bg-color-${tag_colors.hover.bg} color-${tag_colors.hover.text}`">
+           :hover="`line thick-1 line-${tag_colors.hover.line} bg-color-${tag_colors.hover.bg} color-${tag_colors.hover.text}`">
         <b-text styles="scale-.9"
                 :states="{
                     act: {
@@ -62,14 +62,17 @@
             normal: {
                 text: "默认文字色样式色值",
                 bg: "默认背景色样式色值",
+                line: "默认边框色样式色值",
             },
             act: {
                 text: "激活文字色样式色值",
                 bg: "激活背景色样式色值",
+                line: "激活边框色样式色值",
             },
             hover: {
                 text: "悬停文字色样式色值",
                 bg: "悬停背景色样式色值",
+                line: "悬停边框色样式色值",
             },
         } */,
         /* mode: "选择模式（默认"radio"：单选、"checkbox"：复选）" */,
@@ -128,16 +131,19 @@
                     normal: {
                         text: "dgray",
                         bg: "light",
+                        line: "none",
                         ...this.colors.normal
                     },
                     hover: {
                         text: "blue",
                         bg: "light",
+                        line: "none",
                         ...this.colors.hover
                     },
                     act: {
                         text: "light",
                         bg: "blue",
+                        line: "none",
                         ...this.colors.act
                     },
                 },

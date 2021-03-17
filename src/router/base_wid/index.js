@@ -2,6 +2,7 @@
 import basic_websit_demo from './websit_demo'
 import b_style_demo from './b_style_demo'
 import b_view_demo from './b_view_demo'
+import b_video_demo from './b_video_demo'
 import b_text_demo from './b_text_demo'
 import b_hot_demo from './b_hot_demo'
 import b_img_demo from './b_img_demo'
@@ -25,6 +26,11 @@ export default [
         path: '/b_view_demo',
         component: b_view_demo,
         text: "<b>b_view</b> 基础布局"
+    },
+    {
+        path: '/b_video_demo',
+        component: b_video_demo,
+        text: "<b>b_video</b> 视频媒体"
     },
     {
         path: '/b_text_demo',

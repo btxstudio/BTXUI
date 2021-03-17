@@ -15,7 +15,6 @@
                 <thead>
                 <tr>
                     <th>样式类</th>
-                    <th>属性</th>
                     <th>效果</th>
                 </tr>
                 </thead>
@@ -24,14 +23,12 @@
                     <td>
                         <code>.show</code>
                     </td>
-                    <td>-</td>
                     <td>强制元素显示（display: block）</td>
                 </tr>
                 <tr>
                     <td>
                         <code>.hide</code>
                     </td>
-                    <td>-</td>
                     <td>强制元素隐藏（display: none）</td>
                 </tr>
                 </tbody>
@@ -50,7 +47,6 @@
                 <thead>
                 <tr>
                     <th>样式类</th>
-                    <th>属性</th>
                     <th>效果</th>
                 </tr>
                 </thead>
@@ -59,24 +55,17 @@
                     <td>
                         <code>.container</code>
                     </td>
-                    <td>-</td>
                     <td>1200px 宽度，默认版心容器</td>
                 </tr>
                 <tr>
                     <td>
-                        <code>.container</code>
-                    </td>
-                    <td>
-                        <code>md</code>
+                        <code>.container-md</code>
                     </td>
                     <td>960px 宽度，中等版心容器</td>
                 </tr>
                 <tr>
                     <td>
-                        <code>.container</code>
-                    </td>
-                    <td>
-                        <code>sm</code>
+                        <code>.container-sm</code>
                     </td>
                     <td>736px 宽度，小型版心容器</td>
                 </tr>
@@ -373,6 +362,35 @@
             <p></p>
         </section>
 
+        <!--多列布局-->
+        <section>
+            <h5>多列布局</h5>
+            <p>通过<code>.column-*</code> 可以使用预置的多列布局方案，常用于实现瀑布流布局。</p>
+            <p>预置的列值：1、2、3、4、5。</p>
+            <p>【示例】瀑布流布局：</p>
+            <div class="column-4">
+                <div class="pad-d5 item">
+                    <div class="flex-5 h-5 line line-mgray thick-1 round-sm bg-color-lgray ">A</div>
+                </div>
+                <div class="pad-d5 item">
+                    <div class="flex-5 h-8 line line-mgray thick-1 round-sm bg-color-lgray ">B</div>
+                </div>
+                <div class="pad-d5 item">
+                    <div class="flex-5 h-5 line line-mgray thick-1 round-sm bg-color-lgray ">C</div>
+                </div>
+                <div class="pad-d5 item">
+                    <div class="flex-5 h-3 line line-mgray thick-1 round-sm bg-color-lgray ">D</div>
+                </div>
+                <div class="pad-d5 item">
+                    <div class="flex-5 h-10 line line-mgray thick-1 round-sm bg-color-lgray ">E</div>
+                </div>
+                <div class="pad-d5 item">
+                    <div class="flex-5 h-15 line line-mgray thick-1 round-sm bg-color-lgray ">F</div>
+                </div>
+            </div>
+            <p></p>
+        </section>
+
         <!--内边距-->
         <section>
             <h5>内边距</h5>
@@ -553,6 +571,8 @@
                 <div class="w-d5 h-2 bg-color-dgray"></div>
                 <div class="grow-1 bg-color-lgray fsize-d8 pcenter">grow-1</div>
             </div>
+            <p></p>
+            <p>还可以设置宽高尺寸的最大、最小值进行范围限制，框架预置的宽度限制为 <code>lw-*</code>（最小宽）、<code>rw-*</code>（最大宽）。其值域为：10p、20p、30p、40p、50p、60p、70p、80p、90p，单位 %；高度限制为 <code>th-*</code>（最大高）、<code>bh-*</code>（最小高）。其值域为：10、20、30、40、50、60、70、80、90、100，单位 rem。</p>
             <p></p>
         </section>
 

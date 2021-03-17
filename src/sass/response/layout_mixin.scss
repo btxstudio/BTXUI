@@ -53,6 +53,27 @@
     }
 }
 
+//生成不同尺寸宽度及高度上下限
+@mixin auto_limit_size($suffix:""){
+    $vals: (10p 10%), (20p 20%), (30p 30%), (40p 40%), (50p 50%), (60p 60%), (70p 70%), (80p 80%), (90p 90%);
+    @each $val in $vals{
+        .rw-#{nth($val, 1)}#{$suffix} {
+            max-width: #{nth($val, 2)};
+        }
+        .lw-#{nth($val, 1)}#{$suffix} {
+            min-width: #{nth($val, 2)};
+        }
+    }
+    @for $i from 1 to 11{
+        .th-#{$i * 10}#{$suffix} {
+            max-height: #{$i * 10}rem;
+        }
+        .bh-#{$i * 10}#{$suffix} {
+            min-height: #{$i * 10}rem;
+        }
+    }
+}
+
 //生成内、外边距类
 @mixin set_space($side, $val:0, $dir:all){
     @if $dir == all{
@@ -174,6 +195,16 @@
     @each $dir in $dirs{
         .#{nth($dir, 1)}-auto#{$suffix} {
             #{nth($dir, 2)}: auto;
+        }
+    }
+}
+
+//生成多列布局容器类
+@mixin auto_gen_column_class($suffix:""){
+    @for $i from 1 to 6{
+        .column-#{$i}#{$suffix} {
+            column-gap: 0;
+            column-count: #{$i};
         }
     }
 }

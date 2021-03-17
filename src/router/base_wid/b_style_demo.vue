@@ -167,6 +167,16 @@
                     <td>任意合法值</td>
                 </tr>
                 <tr>
+                    <td><code>column-*</code></td>
+                    <td>多列布局容器</td>
+                    <td>任意合法值</td>
+                </tr>
+                <tr>
+                    <td><code>item</code></td>
+                    <td>多列布局元素</td>
+                    <td>-</td>
+                </tr>
+                <tr>
                     <td><code>pad-*</code></td>
                     <td>内边距</td>
                     <td>任意合法值，缺省单位 rem</td>
@@ -262,8 +272,33 @@
                     <td>任意合法值，缺省单位 rem</td>
                 </tr>
                 <tr>
+                    <td><code>lh-*</code></td>
+                    <td>设置行高</td>
+                    <td>任意合法值</td>
+                </tr>
+                <tr>
                     <td><code>w-*</code></td>
                     <td>设置宽度</td>
+                    <td>任意合法值，缺省单位 rem</td>
+                </tr>
+                <tr>
+                    <td><code>lw-*</code></td>
+                    <td>设置最小宽度</td>
+                    <td>任意合法值，缺省单位 rem</td>
+                </tr>
+                <tr>
+                    <td><code>rw-*</code></td>
+                    <td>设置最大宽度</td>
+                    <td>任意合法值，缺省单位 rem</td>
+                </tr>
+                <tr>
+                    <td><code>bh-*</code></td>
+                    <td>设置最小高度</td>
+                    <td>任意合法值，缺省单位 rem</td>
+                </tr>
+                <tr>
+                    <td><code>th-*</code></td>
+                    <td>设置最大高度</td>
                     <td>任意合法值，缺省单位 rem</td>
                 </tr>
                 <tr>

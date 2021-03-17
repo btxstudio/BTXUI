@@ -19,6 +19,9 @@
     //生成不同尺寸宽度及高度
     @include auto_size($suffix);
 
+    //生成不同尺寸宽度及高度上下限
+    @include auto_limit_size($suffix);
+
     //内、外边距
     @include auto_gen_space_class($suffix);
 
@@ -42,6 +45,9 @@
 
     //位移
     @include auto_gen_offset_class($suffix);
+
+    //多列布局容器
+    @include auto_gen_column_class($suffix);
 
 }
 

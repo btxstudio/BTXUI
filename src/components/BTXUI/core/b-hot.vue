@@ -58,6 +58,7 @@
         }" */,
         /* hover: "悬停样式值" */,
         /* forbid: "鼠标点击事件及链接禁用，默认 false，不禁用" */,
+        /* newFrame: "强制开启新窗口，默认 false" */,
     }`;
 
     export default {
@@ -77,12 +78,16 @@
                 type: Boolean,
                 required: false
             },
+            newFrame: {
+                type: Boolean,
+                required: false
+            },
         },
         data(){
             return {
 
                 //链接开启方式
-                target: null,
+                target: this.newFrame? "_blank": null,
 
                 //下载地址
                 download: null,

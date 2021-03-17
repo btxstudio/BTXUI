@@ -1,5 +1,5 @@
 <template>
-    <b-view styles="flex">
+    <b-view :styles="column? 'flex-column': 'flex'">
         <tag-wid v-for="item of tag_list" :key="item.id"
                     @on_click="$_click"
                     :id="item.id"
@@ -27,6 +27,7 @@
         ]",
         /* colors: "(参照：tag-wid 组件 colors 参数)" */,
         /* mode: "(参照：tag-wid 组件 mode 参数)" */,
+        /* column: "纵向排列，默认 false" */,
     }`;
 
     export default {
@@ -64,6 +65,10 @@
                 type: String,
                 required: false,
                 default: "radio"
+            },
+            column: {
+                type: Boolean,
+                required: false
             },
         },
         data(){

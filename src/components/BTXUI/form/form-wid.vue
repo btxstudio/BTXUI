@@ -4,11 +4,11 @@
             <b-view v-for="(item, index) of formData" :key="index"
                     styles="flex-4 mrg-b-1"
                     :states="{
-                column: {
-                    style: 'flex flex-column mrg-b-1.4',
-                    state: layout.title_wrap
-                }
-            }">
+                        column: {
+                            style: 'flex flex-column mrg-b-1.4',
+                            state: layout.title_wrap
+                        }
+                    }">
 
                 <!--标题区-->
                 <b-view styles="flex-4"
@@ -32,13 +32,7 @@
                 <!--输入型表单元素-->
                 <component v-if="item.input_data"
                            :is="item.input_data.type === 'textarea'? 'b-textarea': 'b-input'"
-                           :styles="`fsize-1.1 grow-1 round-sm pad-v-.5 pad-h-1 bg-color-${item_colors.normal.bg} color-${item_colors.normal.text}`"
-                           :states="{
-                               readonly: {
-                                   style: 'bg-color-none alpha-.8',
-                                   state: item.input_data.readonly
-                               }
-                           }"
+                           :styles="`fsize-1.1 round-sm pad-v-.5 pad-h-1 ${layout.title_wrap? '': 'grow-1'} alpha-${item.input_data.readonly? '.8': '1'} bg-color-${item.input_data.readonly? 'none': item_colors.normal.bg} color-${item_colors.normal.text}`"
                            ref="input"
                            v-bind="{...item.input_data, focus: `bg-color-${item_colors.focus.bg} color-${item_colors.focus.text}`}"
                            v-model="selected[item.input_data.name]"

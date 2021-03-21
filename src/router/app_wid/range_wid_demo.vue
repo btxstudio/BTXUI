@@ -6,9 +6,17 @@
         <section>
             <h5>基础使用</h5>
             <p>通过 <code>min</code> 及 <code>max</code> 属性可以设置滑块拖动区间的最大、最小值。</p>
-            <div class="resize">
+            <div class="resize rw-50p">
                 <range-wid v-bind="data_1.props" />
             </div>
+            <p>当前选择数据：
+                <!--
+                <template v-if="data_3.selected.length">
+                    <code v-for="data of data_3.selected">{{data}}</code>
+                </template>
+                <span v-else class="alpha-d4">暂无</span>
+                -->
+            </p>
             <hr>
             <p></p>
         </section>

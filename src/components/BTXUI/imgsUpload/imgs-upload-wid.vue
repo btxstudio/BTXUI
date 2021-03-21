@@ -108,7 +108,9 @@
 
             //预览图
             previews(){
-                return this.img_res? this.img_res: this.remote_files;
+                const img_res = this.img_res,
+                    remote_files = this.remote_files;
+                return img_res? img_res: (remote_files || []);
             },
 
             //单预览图

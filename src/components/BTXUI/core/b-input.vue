@@ -142,7 +142,7 @@
 
             //监听输出
             value(val){
-                this.$emit("on_input", val.trim());
+                this.$emit("on_input", val? val.trim(): "");
             }
 
         },

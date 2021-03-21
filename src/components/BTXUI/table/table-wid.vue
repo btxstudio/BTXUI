@@ -44,7 +44,9 @@
                 <tag-wid v-if="data.tag_data" :id="i" v-bind="data.tag_data" v-model="data.selected" @on_click="data.callback" />
 
                 <!--单元格图片-->
-                <b-img v-else-if="data.src" :img="data.src + '?tmp=' + Date.now()"
+                <b-img v-else-if="data.src"
+                       :img="data.src + '?tmp=' + Date.now()"
+                       :defaultSrc="data.default_src"
                        :styles="`round-sm w-${data.width || 'auto'} h-${data.height || 'auto'}`" />
 
                 <!--单元格文本-->
@@ -122,6 +124,7 @@
         tbody: "[
             [ "对应表头标题数据" | {
                 src: "图片地址",
+                default_src: "缺省图片地址",
                 width: "图片宽度，可缺省",
                 height: "图片高度，可缺省"
             } | {
@@ -231,33 +234,6 @@
 
             }
         },
-        watch: {
-
-            //监测表格数据
-            tbody(val){
-                this.$_check_data();
-                this.tbody_data = val.map(()=>{
-                    return false;
-                })
-            },
-
-            //监测单元行选择
-            tbody_data(val){
-                this.$emit("on_select", val.reduce((total, select, i)=>{
-                    select && total.push(i);
-                    return total;
-                }, []));
-            },
-
-            //监测全选
-            select_all_state(state){
-                let select = state? true: false;
-                this.tbody_data = this.tbody_data.map(()=>{
-                    return select;
-                })
-            }
-
-        },
         computed: {
 
             //表格显示单元行数
@@ -306,7 +282,34 @@
 
             //数据验证
             $_check_data(){
-                this.thead.length !== this.tbody[0].length && console.warn("thead & tbody have different length!");
+                if(this.tbody[0]) this.thead.length !== this.tbody[0].length && console.warn("thead & tbody have different length!");
+            }
+
+        },
+        watch: {
+
+            //监测表格数据
+            tbody(val){
+                this.$_check_data();
+                this.tbody_data = val.map(()=>{
+                    return false;
+                })
+            },
+
+            //监测单元行选择
+            tbody_data(val){
+                this.$emit("on_select", val.reduce((total, select, i)=>{
+                    select && total.push(i);
+                    return total;
+                }, []));
+            },
+
+            //监测全选
+            select_all_state(state){
+                let select = state? true: false;
+                this.tbody_data = this.tbody_data.map(()=>{
+                    return select;
+                })
             }
 
         },

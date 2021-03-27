@@ -6,7 +6,17 @@
 
 @import "./response/flex_mixin.scss";
 
-$medias: "", -m, -s;
-@each $media in $medias{
-  @include auto_gen_grid_class($media);
+//栅格系统
+
+//全局样式
+@include auto_gen_grid_class("");
+
+//平板端
+@media only screen and (max-width: 1367px){
+  @include auto_gen_grid_class(-m);
+}
+
+//移动端
+@media only screen and (max-width: 740px){
+  @include auto_gen_grid_class(-s);
 }

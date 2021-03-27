@@ -46,7 +46,7 @@
             <h5>其它表单元素及提交</h5>
             <p>通过 <code>submit</code> 属性可设置表单"提交"按钮和其对齐方式，以及点击操作所执行的回调函数，函数中自变量为表单选择数据。<b>btnColor</b> 字段可以设置按钮颜色风格。（可参考：<code>btn-wid</code> 组件入参）。通过 <code>reset</code> 属性可设置表单"恢复"按钮，初始化表单元素数据。</p>
             <p>通过 <code>select</code> 属性可设置下拉框表单元素；<code>input_data</code> 属性 <b>type="textarea"</b> 可设置多行文本输入表单元素；<code>imgs</code> 属性可设置图片上传。</p>
-            <p>通过 <code>colors</code> 属性可设置输入型表单元素及下拉列表的颜色风格，包括常规（normal）和激活（focus）两种状态。注：下拉列表无激活状态。</p>
+            <p>通过 <code>colors</code> 属性可设置输入型表单元素及下拉列表的颜色风格，包括常规（normal）和激活（focus）两种状态。注：下拉列表无激活状态。通过 <code>baseLine</code> 属性可设置基线模式，一旦使用 <code>colors</code> 属性的 <b>line</b> 字段仅影响下划线颜色。</p>
             <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
                 <form-wid v-bind="data_4.props" v-model="data_4.selected" />
             </div>
@@ -63,6 +63,24 @@
                 <form-wid :form-data="dataList_5.data" :layout="dataList_5.layout" :submit="dataList_5.submit" v-model="dataList_5.selected" />
             </div>
             <p>表单提交数据：<code class="mrg-r-d5" v-for="(val, key) of dataList_5.submit_data"><b>{{key}}</b>:{{val}}</code></p>
+            <hr>
+            <p></p>
+        </section>
+
+        <!--表单项只读-->
+        <section>
+            <h5>表单项只读</h5>
+            <p>通过 <b>input-wid</b> 组件的 <code>readonly</code> 属性可设置表单项只读，此外通过 API <code>set_only_read</code> 和 <code>set_write</code> 方法可以动态设置表单项只读或可写。</p>
+            <div class="resize bg-color-lgray pad-v-1 pad-h-2 round-sm">
+                <form-wid ref="form6" v-bind="data_6.props" v-model="data_6.selected" />
+            </div>
+            <div class="flex resize mrg-t-1">
+                <btn-wid btnText="设置账号只读" @on_click="$_set_form6_readonly" />
+                <div class="mrg-l-1">
+                    <btn-wid btnText="设置账号可写" @on_click="$_set_form6_write" />
+                </div>
+            </div>
+            <p>当前所选数据：<code class="mrg-r-d5" v-for="(val, key) of data_6.selected"><b>{{key}}</b>:{{val}}</code></p>
         </section>
 
     </article>
@@ -297,14 +315,16 @@
                             },
                             reset: true
                         },
+                        baseLine: true,
                         colors: {
                             normal: {
                                 text: "mgray",
-                                bg: "light"
+                                bg: "none",
+                                line: "neutral",
                             },
                             focus: {
                                 text: "blue",
-                                bg: "rgba(255,255,255,.5)"
+                                bg: "light",
                             }
                         }
                     },
@@ -449,6 +469,62 @@
                     submit_data: {}
                 },
 
+                data_6: {
+                    props: {
+                        formData: [
+                            {
+                                input_data: {
+                                    type: "text",
+                                    name: "uname",
+                                    placeholder: "请输入英文字母、下划线或数字",
+                                    rule: {
+                                        type: "uname",
+                                        notic: "账号输入内容不合法"
+                                    }
+                                },
+                                text: "账号",
+                            },
+                            {
+                                input_data: {
+                                    type: "text",
+                                    name: "zh_name",
+                                    placeholder: "请输入真实中文名",
+                                    rule: {
+                                        type: "zh"
+                                    }
+                                },
+                                text: "真实姓名",
+                            },
+                            {
+                                input_data: {
+                                    type: "text",
+                                    name: "uid",
+                                    placeholder: "请输入身份证号",
+                                    readonly: true,
+                                    rule: {
+                                        type: "uid"
+                                    }
+                                },
+                                text: "身份证号",
+                            }
+                        ],
+                        colors: {
+                            normal: {
+                                text: "dgray",
+                                bg: "light"
+                            },
+                            focus: {
+                                text: "blue",
+                                bg: "rgba(255,255,255,.5)"
+                            }
+                        },
+                        layout: {
+                            title_width: 10
+                        },
+                    },
+                    selected: {uid: "510122198708103372"},
+                },
+
             }
         },
         methods: {
@@ -459,6 +535,14 @@
                     pwd: "123456",
                     license: 745829
                 };
+            },
+
+            $_set_form6_readonly(){
+                this.$refs.form6.set_only_read("uname");
+            },
+
+            $_set_form6_write(){
+                this.$refs.form6.set_write("uname");
             }
             
         }

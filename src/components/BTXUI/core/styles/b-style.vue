@@ -138,7 +138,7 @@
 
             //初始化样式
             $_init_style(){
-                this.append_state(this.styles);
+                this.append_state(`${this.styles} ${this.dynamic}`);
             },
 
             //初始化样式状态

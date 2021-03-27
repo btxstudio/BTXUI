@@ -1,5 +1,5 @@
 <template>
-    <input :style="computed_style" :type="type" :name="name"
+    <input :style="computed_style" :type="type" :name="name" :readonly="readonly"
            @focus="$_focus"
            @blur="$_blur"
            @change="$_check"
@@ -53,7 +53,7 @@
         /* inpVal: "(model) 表单输入内容" */,
         /* maxlength: "字符数上限（限输入型表单元素）" */,
         /* placeholder: "输入提示（限输入型表单元素）" */,
-        /* readonly: "只读" */,
+        /* readonly: "只读，默认 false" */,
         /* rule: {
             type: "自定义正则验证，或预置正则验证（包括：required、tel、email、url、uname、zh、uid）",
             notic: "验证报错提示"
@@ -82,6 +82,10 @@
                 type: [String, Number],
                 required: false,
                 default: ""
+            },
+            readonly: {
+                type: Boolean,
+                required: false,
             },
             rule: {
                 type: Object,
@@ -171,12 +175,14 @@
 
             //表单聚焦
             $_focus(){
+                if(this.readonly) return;
                 this.toggle_style("focus");
                 this.$emit("on_focus");
             },
 
             //表单失焦
             $_blur(){
+                if(this.readonly) return;
                 this.reset_style();
                 this.$emit("on_blur");
             },

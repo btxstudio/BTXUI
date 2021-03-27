@@ -16,7 +16,15 @@
     let desc = ["该组件用于进行单选及复选操作。"],
         extend = [],
         dependent = ["tag-wid", "b-view"],
-        api = null,
+        api = {
+            event: [
+                {
+                    name: "on_click",
+                    ef: "点击触发",
+                    params: "selected"
+                }
+            ]
+        },
         init_data = `{
         value: "（v-model）当前标签 id 列表",
         tagList: "[
@@ -105,6 +113,7 @@
                 }else if(this.mode === "radio"){ //单选
                     this.$emit("on_select", [id]);
                 }
+                this.$emit("on_click", this.value);
             },
 
         }

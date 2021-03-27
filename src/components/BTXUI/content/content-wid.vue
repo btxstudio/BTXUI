@@ -81,14 +81,17 @@
                         normal: {
                             text: "dgray",
                             bg: "none",
+                            line: "none",
                         },
                         act: {
                             text: "blue",
                             bg: "none",
+                            line: "none",
                         },
                         hover: {
                             text: "blue",
                             bg: "none",
+                            line: "none",
                         }
                     }
                 }
@@ -158,7 +161,8 @@
                     if(children){
                         colors.act = {
                             text: colors.normal.text,
-                            bg: colors.normal.bg
+                            bg: colors.normal.bg,
+                            line: colors.normal.line
                         }
                         if(spread_fixed){ //强制展开
                             spread = true;
@@ -169,8 +173,7 @@
                     }
 
                     const tag_data = {
-                        id,
-                        text,
+                        ...data,
                         mode,
                         colors
                     }, index_data = {

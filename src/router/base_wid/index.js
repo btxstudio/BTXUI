@@ -10,6 +10,7 @@ import b_icon_demo from './b_icon_demo'
 import b_input_demo from './b_input_demo'
 import b_textarea_demo from './b_textarea_demo'
 import b_list_demo from './b_list_demo'
+import b_grid_demo from './b_grid_demo'
 
 export default [
     {
@@ -20,51 +21,56 @@ export default [
     {
         path: '/b_style_demo',
         component: b_style_demo,
-        text: "<b>b_style</b> 样式机制"
+        text: "<b>b-style</b> 样式机制"
+    },
+    {
+        path: '/b_grid_demo',
+        component: b_grid_demo,
+        text: "<b>b-grid</b> 样式机制"
     },
     {
         path: '/b_view_demo',
         component: b_view_demo,
-        text: "<b>b_view</b> 基础布局"
+        text: "<b>b-view</b> 基础布局"
     },
     {
         path: '/b_video_demo',
         component: b_video_demo,
-        text: "<b>b_video</b> 视频媒体"
+        text: "<b>b-video</b> 视频媒体"
     },
     {
         path: '/b_text_demo',
         component: b_text_demo,
-        text: "<b>b_text</b> 文字区域"
+        text: "<b>b-text</b> 文字区域"
     },
     {
         path: '/b_hot_demo',
         component: b_hot_demo,
-        text: "<b>b_hot</b> 热点区域"
+        text: "<b>b-hot</b> 热点区域"
     },
     {
         path: '/b_img_demo',
         component: b_img_demo,
-        text: "<b>b_img</b> 图像"
+        text: "<b>b-img</b> 图像"
     },
     {
         path: '/b_icon_demo',
         component: b_icon_demo,
-        text: "<b>b_icon</b> 图标"
+        text: "<b>b-icon</b> 图标"
     },
     {
         path: '/b_input_demo',
         component: b_input_demo,
-        text: "<b>b_input</b> 表单输入"
+        text: "<b>b-input</b> 表单输入"
     },
     {
         path: '/b_textarea_demo',
         component: b_textarea_demo,
-        text: "<b>b_textarea</b> 文字域输入"
+        text: "<b>b-textarea</b> 文字域输入"
     },
     {
         path: '/b_list_demo',
         component: b_list_demo,
-        text: "<b>b_list</b> 滚动列表"
+        text: "<b>b-list</b> 滚动列表"
     }
 ]

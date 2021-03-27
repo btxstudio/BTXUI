@@ -209,9 +209,21 @@
                                     },
                                     text: "地址",
                                 },
-                            ]
+                            ],
+                            colors: {
+                                normal: {
+                                    text: "mgray",
+                                    bg: "neutral",
+                                    line: "neutral",
+                                },
+                                focus: {
+                                    text: "sub",
+                                    bg: "dark",
+                                    line: "dark",
+                                }
+                            }
                         },
-                        pannelStyles: "w-40 pad-t-2 bg-color-dgray color-lgray round-md",
+                        pannelStyles: "w-40 pad-t-2 bg-color-dgray color-light round-md",
                         pannelData: {
                             pos: 8,
                             matteColor: "rgba(255,255,255,.8)",

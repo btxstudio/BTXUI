@@ -87,8 +87,8 @@
                         },
                         {
                             id: "D",
-                            icon: "baidu",
-                            title: "baidu",
+                            icon: "bili",
+                            title: "bili",
                         },
                         {
                             id: "E",

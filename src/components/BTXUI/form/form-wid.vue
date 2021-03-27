@@ -1,59 +1,61 @@
 <template>
     <b-view>
-        <b-view>
-            <b-view v-for="(item, index) of formData" :key="index"
-                    styles="flex-4 mrg-b-1"
-                    :states="{
+        <!--表单项-->
+        <b-view v-for="(item, index) of formData" :key="index"
+                styles="flex-4 mrg-b-1"
+                :states="{
                         column: {
                             style: 'flex flex-column mrg-b-1.4',
                             state: layout.title_wrap
                         }
                     }">
 
-                <!--标题区-->
-                <b-view styles="flex-4"
-                        :states="{
+            <!--标题区-->
+            <b-view styles="flex-4"
+                    :states="{
                         fixed_title_width: {
                             style: `w-${layout.title_width}`,
                             state: layout.title_width
                         },
                         column: {
-                            style: 'mrg-b-.4',
+                            style: 'mrg-b-.7',
                             state: layout.title_wrap
                         }
                     }">
-                    <b-icon v-if="item.icon" :icon="item.icon"
-                            styles="mrg-r-1 fsize-1.4"/>
-                    <b-text v-if="item.text"
-                            styles="mrg-r-1"
-                            v-html="item.text" />
-                </b-view>
+                <b-icon v-if="item.icon" :icon="item.icon"
+                        styles="mrg-r-1 fsize-1.4"/>
+                <b-text v-if="item.text"
+                        styles="mrg-r-1"
+                        v-html="item.text" />
+            </b-view>
 
-                <!--输入型表单元素-->
-                <component v-if="item.input_data"
-                           :is="item.input_data.type === 'textarea'? 'b-textarea': 'b-input'"
-                           :styles="`fsize-1.1 round-sm pad-v-.5 pad-h-1 ${layout.title_wrap? '': 'grow-1'} alpha-${item.input_data.readonly? '.8': '1'} bg-color-${item.input_data.readonly? 'none': item_colors.normal.bg} color-${item_colors.normal.text}`"
+            <!--输入型表单元素-->
+            <b-view v-if="item.input_data"
+                    :styles="`no-scroll round-sm ${layout.title_wrap? '': 'grow-1'}`">
+                <component :is="item.input_data.type === 'textarea'? 'b-textarea': 'b-input'"
+                           :styles="`fsize-1.1 pad-v-.5 pad-h-1 round-sm thick-1 ${baseLine? 'round-t line-b': 'line'}`"
+                           :dynamic="item.input_data.readonly? 'bg-color-none line-none': item_colors.normal"
                            ref="input"
-                           v-bind="{...item.input_data, focus: `bg-color-${item_colors.focus.bg} color-${item_colors.focus.text}`}"
+                           v-bind="{...item.input_data, focus: item_colors.focus}"
                            v-model="selected[item.input_data.name]"
                            @on_check="$_record_inp_check" />
-
-                <!--图片上传表单元素-->
-                <b-view v-if="item.imgs">
-                    <imgs-upload-wid v-bind="item.imgs.imgs_upload_data"
-                                     v-model="selected[item.imgs.name]"
-                                     ref="imgs_upload"
-                                     @on_change="$_append_file"/>
-                </b-view>
-
-                <!--下拉框表单元素-->
-                <b-view v-if="item.select"
-                        :styles="`grow-1 round-sm pad-v-.5 pad-h-1 bg-color-${item_colors.normal.bg} color-${item_colors.normal.text}`">
-                    <form-select-wid v-bind="item.select.select_data" v-model="selected[item.select.name]" />
-                </b-view>
-
             </b-view>
+
+            <!--图片上传表单元素-->
+            <imgs-upload-wid v-if="item.imgs"
+                             v-bind="item.imgs.imgs_upload_data"
+                             v-model="selected[item.imgs.name]"
+                             ref="imgs_upload"
+                             @on_change="$_append_file"/>
+
+            <!--下拉框表单元素-->
+            <b-view v-if="item.select"
+                    :styles="`grow-1 pad-v-.5 pad-h-1 round-sm thick-1 ${item_colors.normal} ${baseLine? 'round-t line-b': 'line'}`">
+                <form-select-wid v-bind="item.select.select_data" v-model="selected[item.select.name]" />
+            </b-view>
+
         </b-view>
+
         <b-view v-if="submit" :styles="`mrg-t-2.4 flex-${btn_align}`">
             <!--提交按钮-->
             <b-view styles="mrg-r-1">
@@ -82,7 +84,28 @@
     const desc = ["该组件用于表单构建及操作。"],
         extend = [],
         dependent = ["imgs-upload-wid", "form-select-wid", "btn-wid", "b-textarea", "b-input", "b-icon", "b-hot", "b-text", "b-view"],
-        api = null,
+        api = {
+            methods: [
+                {
+                    name: "reset",
+                    ef: "重置表单",
+                    params: "-",
+                    return: "-"
+                },
+                {
+                    name: "set_only_read",
+                    ef: "设置表单项只读",
+                    params: "name",
+                    return: "-"
+                },
+                {
+                    name: "set_write",
+                    ef: "设置表单项可写",
+                    params: "name",
+                    return: "-"
+                }
+            ]
+        },
         init_data = `{
         selected: "（model）{
             'name（所选表单元素键名）': 'value（所选表单元素键值）',...
@@ -117,13 +140,16 @@
         /* colors: {
             normal: {
                 text: "常规状态文字颜色",
-                bg: "常规状态背景颜色"
+                bg: "常规状态背景颜色",
+                line: "常规状态描边颜色",
             },
             focus: {
                 text: "激活状态文字颜色",
                 bg: "激活状态背景颜色"
+                line: "激活状态描边颜色",
             }
-        } */
+        } */,
+        /* baseLine: "基线模式，默认 false" */,
     }`;
 
     export default {
@@ -173,15 +199,11 @@
                         focus: {}
                     }
                 }
-            }
-        },
-        computed: {
-
-            //输入型表单项集合
-            inputs(){
-                return this.$refs.input;
-            }
-
+            },
+            baseLine: {
+                type: Boolean,
+                required: false
+            },
         },
         data(){
             return {
@@ -209,21 +231,34 @@
                 //formData
                 form_data: new FormData(),
 
-                //表单项颜色
-                item_colors: {
-                    normal: {
+            }
+        },
+        computed: {
+
+            //输入型表单项集合
+            inputs(){
+                return this.$refs.input;
+            },
+
+            //表单项颜色风格
+            item_colors(){
+                var {text, bg, line} = {
                         text: "dgray",
                         bg: "neutral",
+                        line: "none",
                         ...this.colors.normal
                     },
-                    focus: {
+                    normal = `color-${text} bg-color-${bg} line-${line}`,
+                    {text, bg, line} = {
                         text: "dgray",
                         bg: "rgba(134,134,134,.24);",
+                        line: "none",
                         ...this.colors.focus
-                    }
-                }
-
+                    },
+                    focus = `color-${text} bg-color-${bg} line-${line}`;
+                return { normal, focus }
             }
+
         },
         methods: {
 
@@ -234,6 +269,24 @@
                 imgs_upload && imgs_upload.forEach(wid=>{
                     wid.clear_preview();
                 })
+            },
+
+            //设置表单项只读
+            set_only_read(name){
+                this.$_set_readonly(name, true);
+            },
+
+            //设置表单项可写
+            set_write(name){
+                this.$_set_readonly(name, false);
+            },
+
+            //设置 readonly 属性
+            $_set_readonly(name, state){
+                this.$set(this.formData.find(item => {
+                    const {input_data} = item;
+                    return input_data && input_data.name === name;
+                }).input_data, "readonly", state);
             },
 
             //记录表单项验证结果

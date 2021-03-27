@@ -21,7 +21,7 @@
         </b-hot>
 
         <!--多图上传预览-->
-        <template v-if="!solo_cover">
+        <template v-if="previews.length > 1">
             <b-img v-for="(img,index) of previews" :key="index"
                    :styles="`mrg-l-1 w-${width} h-${height} ${round}`"
                    :img="img" />

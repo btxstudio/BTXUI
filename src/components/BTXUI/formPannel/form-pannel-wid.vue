@@ -20,7 +20,22 @@
     const desc = ["该组件用于自定义弹窗交互操作。"],
         extend = [],
         dependent = ["form-wid", "pannel-wid", "b-list", "b-view"],
-        api = null,
+        api = {
+            methods: [
+                {
+                    name: "set_only_read",
+                    ef: "设置表单项只读",
+                    params: "name",
+                    return: "-"
+                },
+                {
+                    name: "set_write",
+                    ef: "设置表单项可写",
+                    params: "name",
+                    return: "-"
+                }
+            ]
+        },
         init_data = `{
         pannelInfo: "（model）{
             visible: "面板显示状态",
@@ -91,6 +106,19 @@
             former(){
                 return this.$refs.former;
             }
+
+        },
+        methods: {
+
+            //设置表单项只读
+            set_only_read(name){
+                this.former.set_only_read(name);
+            },
+
+            //设置表单项可写
+            set_write(name){
+                this.former.set_write(name);
+            },
 
         },
         watch: {

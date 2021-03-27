@@ -21,7 +21,9 @@
         </b-view>
 
         <!--表身-->
-        <component v-for="(tr, i) of tbody.slice(0, show_rows)" :key="i" :is="hover_tr_color? 'b-hot': 'b-view'"
+        <component v-for="(tr, i) of tbody.slice(0, show_rows)"
+                   :key="i"
+                   :is="hover_tr_color? 'b-hot': 'b-view'"
                    :styles="`flex line-t thick-1 line-${colors.line} bg-color-${i%2? colors.row.even: colors.row.odd}`"
                    :hover="hover_tr_color? 'bg-color-' + hover_tr_color: ''"
                    @on_click="$_click(i)">
@@ -37,7 +39,8 @@
                 <checkbox-wid :id="i" v-model="tbody_data[i]" />
             </b-view>
 
-            <b-view v-for="(data, k) of tr" :key="k"
+            <b-view v-for="(data, k) of tr"
+                    :key="k"
                     :styles="`flex-4 pad-h-.7 pad-v-.4 thick-1 ${k>0? 'line-l': ''} line-${colors.line} ${k==0? 'bg-color-' + colors.row.head: ''} ${$_set_td_width(thead[k])}`" >
 
                 <!--单元格标签按钮-->
@@ -45,7 +48,8 @@
 
                 <!--单元格图片-->
                 <b-img v-else-if="data.src"
-                       :img="data.src + '?tmp=' + Date.now()"
+                       :key="`${i}-${k}-${Math.random() * 1000}`"
+                       :img="data.src"
                        :defaultSrc="data.default_src"
                        :styles="`round-sm w-${data.width || 'auto'} h-${data.height || 'auto'}`" />
 

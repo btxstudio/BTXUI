@@ -28,7 +28,7 @@
         },
         init_data = `{
         "(继承自：b-input 组件入参，type 入参无效)",
-        /* rows: "显示最大行数，默认 5 行" */
+        /* rows: "显示最大行数，默认 7 行" */
     }`;
 
     export default {
@@ -43,7 +43,7 @@
             rows: {
                 type: Number,
                 required: false,
-                default: 5
+                default: 7
             }
         },
         methods: {

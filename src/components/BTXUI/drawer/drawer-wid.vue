@@ -12,7 +12,8 @@
 
         <!--内容-->
         <b-view styles="rel no-scroll trans-fast t-f2px alpha-0" ref="cont"
-                :dynamic="`h-${cont_height}`"
+                @on_transitionend="$_set_state"
+                :dynamic="`h-${cont_height} ${cont_show}`"
                 :states="{
                     spread: {
                         style: 'alpha-1',
@@ -108,7 +109,10 @@
                 tag_spread: this.spread,
 
                 //内容区高度
-                cont_height: ""
+                cont_height: "",
+
+                //内容显示状态
+                cont_show: ""
 
             }
         },
@@ -124,9 +128,12 @@
 
             //监听抽屉展开状态
             tag_spread(val){
-                this.cont_height = val? `${this.cont.$el.scrollHeight}px`: 0;
-                this.$emit("on_toggle", val);
-            }
+                if(val) this.cont_show = "show";
+                this.$nextTick(()=>{
+                    this.cont_height = val? `${this.cont.$el.scrollHeight + 1}px`: 0;
+                    this.$emit("on_toggle", val);
+                })
+            },
 
         },
         methods: {
@@ -135,12 +142,19 @@
             comp_height(){
                 if(this.tag_spread){
                     this.cont_height = "auto";
+                    this.cont_show = "show";
                     setTimeout(()=>{
-                        this.cont_height = `${this.cont.$el.scrollHeight}px`;
+                        this.cont_height = `${this.cont.$el.scrollHeight + 1}px`;
                     }, 500)
                 }else{
                     this.cont_height = 0;
+                    this.cont_show = "hide";
                 }
+            },
+
+            //设置显示状态
+            $_set_state(e){
+                if(e.propertyName === "height" && this.cont_height === 0) this.cont_show = "hide";
             }
 
         },

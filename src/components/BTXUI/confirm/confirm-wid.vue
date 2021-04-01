@@ -219,7 +219,9 @@
 
             //加载弹窗
             prograss(text, result=false) {
-                if (result) { //关闭弹窗
+                if(result === true){ //直接关闭
+                    this.toast("", 0);
+                } else if(typeof(result) === "string") { //状态关闭
                     this.toast(text, 2000, result);
                 } else { //开启弹窗
                     this.$_show();

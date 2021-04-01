@@ -2,11 +2,14 @@
     <div :style="computed_style"
          @mouseenter="$emit('on_enter', $event)"
          @mouseleave="$emit('on_leave', $event)"
+         @mousedown="$emit('on_down', $event)"
+         @mouseup="$emit('on_up', $event)"
          @mousemove="$emit('on_move', $event)"
          @touchstart="$emit('on_touchstart', $event)"
          @touchmove="$emit('on_touchmove', $event)"
          @touchend="$emit('on_touchend', $event)"
-         @transitionend="$emit('on_transitionend', $event)">
+         @transitionend="$emit('on_transitionend', $event)"
+         @animationend="$emit('on_animationend', $event)">
         <slot/>
     </div>
 </template>
@@ -27,6 +30,16 @@
                 {
                     name: "on_leave",
                     ef: "鼠标移出",
+                    params: "event"
+                },
+                {
+                    name: "on_down",
+                    ef: "鼠标按下",
+                    params: "event"
+                },
+                {
+                    name: "on_up",
+                    ef: "鼠标抬起",
                     params: "event"
                 },
                 {

@@ -141,14 +141,14 @@
                 e.stopPropagation();
                 !this.forbid && this.$emit("on_click", e);
                 this.chapter_link && this.chapter_link.go_chapter(this.link.chapter_id); //内部链接
-                this.link && this.reset_style();
+                this.target && this.reset_style();
             },
 
             //执行双击
             $_dblclick(e){
                 e.stopPropagation();
                 !this.forbid && this.$emit("on_dblclick", e);
-                this.link && this.reset_style();
+                this.target && this.reset_style();
             },
 
             //鼠标移入

@@ -2,6 +2,7 @@
     <article>
         <header-info v-bind="header_info" />
 
+        <!--toast 弹窗-->
         <section>
             <h5>toast 弹窗</h5>
             <p>使用 toast 方法开启提示弹窗，参数 <code>duration</code> 可设置弹窗持续显示时间；<code>state</code> 可设置弹窗状态图标，其中：success 成功、fail 失败、notic 提示，为动态图标。</p>
@@ -21,6 +22,7 @@
             <p></p>
         </section>
 
+        <!--alert 弹窗-->
         <section>
             <h5>alert 弹窗</h5>
             <p>使用 alert 方法开启警示弹窗，参数 <code>btn_cname</code> 可设置按钮文字，且支持键盘"回车"触发按钮。</p>
@@ -31,6 +33,7 @@
             <p></p>
         </section>
 
+        <!--confirm 弹窗-->
         <section>
             <h5>confirm 弹窗</h5>
             <p>使用 confirm 方法开启确认弹窗，参数 <code>success</code> 可设置确认回调（支持键盘"回车"触发）；<code>error</code> 可设置取消回调。</p>
@@ -42,9 +45,10 @@
             <p></p>
         </section>
 
+        <!--prograss 弹窗-->
         <section>
             <h5>prograss 弹窗</h5>
-            <p>使用 prograss 方法开启加载弹窗，参数 <code>result</code> 可设置加载结束弹窗状态图标（success 成功、fail 失败）。</p>
+            <p>使用 prograss 方法开启加载弹窗，参数 <code>result</code> 可设置加载结束弹窗状态图标（success 成功、fail 失败），若为 true 则会执行关闭。</p>
             <div class="resize flex">
                 <div class="mrg-r-1">
                     <btn-wid @on_click="$_show_pannel4_success" btnText="prograss 弹窗 3 秒加载成功" />
@@ -56,6 +60,7 @@
             <p></p>
         </section>
 
+        <!--prograss 弹窗显示实时加载进度-->
         <section>
             <h5>prograss 弹窗显示实时加载进度</h5>
             <p>可多次执行 prograss 方法修改其中 text 信息以显示实时加载进度。</p>

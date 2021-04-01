@@ -1,9 +1,9 @@
 <template>
     <b-view :styles="`flex-${align_style}`">
-        <b-hot :styles="`round w-4 h-4 flex-5 fsize-1.4 mrg-r-1.4 color-neutral shadow-sm bg-color-${colors.bg}`"
+        <b-hot :styles="`round w-4 h-4 flex-5 fsize-1.4 mrg-r-1.4 bg-color-${colors.bg} color-${colors.text}`"
                :hover="`bg-color-${colors.hover}`"
                @on_click="prev">
-            <b-icon :styles="`color-${colors.text}`" icon="arrow-left" />
+            <b-icon icon="arrow-left" />
         </b-hot>
 
         <!--页码-->
@@ -23,10 +23,10 @@
         </b-hot>
         <b-text styles="alpha-.5" v-show="pages[pages.length - 1] < total">...</b-text>
 
-        <b-hot :styles="`round w-4 h-4 flex-5 fsize-1.4 mrg-l-1.4 color-neutral shadow-sm bg-color-${colors.bg}`"
+        <b-hot :styles="`round w-4 h-4 flex-5 fsize-1.4 mrg-l-1.4 bg-color-${colors.bg} color-${colors.text}`"
                :hover="`bg-color-${colors.hover}`"
                @on_click="next">
-            <b-icon :styles="`color-${colors.text}`" icon="arrow-right" />
+            <b-icon icon="arrow-right" />
         </b-hot>
     </b-view>
 </template>

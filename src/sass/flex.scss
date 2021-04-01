@@ -12,6 +12,7 @@
 .grid {
     @extend .flex; 
     flex-wrap: wrap;
+    align-content: flex-start;
 }
 
 @for $i from 1 to 10 {

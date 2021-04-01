@@ -11,6 +11,7 @@ import b_input_demo from './b_input_demo'
 import b_textarea_demo from './b_textarea_demo'
 import b_list_demo from './b_list_demo'
 import b_grid_demo from './b_grid_demo'
+import b_drag_demo from './b_drag_demo'
 
 export default [
     {
@@ -72,5 +73,10 @@ export default [
         path: '/b_list_demo',
         component: b_list_demo,
         text: "<b>b-list</b> 滚动列表"
+    },
+    {
+        path: '/b_drag_demo',
+        component: b_drag_demo,
+        text: "<b>b-drag</b> 拖拽元素"
     }
 ]

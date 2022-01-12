@@ -129,10 +129,24 @@
             }
 
         },
-        watch: {
-
-        },
         methods: {
+
+            //清空所选数据
+            clear_selected(){
+                const reset_ids = [];
+                if(this.mode === "radio") { //单选模式
+                    this.selected_data && reset_ids.push(this.selected_data);
+                    this.selected_data = "";
+                }else { //多选模式
+                    this.selected_datas.forEach(id => {
+                        reset_ids.push(id);
+                    })
+                    this.selected_datas = [];
+                }
+                reset_ids.forEach(id => {
+                    this.index_data[id].selected = false;
+                })
+            },
 
             //初始化数据
             $_init_data(){

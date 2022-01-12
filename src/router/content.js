@@ -13,14 +13,27 @@ const set_content = (data)=>{
 
 export default [
     {
+        id: "/download",
+        text: "<b>下载及安装</b>"
+    },
+    {
+        id: "/start",
+        text: "<b>起步</b>"
+    },
+    {
         id: "a",
-        text: "<b>起步</b>",
-        spread: false
+        text: "<b>全局样式</b>",
+        children: set_content(global_style)
     },
     {
         id: "b",
-        text: "<b>全局样式</b>",
-        children: set_content(global_style)
+        text: "<b>主题组件</b>",
+        children: [
+            {
+                id: "/level_widget",
+                text: "Level 主题 UI 库"
+            }
+        ]
     },
     {
         id: "c",

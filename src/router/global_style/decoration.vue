@@ -76,47 +76,47 @@
             <p>通过 <code>.bg-pos-*</code> 样式类，值域为：1 — 9。可以对背景图进行九宫格式对齐定位。</p>
             <p>【示例】：</p>
             <div class="grid fsize-d9 pcenter">
-                <div class="col-4 pad-1">
+                <div class="col-4 pad-d5">
                     <div class="bg-pos-1 h-5 round-sm bg-color-lgray mrg-b-d5"
                          :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
                     <div><code>.bg-pos-1</code></div>
                 </div>
-                <div class="col-4 pad-1">
+                <div class="col-4 pad-d5">
                     <div class="bg-pos-2 h-5 round-sm bg-color-lgray mrg-b-d5"
                          :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
                     <div><code>.bg-pos-2</code></div>
                 </div>
-                <div class="col-4 pad-1">
+                <div class="col-4 pad-d5">
                     <div class="bg-pos-3 h-5 round-sm bg-color-lgray mrg-b-d5"
                          :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
                     <div><code>.bg-pos-3</code></div>
                 </div>
-                <div class="col-4 pad-1">
+                <div class="col-4 pad-d5">
                     <div class="bg-pos-4 h-5 round-sm bg-color-lgray mrg-b-d5"
                          :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
                     <div><code>.bg-pos-4</code></div>
                 </div>
-                <div class="col-4 pad-1">
+                <div class="col-4 pad-d5">
                     <div class="bg-pos-5 h-5 round-sm bg-color-lgray mrg-b-d5"
                          :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
                     <div><code>.bg-pos-5</code></div>
                 </div>
-                <div class="col-4 pad-1">
+                <div class="col-4 pad-d5">
                     <div class="bg-pos-6 h-5 round-sm bg-color-lgray mrg-b-d5"
                          :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
                     <div><code>.bg-pos-6</code></div>
                 </div>
-                <div class="col-4 pad-1">
+                <div class="col-4 pad-d5">
                     <div class="bg-pos-7 h-5 round-sm bg-color-lgray mrg-b-d5"
                          :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
                     <div><code>.bg-pos-7</code></div>
                 </div>
-                <div class="col-4 pad-1">
+                <div class="col-4 pad-d5">
                     <div class="bg-pos-8 h-5 round-sm bg-color-lgray mrg-b-d5"
                          :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
                     <div><code>.bg-pos-8</code></div>
                 </div>
-                <div class="col-4 pad-1">
+                <div class="col-4 pad-d5">
                     <div class="bg-pos-9 h-5 round-sm bg-color-lgray mrg-b-d5"
                          :style="`background-image: url(${require('@/assets/img/f.png')})`"></div>
                     <div><code>.bg-pos-9</code></div>
@@ -128,72 +128,74 @@
         <!--圆角-->
         <section>
             <h5>圆角</h5>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>样式类</th>
-                    <th>效果</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <code>.round</code>
-                    </td>
-                    <td>50% 圆角，可用于制作正圆形或椭圆形</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>.round-lg</code>
-                    </td>
-                    <td>24px 大圆角</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>.round-md</code>
-                    </td>
-                    <td>10px 中等圆角</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>.round-sm</code>
-                    </td>
-                    <td>4px 小型圆角</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>.round-t</code>
-                    </td>
-                    <td>上侧圆角</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>.round-b</code>
-                    </td>
-                    <td>下侧圆角</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>.round-l</code>
-                    </td>
-                    <td>左侧圆角</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>.round-r</code>
-                    </td>
-                    <td>右侧圆角</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="auto-h-scroll">
+                <table class="table" response>
+                    <thead>
+                    <tr>
+                        <th>样式类</th>
+                        <th>效果</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <code>.round</code>
+                        </td>
+                        <td>50% 圆角，可用于制作正圆形或椭圆形</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>.round-lg</code>
+                        </td>
+                        <td>24px 大圆角</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>.round-md</code>
+                        </td>
+                        <td>10px 中等圆角</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>.round-sm</code>
+                        </td>
+                        <td>4px 小型圆角</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>.round-t</code>
+                        </td>
+                        <td>上侧圆角</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>.round-b</code>
+                        </td>
+                        <td>下侧圆角</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>.round-l</code>
+                        </td>
+                        <td>左侧圆角</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>.round-r</code>
+                        </td>
+                        <td>右侧圆角</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
             <p>使用圆角样式可用于头像之类的图像制作。</p>
             <p>【示例】：</p>
-            <div class="flex-between pcenter">
-                <div><img class="w-9" src="@/assets/img/head.jpg"/><br>方形头像</div>
-                <div><img class="round-sm w-9" src="@/assets/img/head.jpg"/><br>小圆角头像</div>
-                <div><img class="round-md w-9" src="@/assets/img/head.jpg"/><br>中等圆角头像</div>
-                <div><img class="round-lg w-9" src="@/assets/img/head.jpg"/><br>大圆角头像</div>
-                <div><img class="round w-9" src="@/assets/img/head.jpg"/><br>正圆头像</div>
+            <div class="grid pcenter fsize-d8">
+                <div class="col-2d4 pad-d5 col-4-s"><img class="w-9 w-7-s" src="@/assets/img/head.jpg"/><br>方形头像</div>
+                <div class="col-2d4 pad-d5 col-4-s"><img class="round-sm w-9 w-7-s" src="@/assets/img/head.jpg"/><br>小圆角头像</div>
+                <div class="col-2d4 pad-d5 col-4-s"><img class="round-md w-9 w-7-s" src="@/assets/img/head.jpg"/><br>中等圆角头像</div>
+                <div class="col-2d4 pad-d5 col-4-s"><img class="round-lg w-9 w-7-s" src="@/assets/img/head.jpg"/><br>大圆角头像</div>
+                <div class="col-2d4 pad-d5 col-4-s"><img class="round w-9 w-7-s" src="@/assets/img/head.jpg"/><br>正圆头像</div>
             </div>
             <p></p>
         </section>
@@ -275,7 +277,7 @@
             <p>设置描边效果（描边色需为半透明色）时，可通过 <code>.line-outside</code> 样式类设置其 "应用范围" 为外侧。</p>
             <p>【示例】：</p>
             <div class="flex">
-                <div class="mrg-r-9">
+                <div class="mrg-r-9 mrg-r-5-s">
                     <div class="rel">
                         <img class="round-md flex w-9" src="@/assets/img/head2.jpg"/>
                         <div class="abs max flex-5 t-0">
@@ -301,10 +303,10 @@
         <section>
             <h5>文字描边</h5>
             <p>使用 <code>.text-line</code> 样式类可以设置文字的描边效果，描边颜色为中性半透明灰色。</p>
-            <div class="flex">
-                <div class="w-20 h-4 flex-5 bg-color-mgray round-sm text-line fsize-1d2">Hello World
+            <div class="flex container-sm">
+                <div class="grow-1 h-4 flex-5 bg-color-mgray round-sm text-line fsize-1d2">Hello World
                 </div>
-                <div class="w-20 h-4 flex-5 line thick-1 color-lgray round-sm text-line fsize-1d2 mrg-l-2">
+                <div class="grow-1 h-4 flex-5 line thick-1 color-lgray round-sm text-line fsize-1d2 mrg-l-2">
                     <span class="color-dgray">Hello World</span>
                 </div>
             </div>
@@ -316,7 +318,15 @@
             <h5>阴影</h5>
             <p>框架预置了几种常用的盒子阴影样式，阴影的颜色可以通过颜色类进行设置。</p>
             <div class="grid pcenter">
-                <div class="col-3 pad-r-2">
+                <div class="col-2d4 pad-d5 col-6-s">
+                    <div class="line thick-1 color-lgray max-w h-6 round-sm shadow-no color-dgray flex-5">
+                        <div>
+                            <div><code>.shadow-no</code></div>
+                            <div class="fsize-d8 color-dgray">无阴影</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2d4 pad-d5 col-6-s">
                     <div class="line thick-1 color-lgray max-w h-6 round-sm shadow color-dgray flex-5">
                         <div>
                             <div><code>.shadow</code></div>
@@ -324,7 +334,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3 pad-r-2">
+                <div class="col-2d4 pad-d5 col-6-s">
                     <div class="line thick-1 color-lgray max-w h-6 round-sm shadow-sm color-dgray flex-5">
                         <div>
                             <div><code>.shadow-sm</code></div>
@@ -332,7 +342,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3 pad-r-2">
+                <div class="col-2d4 pad-d5 col-6-s">
                     <div class="line thick-1 color-lgray max-w h-6 round-sm shadow-lg color-dgray flex-5">
                         <div>
                             <div><code>.shadow-lg</code></div>
@@ -340,9 +350,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3 pad-r-2">
+                <div class="col-2d4 pad-d5 col-12-s">
                     <div class="line thick-1 color-lgray max-w h-6 round-sm bg-color-mgray flex-5">
-                        <div class="shadow-relief round-sm bg-color-dgray pad-h-2">
+                        <div class="shadow-relief round-sm bg-color-dgray pad-h-1">
                             <div><code>.shadow-relief</code></div>
                             <div class="fsize-d8 color-mgray">浮雕阴影效果</div>
                         </div>
@@ -357,14 +367,14 @@
             <h5>分割线</h5>
             <p>BTX·UI 重置了 <code>&lt;hr&gt;</code> 分割线样式，同时适用于深、浅背景。</p>
             <p>【示例】：</p>
-            <div class="grid pcenter">
-                <div class="col-6 pad-r-2">
+            <div class="flex pcenter container-sm">
+                <div class="grow-1 mrg-r-2">
                     <div class="bg-color-dgray pad-d5 round-sm">
                         <hr/>
                     </div>
                     <div class="pad-t-d5">深色背景效果</div>
                 </div>
-                <div class="col-6 pad-r-2">
+                <div class="grow-1">
                     <div class="line-lgray line thick-1 pad-d5 round-sm">
                         <hr/>
                     </div>
@@ -501,26 +511,28 @@
                 </tr>
                 </tbody>
             </table>
-            <p>【示例】模糊效果：</p>
-            <div class="flex pcenter">
-                <div><img class="round-md w-9 blur-no" src="@/assets/img/head.jpg"/><br>无模糊</div>
-                <div class="mrg-h-9"><img class="round-md w-9 blur-sm" src="@/assets/img/head.jpg"/><br>轻度模糊</div>
-                <div ><img class="round-md w-9 blur-md" src="@/assets/img/head.jpg"/><br>中度模糊</div>
-                <div class="mrg-l-9"><img class="round-md w-9 blur-lg" src="@/assets/img/head.jpg"/><br>重度模糊</div>
-            </div>
-            <p>【示例】明度效果：</p>
-            <div class="flex pcenter">
-                <div><img class="round-md w-9 dark-no" src="@/assets/img/head.jpg"/><br>原始明度</div>
-                <div class="mrg-h-9"><img class="round-md w-9 dark-sm" src="@/assets/img/head.jpg"/><br>轻度低明度</div>
-                <div><img class="round-md w-9 dark-md" src="@/assets/img/head.jpg"/><br>中度低明度</div>
-                <div class="mrg-l-9"><img class="round-md w-9 dark-lg" src="@/assets/img/head.jpg"/><br>重度低明度</div>
-            </div>
-            <p>【示例】纯度效果：</p>
-            <div class="flex pcenter">
-                <div><img class="round-md w-9 gray-no" src="@/assets/img/head.jpg"/><br>原始纯度</div>
-                <div class="mrg-h-9"><img class="round-md w-9 gray-sm" src="@/assets/img/head.jpg"/><br>轻度低纯度</div>
-                <div><img class="round-md w-9 gray-md" src="@/assets/img/head.jpg"/><br>中度低纯度</div>
-                <div class="mrg-l-9"><img class="round-md w-9 gray-lg" src="@/assets/img/head.jpg"/><br>重度低纯度</div>
+            <div class="fsize-d9">
+                <p>【示例】模糊效果：</p>
+                <div class="flex-around pcenter">
+                    <div><img class="round-md w-9 blur-no w-4-s" src="@/assets/img/head.jpg"/><br>无模糊</div>
+                    <div><img class="round-md w-9 blur-sm w-4-s" src="@/assets/img/head.jpg"/><br>轻度模糊</div>
+                    <div><img class="round-md w-9 blur-md w-4-s" src="@/assets/img/head.jpg"/><br>中度模糊</div>
+                    <div><img class="round-md w-9 blur-lg w-4-s" src="@/assets/img/head.jpg"/><br>重度模糊</div>
+                </div>
+                <p>【示例】明度效果：</p>
+                <div class="flex-around pcenter">
+                    <div><img class="round-md w-9 dark-no w-4-s" src="@/assets/img/head.jpg"/><br>原始明度</div>
+                    <div><img class="round-md w-9 dark-sm w-4-s" src="@/assets/img/head.jpg"/><br>轻度低明度</div>
+                    <div><img class="round-md w-9 dark-md w-4-s" src="@/assets/img/head.jpg"/><br>中度低明度</div>
+                    <div><img class="round-md w-9 dark-lg w-4-s" src="@/assets/img/head.jpg"/><br>重度低明度</div>
+                </div>
+                <p>【示例】纯度效果：</p>
+                <div class="flex-around pcenter">
+                    <div><img class="round-md w-9 gray-no w-4-s" src="@/assets/img/head.jpg"/><br>原始纯度</div>
+                    <div><img class="round-md w-9 gray-sm w-4-s" src="@/assets/img/head.jpg"/><br>轻度低纯度</div>
+                    <div><img class="round-md w-9 gray-md w-4-s" src="@/assets/img/head.jpg"/><br>中度低纯度</div>
+                    <div><img class="round-md w-9 gray-lg w-4-s" src="@/assets/img/head.jpg"/><br>重度低纯度</div>
+                </div>
             </div>
         </section>
 

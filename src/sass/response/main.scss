@@ -13,6 +13,9 @@
     //字符间距
     @include auto_gen_letter_space_class($suffix);
 
+    //定位
+    @include auto_gen_position_class($suffix);
+
     //强制隐藏与显示
     @include auto_gen_display_class($suffix);
 
@@ -24,6 +27,9 @@
 
     //内、外边距
     @include auto_gen_space_class($suffix);
+
+    //生长方向类
+    @include auto_gen_flex_dir_class($suffix);
 
     //九宫格对齐定位
     @include auto_gen_flex_align_class($suffix);

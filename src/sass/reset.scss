@@ -4,7 +4,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    letter-spacing: 1px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); //高亮颜色透明
     -webkit-overflow-scrolling: touch;
     background-repeat: no-repeat;
@@ -14,6 +13,12 @@
 html {
     font-size: 12px;
     height: 100%;
+    letter-spacing: 1px;
+}
+@media only screen and (max-width: 740px){
+    html {
+        letter-spacing: 0px;
+    }
 }
 
 body {

@@ -1,34 +1,29 @@
-.flex{
+%flex{
     display: flex;
     justify-content: flex-start;
     align-items: stretch;
 }
 
-.flex-column{
-    @extend .flex; 
-    flex-direction: column;
-}
-
 .grid {
-    @extend .flex; 
+    @extend %flex;
     flex-wrap: wrap;
     align-content: flex-start;
 }
 
 @for $i from 1 to 10 {
     .flex-#{$i}, .flex-#{$i}-{
-        @extend .flex;
+        @extend %flex;
     }
 }
 
-.flex-between{                           //主轴均分排列，两端对齐
-    @extend .flex;
+.flex-between{ //主轴均分排列，两端对齐
+    @extend %flex;
     justify-content: space-between !important;
     align-items: center;
 }
 
-.flex-around{                            //主轴均分排列
-    @extend .flex;
+.flex-around{ //主轴均分排列
+    @extend %flex;
     justify-content: space-around !important;
     align-items: center;
 }

@@ -32,8 +32,7 @@ h6 {
 
 article {
     font-size: 1.2rem;
-    line-height: 2;
-    word-break: break-all;
+    line-height: 1.7;
 
     //编辑模式
     &[contenteditable]{
@@ -49,15 +48,6 @@ article {
     }
 }
 
-code {
-    background-color: #f9f2f4;
-    color: #c7254e;
-    font-family: Consolas !important;
-    padding: 2px 6px;
-    margin: 0 2px;
-    border-radius: 4px;
-}
-
 i {
     display: inline-block;
 }
@@ -66,8 +56,22 @@ abbr {
     text-decoration: none;
 }
 
+code {
+    background-color: #f9f2f4;
+    color: #c7254e;
+    font-family: Consolas !important;
+    padding: 2px 6px;
+    margin: 0 2px;
+    border-radius: 4px;
+    word-break: break-all;
+}
+
 .bold {
     font-weight: bold;              //文字加粗
+}
+
+.no-wrap {                          //文本禁止换行
+    white-space: nowrap;
 }
 
 .ellipsis {                         //文本省略

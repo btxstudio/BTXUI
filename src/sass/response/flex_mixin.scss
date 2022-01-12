@@ -1,3 +1,18 @@
+//生长方向类
+@mixin auto_gen_flex_dir_class($suffix:"") {
+    .flex#{$suffix}{
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+    .flex-column#{$suffix}{
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
 //生成九宫格对齐定位类
 @mixin auto_gen_flex_align_class($suffix:"") {
     .flex-1#{$suffix} {

@@ -68,12 +68,14 @@
 
             //图像源加载
             $_load(){
-                const img = new Image();
-                img.onload = ()=>{
-                    this.src = this.img;
-                    this.$emit("on_load");
+                if(this.img && (this.img.match(/\.(jpg|png|gif|jpeg)/) || this.img.search("data:image/png;base64") === 0)){
+                    const img = new Image();
+                    img.onload = ()=>{
+                        this.src = this.img;
+                        this.$emit("on_load");
+                    }
+                    img.src = this.img;
                 }
-                img.src = this.img;
             }
 
         },

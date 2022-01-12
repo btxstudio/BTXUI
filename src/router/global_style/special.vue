@@ -19,7 +19,11 @@
           </tr>
           <tr>
               <td><code>.touch-none</code></td>
-              <td>默认触控禁止</td>
+              <td>元素触控禁止</td>
+          </tr>
+          <tr>
+              <td><code>.select-none</code></td>
+              <td>元素长按选中禁止</td>
           </tr>
           </tbody>
       </table>

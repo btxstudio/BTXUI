@@ -5,7 +5,7 @@
         <!--文本相关样式-->
         <section>
             <p>文本相关样式：</p>
-            <table class="table">
+            <table response class="table">
                 <thead>
                 <tr>
                     <th>样式值</th>
@@ -57,6 +57,11 @@
                 <tr>
                     <td><code>ellipsis</code></td>
                     <td>单行文本溢出省略</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>no-wrap</code></td>
+                    <td>文本禁止换行</td>
                     <td>-</td>
                 </tr>
                 </tbody>
@@ -259,11 +264,6 @@
                 <tr>
                     <td><code>max</code></td>
                     <td>宽高布满父容器</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td><code>max-screen</code></td>
-                    <td>全屏且溢出隐藏</td>
                     <td>-</td>
                 </tr>
                 <tr>
@@ -681,6 +681,13 @@
                 </tr>
                 <tr>
                     <td>
+                        <code>shadow-no</code>
+                    </td>
+                    <td>无阴影</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
                         <code>shadow-sm</code>
                     </td>
                     <td>小尺寸阴影</td>
@@ -882,7 +889,12 @@
                 </tr>
                 <tr>
                     <td><code>touch-none</code></td>
-                    <td>默认触控禁止</td>
+                    <td>元素触控禁止</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>select-none</code></td>
+                    <td>元素长按选中禁止</td>
                     <td>-</td>
                 </tr>
                 </tbody>

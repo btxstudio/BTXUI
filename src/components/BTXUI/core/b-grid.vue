@@ -1,7 +1,7 @@
 <template>
     <b-view :styles="`${styles} rel`">
         <!--容器描边-->
-        <b-view styles="abs max bg-none z1"
+        <b-view styles="abs max bg-none z1 t-0 l-0"
                 :states="{
                     line: {
                         style: `line line-${outlineColor} thick-${line[1] + 1}`,

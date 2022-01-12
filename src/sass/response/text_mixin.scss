@@ -58,10 +58,8 @@
 //生成字符间距类
 @mixin auto_gen_letter_space_class($suffix:"") {
     @for $i from 0 to 6 {
-        @if $i != 1{
-            .lspace-#{$i}#{$suffix}{
-                letter-spacing: #{$i}px;
-            }
+        .lspace-#{$i}#{$suffix}{
+            letter-spacing: #{$i}px;
         }
     }
 }

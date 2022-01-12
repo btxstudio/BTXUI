@@ -1,7 +1,8 @@
 <template>
-    <b-view :styles="`max flex-column color-light bg-color-${color_style.bg}`">
+    <b-view :styles="`max flex-column color-light select-none bg-color-${color_style.bg}`">
+
         <!--中部内容区域-->
-        <b-list styles="grow-1">
+        <b-list ref="list">
             <keep-alive v-if="keepAlive">
                 <router-view />
             </keep-alive>
@@ -10,7 +11,9 @@
 
         <!--底部导航栏-->
         <b-view :styles="`pcenter flex h-4.7 ${round? 'round-md round-t': ''} bg-color-${color_style.bar}`">
-            <b-hot v-for="(nav,i) of navs" :key="i" v-bind="nav.hot_data"
+            <b-hot v-for="(nav,i) of navs" :key="i"
+                   v-bind="nav.hot_data"
+                   :router-replace="true"
                    @on_click="$_click(nav.nav_id)"
                    styles="grow-1 flex rel pad-v-4px">
 
@@ -41,6 +44,7 @@
 
             </b-hot>
         </b-view>
+
     </b-view>
 </template>
 
@@ -163,7 +167,7 @@
                     },
                     ...this.colors
                 }
-            }
+            },
 
         },
         methods: {

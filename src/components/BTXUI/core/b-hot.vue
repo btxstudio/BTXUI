@@ -1,6 +1,5 @@
 <template>
     <a @click="$_click" @dblclick="$_dblclick"
-       @mouseenter="$_enter" @mouseleave="$_leave"
        @touchstart="$_enter" @touchend="$_leave"
        @mousemove="$emit('on_move', $event)"
        :href="url"
@@ -59,6 +58,7 @@
         /* hover: "悬停样式值" */,
         /* forbid: "鼠标点击事件及链接禁用，默认 false，不禁用" */,
         /* newFrame: "强制开启新窗口，默认 false" */,
+        /* routerReplace: "vue 路由采用 replace 方式，默认 false" */,
     }`;
 
     export default {
@@ -82,6 +82,10 @@
                 type: Boolean,
                 required: false
             },
+            routerReplace: {
+                type: Boolean,
+                required: false
+            }
         },
         data(){
             return {
@@ -93,7 +97,13 @@
                 download: null,
 
                 //内链控制器
-                chapter_link: this.$_init_chapter_link()
+                chapter_link: this.$_init_chapter_link(),
+
+                //触屏判断
+                if_touch_screen: document.createElement("div").ontouchstart === null? true: false,
+
+                //vue 路由
+                vue_router: false
 
             }
         },
@@ -109,6 +119,7 @@
                         this.target = "_blank";
                         return link;
                     }else if(link.search("/") === 0){ //组件路由
+                        this.vue_router = true;
                         return (this.$router.mode === "history"? "": "#") + link;
                     }else if(link.search(/^(tel|mailto):/) === 0){ //手机拨号 | 邮件
                         return link;
@@ -141,7 +152,10 @@
                 e.stopPropagation();
                 !this.forbid && this.$emit("on_click", e);
                 this.chapter_link && this.chapter_link.go_chapter(this.link.chapter_id); //内部链接
-                this.target && this.reset_style();
+                if(this.routerReplace && this.vue_router){ //replace 路由
+                    e.preventDefault();
+                    this.$router.replace(this.link);
+                }
             },
 
             //执行双击
@@ -151,20 +165,24 @@
                 this.target && this.reset_style();
             },
 
-            //鼠标移入
+            //鼠标移入|触控开始
             $_enter(e){
                 !this.cur_states.length && this.toggle_style("hover"); //仅限默认状态下
                 this.$emit("on_enter", e);
             },
 
-            //鼠标移出
+            //鼠标移出|触控结束
             $_leave(e){
                 this.cur_states[0] === "hover" && this.reset_style(); //仅限 hover 状态下
                 this.$emit("on_leave", e);
-            }
+            },
 
         },
         mounted(){
+            if(!this.if_touch_screen) {
+                this.$el.onmouseenter = this.$_enter;
+                this.$el.onmouseleave = this.$_leave;
+            }
             this.append_state(this.hover, "hover");
         }
     }

@@ -89,6 +89,7 @@ export default {
     "grid": {
         display: "flex",
         flexWrap: "wrap",
+        alignContent: "flex-start"
     },
     "max-h": {
         height: "100%",
@@ -99,13 +100,6 @@ export default {
     "max": {
         height: "100%",
         width: "100%",
-    },
-    "max-screen": {
-        height: "100%",
-        width: "100%",
-        position: "fixed",
-        left: 0,
-        top: 0
     },
     "item": {
         breakInside: "avoid",
@@ -131,7 +125,7 @@ export default {
     //溢出处理
     "no-scroll": { overflow: "hidden" },
     "over-show": { overflow: "visible" },
-    "over-scroll": { overflow: "scroll" },
+    "over-scroll": { overflow: "auto" },
     "over-hide": { overflow: "hidden" },
 
     //背景
@@ -193,6 +187,9 @@ export default {
         textShadow: "1px 0 0 rgba(200, 200, 200, .5), -1px 0 0 rgba(200, 200, 200, .5), 0 1px 0 rgba(200, 200, 200, .5), 0 -1px 0 rgba(200, 200, 200, .5)"
     },
 
+    //禁止换行
+    "no-wrap": { whiteSpace: "nowrap" },
+
     //单行省略文本
     "ellipsis": {
         overflow: "hidden",
@@ -202,6 +199,7 @@ export default {
 
     //阴影
     "shadow": { boxShadow: "0 4px 17px" },
+    "shadow-no": { boxShadow: "none" },
     "shadow-sm": { boxShadow: "0 2px 4px" },
     "shadow-lg": { boxShadow: "0 14px 40px" },
     "shadow-relief": { boxShadow: "1px 1px 0 rgba(0,0,0,.7) inset, 1px 1px 0 rgba(255,255,255,.4)" },
@@ -234,6 +232,14 @@ export default {
     "bg-none": { pointerEvents: "none" },
     "bg-use": { pointerEvents: "auto" },
     "touch-none": { touchAction: "none" },
+    "select-none": {
+        webkitTouchCallout: "none",
+        webkitUserSelect: "none",
+        khtmlUserSelect: "none",
+        mozUserSelect: "none",
+        msUserSelect: "none",
+        userSelect: "none"
+    },
 
         //二段赋值-----------------------------------------------------------------------------------
 

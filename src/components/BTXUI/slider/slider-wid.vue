@@ -14,6 +14,7 @@
                     @on_transitionend="$_flip_over">
                 <b-list v-for="page of slider_pages" :key="page.id"
                         styles="grow-1"
+                        :go-top-btn="goTopBtn"
                         :state="page.state">
                     <slot :name="page.id"></slot>
                 </b-list>
@@ -135,7 +136,8 @@
         /* showFlipBtn: "显示切换按钮" */,
         /* autoPlayDuration: "自动播放时间间隔（毫秒）" */,
         /* loop: "是否循环播放" */,
-        /* keyboardFlip: "是否启用键盘切换" */
+        /* keyboardFlip: "是否启用键盘切换" */,
+        /* goTopBtn: "(参照：b-list 组件 goTopBtn 入参)" */
     }`;
 
     export default {
@@ -182,6 +184,10 @@
                 type: Boolean,
                 required: false
             },
+            goTopBtn: {
+                type: Object,
+                required: false
+            }
         },
         data(){
             return {

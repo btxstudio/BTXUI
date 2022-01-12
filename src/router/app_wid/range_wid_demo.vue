@@ -5,18 +5,11 @@
         <!--基础使用-->
         <section>
             <h5>基础使用</h5>
-            <p>通过 <code>min</code> 及 <code>max</code> 属性可以设置滑块拖动区间的最大、最小值。</p>
-            <div class="resize rw-50p">
-                <range-wid v-bind="data_1.props" />
+            <p>通过 v-model 可以初始化及双向绑定拖动数值；通过 <code>min</code> 及 <code>max</code> 属性可以设置滑块拖动区间的最大、最小值。</p>
+            <div class="resize rw-50p rw-100p-s">
+                <range-wid v-bind="data_1.props" v-model="data_1.cur_val" />
             </div>
-            <p>当前选择数据：
-                <!--
-                <template v-if="data_3.selected.length">
-                    <code v-for="data of data_3.selected">{{data}}</code>
-                </template>
-                <span v-else class="alpha-d4">暂无</span>
-                -->
-            </p>
+            <p>当前选择数据：{{data_1.cur_val}}</p>
             <hr>
             <p></p>
         </section>
@@ -24,17 +17,9 @@
         <!--风格化-->
         <section>
             <h5>风格化</h5>
-            <p>组件 <code>tagData</code> 属性 <b>text</b> 字段支持富文本；<b>colors</b> 字段可设置配色风格；<code>iconData</code> 属性可设置 "抽屉" 图标；<code>arrowFixed</code> 属性可设置 "下拉箭头" 图标位置。</p>
-            <div class="resize flex">
-                <!--
-                <drawer-wid v-bind="data_2">
-                    <div class="bg-color-lgray pad-2 round-sm round-b line-t thick-1 line-light">
-                        <h5>hello javascript</h5>
-                        <p>When it comes to a secure website and passwords it is all in your hands to create a password that a hacker simply cannot crack.</p>
-                        <div class="pright alpha-d5">—— btxstudio</div>
-                    </div>
-                </drawer-wid>
-                -->
+            <p>组件 <code>blockSize</code> 属性可设置拖拽滑块的宽高尺寸；<code>colors</code> 字段可设置配色风格，包括：<b>normal</b> 滑块常规色、<b>act</b> 滑块激活色、<b>track</b> 滑块轨道颜色。</p>
+            <div class="resize rw-50p rw-100p-s">
+                <range-wid v-bind="data_2.props" v-model="data_2.cur_val" />
             </div>
             <hr>
             <p></p>
@@ -44,25 +29,10 @@
         <section>
             <h5>步进设置</h5>
             <p>组件 <code>step</code> 属性可以设置拖动歩进值。</p>
-            <div class="resize flex-column bg-color-lgray">
-                <!--
-                <drawer-wid v-bind="data" v-for="(data,i) of data_3.list" :key="i">
-                    <div class="bg-color-dgray color-mgray pad-2 round-sm round-b line-t thick-1 line-light">
-                        <h5>hello {{data.tagData.text}}</h5>
-                        <p>When it comes to a secure website and passwords it is all in your hands to create a password that a hacker simply cannot crack.</p>
-                        <div class="pright alpha-d5">—— btxstudio</div>
-                    </div>
-                </drawer-wid>
-                -->
+            <div class="resize rw-50p rw-100p-s">
+                <range-wid v-bind="data_3.props" v-model="data_3.cur_val" />
             </div>
-            <p>当前选择数据：
-                <!--
-                <template v-if="data_3.selected.length">
-                    <code v-for="data of data_3.selected">{{data}}</code>
-                </template>
-                <span v-else class="alpha-d4">暂无</span>
-                -->
-            </p>
+            <p>当前选择数据：{{data_3.cur_val}}</p>
         </section>
     </article>
 </template>
@@ -70,14 +40,12 @@
 <script>
     import HeaderInfo from "@/components/header-info"
     import RangeWid from "@/components/BTXUI/range/range-wid"
-    import BView from "@/components/BTXUI/core/b-view"
 
     export default {
         name: "range_wid_demo",
         components: {
             HeaderInfo,
-            RangeWid,
-            BView
+            RangeWid
         },
         data(){
             return {
@@ -91,10 +59,41 @@
                 data_1: {
                     props: {
                         min: 0,
-                        max: "5",
+                        max: 100,
                     },
-                    cur_val: ""
-                }
+                    cur_val: 0
+                },
+
+                data_2: {
+                    props: {
+                        min: 0,
+                        max: 100,
+                        blockSize: {
+                            width: 3.7,
+                            height: 3.7,
+                        },
+                        colors: {
+                            normal: {
+                                bg: "sub",
+                                line: "none"
+                            },
+                            act: {
+                                bg: "blue",
+                                line: "none"
+                            },
+                            track: "dgray"
+                        }
+                    },
+                    cur_val: 0
+                },
+
+                data_3: {
+                    props: {
+                        min: 0,
+                        max: 100,
+                    },
+                    cur_val: 0
+                },
 
             }
         }

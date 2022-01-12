@@ -539,12 +539,6 @@
                     </td>
                     <td>宽度及高度撑满容器</td>
                 </tr>
-                <tr>
-                    <td>
-                        <code>.max-screen</code>
-                    </td>
-                    <td>全屏且溢出隐藏</td>
-                </tr>
                 </tbody>
             </table>
             <p></p>

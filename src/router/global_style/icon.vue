@@ -8,8 +8,8 @@
     <h5>图标汇总</h5>
     <div class="pcenter fsize-d8">
         <div class="grid">
-            <div class="col-2 mrg-b-2" v-for="(ico, i) of icons" :key="i">    
-                <div class="w-10 h-10 round-sm line-lgray line thick-1">
+            <div class="col-2 pad-d5 mrg-b-2 mrg-b-0-s col-4-s" v-for="(ico, i) of icons" :key="i">
+                <div class="w-10 h-10 round-sm line-lgray line thick-1 pad-t-1 max-w-s h-auto-s pad-b-1-s">
                     <i :class="`ico-${ico.name} scale-${ico.scale || 1}`" class="fsize-2d5 dark"></i><br>
                     <span>{{ico.name}}</span><br>
                     <span class="fsize-d8 color-mgray">{{ico.code}}</span>
@@ -313,6 +313,29 @@ export default {
             {
                 name: "about",
                 code: "\e674"
+            },
+            {
+                name: "pwd",
+                code: "\e616"
+            },
+            {
+                name: "book-block-list",
+                code: "\e688",
+                scale: "d8"
+            },
+            {
+                name: "book-list",
+                code: "\e689",
+                scale: "d8"
+            },
+            {
+                name: "check-code",
+                code: "\e626"
+            },
+            {
+                name: "time",
+                code: "\e61a",
+                scale: "d9"
             },
         ]
 

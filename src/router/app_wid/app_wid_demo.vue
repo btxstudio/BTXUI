@@ -30,14 +30,11 @@
         <section>
             <h5>图标按钮</h5>
             <p>通过 <code>spread</code> 属性 <b>icon_data</b> 字段即可配置图标按钮。</p>
-            <p>【exp】：</p>
             <div class="resize">
                 <div class="h-20 line line-main thick-1">
                     <app-wid v-bind="data_2" />
                 </div>
             </div>
-            <hr>
-            <p></p>
         </section>
 
     </article>
@@ -110,6 +107,9 @@
                         spread,
                         colors: {
                             bg: "main"
+                        },
+                        goTopBtn: {
+                            show_distance: false
                         }
                     },
                     props2: {
@@ -135,6 +135,9 @@
                                 normal: "mgray",
                                 act: "blue"
                             }
+                        },
+                        goTopBtn: {
+                            show_distance: false
                         }
                     }
                 },
@@ -160,7 +163,7 @@
                                 act: "bg-size-500% bg-pos-0|32%"
                             },
                             hot_data: {
-                                link: "/app_wid_demo/data"
+                                link: "/app_wid_demo/list"
                             },
                             text: "Home",
                         },

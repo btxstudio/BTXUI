@@ -1,0 +1,91 @@
+//生长方向类
+@mixin auto_gen_flex_dir_class($suffix:"") {
+    .flex#{$suffix}{
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+    .flex-column#{$suffix}{
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+//生成九宫格对齐定位类
+@mixin auto_gen_flex_align_class($suffix:"") {
+    .flex-1#{$suffix} {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .flex-2#{$suffix} {
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .flex-3#{$suffix} {
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+    .flex-4#{$suffix} {
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .flex-5#{$suffix} {
+        justify-content: center;
+        align-items: center;
+    }
+    .flex-6#{$suffix} {
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .flex-7#{$suffix} {
+        align-items: flex-end;
+    }
+    .flex-8#{$suffix} {
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .flex-9#{$suffix} {
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+}
+
+//生成栅格布局类
+@mixin auto_gen_grid_class($suffix:"") {
+    $percent: "%";
+    @for $i from 1 to 13 {
+        .col-#{$i}#{$suffix} {
+            width: (calc($i / 12) * 100)#{$percent};
+        }
+        .col-offset-#{$i}#{$suffix} {
+            margin-left: (calc($i / 12) * 100)#{$percent};
+        }
+    }
+    .col-2d4#{$suffix} {
+        width: 20%;
+    }
+    .col-offset-2d4#{$suffix} {
+        margin-left: 20%;
+    }
+}
+
+//生成自生长元素类
+@mixin auto_gen_grow_class($suffix:"") {
+    @for $i from 0 to 10 {
+        .grow-#{$i}#{$suffix} {
+            flex-grow: $i;
+            flex-basis: 0;
+        }
+    }
+}
+
+//生成项目排序元素类
+@mixin auto_gen_order_class($suffix:"") {
+    @for $i from 0 to 6 {
+        .order-#{$i}#{$suffix}{
+            order: $i;
+        }
+    }
+}

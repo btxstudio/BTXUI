@@ -1,0 +1,227 @@
+//生成定位类
+@mixin auto_gen_position_class($suffix:"") {
+    .fixed#{$suffix}{
+        position: fixed;
+    }
+    .rel#{$suffix}{
+        position: relative;
+    }
+    .abs#{$suffix}{
+        position: absolute;
+    }
+}
+
+//生成强制隐藏与显示类
+@mixin auto_gen_display_class($suffix:"") {
+    .hide#{$suffix}{
+        display: none !important;        //强制隐藏
+    } 
+    .show#{$suffix}{
+        display: block !important;       //强制显示
+    }
+}
+
+//生成不同尺寸宽度及高度
+@mixin auto_size($suffix:""){
+    .w-auto#{$suffix} {
+        width: auto;
+    }
+    .h-auto#{$suffix} {
+        height: auto;
+    }
+    .w-0#{$suffix} {
+        width: 0;
+    }
+    .h-0#{$suffix} {
+        height: 0;
+    }
+    .w-d5#{$suffix} {
+        width: .5rem;
+    }
+    .h-d5#{$suffix} {
+        height: .5rem;
+    }
+    .max-w#{$suffix} { //满宽
+        width: 100%;
+    }
+    .max-h#{$suffix} { //满高
+        height: 100%;
+    }
+    .max#{$suffix} { //满屏
+        width: 100%;
+        height: 100%;
+    }
+    @for $i from 1 to 11{
+        .w-#{$i}#{$suffix} {
+            width: #{$i}rem;
+        }
+        .h-#{$i}#{$suffix} {
+            height: #{$i}rem;
+        }
+    }
+    $vals: (15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
+    @each $val in $vals{
+        .w-#{$val}#{$suffix} {
+            width: #{$val}rem;
+        }
+        .h-#{$val}#{$suffix} {
+            height: #{$val}rem;
+        }
+    }
+}
+
+//生成不同尺寸宽度及高度上下限
+@mixin auto_limit_size($suffix:""){
+    $vals: (10p 10%), (20p 20%), (30p 30%), (40p 40%), (50p 50%), (60p 60%), (70p 70%), (80p 80%), (90p 90%);
+    @each $val in $vals{
+        .rw-#{nth($val, 1)}#{$suffix} {
+            max-width: #{nth($val, 2)};
+        }
+        .lw-#{nth($val, 1)}#{$suffix} {
+            min-width: #{nth($val, 2)};
+        }
+    }
+    @for $i from 1 to 11{
+        .th-#{$i * 10}#{$suffix} {
+            max-height: #{$i * 10}rem;
+        }
+        .bh-#{$i * 10}#{$suffix} {
+            min-height: #{$i * 10}rem;
+        }
+    }
+}
+
+//生成内、外边距类
+@mixin set_space($side, $val:0, $dir:all){
+    @if $dir == all{
+        #{$side}: $val;
+    }@else if $dir == v{ //vertical
+        #{$side}: {
+            top: $val;
+            bottom: $val;
+        }
+    }@else if $dir == h{ //horizontal
+        #{$side}: {
+            left: $val;
+            right: $val;
+        }
+    }@else{
+        #{$side}-#{$dir}: $val;
+    }
+}
+@mixin auto_gen_space_class($suffix:""){ 
+    $dirs: (-t top), (-r right), (-l left), (-b bottom), (-v v), (-h h), ("" all); 
+    $vals: (0 0), (d5 .5), (1 1), (1d5 1.5), (2 2), (2d5 2.5), (3 3), (3d5 3.5), (4 4), (5 5), (6 6), (7 7), (8 8), (9 9), (10 10);
+
+    @for $i from 1 to length($dirs) + 1{
+        $dir: nth($dirs, $i);
+        @each $val in $vals{
+            .pad#{nth($dir, 1)}-#{nth($val, 1)}#{$suffix} {
+                @include set_space(padding, #{nth($val, 2)}rem, nth($dir, 2));
+            }
+            .mrg#{nth($dir, 1)}-#{nth($val, 1)}#{$suffix} {
+                @include set_space(margin, #{nth($val, 2)}rem, nth($dir, 2));
+            }
+            .mrg#{nth($dir, 1)}-auto#{$suffix} {
+                @include set_space(margin, auto, nth($dir, 2));
+            }
+        }
+    }
+}
+
+//生成放缩比率类
+@mixin auto_gen_scale_class($suffix:""){
+    .scale-0#{$suffix} {
+        transform: scale(0);
+    }
+    @for $i from 1 to 10{
+        .scale-d#{$i}#{$suffix} {
+            transform: scale(calc($i / 10));
+        }
+    }
+    @for $i from 1 to 10{
+        .scale-1d#{$i}#{$suffix} {
+            transform: scale(calc($i / 10) + 1);
+        }
+    }
+    @for $i from 2 to 11{
+        .scale-#{$i}#{$suffix} {
+            transform: scale($i);
+        }
+    }
+}
+
+//生成 translate 平移类
+@mixin auto_gen_translate_class($suffix:""){
+    $percent: (10 10%), (25 25%), (50 50%), (100 100%), (200 200%), (500 500%);
+    @for $i from 0 to 12{
+        @each $p in $percent{
+            .translateX-#{nth($p, 1)}#{$suffix} {
+                transform: translateX(nth($p, 2));
+            }
+            .translateX-f#{nth($p, 1)}#{$suffix} {
+                transform: translateX(nth($p, 2) * -1);
+            }
+            .translateY-#{nth($p, 1)}#{$suffix} {
+                transform: translateY(nth($p, 2));
+            }
+            .translateY-f#{nth($p, 1)}#{$suffix} {
+                transform: translateY(nth($p, 2) * -1);
+            }
+        }
+    }
+}
+
+//生成位移类
+@mixin auto_gen_offset_class($suffix:""){
+    $dirs: (l left), (r right), (t top), (b bottom);
+    $percent: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200;
+    $units: rem, px;
+    @for $i from 0 to 12{
+        @each $dir in $dirs{
+            @if $i == 0{
+                .#{nth($dir, 1)}-#{$i}#{$suffix} {
+                    #{nth($dir, 2)}: #{$i};
+                }
+            }@else {
+                @each $unit in $units{
+                    .#{nth($dir, 1)}-#{$i}#{$unit}#{$suffix} { //正数
+                        #{nth($dir, 2)}: #{$i}#{$unit};
+                    }
+                    .#{nth($dir, 1)}-f#{$i}#{$unit}#{$suffix} { //负数
+                        #{nth($dir, 2)}: -#{$i}#{$unit};
+                    }
+                }
+            }
+        }
+    }
+
+    //百分比位移
+    @each $dir in $dirs{
+        @each $v in $percent {
+            .#{nth($dir, 1)}-#{$v}p { //正数
+                #{nth($dir, 2)}: #{$v + '%'};
+            }
+            .#{nth($dir, 1)}-f#{$v}p { //负数
+                #{nth($dir, 2)}: -#{$v + '%'};
+            }
+        }
+    }
+
+    //auto 值
+    @each $dir in $dirs{
+        .#{nth($dir, 1)}-auto#{$suffix} {
+            #{nth($dir, 2)}: auto;
+        }
+    }
+}
+
+//生成多列布局容器类
+@mixin auto_gen_column_class($suffix:""){
+    @for $i from 1 to 6{
+        .column-#{$i}#{$suffix} {
+            column-gap: 0;
+            column-count: #{$i};
+        }
+    }
+}

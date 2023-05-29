@@ -1,0 +1,100 @@
+@font-face {
+    font-family: "defaultICO"; /* Project id 1066215 */
+    src: url('/fonts/iconfont.woff2?t=1622074607009') format('woff2'),
+    url('/fonts/iconfont.woff?t=1622074607009') format('woff'),
+    url('/fonts/iconfont.ttf?t=1622074607009') format('truetype');
+}
+
+[class^="ico-"],
+[class*=" ico-"] {
+    font-family: "defaultICO";
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+ 
+$icons: 
+    (success, "\e620")              //正确（成功）
+    (fail, "\e60c")                 //错误（失败）
+    (xiala, "\e6b9")                //下拉
+    (arrow-right, "\e607")          //右箭头
+    (arrow-left, "\e608")           //左箭头
+    (sousuo, "\e66e")               //搜索
+    (play, "\e6a4")                 //播放
+    (pause, "\e6a5")                //暂停
+    (guanbi, "\e663")               //关闭（old）
+    (close, "\e663")                //关闭
+    (tianjia, "\e664")              //添加（old）
+    (add, "\e664")                  //添加
+    (more, "\e654")                 //更多
+    (link, "\e66d")                 //关联
+    (save, "\e602")                 //存储
+    (del, "\e612")                  //删除
+    (mobile, "\e712")               //手机
+    (weibo, "\e609")                //微博
+    (wechat, "\e62d")               //微信
+    (dy, "\e615")                   //抖音
+    (bili, "\e617")                 //b站
+    (github, "\e761")               //github
+    (download, "\e600")             //下载
+    (ui, "\e63c")                   //ui
+    (home, "\e68e")                 //首页
+    (list, "\e665")                 //列表
+    (brightness, "\e632")           //亮度
+    (data, "\e690")                 //数据
+    (user, "\e62b")                 //用户
+    (system, "\e611")               //系统设置
+    (order, "\e684")                //排序
+    (exit, "\e618")                 //退出
+    (log, "\e60f")                  //日志
+    (edit, "\e70c")                 //编辑
+    (no-data, "\e62c")              //无数据
+
+    (btxstudio-zh, "\e606")         //佰逹仕
+    (company-pad, "\e603")          //七武海（实心）
+    (company-line, "\e604")         //七武海（线性）
+    (company-zh, "\e605")           //七武海（文字）
+    (level, "\e60a")                //level
+    (level_round, "\e60e")          //level（圆形实心）
+    (btxstudio, "\e60b")            //btxstudio
+    (btxstudio-round, "\e60d")      //btxstudio（圆形实心）
+
+    (qq, "\e63f")                   //qq
+    (weibo2, "\e64c")               //微博
+    (email, "\e619")                //邮件
+    (tel, "\e768")                  //手机
+    (fix, "\e614")                  //传真
+    (website, "\e63d")              //网址
+    (wechat2, "\e62a")              //微信
+    (eye, "\e7d3")                  //显示
+    (brand, "\e610")                //徽章
+    (chart, "\e6cc")                //统计
+    (addr, "\e613")                 //地址
+    (space, "\e89f")                //空间
+    (directory, "\e666")            //字典
+    (mail-list, "\e645")            //通讯录
+    (book, "\e68b")                 //著作
+    (tesk, "\e601")                 //任务
+    (talk, "\e81a")                 //对话
+    (trophy, "\e723")               //奖杯
+    (edit, "\eed2")                 //编辑
+    (work, "\eee0")                 //成果
+    (circle, "\e633")               //圈子
+    (shop, "\e699")                 //商城
+    (group, "\e68f")                //群
+    (about, "\e674")                //介绍
+    (time, "\e61a")                 //时间
+    (book-list, "\e689")            //书籍列表
+    (book-block-list, "\e688")      //书籍块状列表
+    (pwd, "\e616")                  //密码
+    (check-code, "\e626");          //验证码
+
+//设置字体图标
+@mixin set_icons($icons, $prefix:ico){
+    @each $icon in $icons {
+        .#{$prefix}-#{nth($icon, 1)}::before {
+            content: nth($icon, 2);
+        }
+    }
+}
+@include set_icons($icons); 

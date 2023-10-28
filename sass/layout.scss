@@ -26,6 +26,11 @@
     -webkit-column-break-inside: avoid;
 }
 
+.max-screen {                           // 视口满屏
+    width: 100vw;
+    height: 100vh;
+}
+
 
 //生成 z 轴层级
 @mixin auto_gen_z_index(){ 

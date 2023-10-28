@@ -57,7 +57,7 @@
 <script>
     import HeaderInfo from "@/components/header-info"
     import BIcon from "@/components/BTXUI/core/b-icon"
-    import "@/assets/css/custom_fonts/iconfont.css"
+    import "@/assets/custom_fonts/iconfont.css"
 
     export default {
         name: "b_icon_demo",

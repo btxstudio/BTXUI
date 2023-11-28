@@ -9,7 +9,6 @@
 </template>
 
 <script>
-    import bStyle from "./styles/b-style";
 
     let desc = ["该组件用于包裹元素以实现拖拽效果。"],
         extend = ["b-style"],
@@ -62,7 +61,6 @@
     }`;
 
     export default {
-        extends: bStyle,
         name: "b-drag",
         introduce: { desc, extend, dependent, api, init_data },
         props: {

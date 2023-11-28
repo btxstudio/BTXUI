@@ -1,24 +1,45 @@
 <template>
     <section>
         <div>
-            <h5><code>{{name}}</code></h5>
+            <h5><code>{{ name }}</code></h5>
             <template v-for="item of desc">
                 <!--图片-->
-                <div v-if="item.cover">
-                    <img :src="require(`@/assets/img/mechanism/${item.cover}`)"
+                <div v-if="(item as Desc).cover">
+                    <img :src="require(`@/assets/img/mechanism/${(item as Desc).cover}`)"
                          class="round-sm"/>
                     <div class="pcenter">
-                        <span class="line-b thick-1 line-lgray pad-b-d5 fsize-d9">{{item.title}}</span>
+                        <span class="line-b thick-1 line-lgray pad-b-d5 fsize-d9">{{(item as Desc).title}}</span>
                     </div>
                 </div>
 
                 <!--文字-->
                 <p v-else v-html="item"></p>
             </template>
-            <p v-if="extend.length">组件继承：<code v-for="ext of extend">{{ext}}</code></p>
-            <p v-if="dependent.length">组件依赖：<code v-for="dep of dependent">{{dep}}</code></p>
+            <p v-if="extend.length">组件继承：<code v-for="ext of extend">{{ ext }}</code></p>
+            <p v-if="dependent.length">组件依赖：<code v-for="dep of dependent">{{ dep }}</code></p>
             <p>组件初始化入参：</p>
-            <pre v-highlightjs><code class="javascript" v-html="init_data"></code></pre>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>属性</th>
+                    <th>类型</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item of initData">
+                    <td class="bold">
+                        {{ item[0] }}
+                    </td>
+                    <td>
+                        <code>{{ item[1] }}</code>
+                    </td>
+                    <td>
+                        {{ item[2] }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
             <hr>
         </div>
 
@@ -56,12 +77,12 @@
                 <tbody>
                 <tr v-for="method of api.methods">
                     <td>
-                        <code>{{method.name}}</code>
+                        <code>{{ method.name }}</code>
                     </td>
-                    <td>{{method.ef}}</td>
+                    <td>{{ method.ef }}</td>
                     <td v-html="method.params"></td>
                     <td>
-                        <code v-if="method.return !== '-'">{{method.return}}</code>
+                        <code v-if="method.return !== '-'">{{ method.return }}</code>
                         <span v-else>-</span>
                     </td>
                 </tr>
@@ -80,11 +101,11 @@
                 <tbody>
                 <tr v-for="event of api.event">
                     <td>
-                        <code>{{event.name}}</code>
+                        <code>{{ event.name }}</code>
                     </td>
-                    <td>{{event.ef}}</td>
+                    <td>{{ event.ef }}</td>
                     <td>
-                        <code v-if="event.name !== '-'">{{event.params}}</code>
+                        <code v-if="event.name !== '-'">{{ event.params }}</code>
                         <span v-else>-</span>
                     </td>
                 </tr>
@@ -102,9 +123,45 @@
     </section>
 </template>
 
-<script>
-    export default {
-        name: "header-info",
-        props: ["name", "desc", "extend", "dependent", "api", "init_data"]
+<script setup lang="ts">
+    type Desc = {
+        cover: string,
+        title: string
     }
+    defineProps<{
+        // 组件名
+        name: string,
+
+        // 组件介绍
+        desc: Array<string | Desc>,
+
+        // 组件继承
+        extend: Array<string>,
+
+        // 组件依赖
+        dependent: Array<string>,
+
+        // API
+        api?: {
+            extend: string,
+            props: Array<{
+                name: string,
+                ef: string
+            }>,
+            event: Array<{
+                name: string,
+                ef: string,
+                params: string
+            }>,
+            methods: Array<{
+                name: string,
+                ef: string,
+                params: string,
+                return: string
+            }>
+        },
+
+        // 组件初始化入参
+        initData?: Array<Array<string>>,
+    }>()
 </script>

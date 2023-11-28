@@ -1,12 +1,13 @@
+
 <template>
     <article>
         <p class="pcenter-s">
-            <img class="h-5 h-4-s" src="@/assets/img/btx_ui.jpg">
+            <!-- <img class="h-5 h-4-s" src="@/assets/img/btx_ui.jpg"> -->
         </p>
         <p>BTX·UI 是一套基于 Vue 2.0 为开发者准备的多端组件库，可以帮助工程师快速开发。使用组件 Demo 可以快速体验交互细节。</p>
         <div class="bg-color line line-neutral thick-1 round-sm pad-d5 grid">
             <div class="col-4 flex-1 flex-2-s col-12-s">
-                <img src="@/assets/img/btx.jpg" class="round-sm">
+                <!-- <img src="@/assets/img/btx.jpg" class="round-sm"> -->
             </div>
             <div class="col-8 flex-4 flex-2-s pcenter-s col-12-s">
                 <div class="pad-l-4 pad-l-0-s">
@@ -27,3 +28,6 @@
         </section>
     </article>
 </template>
+
+<script setup lang="ts">
+</script>

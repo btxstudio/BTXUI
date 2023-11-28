@@ -3,7 +3,6 @@
 </template>
 
 <script>
-    import bStyle from "./styles/b-style";
 
     let desc = ["该组件用于实现图片显示。"],
         extend = ["b-style"],
@@ -26,7 +25,6 @@
     }`;
 
     export default {
-        extends: bStyle,
         name: "b-img",
         introduce: { desc, extend, dependent, api, init_data },
         props: {

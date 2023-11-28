@@ -57,10 +57,10 @@
     $percent: "%";
     @for $i from 1 to 13 {
         .col-#{$i}#{$suffix} {
-            width: (calc($i / 12) * 100)#{$percent};
+            width: (calc($i / 12) * 100)+#{$percent};
         }
         .col-offset-#{$i}#{$suffix} {
-            margin-left: (calc($i / 12) * 100)#{$percent};
+            margin-left: (calc($i / 12) * 100)+#{$percent};
         }
     }
     .col-2d4#{$suffix} {

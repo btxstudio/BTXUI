@@ -1,3 +1,11 @@
+<!--
+ * @Author: btxstudio btxstudio@163.com
+ * @Date: 2023-10-28 13:53:44
+ * @LastEditors: btxstudio btxstudio@163.com
+ * @LastEditTime: 2023-11-22 15:44:47
+ * @FilePath: \BTXUI\components\BTXUI\core\b-icon.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
     <!--动态图标-->
     <b-view v-if="icon && icon.search('ani_') === 0" :style="computed_style">
@@ -22,7 +30,6 @@
 </template>
 
 <script>
-    import bStyle from "./styles/b-style";
     import BView from "./b-view";
     import BText from "./b-text";
     import AniSuccess from "./anis/ani-success";
@@ -41,7 +48,6 @@
     }`;
 
     export default {
-        extends: bStyle,
         name: "b-icon",
         introduce: { desc, extend, dependent, api, init_data },
         components: {

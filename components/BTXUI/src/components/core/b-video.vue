@@ -4,7 +4,6 @@
 </template>
 
 <script>
-    import bStyle from "./styles/b-style";
 
     let desc = ["该组件用于实现视频播放器。"],
         extend = ["b-style"],
@@ -16,7 +15,6 @@
     }`;
 
     export default {
-        extends: bStyle,
         name: "b-video",
         introduce: { desc, extend, dependent, api, init_data },
         props: {

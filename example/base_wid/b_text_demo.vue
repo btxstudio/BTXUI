@@ -16,18 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import headerInfo from "@/components/header-info.vue"
+    import BView from "@/components/BTXUI/core/b-view/index.vue"
+    import BText from "@/components/BTXUI/core/b-text/index.vue"
+    import introduce from "@/components/BTXUI/core/b-text/doc"
     import hljs from "highlight.js"
-
-    const introduce = {
-        name: "b-text", 
-        desc: ["该组件用于标记富文本片段，相当于 html 中 span 的作用，可以接收 <code>class</code> 属性来应用框架样式体系。"],
-        extend: ["b-style"],
-        dependent: [], 
-        initData: [
-            ["class", "string", "参照：styles 组件入参"]
-        ] 
-    }
 
     const $code = ref();
 

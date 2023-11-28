@@ -9,7 +9,6 @@
 </template>
 
 <script>
-    import bStyle from "./styles/b-style";
 
     let desc = ["该组件用于实现输入型表单元素。"],
         extend = ["b-style"],
@@ -62,7 +61,6 @@
     }`;
 
     export default {
-        extends: bStyle,
         name: "b-input",
         introduce: { desc, extend, dependent, api, init_data },
         model: {

@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { resolve } from 'path'
+
 export default defineNuxtConfig({
     app: {
         head: {
@@ -24,16 +25,20 @@ export default defineNuxtConfig({
                 }
             }
         },
-        build: {
-            cssCodeSplit: false,
+        resolve: {
+            alias: {
+                "@": resolve(__dirname, "./")
+            }
         }
     },
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [],
 
+    css: ["highlight.js/styles/monokai-sublime.css"],
+
     // Auto import components: https://go.nuxtjs.dev/config-components
-    components: true,
+    components: false,
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [],

@@ -1,6 +1,5 @@
-import VueHighlightJS from 'vue-highlightjs'
-import 'highlight.js/styles/atom-one-dark-reasonable.css'
+import btxui from "@/components/BTXUI/index.js"
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(VueHighlightJS);
+    nuxtApp.vueApp.use(btxui);
 })

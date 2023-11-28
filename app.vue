@@ -6,11 +6,11 @@
   
       <!--【手机端】切换侧边栏按钮-->
       <div class="hide fixed r-1rem b-2rem z2 show-s">
-          <b-hot styles="w-4 h-4 round bg-color-dgray flex-5 color-sub fsize-1.7"
+          <!-- <b-hot styles="w-4 h-4 round bg-color-dgray flex-5 color-sub fsize-1.7"
               hover="bg-color-dark color-light"
               @on_click="contents_state = !contents_state">
               <i class="ico-list"></i>
-          </b-hot>
+          </b-hot> -->
       </div>
   
       <!-- 顶部主导航栏 -->
@@ -24,24 +24,24 @@
           <!-- 右侧导航按钮 -->
           <nav :class="`flex-4 fsize-1d2 bg-color-main l-0 t-0 trans-fast z1 fixed-s max-s flex-5-s fsize-1d4-s pcenter-s flex-column-s translateX-${nav_state? 0: 100}-s`">
               <div class="mrg-h-2 mrg-v-1d5-s">
-                  <b-hot link="/" hover="color-light" @on_click="$_go_btx_ui">BTX·UI</b-hot>
+                  <!-- <b-hot link="/" hover="color-light" @on_click="$_go_btx_ui">BTX·UI</b-hot> -->
               </div>
               <div class="mrg-h-2 mrg-v-1d5-s">
-                  <b-hot link="http://level.75sea.com" hover="color-light">Level</b-hot>
+                  <!-- <b-hot link="http://level.75sea.com" hover="color-light">Level</b-hot> -->
               </div>
               <div class="mrg-h-2 mrg-v-1d5-s">
-                  <b-hot link="https://github.com/btxstudio/BTXUI" hover="color-light">Github</b-hot>
+                  <!-- <b-hot link="https://github.com/btxstudio/BTXUI" hover="color-light">Github</b-hot> -->
               </div>
               <div class="mrg-h-2 mrg-v-1d5-s">
-                  <b-hot link="http://www.75sea.com" hover="color-light">
+                  <!-- <b-hot link="http://www.75sea.com" hover="color-light">
                       <i class="ico-company-line mrg-r-d5"></i>七武海科技
-                  </b-hot>
+                  </b-hot> -->
               </div>
           </nav>
   
           <!--【手机端】导航折叠按钮-->
           <div class="rel z2 hide fsize-1d7 show-s">
-              <b-hot styles="flex trans-fast rotate-0"
+              <!-- <b-hot styles="flex trans-fast rotate-0"
                   hover="color-light"
                   :states="{
                           act: {
@@ -51,43 +51,39 @@
                   }"
                   @on_click="nav_state = !nav_state">
                   <i class="ico-add"></i>
-              </b-hot>
+              </b-hot> -->
           </div>
       </div>
   
       <div class="flex grow-1">
-  
           <!-- 左侧目录 -->
           <div :class="`flex-column w-30 z1 bg-color-lgray max-h t-0 trans-fast fixed-s ${contents_state? 'translateX-0-s': 'translateX-f100-s'}`">
               <div class="grow-1 auto-scroll pad-h-1 pad-t-2 pad-b-4 fsize-1d1 pad-t-5-s">
-                  <content-wid v-bind="nav" ref="cont_tree" @on_select="$_nav_select" />
+                  <!-- <content-wid v-bind="nav" ref="cont_tree" @on_select="$_nav_select" /> -->
               </div>
           </div>
   
           <!-- 右侧介绍 -->
-          <div class="grow-1 flex-column">
-              <b-list styles="grow-1 fsize-1.2" :wide="true">
-                  <nuxt-page class="container pad-t-2 pad-h-1d5 pad-b-4 pjustify" md />
-              </b-list>
+          <div class="grow-1 rel">
+            <nuxt-page class="abs max pad-h-4 pad-v-2 pjustify auto-scroll" />
           </div>
-  
       </div>
     </div>
   </template>
   
   <script>
-  import BHot from "@/components/BTXUI/core/b-hot"
-  import BList from "@/components/BTXUI/core/b-list"
-  import ContentWid from "@/components/BTXUI/content/content-wid"
-  import contentData from "@/pages/example/content"
+//   import BHot from "@/components/BTXUI/core/b-hot"
+//   import BList from "@/components/BTXUI/core/b-list"
+//   import ContentWid from "@/components/BTXUI/content/content-wid"
+//   import contentData from "@/pages/example/content"
   //   import ConfirmWid from "@/components/BTXUI/confirm/confirm-wid"
   
   export default {
     name: "App",
     components: {
-        BHot,
-        BList,
-        ContentWid,
+        // BHot,
+        // BList,
+        // ContentWid,
         // ConfirmWid,
     },
     data(){
@@ -95,7 +91,7 @@
   
             //目录导航
             nav: {
-                dataTree: contentData,
+                // dataTree: contentData,
                 colors: {
                     normal: {
                         text: "#777",
@@ -156,7 +152,7 @@
   
     },
     beforeMount(){
-        this.$_init_nav_act(contentData);
+        // this.$_init_nav_act(contentData);
     }
   }
   </script>

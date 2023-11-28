@@ -1,7 +1,11 @@
+interface Colors {
+    [key:string]: string
+}
+
 export default {
 
-    //预置主题色
-    preset: {
+    // 预置主题色
+    colors: <Colors>{
         none: "transparent",
         main: "#051c24",
         sub: "#b4967a",
@@ -17,9 +21,9 @@ export default {
         neutral: "rgba(134,134,134,.17)",
     },
 
-    //追加或覆盖颜色
-    append(colors){
-        this.preset = { ...this.preset, ...colors }
+    // 追加或覆盖主题色
+    append(colors: any){
+        this.colors = { ...this.colors, ...colors }
     }
 
 }

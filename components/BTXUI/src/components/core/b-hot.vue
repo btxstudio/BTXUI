@@ -12,7 +12,6 @@
 
 <script>
     import ChapterLink from "./lib/ChapterLink"
-    import bStyle from "./styles/b-style"
 
     let desc = ["该组件用于实现热点交互操作。"],
         extend = ["b-style"],
@@ -61,7 +60,6 @@
     }`;
 
     export default {
-        extends: bStyle,
         name: "b-hot",
         introduce: { desc, extend, dependent, api, init_data },
         props: {

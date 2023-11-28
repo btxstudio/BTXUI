@@ -18,19 +18,9 @@
 </template>
 
 <script setup lang="ts">
-    import headerInfo from "@/components/header-info.vue"
+    import BView from "@/components/BTXUI/core/b-view/index.vue"
+    import introduce from "@/components/BTXUI/core/b-view/doc"
     import hljs from "highlight.js"
-
-    const introduce = {
-        name: "b-view", 
-        desc: ["该组件是用于布局的基础组件，相当于 html 中 div 的作用，可以接收 <code>class</code> 属性来应用框架样式体系。"],
-        extend: ["b-style"],
-        dependent: [], 
-        initData: [
-            ["class", "string", "参照：styles 组件入参"],
-            ["bgImg", "string", "背景图地址"]
-        ] 
-    }
 
     const $code = ref();
 

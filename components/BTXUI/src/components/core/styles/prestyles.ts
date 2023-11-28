@@ -1,56 +1,28 @@
-export default {
+interface Prestyles {
+    [key:string]: any
+}
+
+export default <Prestyles>{
 
     //预置样式-----------------------------------------------------------------------------------
 
     //重置初始字号及行高
-    "resize": {
-        fontSize: "1rem",
-        lineHeight: "1.5"
-    },
+    "resize": `font-size: 1rem; lineHeight: 1.5;`,
 
     //文字加粗
-    "bold": {fontWeight: "bold"},
-
-    //文本对齐
-    "pright": {textAlign: "right"},
-    "pleft": {textAlign: "left"},
-    "pcenter": {textAlign: "center"},
-    "pjustify": {textAlign: "justify"},
+    "bold": `font-weight: bold;`,
 
     //隐藏显示
-    "show": { display: "block" },
-    "hide": { display: "none" },
+    "show": `display: "block";`,
+    "hide": `display: "none";`,
 
     //布局
-    "flex": {
-        display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "stretch",
-    },
-    "flex-column": {
-        display: "flex",
-        flexDirection: "column"
-    },
-    "flex-1": {
-        display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-    },
-    "flex-2": {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-    },
-    "flex-3": {
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "flex-start",
-    },
-    "flex-4": {
-        display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "center",
-    },
+    "flex": `display: "flex"; justifyContent: "flex-start"; alignItems: "stretch";`,
+    "flex-column": `display: "flex"; flexDirection: "column";`,
+    "flex-1": `display: "flex"; justifyContent: "flex-start"; alignItems: "flex-start";`,
+    "flex-2": `display: "flex"; justifyContent: "center"; alignItems: "flex-start";`,
+    "flex-3": `display: "flex"; justifyContent: "flex-end"; alignItems: "flex-start";`,
+    "flex-4": `display: "flex"; justifyContent: "flex-start"; alignItems: "center"`,
     "flex-5": {
         display: "flex",
         justifyContent: "center",
@@ -101,6 +73,13 @@ export default {
         height: "100%",
         width: "100%",
     },
+    "max-screen": {
+        height: "100%",
+        width: "100%",
+        position: "fixed",
+        left: 0,
+        top: 0
+    },
     "item": {
         breakInside: "avoid",
         mozPageBreakInside: "avoid",
@@ -125,18 +104,20 @@ export default {
     //溢出处理
     "no-scroll": { overflow: "hidden" },
     "over-show": { overflow: "visible" },
-    "over-scroll": { overflow: "auto" },
+    "over-scroll": { overflow: "scroll" },
     "over-hide": { overflow: "hidden" },
 
-    //背景
+    // 背景
     "bg-repeat": { backgroundRepeat: "repeat" },
     "bg-repeat-x": { backgroundRepeat: "repeat-x" },
     "bg-repeat-y": { backgroundRepeat: "repeat-y" },
-    "bg-size-cover": { backgroundSize: "cover" },
-    "bg-size-contain": { backgroundSize: "contain" },
-    "bg-size-max": { backgroundSize: "100% 100%" },
-    "bg-size-max-h": { backgroundSize: "auto 100%" },
-    "bg-size-max-w": { backgroundSize: "100% auto" },
+    // size
+    "bg-size-cover": `background-size: cover;`,
+    "bg-size-contain": `background-size: contain;`,
+    "bg-size-max": `background-size: 100% 100%;`,
+    "bg-size-max-h": `background-size: auto 100%;`,
+    "bg-size-max-w": `background-size: 100% auto;`,
+
     "bg-pos-1": { backgroundPosition: "left top" },
     "bg-pos-2": { backgroundPosition: "center top" },
     "bg-pos-3": { backgroundPosition: "right top" },
@@ -148,47 +129,32 @@ export default {
     "bg-pos-9": { backgroundPosition: "right bottom" },
 
     //圆角
-    "round": { borderRadius: "50%" },
-    "round-lg": { borderRadius: "24px" },
-    "round-md": { borderRadius: "10px" },
-    "round-sm": { borderRadius: "4px" },
-    "round-t": {
-        borderBottomRightRadius: 0,
-        borderBottomLeftRadius: 0
-    },
-    "round-b": {
-        borderTopRightRadius: 0,
-        borderTopLeftRadius: 0
-    },
-    "round-l": {
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0
-    },
-    "round-r": {
-        borderTopLeftRadius: 0,
-        borderBottomLeftRadius: 0
-    },
+    "round": `border-radius: 50%;`,
+    "round-lg": `borderRadius: 24px;`,
+    "round-md": `border-radius: 10px;`,
+    "round-sm": `borderRadius: 4px;`,
+    "round-t": `borderBottomRightRadius: 0; borderBottomLeftRadius: 0;`,
+    "round-b": `borderTopRightRadius: 0; borderTopLeftRadius: 0;`,
+    "round-l": `borderTopRightRadius: 0; borderBottomRightRadius: 0;`,
+    "round-r": `borderTopLeftRadius: 0; borderBottomLeftRadius: 0;`,
 
     //描边
-    "line": { borderStyle: "solid" },
-    "dashed": { borderStyle: "dashed" },
-    "line-l": { borderLeftStyle: "solid" },
-    "line-r": { borderRightStyle: "solid" },
-    "line-t": { borderTopStyle: "solid" },
-    "line-b": { borderBottomStyle: "solid" },
-    "dashed-l": { borderLeftStyle: "dashed" },
-    "dashed-r": { borderRightStyle: "dashed" },
-    "dashed-t": { borderTopStyle: "dashed" },
-    "dashed-b": { borderBottomStyle: "dashed" },
-    "line-outside": { backgroundClip: "padding-box" },
+    "line": `borderStyle: solid;`,
+    "dashed": `borderStyle: dashed;`,
+    "line-l": `borderLeftStyle: solid;`,
+    "line-r": `borderRightStyle: solid;`,
+    "line-t": `borderTopStyle: solid;`,
+    "line-b": `borderBottomStyle: solid;`,
+    "dashed-l": `borderLeftStyle: dashed;`,
+    "dashed-r": `borderRightStyle: dashed;`,
+    "dashed-t": `borderTopStyle: dashed;`,
+    "dashed-b": `borderBottomStyle: dashed;`,
+    "line-outside": `backgroundClip: padding-box;`,
 
     //文字描边
     "text-line": {
         textShadow: "1px 0 0 rgba(200, 200, 200, .5), -1px 0 0 rgba(200, 200, 200, .5), 0 1px 0 rgba(200, 200, 200, .5), 0 -1px 0 rgba(200, 200, 200, .5)"
     },
-
-    //禁止换行
-    "no-wrap": { whiteSpace: "nowrap" },
 
     //单行省略文本
     "ellipsis": {
@@ -199,7 +165,6 @@ export default {
 
     //阴影
     "shadow": { boxShadow: "0 4px 17px" },
-    "shadow-no": { boxShadow: "none" },
     "shadow-sm": { boxShadow: "0 2px 4px" },
     "shadow-lg": { boxShadow: "0 14px 40px" },
     "shadow-relief": { boxShadow: "1px 1px 0 rgba(0,0,0,.7) inset, 1px 1px 0 rgba(255,255,255,.4)" },
@@ -222,26 +187,57 @@ export default {
     "dark-md": { filter: "brightness(50%)" },
     "dark-lg": { filter: "brightness(20%)" },
 
-    //纯度滤镜
-    "gray-no": { filter: "grayscale(0%)" },
-    "gray-sm": { filter: "grayscale(40%)" },
-    "gray-md": { filter: "grayscale(70%)" },
-    "gray-lg": { filter: "grayscale(100%)" },
+    // 纯度滤镜
+    "gray-no": `filter: grayscale(0%);`,
+    "gray-sm": `filter: grayscale(40%);`,
+    "gray-md": `filter: grayscale(70%);`,
+    "gray-lg": `filter: grayscale(100%);`,
 
-    //特殊
-    "bg-none": { pointerEvents: "none" },
-    "bg-use": { pointerEvents: "auto" },
-    "touch-none": { touchAction: "none" },
-    "select-none": {
-        webkitTouchCallout: "none",
-        webkitUserSelect: "none",
-        khtmlUserSelect: "none",
-        mozUserSelect: "none",
-        msUserSelect: "none",
-        userSelect: "none"
+    // 特殊
+    "bg-none": `pointerEvents: none;`,
+    "bg-use": `pointerEvents: auto;`,
+    "touch-none": `touchAction: none;`,
+
+    // 二段赋值-----------------------------------------------------------------------------------
+
+    // 文本对齐
+    "p": {
+        pro: "text-align"
     },
 
-        //二段赋值-----------------------------------------------------------------------------------
+    // 文字颜色
+    "color": {
+        pro: "color"
+    },
+
+    // 背景色
+    "bg": {
+        pro: "background"
+    },
+
+    // 宽度
+    "w": {
+        pro: "width",
+        unit: "rem"
+    },
+
+    // 高度
+    "h": {
+        pro: "height",
+        unit: "rem"
+    },
+
+    // 内边距
+    "pad": {
+        pro: "padding",
+        unit: "rem"
+    },
+
+    // 外边距
+    "mrg": {
+        pro: "margin",
+        unit: "rem"
+    },
 
         "rule_2": {
 
@@ -280,16 +276,6 @@ export default {
                 }
             },
 
-            //文字颜色
-            "color": {
-                pro: "color"
-            },
-
-            //背景颜色
-            "bg": {
-                pro: "background"
-            },
-
             //描边颜色
             "line": {
                 pro: "borderColor"
@@ -314,30 +300,6 @@ export default {
                 extra: {
                     columnGap: 0
                 },
-            },
-
-            //内边距
-            "pad": {
-                pro: "padding",
-                unit: "rem"
-            },
-
-            //外边距
-            "mrg": {
-                pro: "margin",
-                unit: "rem"
-            },
-
-            //宽度
-            "w": {
-                pro: "width",
-                unit: "rem"
-            },
-
-            //高度
-            "h": {
-                pro: "height",
-                unit: "rem"
             },
 
             //最大宽

@@ -73,28 +73,27 @@
     }
 }
 
-//纵向滚动条
-.auto-scroll, .over-scroll {
-    overflow-y: auto;
+// 极细样式
+.thin-scroll {
     @include scroll_base();
 }
-.wide-auto-scroll { //（易于拖动）
-    overflow-y: auto;
-    @include scroll_base(14px);
-}
- 
-//横向滚动条（易于拖动）
-.auto-h-scroll{                           
-    overflow-x: auto;
+
+// 加宽样式
+.thick-scroll {
     @include scroll_base(14px);
 }
 
-//溢出隐藏
-.no-scroll, .over-hide{
+// 溢出隐藏
+.over-hide {
     overflow: hidden;
 }
 
-//溢出显示
-.over-show{
+// 溢出滚动
+.over-scroll {
+    overflow: auto;
+}
+
+// 溢出显示
+.over-show {
     overflow: visible;
 }

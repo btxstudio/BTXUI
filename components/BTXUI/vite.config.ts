@@ -4,7 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 import viteCompression from 'vite-plugin-compression';
 
 export default defineConfig(({ mode }) => ({
-  plugins: [
+  plugins: [ 
     vue(),
     viteCompression({
       verbose: true,

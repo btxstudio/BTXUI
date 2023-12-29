@@ -1,20 +1,18 @@
-@import "./colors.scss";
-
 @import "./reset.scss";
 
-@import "./text.scss";  
+@import "./color.scss";
 
-@import "./layout.scss";  
+@import "./icon.scss";
+
+@import "./animation.scss";      
+
+@import "./decoration.scss";    
+
+@import "./special.scss";
 
 @import "./table.scss";
 
-@import "./decoration.scss";               
-
-@import "./animation.scss";       
-       
-@import "./icons.scss";
-
-@import "./special.scss";
+// responsetive styles
 
 @import "./response/main.scss";
 

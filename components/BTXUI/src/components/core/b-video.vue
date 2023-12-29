@@ -1,35 +1,33 @@
 <template>
-    <video :style="computed_style" muted
-           :src="video"></video>
+    <b-style :class="class">
+        <template v-slot:className="scope">
+            <video ref="$video" :class="scope.className" :muted="autoPlay" :src="video" :autoplay="autoPlay" :loop="loop"></video>
+        </template>
+    </b-style>
 </template>
 
-<script>
+<script setup lang="ts">
+    import bStyle from "./styles/b-style.vue"
+    import { ref } from "vue";
 
-    let desc = ["该组件用于实现视频播放器。"],
-        extend = ["b-style"],
-        dependent = [],
-        api = null,
-        init_data = `{
-        video: "视频资源",
-        /* styles: "(参照：b-style 组件入参)" */,
-    }`;
+    defineProps<{
+        // 视频资源
+        video: string,
 
-    export default {
-        name: "b-video",
-        introduce: { desc, extend, dependent, api, init_data },
-        props: {
-            video: {
-                type: String,
-                required: true
-            },
-        },
-        methods: {
+        // 样式集
+        class?: string,
 
-            //播放
-            play(){
-                this.$el.play();
-            }
+        // 自动播放
+        autoPlay?: boolean,
 
-        }
-    }
+        // 循环播放
+        loop?: boolean,
+    }>()
+
+    const $video = ref();
+
+    // 播放
+    // const play = () => {
+    //     $video.value.play();
+    // }
 </script>

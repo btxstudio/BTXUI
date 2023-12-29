@@ -1,58 +1,68 @@
 <template>
-    <textarea :style="computed_style" :type="type" :name="name"
-              class="auto-scroll"
-              @focus="$_focus"
-              @blur="$_blur"
-              @change="$_check"
-              v-model="value"
-              autocomplete="off"
-              :rows="rows"/>
+    <b-style :class="class" :focus="focus" :states="states">
+        <template v-slot:className="scope">
+            <textarea :class="scope.className"
+                      @focus="$emit('on_focus', $event)"
+                      @blur="$emit('on_blur', $event)"
+                      @change="$emit('on_change', $event)"
+                      @input="inputText"
+                      v-model="val"
+                      :name="name" 
+                      :focus="focus? true: ''"
+                      :state="state"
+                      :placeholder="placeholder"
+                      :maxlength="maxlength"
+                      :readonly="readonly"
+                      :rows="rows || 7" />
+        </template>
+    </b-style>
 </template>
 
-<script>
-    import BInput from "./b-input";
+<script setup lang="ts">
+    import { ref } from "vue"
+    import bStyle from "./styles/b-style.vue"
 
-    let desc = ["该组件用于实现多行输入型表单元素。"],
-        extend = ["b-input"],
-        dependent = [],
-        api = {
-            extend: "继承自：<code>b-input</code> 组件",
-            methods: [
-                {
-                    name: "to_html",
-                    ef: "将换行符转换为 html <br> 标签",
-                    params: "-",
-                    return: "html_str"
-                }
-            ]
-        },
-        init_data = `{
-        "(继承自：b-input 组件入参，type 入参无效)",
-        /* rows: "显示最大行数，默认 7 行" */
-    }`;
+    const props = defineProps<{
+        // 表单输入内容
+        text: string,
 
-    export default {
-        extends: BInput,
-        name: "b-textarea",
-        introduce: { desc, extend, dependent, api, init_data },
-        props: {
-            type: {
-                type: String,
-                required: false,
-            },
-            rows: {
-                type: Number,
-                required: false,
-                default: 7
-            }
-        },
-        methods: {
+        // 表单名
+        name: string,
+        
+        // 样式集
+        class?: string,
 
-            //将换行符转换为 html <br> 标签
-            to_html(){
-                return this.inpVal.replace(/[\n\r]/g, "<br>")
-            }
+        // 当前状态
+        state?: string | boolean,
 
-        }
+        // 状态样式集
+        states?: { [key: string]: any },
+
+        // 显示行数
+        rows?: number,
+
+        // 输入提示
+        placeholder?: string,
+
+        // 字符数限制
+        maxlength?: number,
+
+        // 是否只读
+        readonly?: boolean,
+
+        // 聚焦样式集
+        focus?: string,
+    }>();
+    const emit = defineEmits(["on_focus", "on_blur", "on_change", "update:text"]);
+
+    // 输入内容
+    const val = ref(props.text);
+    
+    // 格式化内容
+    const formatText = (text) => text.replace(/[\n\r]/g, "<br>"); // 将换行符转换为 html <br> 标签
+    
+    const inputText = () => {
+        emit('update:text', formatText(val.value));
     }
+
 </script>

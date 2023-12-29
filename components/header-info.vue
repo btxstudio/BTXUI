@@ -15,8 +15,8 @@
                 <!--文字-->
                 <p v-else v-html="item"></p>
             </template>
-            <p v-if="extend.length">组件继承：<code v-for="ext of extend">{{ ext }}</code></p>
-            <p v-if="dependent.length">组件依赖：<code v-for="dep of dependent">{{ dep }}</code></p>
+            <p v-if="extend && extend.length">组件继承：<code v-for="ext of extend">{{ ext }}</code></p>
+            <p v-if="dependent && dependent.length">组件依赖：<code v-for="dep of dependent">{{ dep }}</code></p>
             <p>组件初始化入参：</p>
             <table class="table">
                 <thead>
@@ -128,6 +128,7 @@
         cover: string,
         title: string
     }
+
     defineProps<{
         // 组件名
         name: string,
@@ -136,10 +137,10 @@
         desc: Array<string | Desc>,
 
         // 组件继承
-        extend: Array<string>,
+        extend?: Array<string>,
 
         // 组件依赖
-        dependent: Array<string>,
+        dependent?: Array<string>,
 
         // API
         api?: {

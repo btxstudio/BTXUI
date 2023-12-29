@@ -1,4 +1,96 @@
-//生成定位类
+.grid {                                 // 栅格布局容器
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.item {
+    breakInside: avoid;
+    mozPageBreakInside: avoid;
+    webkitColumnBreakInside: avoid;
+}
+
+.container {                            // 版心
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+
+    &[md], .container-md {
+        max-width: 960px; 
+    }
+    &[sm], .container-sm {
+        max-width: 736px;
+    }
+}
+
+.max-h {                                // 高度撑满容器
+    height: 100%;
+}
+.max-w {                                // 宽度撑满容器
+    width: 100%;
+}
+.max {                                  // 撑满容器
+    height: 100%; 
+    width: 100%;
+}
+.max-fixed {                            // 固定式定位视口满屏
+    height: 100%; 
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.max-screen {                           // 视口满屏尺寸
+    width: 100%;
+    height: 100vh;
+}
+
+// 生成 z 轴层级
+@mixin auto_gen_z_index(){ 
+    .z-f1 {
+        z-index: -1;
+    }
+    @for $i from 0 to 11{
+        .z-#{$i} {
+            z-index: $i;
+        }
+    }
+}
+@include auto_gen_z_index();
+
+// 变形中心点
+.origin-1 {
+    transform-origin: left top;
+}
+.origin-2 {
+    transform-origin: center top;
+}
+.origin-3 {
+    transform-origin: right top;
+}
+.origin-4 {
+    transform-origin: left center;
+}
+.origin-5 {
+    transform-origin: center center;
+}
+.origin-6 {
+    transform-origin: right center;
+}
+.origin-7 {
+    transform-origin: left bottom;
+}
+.origin-8 {
+    transform-origin: center bottom;
+}
+.origin-9 {
+    transform-origin: right bottom;
+}
+
+// responsetive styles
+
+// 生成定位类
 @mixin auto_gen_position_class($suffix:"") {
     .fixed#{$suffix}{
         position: fixed;
@@ -11,17 +103,17 @@
     }
 }
 
-//生成强制隐藏与显示类
+// 生成强制隐藏与显示类
 @mixin auto_gen_display_class($suffix:"") {
     .hide#{$suffix}{
-        display: none !important;        //强制隐藏
+        display: none !important;        // 强制隐藏
     } 
     .show#{$suffix}{
-        display: block !important;       //强制显示
+        display: block !important;       // 强制显示
     }
 }
 
-//生成不同尺寸宽度及高度
+// 生成不同尺寸宽度及高度
 @mixin auto_size($suffix:""){
     .w-auto#{$suffix} {
         width: auto;
@@ -41,13 +133,13 @@
     .h-d5#{$suffix} {
         height: .5rem;
     }
-    .max-w#{$suffix} { //满宽
+    .max-w#{$suffix} { // 满宽
         width: 100%;
     }
-    .max-h#{$suffix} { //满高
+    .max-h#{$suffix} { // 满高
         height: 100%;
     }
-    .max#{$suffix} { //满屏
+    .max#{$suffix} { // 满屏
         width: 100%;
         height: 100%;
     }
@@ -70,9 +162,9 @@
     }
 }
 
-//生成不同尺寸宽度及高度上下限
+// 生成不同尺寸宽度及高度上下限
 @mixin auto_limit_size($suffix:""){
-    $vals: (10p 10%), (20p 20%), (30p 30%), (40p 40%), (50p 50%), (60p 60%), (70p 70%), (80p 80%), (90p 90%);
+    $vals: (5 5rem), (10 10rem), (20 20rem), (30 30rem), (40 40rem), (50 50rem), (60 60rem), (70 70rem), (80 80rem), (90 90rem), (100 100rem);
     @each $val in $vals{
         .rw-#{nth($val, 1)}#{$suffix} {
             max-width: #{nth($val, 2)};
@@ -91,16 +183,16 @@
     }
 }
 
-//生成内、外边距类
+// 生成内、外边距类
 @mixin set_space($side, $val:0, $dir:all){
     @if $dir == all{
         #{$side}: $val;
-    }@else if $dir == v{ //vertical
+    }@else if $dir == v{ // vertical
         #{$side}: {
             top: $val;
             bottom: $val;
         }
-    }@else if $dir == h{ //horizontal
+    }@else if $dir == h{ // horizontal
         #{$side}: {
             left: $val;
             right: $val;
@@ -129,7 +221,7 @@
     }
 }
 
-//生成放缩比率类
+// 生成放缩比率类
 @mixin auto_gen_scale_class($suffix:""){
     .scale-0#{$suffix} {
         transform: scale(0);
@@ -151,7 +243,17 @@
     }
 }
 
-//生成 translate 平移类
+// 生成旋转
+@mixin auto_gen_rotate_class($suffix:""){
+    $degs: 0, 15, 30, 45, 90, 180, 360;
+    @each $deg in $degs{
+        .rotate-#{$deg}#{$suffix} {
+            transform: rotate(#{$deg}deg);
+        }
+    }
+}
+
+// 生成 translate 平移类
 @mixin auto_gen_translate_class($suffix:""){
     $percent: (10 10%), (25 25%), (50 50%), (100 100%), (200 200%), (500 500%);
     @for $i from 0 to 12{
@@ -172,10 +274,9 @@
     }
 }
 
-//生成位移类
+// 生成位移类
 @mixin auto_gen_offset_class($suffix:""){
     $dirs: (l left), (r right), (t top), (b bottom);
-    $percent: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200;
     $units: rem, px;
     @for $i from 0 to 12{
         @each $dir in $dirs{
@@ -185,30 +286,31 @@
                 }
             }@else {
                 @each $unit in $units{
-                    .#{nth($dir, 1)}-#{$i}#{$unit}#{$suffix} { //正数
+                    .#{nth($dir, 1)}-#{$i}-#{$unit}#{$suffix} { // 正数
                         #{nth($dir, 2)}: #{$i}#{$unit};
                     }
-                    .#{nth($dir, 1)}-f#{$i}#{$unit}#{$suffix} { //负数
+                    .#{nth($dir, 1)}-f#{$i}-#{$unit}#{$suffix} { // 负数
                         #{nth($dir, 2)}: -#{$i}#{$unit};
                     }
                 }
             }
         }
     }
-
-    //百分比位移
+    
+    // 百分比位移
+    $percent: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200;
     @each $dir in $dirs{
         @each $v in $percent {
-            .#{nth($dir, 1)}-#{$v}p { //正数
+            .#{nth($dir, 1)}-#{$v}-p { // 正数
                 #{nth($dir, 2)}: #{$v + '%'};
             }
-            .#{nth($dir, 1)}-f#{$v}p { //负数
+            .#{nth($dir, 1)}-f#{$v}-p { // 负数
                 #{nth($dir, 2)}: -#{$v + '%'};
             }
         }
     }
 
-    //auto 值
+    // auto 值
     @each $dir in $dirs{
         .#{nth($dir, 1)}-auto#{$suffix} {
             #{nth($dir, 2)}: auto;
@@ -216,12 +318,128 @@
     }
 }
 
-//生成多列布局容器类
+// 生成多列布局容器类
 @mixin auto_gen_column_class($suffix:""){
     @for $i from 1 to 6{
         .column-#{$i}#{$suffix} {
             column-gap: 0;
             column-count: #{$i};
         }
+    }
+}
+
+// 生长方向类
+@mixin auto_gen_flex_dir_class($suffix:"") {
+    .flex#{$suffix}{
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+    .flex-column#{$suffix}{
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+// 生成对齐定位类
+@mixin auto_gen_flex_align_class($suffix:"") {
+    // 九宫格对齐定位
+    .flex-1#{$suffix} {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .flex-2#{$suffix} {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .flex-3#{$suffix} {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+    .flex-4#{$suffix} {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .flex-5#{$suffix} {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .flex-6#{$suffix} {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .flex-7#{$suffix} {
+        display: flex;
+        align-items: flex-end;
+    }
+    .flex-8#{$suffix} {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .flex-9#{$suffix} {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    // 主轴均分排列，两端对齐
+    .flex-between#{$suffix} { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    // 主轴均分排列
+    .flex-around#{$suffix} { 
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+// 生成自生长元素类
+@mixin auto_gen_grow_class($suffix:"") {
+    @for $i from 0 to 10 {
+        .grow-#{$i}#{$suffix} {
+            flex-grow: $i;
+            flex-basis: 0;
+        }
+    }
+}
+
+// 生成项目排序元素类
+@mixin auto_gen_order_class($suffix:"") {
+    @for $i from 0 to 6 {
+        .order-#{$i}#{$suffix}{
+            order: $i;
+        }
+    }
+}
+
+// 生成栅格布局类
+@mixin auto_gen_grid_class($suffix:"") {
+    $percent: "%";
+    @for $i from 1 to 13 {
+        .col-#{$i}#{$suffix} {
+            width: (calc($i / 12) * 100)+#{$percent};
+        }
+        .col-offset-#{$i}#{$suffix} {
+            margin-left: (calc($i / 12) * 100)+#{$percent};
+        }
+    }
+    .col-2d4#{$suffix} {
+        width: 20%;
+    }
+    .col-offset-2d4#{$suffix} {
+        margin-left: 20%;
     }
 }

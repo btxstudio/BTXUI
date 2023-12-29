@@ -1,24 +1,11 @@
 <template>
-    <b-view styles="flex-5 t-f3">
-        <b-text class="ani-fail-part1" styles="w-3px h-1.7 rel l-2px bg-color-red round-sm"></b-text>
-        <b-text class="ani-fail-part2" styles="w-3px h-1.7 rel r-1px bg-color-red round-sm"></b-text>
+    <b-view class="flex-5">
+        <b-text class="ani-fail-part1 w-3-px h-1d7 rel l-2-px bg-color-red round-sm"></b-text>
+        <b-text class="ani-fail-part2 w-3-px h-1d7 rel r-1-px bg-color-red round-sm"></b-text>
     </b-view>
 </template>
 
-<script>
-    import BView from "../b-view";
-    import BText from "../b-text";
-
-    export default {
-        name: "ani-fail",
-        components: {
-            BView,
-            BText,
-        }
-    }
-</script>
-
-<style scoped>
+<style>
     .ani-fail-part1{
         animation: ani_fail_part1 .3s .7s;
         animation-fill-mode: both;

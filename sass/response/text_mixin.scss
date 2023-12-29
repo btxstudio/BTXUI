@@ -1,4 +1,20 @@
-//生成文本对齐类
+.bold {                             // 文字加粗
+    font-weight: bold;              
+}
+
+.no-wrap {                          // 文本禁止换行
+    white-space: nowrap;
+}
+
+.ellipsis {                         // 文本省略
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// responsetive styles
+
+// 生成文本对齐类
 @mixin auto_gen_text_align_class($suffix:"") {
     .pcenter#{$suffix} {
         text-align: center;
@@ -21,41 +37,41 @@
     }
 }
 
-//生成倍数字号类
+// 生成倍数字号类
 @mixin auto_gen_font_size_class($suffix:"") {
     @for $i from 0 to 6{
         
-        //处理缩小字号
+        // 处理缩小字号
         @if $i == 0 {
-            .fsize-#{$i}#{$suffix} { //0 号字 
+            .fsize-#{$i}#{$suffix} { // 0 号字 
                 font-size: 0;
             }
             @for $i from 1 to 10{
                 .fsize-d#{$i}#{$suffix} {
-                    font-size: #{calc($i / 10)}em;   
+                    font-size: #{calc($i / 10)}rem;   
                 }        
             }
         } @else if $i == 1 {
             .fsize-#{$i}#{$suffix} {
-                font-size: #{$i}em;
+                font-size: #{$i}rem;
             }
             @for $i from 1 to 10{
                 .fsize-1d#{$i}#{$suffix} {
-                    font-size: #{1 + calc($i / 10)}em;
+                    font-size: #{1 + calc($i / 10)}rem;
                 }
             }
         } @else if $i > 1 {
             .fsize-#{$i}#{$suffix} {
-                font-size: #{$i}em;
+                font-size: #{$i}rem;
             }
             .fsize-#{$i}d5#{$suffix} {
-                font-size: #{$i + 0.5}em;
+                font-size: #{$i + 0.5}rem;
             }
         }
     }   
 }
 
-//生成字符间距类
+// 生成字符间距类
 @mixin auto_gen_letter_space_class($suffix:"") {
     @for $i from 0 to 6 {
         .lspace-#{$i}#{$suffix}{

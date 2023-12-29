@@ -1,58 +1,60 @@
 @import "./text_mixin.scss";
 @import "./layout_mixin.scss";
-@import "./flex_mixin.scss";
 
 @mixin auto_gen_response_class($suffix:"") {
     
-    //文本对齐
+    // 文本对齐
     @include auto_gen_text_align_class($suffix);
 
-    //倍数字号
+    // 倍数字号
     @include auto_gen_font_size_class($suffix);
 
-    //字符间距
+    // 字符间距
     @include auto_gen_letter_space_class($suffix);
 
-    //定位
+    // 定位
     @include auto_gen_position_class($suffix);
 
-    //强制隐藏与显示
+    // 强制隐藏与显示
     @include auto_gen_display_class($suffix);
 
-    //生成不同尺寸宽度及高度
+    // 生成不同尺寸宽度及高度
     @include auto_size($suffix);
 
-    //生成不同尺寸宽度及高度上下限
+    // 生成不同尺寸宽度及高度上下限
     @include auto_limit_size($suffix);
 
-    //内、外边距
+    // 内、外边距
     @include auto_gen_space_class($suffix);
 
-    //生长方向类
+    // 生长方向类
     @include auto_gen_flex_dir_class($suffix);
 
-    //九宫格对齐定位
+    // 九宫格对齐定位
     @include auto_gen_flex_align_class($suffix);
 
-    //栅格布局
+    // 栅格布局
     @include auto_gen_grid_class($suffix);
 
-    //生成自生长元素类
+    // 生成自生长元素类
     @include auto_gen_grow_class($suffix);
 
-    //生成项目排序元素类
+    // 生成项目排序元素类
     @include auto_gen_order_class($suffix);
 
-    //放缩比率
+    // 放缩比率
     @include auto_gen_scale_class($suffix);
 
-    //translate平移
+    // translate平移
     @include auto_gen_translate_class($suffix);
 
-    //位移
+    // 位移
     @include auto_gen_offset_class($suffix);
 
-    //多列布局容器
+    // 旋转
+    @include auto_gen_rotate_class($suffix);
+
+    // 多列布局容器
     @include auto_gen_column_class($suffix);
 
 }

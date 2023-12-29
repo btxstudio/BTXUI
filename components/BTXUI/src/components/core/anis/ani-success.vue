@@ -1,30 +1,22 @@
 <template>
-    <b-view styles="flex-5 transform-translateY(.9rem)rotate(45deg)">
-        <b-text class="ani-success-part1" styles="w-1 h-3px bg-color-green round-sm"></b-text>
-        <b-text class="ani-success-part2" styles="w-1.7 h-3px bg-color-green round-sm rel t-1px l-f1px"></b-text>
+    <b-view class="flex-5" :matrix="{translate: '0,9px', rotate: '45deg'}">
+        <b-text class="ani-success-part1 w-1 h-3-px bg-color-green round-sm"></b-text>
+        <b-text class="ani-success-part2 w-1d7 h-3-px bg-color-green round-sm rel t-1-px l-f1-px"></b-text>
     </b-view>
 </template>
 
-<script>
-    import BView from "../b-view";
-    import BText from "../b-text";
-
-    export default {
-        name: "ani-success",
-        components: {
-            BView,
-            BText,
-        }
-    }
+<script setup lang="ts">
+    import bView from "../b-view.vue";
+    import bText from "../b-text.vue";
 </script>
 
-<style scoped>
-    .ani-success-part1{
+<style>
+    .ani-success-part1 {
         animation: ani_success_part1 .3s .7s;
         animation-fill-mode: both;
         transform-origin: left;
     }
-    .ani-success-part2{
+    .ani-success-part2 {
         animation: ani_success_part2 .5s 1s;
         animation-fill-mode: both;
         transform-origin: left;

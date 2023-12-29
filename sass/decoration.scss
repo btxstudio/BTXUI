@@ -28,8 +28,12 @@
     background-size: 100% auto;
 }
 
+.bg-fixed {
+    background-attachment: scroll;
+}
 
-//九宫格背景图定位
+
+// 九宫格背景图定位
 .bg-pos-1 {
     background-position: 0 0;
 }
@@ -60,73 +64,72 @@
 
 
 .round {
-    border-radius: 50%;                         //50% 圆角
+    border-radius: 50%;                         // 50% 圆角
 }
-.round-lg {                                     //24px 大圆角
+.round-lg {                                     // 24px 大圆角
     border-radius: 24px;  
 }
-.round-md {                                     //10px 中等圆角
+.round-md {                                     // 10px 中等圆角
     border-radius: 10px;  
 }
-.round-sm {                                     //4px 小型圆角
+.round-sm {                                     // 4px 小型圆角
     border-radius: 4px;  
 }
 
 
-.round-t {                                      //上侧圆角
+.round-t {                                      // 上侧圆角
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.round-b {                                      //下侧圆角
+.round-b {                                      // 下侧圆角
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-.round-l {                                      //左侧圆角
+.round-l {                                      // 左侧圆角
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-.round-r {                                      //右侧圆角
+.round-r {                                      // 右侧圆角
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
 
-.line {                                         //四周实线描边
+.solid {                                         // 四周实线描边
     border-style: solid;
 }
-.line-l {                                       //左实线描边
+.solid-l {                                       // 左实线描边
     border-left-style: solid;
 }
-.line-r {                                       //右实线描边
+.solid-r {                                       // 右实线描边
     border-right-style: solid;
 }
-.line-t {                                       //上实线描边
+.solid-t {                                       // 上实线描边
     border-top-style: solid;
 }
-.line-b {                                       //下实线描边
+.solid-b {                                       // 下实线描边
     border-bottom-style: solid;
 }
-.dashed {                                       //四周虚线描边
+.dashed {                                       // 四周虚线描边
     border-style: dashed;
 }
-.dashed-l {                                     //左虚线描边
+.dashed-l {                                     // 左虚线描边
     border-left-style: dashed;
 }
-.dashed-r {                                     //右虚线描边
+.dashed-r {                                     // 右虚线描边
     border-right-style: dashed;
 }
-.dashed-t {                                     //上虚线描边
+.dashed-t {                                     // 上虚线描边
     border-top-style: dashed;
 }
-.dashed-b {                                     //下虚线描边
+.dashed-b {                                     // 下虚线描边
     border-bottom-style: dashed;
 }
-.line-outside {                                 //外侧描边范围
+.line-outside {                                 // 外侧描边范围
     background-clip: padding-box;
 }
 
-
-//描边粗细
+// 描边粗细
 $thicks: 1 2 4 6 8 10;
 @each $thick in $thicks {
     .thick-#{$thick} {
@@ -134,8 +137,7 @@ $thicks: 1 2 4 6 8 10;
     }
 }
 
-
-//文字描边
+// 文字描边
 .text-line {
     text-shadow: 
     1px 0 0 rgba(200, 200, 200, .5), 
@@ -144,8 +146,7 @@ $thicks: 1 2 4 6 8 10;
     0 -1px 0 rgba(200, 200, 200, .5);
 }
 
-
-//阴影
+// 阴影
 .shadow {
     box-shadow: 0 4px 17px;
 }
@@ -162,8 +163,7 @@ $thicks: 1 2 4 6 8 10;
     box-shadow: 1px 1px 0 rgba(0,0,0,.7) inset, 1px 1px 0 rgba(255,255,255,.4);
 }
 
-
-//生成三角形
+// 生成三角形
 %default-border {
     position: relative;
     border: 4px solid transparent;
@@ -200,20 +200,19 @@ $dirs: (l left), (r right), (t top), (b bottom);
     }
 }
 
-
-//模糊滤镜
+// 模糊滤镜
 .blur-no { filter: blur(0px) }
 .blur-sm { filter: blur(2px) }
 .blur-md { filter: blur(7px) }
 .blur-lg { filter: blur(17px) }
 
-//明度滤镜
+// 明度滤镜
 .dark-no { filter: brightness(100%) }
 .dark-sm { filter: brightness(80%) }
 .dark-md { filter: brightness(50%) }
 .dark-lg { filter: brightness(20%) }
 
-//纯度滤镜
+// 纯度滤镜
 .gray-no { filter: grayscale(0%) }
 .gray-sm { filter: grayscale(40%) }
 .gray-md { filter: grayscale(70%) }

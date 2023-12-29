@@ -1,84 +1,48 @@
 <template>
-    <img :src="src" :style="{...computed_style, objectFit: objFit}" :alt="alt">
+    <b-style :class="class">
+        <template v-slot:className="scope">
+            <img :src="src" :class="scope.className" style="display: block;" :alt="alt">
+        </template>
+    </b-style>
 </template>
 
-<script>
+<script setup lang="ts">
+    import { onMounted, ref, watch, computed } from "vue";
+    import bStyle from "./styles/b-style.vue"
 
-    let desc = ["该组件用于实现图片显示。"],
-        extend = ["b-style"],
-        dependent = [],
-        api = {
-            event: [
-                {
-                    name: "on_load",
-                    ef: "图片加载完成",
-                    params: "-",
-                }
-            ]
-        },
-        init_data = `{
-        img: "图像资源",
-        /* styles: "(参照：b-style 组件入参)" */,
-        /* objFit: "object-fit 样式值，默认：cover" */,
-        /* defaultSrc: "默认图，加载失败或初始加载时显示" */,
-        /* alt: "图片说明提示" */
-    }`;
+    const props = defineProps<{
+        // 图片地址
+        img: string,
 
-    export default {
-        name: "b-img",
-        introduce: { desc, extend, dependent, api, init_data },
-        props: {
-            img: {
-                type: String,
-                required: false
-            },
-            objFit: {
-                type: String,
-                required: false,
-                default: "cover"
-            },
-            defaultSrc: {
-                type: String,
-                required: false
-            },
-            alt: {
-                type: String,
-                required: false
-            }
-        },
-        data(){
-            return {
+        // 样式集
+        class?: any,
 
-                //图像显示地址
-                src: this.defaultSrc,
+        // 默认图片地址
+        defaultSrc?: string,
 
-            }
-        },
-        watch: {
+        // 图片提示
+        alt?: string,
+    }>()
+    const img = computed(() => props.img);
+    const emit = defineEmits(["on_load"]);
 
-            //监听图像源
-            img(){
-                this.$_load();
-            }
+    // 展示图源
+    const src = ref("");
 
-        },
-        methods: {
-
-            //图像源加载
-            $_load(){
-                if(this.img && (this.img.match(/\.(jpg|png|gif|jpeg)/) || this.img.search("data:image/png;base64") === 0)){
-                    const img = new Image();
-                    img.onload = ()=>{
-                        this.src = this.img;
-                        this.$emit("on_load");
-                    }
-                    img.src = this.img;
-                }
-            }
-
-        },
-        mounted(){
-            this.$_load();
+    // 设置展示图源
+    const setSrc = () => {
+        if(props.defaultSrc) src.value = props.defaultSrc; // 设置默认图
+        const imgLoader = new Image();
+        imgLoader.onload = ()=>{
+            src.value = props.img;
+            emit("on_load");
         }
+        imgLoader.src = props.img;
     }
+
+    watch(img, setSrc);
+
+    onMounted(() => {
+        setSrc();
+    })
 </script>

@@ -1,3 +1,5 @@
+@import "./scroll.scss";
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -11,7 +13,7 @@
 }
 
 html {
-    font-size: 12px;
+    font-size: 11.5px;
     height: 100%;
     letter-spacing: 1px;
 }
@@ -38,7 +40,7 @@ ul {
     list-style: none;
 }
 
-ol{
+ol {
     list-style-position: inside;
 }
 
@@ -55,20 +57,15 @@ video, audio {
 
 input[type="text"], input[type="password"], input[type="number"], textarea, select, option,
 select:hover, option:hover{
-    width: 100%;
-    letter-spacing: 1px;
-    border: none;
-    background: none;
     outline: none;
     box-shadow: none;
+    width: 100%;
     resize: none;
-    font-size: inherit;
-    color: inherit;
     font-family: "微软雅黑", Arial;
     -webkit-appearance: none; //ios下移除原生样式
 
     &::placeholder{
-        opacity: .7;
+        opacity: .4;
         font-size: .9em;
         color: inherit;
     }
@@ -78,7 +75,6 @@ input[type="text"], input[type="password"], input[type="number"], textarea {
     &:focus, &:active, &:hover {
         outline: none;
         box-shadow: none;
-        border: none;
     }
 }
 
@@ -108,4 +104,72 @@ hr {
     height: 1px;
     background-color: rgba(130,130,130,.15);
     margin: 1.4rem 0;
+}
+
+p{
+    margin: 1.4em 0;
+
+    &:empty {
+        height: 1.4em;
+    }
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.4em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+article {
+    font-size: 1.2rem;
+    line-height: 1.7;
+
+    //编辑模式
+    &[contenteditable]{
+        border: none;
+        outline: none;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        margin-bottom: 1em;
+    }
+    ol, ul{
+        margin-bottom: 1.4em;
+    }
+}
+
+i {
+    display: inline-block;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+code {
+    background-color: #f9f2f4;
+    color: #c7254e;
+    font-family: Consolas !important;
+    padding: 2px 6px;
+    margin: 0 2px;
+    border-radius: 4px;
+    word-break: break-all;
 }

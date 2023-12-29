@@ -1,76 +1,43 @@
-<!--
- * @Author: btxstudio btxstudio@163.com
- * @Date: 2023-10-28 13:53:44
- * @LastEditors: btxstudio btxstudio@163.com
- * @LastEditTime: 2023-11-22 15:44:47
- * @FilePath: \BTXUI\components\BTXUI\core\b-icon.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template>
-    <!--动态图标-->
-    <b-view v-if="icon && icon.search('ani_') === 0" :style="computed_style">
-        <!--success-->
-        <ani-success v-if="icon === 'ani_success'" key="success" />
-
-        <!--fail-->
-        <ani-fail v-if="icon === 'ani_fail'" key="fail" />
-
-        <!--notic-->
-        <ani-notic v-if="icon === 'ani_notic'" key="notic" />
-
-        <!--loading-->
-        <ani-loading v-if="icon === 'ani_loading'" key="loading"  />
-    </b-view>
-
-    <!--字体图标-->
-    <i v-else-if="icon" :class="`ico-${icon}`" :style="computed_style"></i>
-
-    <!--图片图标-->
-    <b-view v-else-if="bgImg" :bg-img="bgImg" :style="computed_style" />
+    <b-style :class="class">
+        <template v-slot:className="scope">
+            <!-- 动态图标 -->
+            <template v-if="icon.search('ani_') === 0">
+                <!--success-->
+                <ani-success v-if="icon === 'ani_success'" key="success" />
+        
+                <!--fail-->
+                <ani-fail v-if="icon === 'ani_fail'" key="fail" />
+        
+                <!--notic-->
+                <ani-notic v-if="icon === 'ani_notic'" key="notic" />
+        
+                <!--loading-->
+                <ani-loading v-if="icon === 'ani_loading'" key="loading"  />
+            </template>
+            
+            <!-- 图片图标 -->
+            <b-img v-if="icon.search('/') > -1" :img="icon" :class="scope.className" />
+    
+            <!-- 字体图标 -->
+            <i v-else :class="`ico-${props.icon} ${ scope.className }`"></i>   
+        </template>
+    </b-style>
 </template>
 
-<script>
-    import BView from "./b-view";
-    import BText from "./b-text";
-    import AniSuccess from "./anis/ani-success";
-    import AniFail from "./anis/ani-fail";
-    import AniNotic from "./anis/ani-notic";
-    import AniLoading from "./anis/ani-loading";
+<script setup lang="ts">
+    import bStyle from "./styles/b-style.vue"
+    import bImg from "./b-img.vue"
+    import AniSuccess from "./anis/ani-success.vue";
+    import AniFail from "./anis/ani-fail.vue";
+    import AniNotic from "./anis/ani-notic.vue";
+    import AniLoading from "./anis/ani-loading.vue";
 
-    let desc = ["该组件用于显示图标，包括 “字体图标”、“图片图标”、“css 动画图标”。"],
-        extend = ["b-style"],
-        dependent = ["b-view", "b-text", "ani-success", "ani-fail", "ani-notic", "ani-loading"],
-        api = null,
-        init_data = `{
-        /* styles: "(参照：b-style 组件入参)" */,
-        /* icon: "字体图标名（无需 ico 前缀）| 动态图标（ani_success、ani_fail、ani_notic）" */,
-        /* bgImg: "图片地址" */,
-    }`;
+    const props = defineProps<{
+        // 图标类型
+        icon: string,
 
-    export default {
-        name: "b-icon",
-        introduce: { desc, extend, dependent, api, init_data },
-        components: {
-            BView,
-            BText,
-            AniSuccess,
-            AniFail,
-            AniNotic,
-            AniLoading
-        },
-        props: {
-            icon: {
-                type: String,
-                required: false
-            },
-            imgData: {
-                type: Object,
-                required: false
-            },
-            bgImg: {
-                type: String,
-                required: false
-            }
-        }
-    }
+        // 样式集
+        class?: string
+    }>()
 </script>

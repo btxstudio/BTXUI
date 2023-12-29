@@ -1,21 +1,10 @@
 <template>
-    <b-view styles="flex-5 t-f3">
-        <b-view class="ani-loading" styles="rel w-2.2 h-2.2 round"></b-view>
+    <b-view class="flex-5">
+        <b-view class="ani-loading rel w-2d2 h-2d2 round"></b-view>
     </b-view>
 </template>
 
-<script>
-    import BView from "../b-view";
-
-    export default {
-        name: "ani-loading",
-        components: {
-            BView,
-        }
-    }
-</script>
-
-<style scoped>
+<style>
     .ani-loading {
         animation: ani_rotate 1s linear infinite;
         border: 3px solid #ddd;

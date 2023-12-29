@@ -1,6 +1,6 @@
 {
   "name": "btxui",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "btxstudio",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "md5": "^2.3.0"
+  }
 }

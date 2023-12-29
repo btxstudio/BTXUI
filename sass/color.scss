@@ -35,7 +35,7 @@ $neutral: rgba(130,130,130,.15);        //中性色
             background-color: nth($color, 2);
         }
         .line-#{"" + nth($color, 1)}{
-            border-color: nth($color, 2) !important;
+            border-color: nth($color, 2);
         }
     }
 }

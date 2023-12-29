@@ -58,14 +58,14 @@
       <div class="flex grow-1">
           <!-- 左侧目录 -->
           <div :class="`flex-column w-30 z1 bg-color-lgray max-h t-0 trans-fast fixed-s ${contents_state? 'translateX-0-s': 'translateX-f100-s'}`">
-              <div class="grow-1 auto-scroll pad-h-1 pad-t-2 pad-b-4 fsize-1d1 pad-t-5-s">
+              <div class="grow-1 over-scroll pad-h-1 pad-t-2 pad-b-4 fsize-1d1 pad-t-5-s">
                   <!-- <content-wid v-bind="nav" ref="cont_tree" @on_select="$_nav_select" /> -->
               </div>
           </div>
   
           <!-- 右侧介绍 -->
           <div class="grow-1 rel">
-            <nuxt-page class="abs max pad-h-4 pad-v-2 pjustify auto-scroll" />
+            <nuxt-page class="abs max pad-h-4 pad-t-2 pad-b-7 pjustify over-scroll thick-scroll" />
           </div>
       </div>
     </div>

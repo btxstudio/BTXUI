@@ -86,7 +86,7 @@ const icons = reactive([
         code: "\e712"
     },
     {
-        name: "weibo",
+        name: "wblog",
         code: "\e609"
     },
     {
@@ -94,7 +94,7 @@ const icons = reactive([
         code: "\e62d"
     },
     {
-        name: "dy",
+        name: "tiktok",
         code: "\e615"
     },
     {

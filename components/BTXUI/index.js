@@ -1,3 +1,4 @@
+// core-wid
 import styles from "./src/components/core/styles/b-style.vue";
 import bView from "./src/components/core/b-view.vue";
 import bText from "./src/components/core/b-text.vue";
@@ -11,7 +12,11 @@ import bList from "./src/components/core/b-list.vue";
 import bDrag from "./src/components/core/b-drag.vue";
 import bWebview from "./src/components/core/b-webview.vue";
 
-const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, bList, bWebview, bInput, bDrag, bTextarea];
+// app-wid
+import btnWid from "./src/components/btn-wid.vue";
+
+const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, bList, bWebview, bInput, bDrag, bTextarea, 
+        btnWid];
 
 export default {
     name: "btxui",

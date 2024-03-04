@@ -54,6 +54,7 @@
             <pre ref="$code3" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp3"></pre>
         </section>
 
+        <b-img :img="cover" class="round-md w-12 h-6 bg-color-mgray objfit-scaledown" />
     </article>
 </template>
 
@@ -86,6 +87,8 @@
     const $code = ref();
     const $code2 = ref();
     const $code3 = ref();
+
+    const cover = ref('');
 
     const exp1 = `
     <b-view>
@@ -126,5 +129,9 @@
         hljs.highlightElement($code.value);
         hljs.highlightElement($code2.value);
         hljs.highlightElement($code3.value);
+
+        setTimeout(() => {
+            cover.value = '/img/head2.jpg';
+        }, 2000)
     })
 </script>

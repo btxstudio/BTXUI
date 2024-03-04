@@ -5,7 +5,7 @@
     import prestyles from "./prestyles.ts"
     import theme from "./theme.ts"
     import { onMounted, computed, reactive, ref } from "vue"
-    import * as md5 from "md5"
+    import md5 from 'blueimp-md5'
 
     const props = defineProps<{
         // 样式集
@@ -71,6 +71,20 @@
     const validColor = (val: any) => {
         if(theme.colors[val]) return theme.colors[val]; // 预置颜色
         if(val && val.search("C") === 0) return `#${ val.substr(1) }`; // 16 进制颜色
+        if(val && val.search("rgb") === 0) { // rgb 颜色
+            const parts = val.split('_')
+            return `${parts[0]}(${parts[1]},${parts[2]},${parts[3]})`; 
+        }
+        return false;
+    }
+    
+    // 获取有效渐变值
+    const validGradient = (val: any) => {
+        if(val && val.search("linear") === 0) { // 线性渐变
+            const parts = val.split('_');
+            const [type, dir, ...colors] = parts;
+            return `${type}-gradient(${dir}deg,${colors.map(color => validColor(color)).join(',')})`; 
+        }
         return false;
     }
 
@@ -86,9 +100,14 @@
         if(num !== false) return num;
 
         // 颜色判断
-        // 【exp】：color-red | color-Cec4334
+        // 【exp】：color-red | color-Cec4334 | color-rgb_15_94_219
         const color = validColor(val);
         if(color !== false) return color;
+
+        // 渐变判断
+        // 【exp】：linear_45_C222_C555
+        const gradient = validGradient(val);
+        if(gradient !== false) return gradient;
 
         return false;
     }
@@ -122,7 +141,7 @@
             // 【exp】：mrg-l-5 | mrg-l-5-px | mrg-h-5 => margin-left: 5rem; | margin-left: 5px; | margin-left: 5rem; margin-right: 5rem;
             value = validValue(r3);    
             if(value) {
-                const dir = dirs[<"l"|"t"|"r"|"b">r2];
+                const dir = dirs[r2];
                 if(dir) {
                     let dirStyle = "";
                     dir.forEach(_dir => {

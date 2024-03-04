@@ -8,8 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "build:css": "npx sass ./sass/btx.scss ./cdn/css/btx.min.css --style compressed && npx sass ./sass/btx.pad.scss ./cdn/css/btx.pad.min.css --style compressed && npx sass ./sass/btx.mob.scss ./cdn/css/btx.mob.min.css --style compressed",
-    "build:btxui": "cd components/BTXUI && vite build && npx sass ./sass/btx.webapp.scss ./components/BTXUI/btxui/dist/btx.min.css --style compressed",
+    "build:css": "npx sass ./sass/btx.scss ./cdn/css/btx.min.css --style compressed && npx sass ./sass/btx.pad.scss ./cdn/css/btx.pad.min.css --style compressed && npx sass ./sass/btx.mob.scss ./cdn/css/btx.mob.min.css --style compressed && npx sass ./sass/btx.webapp.scss ./cdn/css/btx.webapp.min.css --style compressed",
+    "build:btxui": "cd components/BTXUI && vite build",
     "publish:btxui": "cd components/BTXUI/btxui && yarn publish"
   },
   "devDependencies": {
@@ -21,6 +21,7 @@
     "typescript": "^5.0.2"
   },
   "dependencies": {
+    "blueimp-md5": "^2.19.0",
     "md5": "^2.3.0",
     "vue-highlightjs": "^1.3.3"
   }

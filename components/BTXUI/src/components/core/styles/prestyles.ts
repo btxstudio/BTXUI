@@ -6,6 +6,15 @@ export default <Prestyles>{
 
     //预置样式-----------------------------------------------------------------------------------
 
+    // 文本对齐
+    "pcenter": `text-align: center;`,
+    "pright": `text-align: right;`,
+    "pleft": `text-align: left;`,
+    "pjustify": `text-align: justify;`,
+
+    // 首行缩进
+    "pindent": `text-indent: 2em;`,
+
     // 文字加粗
     "bold": `font-weight: bold;`,
 
@@ -151,11 +160,6 @@ export default <Prestyles>{
 
     // 二段赋值-----------------------------------------------------------------------------------
 
-    // 文本对齐
-    "p": {
-        pro: "text-align"
-    },
-
     // 文字颜色
     "color": {
         pro: "color"
@@ -209,6 +213,11 @@ export default <Prestyles>{
     // 自收缩比率
     "basis": {
         pro: "flex-basis"
+    },
+
+    // 多列布局容器
+    "column": {
+        pro: "columnCount"
     },
 
     // 字符间距
@@ -305,29 +314,6 @@ export default <Prestyles>{
     "delay": {
         pro: "transition-delay",
         unit: "s"
-    },
-
-        "rule_2": {
-
-            //多列布局容器
-            "column": {
-                pro: "columnCount",
-                extra: {
-                    columnGap: 0
-                },
-            }
-
-        },
-
-            //三段赋值-----------------------------------------------------------------------------------
-
-            "rule_3": {
-
-                //背景颜色
-                "gradient": {
-                    pro: ["Image"],
-                    tmp: "-webkit-linear-gradient(%{}%)"
-                },
-            }
+    }
 
 }

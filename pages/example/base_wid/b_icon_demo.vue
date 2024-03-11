@@ -36,7 +36,7 @@
             <h5>图片图标</h5>
             <p>也可以通过 <code>icon</code> 属性引入图片作为图标。</p>
             <b-view>
-                <b-icon icon="/img/home_ico.png" class="h-20-px" />
+                <b-icon icon="/img/home_ico.png" class="h-20-px bsize-contain" />
             </b-view>
             <pre ref="$code3" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp3"></pre>
         </section>

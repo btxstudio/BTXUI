@@ -91,11 +91,13 @@
         return false;
     }
 
-    // 获取有效字符值
+    // 获取有效值
     const validValue = (val: any) => {
+        if(!val) return false;
+
         // 字符串判断 (_ 前缀)
         // 【exp】：font-_iconfont 
-        if(val && val.search("_") === 0) return val.substr(1);
+        if(val.search("_") === 0) return val.substr(1);
         
         // 数值判断
         // 【exp】：mrg-5 | mrg-f5 | mrg-2d5 | mrg-f2d5
@@ -115,6 +117,12 @@
         return false;
     }
 
+    // 单位设置
+    const NO_UNIT_VALS = ['auto'];
+    const setUnit = (val, unit?) => {
+        return NO_UNIT_VALS.includes(val) ? '' : (unit ?? ''); 
+    }   
+
     // 解析样式集
     const parseStyle = (rule: any) => {
         // 使用预置样式
@@ -128,7 +136,9 @@
             r: ["right"],
             b: ["bottom"],
             v: ["top", "bottom"],
-            h: ["left", "right"]
+            h: ["left", "right"],
+            x: ["x"],
+            y: ["y"],
         };
         let [r1, r2, r3, r4] = rules;
         
@@ -138,21 +148,22 @@
             // property-value[-unit]：
             // 【exp】：mrg-5 | mrg-5-px => mrg: 5rem; | mrg: 5px;
             let value = validValue(r2);
-            if(value) return `${ style.pro }: ${ value }${ r3 || style.unit || "" }`;
+            if(value) return `${ style.pro }: ${ value }${ r3 || setUnit(value, style.unit) }`;
 
             // property[-direction]-value[-unit]：
-            // 【exp】：mrg-l-5 | mrg-l-5-px | mrg-h-5 => margin-left: 5rem; | margin-left: 5px; | margin-left: 5rem; margin-right: 5rem;
+            // 【exp】：mrg-l-5 | mrg-l-5-px | mrg-h-5 | mrg-h-auto => margin-left: 5rem; | margin-left: 5px; | margin-left: 5rem; margin-right: 5rem; | margin-left: auto; margin-right: auto;
             value = validValue(r3);    
             if(value) {
                 const dir = dirs[r2];
+                if (value === 'auto') style.unit = '';
                 if(dir) {
                     let dirStyle = "";
                     dir.forEach(_dir => {
-                        dirStyle += `${ style.pro }-${ _dir }: ${ value }${ r4 || style.unit || "" };`;    
+                        dirStyle += `${ style.pro }-${ _dir }: ${ value }${ r4 || setUnit(value, style.unit) };`;    
                     })
                     return dirStyle;
                 } else {
-                    return `${ style.pro }-${ r2 }: ${ value }${ r4 || style.unit || "" }`;
+                    return `${ style.pro }-${ r2 }: ${ value }${ r4 || setUnit(value, style.unit) }`;
                 }
             }
         }

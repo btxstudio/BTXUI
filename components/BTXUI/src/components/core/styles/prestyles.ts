@@ -65,27 +65,27 @@ export default <Prestyles>{
     "over-scroll": `overflow: auto;`,
 
     // 背景 - 重复
-    "bg-repeat": `background-repeat: repeat;`,
-    "bg-repeat-x": `background-repeat: repeat-x;`,
-    "bg-repeat-y": `background-repeat: repeat-y;`,
+    "brepeat": `background-repeat: repeat;`,
+    "brepeat-x": `background-repeat: repeat-x;`,
+    "brepeat-y": `background-repeat: repeat-y;`,
     
     // 背景 - 尺寸
-    "bg-size-cover": `background-size: cover;`,
-    "bg-size-contain": `background-size: contain;`,
-    "bg-size-max": `background-size: 100% 100%;`,
-    "bg-size-max-h": `background-size: auto 100%;`,
-    "bg-size-max-w": `background-size: 100% auto;`,
+    "bsize-cover": `background-size: cover;`,
+    "bsize-contain": `background-size: contain;`,
+    "bsize-max": `background-size: 100% 100%;`,
+    "bsize-max-h": `background-size: auto 100%;`,
+    "bsize-max-w": `background-size: 100% auto;`,
 
     // 背景 - 布局 - 九宫格
-    "bg-pos-1": `background-position: left top;`,
-    "bg-pos-2": `background-position: center top;`,
-    "bg-pos-3": `background-position: right top;`,
-    "bg-pos-4": `background-position: left center;`,
-    "bg-pos-5": `background-position: center center;`,
-    "bg-pos-6": `background-position: right center;`,
-    "bg-pos-7": `background-position: left bottom;`,
-    "bg-pos-8": `background-position: center bottom;`,
-    "bg-pos-9": `background-position: right bottom;`,
+    "bpos-1": `background-position: left top;`,
+    "bpos-2": `background-position: center top;`,
+    "bpos-3": `background-position: right top;`,
+    "bpos-4": `background-position: left center;`,
+    "bpos-5": `background-position: center center;`,
+    "bpos-6": `background-position: right center;`,
+    "bpos-7": `background-position: left bottom;`,
+    "bpos-8": `background-position: center bottom;`,
+    "bpos-9": `background-position: right bottom;`,
 
     // 背景 - 滚动行为
     "bg-fixed": `background-attachment: scroll;`,
@@ -219,6 +219,18 @@ export default <Prestyles>{
     // 多列布局容器
     "column": {
         pro: "columnCount"
+    },
+
+    // 背景尺寸
+    "bsize": {
+        pro: "background-size",
+        unit: "%"
+    },
+
+    // 背景定位
+    "bpos": {
+        pro: "background-position",
+        unit: "%"
     },
 
     // 字符间距

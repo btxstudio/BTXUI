@@ -13,7 +13,7 @@
                @on_dblclick="matteClose === 'dblclick' && $_close()"
                :forbid="matteClose? false: true"
                :styles="`abs max t-0 l-0 bg-color-${matteColor}`">
-            <b-view styles="max bg-repeat" :bg-img="mattePattern"></b-view>
+            <b-view styles="max brepeat" :bg-img="mattePattern"></b-view>
         </b-hot>
 
         <b-view :styles="`rel trans-fast bg-use ${max_pannel_styles} l-${offset.x} t-${offset.y} ${transition.out_styles}`"

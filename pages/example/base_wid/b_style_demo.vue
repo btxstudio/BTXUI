@@ -441,57 +441,57 @@
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-repeat</code></td>
+                    <td><code>brepeat</code></td>
                     <td>背景图水平及垂直平铺</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-repeat-x</code></td>
+                    <td><code>brepeat-x</code></td>
                     <td>背景图水平平铺</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-repeat-y</code></td>
+                    <td><code>brepeat-y</code></td>
                     <td>背景图垂直平铺</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-size-cover</code></td>
+                    <td><code>bsize-cover</code></td>
                     <td>背景图尺寸覆盖容器</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-size-contain</code></td>
+                    <td><code>bsize-contain</code></td>
                     <td>背景图尺寸适应容器</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-size-max</code></td>
+                    <td><code>bsize-max</code></td>
                     <td>背景图尺寸撑满容器</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-size-max-h</code></td>
+                    <td><code>bsize-max-h</code></td>
                     <td>背景图高度尺寸撑满容器</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-size-max-w</code></td>
+                    <td><code>bsize-max-w</code></td>
                     <td>背景图宽度尺寸撑满容器</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>bg-size-*</code></td>
+                    <td><code>bsize-*</code></td>
                     <td>背景图尺寸设置</td>
                     <td>任意合法值</td>
                 </tr>
                 <tr>
-                    <td><code>bg-pos-*</code></td>
+                    <td><code>bpos-*</code></td>
                     <td>背景图九宫格定位</td>
                     <td>值域范围：1 - 9</td>
                 </tr>
                 <tr>
-                    <td><code>bg-pos-*</code></td>
+                    <td><code>bpos-*</code></td>
                     <td>背景图定位</td>
                     <td>任意合法值</td>
                 </tr>

@@ -8,8 +8,9 @@
             <p>通过 <code>bgImg</code> 属性可设置背景图，之后可通过背景图相关 class 属性进行其它样式化处理。</p>
             <p>【exp】：</p>
             <b-view class="flex">
-                <b-view class="w-10 h-10 round-md mrg-r-9 bg-size-cover" bg-img="/img/head.jpg"></b-view>
-                <b-view class="w-10 h-10 round-md bg-size-cover" bg-img="/img/head2.jpg"></b-view>
+                <b-view class="w-10 h-10 round-md mrg-r-9 bsize-cover" bg-img="/img/head.jpg"></b-view>
+                <b-view class="w-10 h-10 round-md mrg-r-9 bsize-cover" bg-img="/img/head2.jpg"></b-view>
+                <b-view class="w-10 h-10 round-md bsize-50 bpos-50 bg-color-lgray" bg-img="/img/head.jpg"></b-view>
             </b-view>
             <pre ref="$code" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp1"></pre>
         </section>
@@ -51,8 +52,9 @@
 
     const exp1 = `
     <b-view class="flex">
-        <b-view class="w-10 h-10 round-md mrg-r-9 bg-size-cover" bg-img="/img/head.jpg"></b-view>
-        <b-view class="w-10 h-10 round-md bg-size-cover" bg-img="/img/head2.jpg"></b-view>
+        <b-view class="w-10 h-10 round-md mrg-r-9 bsize-cover" bg-img="/img/head.jpg"></b-view>
+        <b-view class="w-10 h-10 round-md mrg-r-9 bsize-cover" bg-img="/img/head2.jpg"></b-view>
+        <b-view class="w-10 h-10 round-md bsize-50 bpos-50 bg-color-lgray" bg-img="/img/head.jpg"></b-view>
     </b-view>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
     const exp2 = `

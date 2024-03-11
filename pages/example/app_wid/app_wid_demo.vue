@@ -11,13 +11,13 @@
             <b-view class="flex rw-100 pcenter">
                 <b-view class="grow-1 pad-h-1">
                     <b-view class="h-20 solid line-main thick-1">
-                        <app-wid :spread="spread" :colors="{bg: 'main'}" />
+                        <app-wid :spread="spread" :colors="{bg: 'main'}" :path="route.path" />
                     </b-view>
                     <b-view class="mrg-t-1">默认深色，不含中间按钮</b-view>
                 </b-view>
                 <b-view class="grow-1 pad-h-1">
                     <b-view class="h-20 solid line-lgray thick-1">
-                        <app-wid :spread="spread"
+                        <app-wid :spread="spread" :path="route.path"
                             :center="{
                                 navId: 'main',
                                 iconData: {
@@ -53,6 +53,7 @@
     import headerInfo from "@/components/header-info.vue";
     import { HeaderInfoData } from "@/components/types";
     import hljs from "highlight.js";
+    import { useRoute } from "vue-router"
 
     const introduce: HeaderInfoData = {
         name: "app-wid", 
@@ -68,13 +69,13 @@
             ]
         },
         initData: [
+            ["path", "string", "当前路由路径"],
             ["spread", "[*]", "平铺导航项"],
             ["spread[*].navId", "string", "导航标识"],
             ["spread[*].iconData", "any", "参照：b-icon 组件入参"],
             ["spread[*].hotData", "any", "参照：b-hot 组件入参"],
             ["spread[*].text", "string", "图标文字，可缺省"],
-            ["spread[*].bg.normal", "string", "常规状态背景图样式值"],
-            ["spread[*].bg.act", "string", "激活状态背景图样式值"],
+            ["spread[*].act", "string", "激活状态样式值"],
             ["center", "{*}", "主导航项"],
             ["center.navId", "string", "导航标识"],
             ["center.iconData", "any", "参照：b-icon 组件入参"],
@@ -91,6 +92,7 @@
         ] 
     };
 
+    const route = useRoute();
     const spread = reactive([
         {
             navId: "data",
@@ -100,7 +102,7 @@
             hotData: {
                 link: "/example/app_wid/app_wid_demo/data"
             },
-            text: "data",
+            text: "data"
         },
         {
             navId: "download",
@@ -110,7 +112,7 @@
             hotData: {
                 link: "/example/app_wid/app_wid_demo/download"
             },
-            text: "download",
+            text: "download"
         },
         {
             navId: "list",
@@ -120,7 +122,7 @@
             hotData: {
                 link: "/example/app_wid/app_wid_demo/list"
             },
-            text: "list",
+            text: "list"
         },
         {
             navId: "system",
@@ -130,7 +132,7 @@
             hotData: {
                 link: "/example/app_wid/app_wid_demo/system"
             },
-            text: "system",
+            text: "system"
         },
     ]);
 
@@ -140,13 +142,13 @@
     <b-view class="flex rw-100 pcenter">
         <b-view class="grow-1 pad-h-1">
             <b-view class="h-20 solid line-main thick-1">
-                <app-wid :spread="spread" :colors="{bg: 'main'}" />
+                <app-wid :spread="spread" :colors="{bg: 'main'}" :path="route.path" />
             </b-view>
             <b-view class="mrg-t-1">默认深色，不含中间按钮</b-view>
         </b-view>
         <b-view class="grow-1 pad-h-1">
             <b-view class="h-20 solid line-lgray thick-1">
-                <app-wid :spread="spread" 
+                <app-wid :spread="spread" :path="route.path"
                     :center="{
                         navId: 'main',
                         iconData: {

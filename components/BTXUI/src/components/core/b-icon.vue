@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class" :cname="cname">
+    <b-style :class="class" :states="states" :cname="cname">
         <template v-slot:className="scope">
             <!-- 动态图标 -->
             <template v-if="icon.search('ani_') === 0">
@@ -17,17 +17,17 @@
             </template>
             
             <!-- 图片图标 -->
-            <b-img v-if="icon.search('/') > -1" :img="icon" :class="scope.className" />
+            <b-view v-if="icon.search('/') > -1" :bg-img="icon" :states="states" :class="class" :state="state" />
     
             <!-- 字体图标 -->
-            <i v-else :class="`ico-${props.icon} ${ scope.className }`"></i>   
+            <i v-else :class="`ico-${props.icon} ${ scope.className }`" :state="state"></i>   
         </template>
     </b-style>
 </template>
 
 <script setup lang="ts">
     import bStyle from "./styles/b-style.vue"
-    import bImg from "./b-img.vue"
+    import bView from "./b-view.vue"
     import AniSuccess from "./anis/ani-success.vue";
     import AniFail from "./anis/ani-fail.vue";
     import AniNotic from "./anis/ani-notic.vue";
@@ -39,6 +39,12 @@
 
         // 样式集
         class?: string,
+
+        // 当前状态
+        state?: string | boolean,
+
+        // 状态样式集
+        states?: { [key: string]: any },
 
         // 样式集别名
         cname?: string,

@@ -22,101 +22,101 @@
                 </tr>
                 <tr>
                     <td>
-                        <code>.bg-repeat</code>
+                        <code>.brepeat</code>
                     </td>
                     <td>背景图水平及垂直平铺</td>
                 </tr>
                 <tr>
                     <td>
-                        <code>.bg-repeat-x</code>
+                        <code>.brepeat-x</code>
                     </td>
                     <td>背景图水平平铺</td>
                 </tr>
                 <tr>
                     <td>
-                        <code>.bg-repeat-y</code>
+                        <code>.brepeat-y</code>
                     </td>
                     <td>背景图垂直平铺</td>
                 </tr>
                 <tr>
                     <td>
-                        <code>.bg-size-cover</code>
+                        <code>.bsize-cover</code>
                     </td>
                     <td>背景图尺寸覆盖容器</td>
                 </tr>
                 <tr>
                     <td>
-                        <code>.bg-size-contain</code>
+                        <code>.bsize-contain</code>
                     </td>
                     <td>背景图尺寸适应容器</td>
                 </tr>
                 <tr>
                     <td>
-                        <code>.bg-size-max</code>
+                        <code>.bsize-max</code>
                     </td>
                     <td>背景图尺寸撑满容器</td>
                 </tr>
                 <tr>
                     <td>
-                        <code>.bg-size-max-h</code>
+                        <code>.bsize-max-h</code>
                     </td>
                     <td>背景图高度尺寸撑满容器</td>
                 </tr>
                 <tr>
                     <td>
-                        <code>.bg-size-max-w</code>
+                        <code>.bsize-max-w</code>
                     </td>
                     <td>背景图宽度尺寸撑满容器</td>
                 </tr>
                 </tbody>
             </table>
-            <p>通过 <code>.bg-pos-*</code> 样式类，值域为：1 — 9。可以对背景图进行九宫格式对齐定位。</p>
+            <p>通过 <code>.bpos-*</code> 样式类，值域为：1 — 9。可以对背景图进行九宫格式对齐定位。</p>
             <p>【示例】：</p>
             <div class="grid pcenter rw-100">
                 <div class="col-4 pad-d5">
-                    <div class="bg-pos-1 h-5 round-sm bg-color-lgray mrg-b-d5"
+                    <div class="bpos-1 h-5 round-sm bg-color-lgray mrg-b-d5"
                          style="background-image: url('/img/f.png')"></div>
-                    <div><code>.bg-pos-1</code></div>
+                    <div><code>.bpos-1</code></div>
                 </div>
                 <div class="col-4 pad-d5">
-                    <div class="bg-pos-2 h-5 round-sm bg-color-lgray mrg-b-d5"
+                    <div class="bpos-2 h-5 round-sm bg-color-lgray mrg-b-d5"
                         style="background-image: url('/img/f.png')"></div>
-                    <div><code>.bg-pos-2</code></div>
+                    <div><code>.bpos-2</code></div>
                 </div>
                 <div class="col-4 pad-d5">
-                    <div class="bg-pos-3 h-5 round-sm bg-color-lgray mrg-b-d5"
+                    <div class="bpos-3 h-5 round-sm bg-color-lgray mrg-b-d5"
                         style="background-image: url('/img/f.png')"></div>
-                    <div><code>.bg-pos-3</code></div>
+                    <div><code>.bpos-3</code></div>
                 </div>
                 <div class="col-4 pad-d5">
-                    <div class="bg-pos-4 h-5 round-sm bg-color-lgray mrg-b-d5"
+                    <div class="bpos-4 h-5 round-sm bg-color-lgray mrg-b-d5"
                         style="background-image: url('/img/f.png')"></div>
-                    <div><code>.bg-pos-4</code></div>
+                    <div><code>.bpos-4</code></div>
                 </div>
                 <div class="col-4 pad-d5">
-                    <div class="bg-pos-5 h-5 round-sm bg-color-lgray mrg-b-d5"
+                    <div class="bpos-5 h-5 round-sm bg-color-lgray mrg-b-d5"
                         style="background-image: url('/img/f.png')"></div>
-                    <div><code>.bg-pos-5</code></div>
+                    <div><code>.bpos-5</code></div>
                 </div>
                 <div class="col-4 pad-d5">
-                    <div class="bg-pos-6 h-5 round-sm bg-color-lgray mrg-b-d5"
+                    <div class="bpos-6 h-5 round-sm bg-color-lgray mrg-b-d5"
                         style="background-image: url('/img/f.png')"></div>
-                    <div><code>.bg-pos-6</code></div>
+                    <div><code>.bpos-6</code></div>
                 </div>
                 <div class="col-4 pad-d5">
-                    <div class="bg-pos-7 h-5 round-sm bg-color-lgray mrg-b-d5"
+                    <div class="bpos-7 h-5 round-sm bg-color-lgray mrg-b-d5"
                         style="background-image: url('/img/f.png')"></div>
-                    <div><code>.bg-pos-7</code></div>
+                    <div><code>.bpos-7</code></div>
                 </div>
                 <div class="col-4 pad-d5">
-                    <div class="bg-pos-8 h-5 round-sm bg-color-lgray mrg-b-d5"
+                    <div class="bpos-8 h-5 round-sm bg-color-lgray mrg-b-d5"
                         style="background-image: url('/img/f.png')"></div>
-                    <div><code>.bg-pos-8</code></div>
+                    <div><code>.bpos-8</code></div>
                 </div>
                 <div class="col-4 pad-d5">
-                    <div class="bg-pos-9 h-5 round-sm bg-color-lgray mrg-b-d5"
+                    <div class="bpos-9 h-5 round-sm bg-color-lgray mrg-b-d5"
                         style="background-image: url('/img/f.png')"></div>
-                    <div><code>.bg-pos-9</code></div>
+                    <div><code>.bpos-9</code></div>
                 </div>
             </div>
         </section>

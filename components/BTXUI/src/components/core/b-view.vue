@@ -16,7 +16,7 @@
 
     const props = defineProps<{
         // 样式集
-        class?: string,
+        class?: any,
 
         // 当前状态
         state?: string | boolean,

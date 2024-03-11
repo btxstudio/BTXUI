@@ -30,7 +30,11 @@
                     :states="{
                         act: `color-${colors?.text?.act || 'light'}`
                     }">
-                    <b-icon v-bind="nav.iconData"
+                    <b-icon v-bind="nav.iconData" :cname="nav.act"
+                        :state="curRoute === nav.hotData.link ? 'act' : ''"
+                        :states="{
+                            act: nav.act ?? ''
+                        }"
                         class="w-2d7 h-2d7 trans-fast fsize-1d7" />
                     <b-text v-if="nav.text" class="fsize-d8">{{nav.text}}</b-text>
                 </b-view>
@@ -43,7 +47,6 @@
 
 <script setup lang="ts">
     import { computed, reactive } from "vue"
-    import { useRoute } from "vue-router"
     import BView from "./core/b-view.vue"
     import BText from "./core/b-text.vue"
     import BList from "./core/b-list.vue"
@@ -52,11 +55,13 @@
 
     defineEmits(['on_toggle']);
     const props = defineProps<{
+        path: string,
         spread: {
             navId: string,
             iconData: any,
             hotData: any,
-            text: string,
+            text?: string,
+            act?: string,
         }[],
         center?: {
             navId: string,
@@ -78,10 +83,9 @@
         round?: boolean,
         keepAlive?: boolean
     }>();
-    const route = useRoute();
 
     // 当前路由
-    const curRoute = computed(() => route.path);
+    const curRoute = computed(() => props.path);
 
     // 总导航显示
     const navs = computed(() => {

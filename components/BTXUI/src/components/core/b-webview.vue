@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class">
+    <b-style :class="class" :cname="cname">
         <template v-slot:className="scope">
             <iframe :class="scope.className" frameborder="0" :src="src"></iframe>
         </template>
@@ -14,6 +14,9 @@
         src: string,
 
         // 样式集
-        class?: string
+        class?: string,
+
+        // 样式集别名
+        cname?: string,
     }>()
 </script>

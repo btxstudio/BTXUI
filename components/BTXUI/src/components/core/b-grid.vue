@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class" :states="states">
+    <b-style :class="class" :states="states" :cname="cname">
         <template v-slot:className="scope">
             <b-view :class="`${scope.className} rel`">
                 <!--容器描边-->
@@ -54,6 +54,9 @@
 
         line?: number,
 
-        outlineColor?: string
+        outlineColor?: string,
+
+        // 样式集别名
+        cname?: string,
     }>();
 </script>

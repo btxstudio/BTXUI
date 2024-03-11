@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class" :states="states">
+    <b-style :class="class" :cname="cname" :states="states">
         <template v-slot:className="scope">
             <div :class="scope.className"
                 :state="state"
@@ -34,6 +34,9 @@
             rotate?: string,
             skew?: string
         },
+
+        // 样式集别名
+        cname?: string,
     }>()
 
     // 行内样式

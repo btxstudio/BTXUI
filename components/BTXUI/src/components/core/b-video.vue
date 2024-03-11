@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class">
+    <b-style :class="class" :cname="cname">
         <template v-slot:className="scope">
             <video ref="$video" :class="scope.className" :muted="autoPlay" :src="video" :autoplay="autoPlay" :loop="loop"></video>
         </template>
@@ -22,6 +22,9 @@
 
         // 循环播放
         loop?: boolean,
+
+        // 样式集别名
+        cname?: string,
     }>()
 
     const $video = ref();

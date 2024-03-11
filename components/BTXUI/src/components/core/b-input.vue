@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class" :focus="focus" :states="states">
+    <b-style :class="class" :focus="focus" :states="states" :cname="cname">
         <template v-slot:className="scope">
             <input :class="scope.className" :type="type" 
                    @focus="$emit('on_focus', $event)"
@@ -57,7 +57,10 @@
         rule?: {
             type: RegExp | "required" | "tel" | "email" | "url" | "uname" | "zh" | "uid",
             notic?: string
-        }
+        },
+
+        // 样式集别名
+        cname?: string,
     }>();
     const emit = defineEmits(["update:text", "on_focus", "on_blur", "on_change"]);
 

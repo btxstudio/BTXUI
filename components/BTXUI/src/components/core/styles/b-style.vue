@@ -22,6 +22,9 @@
 
         // 状态样式集
         states?: { [key: string]: any },
+
+        // 样式集唯一标识
+        cname?: string
     }>()
 
     // 全局样式 id
@@ -59,7 +62,7 @@
 
     // 获取有效数值
     const validNumber = (val: any) => {
-        if(!isNaN(val*1)) return val;
+        if(!isNaN(val*1) || val === 'auto') return val;
 
         let num = val;
         if(/^f\d+$/.test(num)) num = num.substr(1) * -1; // 负数处理
@@ -160,7 +163,7 @@
         if(!_class) return "";
         const combineStyle = _class.split(" ").reduce((total: string, rule: string) => {
             const validateRule = parseStyle(rule);
-            if(!validateRule) return;
+            if(!validateRule) return '';
             total += `${ validateRule };`;
             return total;
         }, "");
@@ -186,9 +189,9 @@
     }
 
     // 合成聚类名
-    const combineClassName = (_class) => {
+    const combineClassName = (_class, key) => {
         const classArr = _class.split(" ").sort();
-        const compSelector = `B-${ md5(classArr.join("&")) }`;
+        const compSelector = `B-${ md5(classArr.join("&") + key) }`;
         className.value = `${ _class } ${ compSelector }`;
         if(!styleMap.value.includes(compSelector)) {
             styleMap.value.push(compSelector);
@@ -231,7 +234,7 @@
         if(props.class) {
             initStyle();
             parseStyles(props.class);
-            const compSelector = combineClassName(props.class);
+            const compSelector = combineClassName(props.class, props.cname ?? '');
             genFocusStyles(`${ compSelector }[focus='true']:focus`); // 生成聚焦伪类样式
             genHoverStyles(`${ compSelector }[hover='true']:hover`); // 生成鼠标悬停伪类样式
             genActiveStyles(`${ compSelector }[active='true']:active`); // 生成激活伪类样式

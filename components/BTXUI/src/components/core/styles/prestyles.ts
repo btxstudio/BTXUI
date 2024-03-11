@@ -150,6 +150,7 @@ export default <Prestyles>{
     "ellipsis": `overflow: hidden; text-overflow: ellipsis; white-space: nowrap;`,
     "text-line": `textShadow: 1px 0 0 rgba(200, 200, 200, .5), -1px 0 0 rgba(200, 200, 200, .5), 0 1px 0 rgba(200, 200, 200, .5), 0 -1px 0 rgba(200, 200, 200, .5);`,
     "alpha-0": `opacity: 0; visibility: hidden;`,
+    "select-none": `-webkit-touch-callout:none; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;`,
 
     // 图像布局
     "objfit-fill": `object-fit: fill;`,

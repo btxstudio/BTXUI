@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class" :states="states">
+    <b-style :class="class" :states="states" :cname="cname">
         <template v-slot:className="scope">
             <span :class="scope.className" :state="state">
                 <slot/>
@@ -19,6 +19,9 @@
         state?: string | boolean,
 
         // 状态样式集
-        states?: { [key: string]: any }
+        states?: { [key: string]: any },
+
+        // 样式集别名
+        cname?: string,
     }>()
 </script>

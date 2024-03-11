@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class" :states="states" :hover="hover" :active="active">
+    <b-style :class="class" :states="states" :hover="hover" :active="active" :cname="cname">
         <template v-slot:className="scope">
             <a :style="`user-select: none; cursor: ${ cursor };`"
                 ref="$anchor"
@@ -54,6 +54,9 @@
 
         // 跳转锚点
         anchor?: string,
+
+        // 样式集别名
+        cname?: string,
 
     }>();
     const emit = defineEmits(["on_click", "on_enter", "on_move", "on_leave", "on_dblclick"]);

@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class">
+    <b-style :class="class" :cname="cname">
         <template v-slot:className="scope">
             <img :src="src" :class="scope.className" style="display: block;" :alt="alt">
         </template>
@@ -22,6 +22,9 @@
 
         // 图片提示
         alt?: string,
+
+        // 样式集别名
+        cname?: string,
     }>()
     const img = computed(() => props.img);
     const emit = defineEmits(["on_load"]);

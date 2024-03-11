@@ -14,9 +14,10 @@ import bWebview from "./src/components/core/b-webview.vue";
 
 // app-wid
 import btnWid from "./src/components/btn-wid.vue";
+import appWid from "./src/components/app-wid.vue";
 
 const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, bList, bWebview, bInput, bDrag, bTextarea, 
-        btnWid];
+        btnWid, appWid];
 
 export default {
     name: "btxui",

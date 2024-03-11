@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class">
+    <b-style :class="class" :cname="cname">
         <template v-slot:className="scope">
             <!-- 动态图标 -->
             <template v-if="icon.search('ani_') === 0">
@@ -38,6 +38,9 @@
         icon: string,
 
         // 样式集
-        class?: string
+        class?: string,
+
+        // 样式集别名
+        cname?: string,
     }>()
 </script>

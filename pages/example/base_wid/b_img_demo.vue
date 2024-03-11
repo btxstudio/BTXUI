@@ -53,8 +53,6 @@
             </b-view>
             <pre ref="$code3" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp3"></pre>
         </section>
-
-        <b-img :img="cover" class="round-md w-12 h-6 bg-color-mgray objfit-scaledown" />
     </article>
 </template>
 

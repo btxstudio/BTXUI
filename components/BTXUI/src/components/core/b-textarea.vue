@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class" :focus="focus" :states="states">
+    <b-style :class="class" :focus="focus" :states="states" :cname="cname">
         <template v-slot:className="scope">
             <textarea :class="scope.className"
                       @focus="$emit('on_focus', $event)"
@@ -52,6 +52,9 @@
 
         // 聚焦样式集
         focus?: string,
+
+        // 样式集别名
+        cname?: string,
     }>();
     const emit = defineEmits(["on_focus", "on_blur", "on_change", "update:text"]);
 

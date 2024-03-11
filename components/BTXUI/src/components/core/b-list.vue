@@ -1,8 +1,7 @@
 <template>
-    <b-style :class="class" :states="states">
+    <b-style :class="class" :states="states" :cname="cname">
         <template v-slot:className="scope">
-            <div :class="scope.className" 
-                style="position: relative;"
+            <div :class="scope.className"
                 :state="state">
         
                 <!-- 滚动区域 -->
@@ -37,7 +36,10 @@
         states?: { [key: string]: any },
 
         // 滚动条样式
-        scrollType?: "thick" | "thin"
+        scrollType?: "thick" | "thin",
+
+        // 样式集别名
+        cname?: string,
 
     }>();
     const emit = defineEmits(["on_scroll", "on_to_top", "on_to_bottom"]);

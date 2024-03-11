@@ -1,5 +1,5 @@
 <template>
-    <b-style :class="class" :states="{dragStart, dragOver}">
+    <b-style :class="class" :states="{dragStart, dragOver}" :cname="cname">
         <template v-slot:className="scope">
             <div :style="{
                     cursor: dragOver? 'default': 'move', 
@@ -37,7 +37,10 @@
         dragOver?: string,
 
         // 启用自由拖放
-        freeDrag?: boolean
+        freeDrag?: boolean,
+
+        // 样式集别名
+        cname?: string,
 
     }>();
 

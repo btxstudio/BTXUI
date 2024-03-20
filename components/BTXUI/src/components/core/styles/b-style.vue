@@ -120,6 +120,7 @@
     // 单位设置
     const NO_UNIT_VALS = ['auto'];
     const setUnit = (val, unit?) => {
+        if (val === 'auto') unit = '';
         return NO_UNIT_VALS.includes(val) ? '' : (unit ?? ''); 
     }   
 
@@ -149,13 +150,12 @@
             // 【exp】：mrg-5 | mrg-5-px => mrg: 5rem; | mrg: 5px;
             let value = validValue(r2);
             if(value) return `${ style.pro }: ${ value }${ r3 || setUnit(value, style.unit) }`;
-
+            
             // property[-direction]-value[-unit]：
             // 【exp】：mrg-l-5 | mrg-l-5-px | mrg-h-5 | mrg-h-auto => margin-left: 5rem; | margin-left: 5px; | margin-left: 5rem; margin-right: 5rem; | margin-left: auto; margin-right: auto;
             value = validValue(r3);    
             if(value) {
                 const dir = dirs[r2];
-                if (value === 'auto') style.unit = '';
                 if(dir) {
                     let dirStyle = "";
                     dir.forEach(_dir => {

@@ -107,6 +107,7 @@ export default <Prestyles>{
     "solid-r": `border-right-style: solid;`,
     "solid-t": `border-top-style: solid;`,
     "solid-b": `border-bottom-style: solid;`,
+    "solid-none": `border-style: none;`,
     "dashed-l": `border-left-style: dashed;`,
     "dashed-r": `border-right-style: dashed;`,
     "dashed-t": `border-top-style: dashed;`,
@@ -327,6 +328,5 @@ export default <Prestyles>{
     "delay": {
         pro: "transition-delay",
         unit: "s"
-    }
-
+    },
 }

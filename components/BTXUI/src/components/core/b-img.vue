@@ -1,7 +1,7 @@
 <template>
-    <b-style :class="class" :cname="cname">
+    <b-style :class="class" :cname="cname" :matrix="matrix">
         <template v-slot:className="scope">
-            <img :src="src" :class="scope.className" style="display: block;" :alt="alt">
+            <img :src="src" :class="scope.className" :style="{display: 'block', ...scope.matrixStyle}" :alt="alt">
         </template>
     </b-style>
 </template>
@@ -22,6 +22,14 @@
 
         // 图片提示
         alt?: string,
+
+        // 变形矩阵
+        matrix?: {
+            translate?: string,
+            scale?: string,
+            rotate?: string,
+            skew?: string
+        },
 
         // 样式集别名
         cname?: string,

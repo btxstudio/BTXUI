@@ -33,7 +33,7 @@
         class?: string,
 
         // 当前状态
-        state?: string | boolean,
+        state?: string | null,
 
         // 状态样式集
         states?: { [key: string]: any },

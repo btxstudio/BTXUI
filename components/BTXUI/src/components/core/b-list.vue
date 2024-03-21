@@ -18,6 +18,7 @@
 <script setup lang="ts">
     import { ref, onMounted, computed } from "vue"
     import bStyle from "./styles/b-style.vue"
+    import { State } from "./styles/@types"
 
     const props = defineProps<{
         // 滚动设置
@@ -30,7 +31,7 @@
         class?: string,
 
         // 当前状态
-        state?: string | boolean,
+        state?: State,
 
         // 状态样式集
         states?: { [key: string]: any },

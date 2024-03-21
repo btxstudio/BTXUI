@@ -1,5 +1,5 @@
 <template>
-    <slot name="className" :class-name="className" />
+    <slot name="className" :class-name="className" :matrix-style="matrixStyle" />
 </template>
 <script setup lang="ts">
     import prestyles from "./prestyles.ts"
@@ -22,6 +22,14 @@
 
         // 状态样式集
         states?: { [key: string]: any },
+
+        // 变形矩阵
+        matrix?: {
+            translate?: string,
+            scale?: string,
+            rotate?: string,
+            skew?: string
+        },
 
         // 样式集唯一标识
         cname?: string
@@ -183,9 +191,9 @@
 
     // 添加样式集
     const appendStyle = (selector, rules) => {
-        const validateRule = combineStyles(rules);
-        if(!validateRule) return; 
         if(!styleMap.value.includes(selector)) {
+            const validateRule = combineStyles(rules);
+            if(!validateRule) return; 
             styleMap.value.push(selector);
             styles[selector] = validateRule;
         }
@@ -241,7 +249,20 @@
         }) 
     }
 
+    // 合成矩阵行内样式
+    const matrixStyle = ref(); // 解析应用矩阵行内样式 
+    const matrix = () => {  
+        const translate = props.matrix?.translate? `translate(${ props.matrix?.translate })`: ""; // 位移
+        const scale = props.matrix?.scale? `scale(${ props.matrix?.scale })`: ""; // 放缩
+        const rotate = props.matrix?.rotate? `rotate(${ props.matrix?.rotate })`: ""; // 旋转
+        const skew = props.matrix?.skew? `skew(${ props.matrix?.skew })`: ""; // 斜切
+        matrixStyle.value = props.matrix? {
+            transform: `${ translate } ${ scale } ${ rotate } ${ skew }`
+        }: {};
+    }
+
     onMounted(() => {
+        if(props.matrix) matrix();
         if(props.class) {
             initStyle();
             parseStyles(props.class);

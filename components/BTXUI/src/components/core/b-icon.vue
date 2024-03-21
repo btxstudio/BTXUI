@@ -32,6 +32,7 @@
     import AniFail from "./anis/ani-fail.vue";
     import AniNotic from "./anis/ani-notic.vue";
     import AniLoading from "./anis/ani-loading.vue";
+    import { State } from "./styles/@types"
 
     const props = defineProps<{
         // 图标类型
@@ -41,7 +42,7 @@
         class?: string,
 
         // 当前状态
-        state?: string | boolean,
+        state?: State,
 
         // 状态样式集
         states?: { [key: string]: any },

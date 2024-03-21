@@ -27,6 +27,7 @@
 <script setup lang="ts">
     import bStyle from "./styles/b-style.vue"
     import bView from "./b-view.vue"
+    import { State } from "./styles/@types"
 
     defineProps<{
         colData: {
@@ -43,7 +44,7 @@
         class?: string,
 
         // 当前状态
-        state?: string | boolean,
+        state?: State,
 
         // 状态样式集
         states?: { [key: string]: any },

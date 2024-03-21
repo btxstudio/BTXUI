@@ -78,6 +78,7 @@
             ["class", "string", "参照：b-style 组件入参"],
             ["img", "string", "图像资源"],
             ["defaultSrc", "string", "默认图，加载失败或初始加载时显示"],
+            ["matrix", "{translate: '位移', scale: '放缩', rotate: '旋转', skew: '斜切'}", "设置变形矩阵"],
             ["alt", "string", "图片说明提示"]
         ] 
     }

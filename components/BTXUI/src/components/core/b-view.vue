@@ -1,9 +1,9 @@
 <template>
-    <b-style :class="class" :cname="cname" :states="states">
+    <b-style :class="class" :cname="cname" :states="states" :matrix="matrix">
         <template v-slot:className="scope">
             <div :class="scope.className"
                 :state="state"
-                :style="lineStyle">
+                :style="{...bgStyle, ...scope.matrixStyle}">
                 <slot/>
             </div>
         </template>
@@ -13,13 +13,14 @@
 <script setup lang="ts">
     import { computed } from "vue"
     import bStyle from "./styles/b-style.vue"
+    import { State } from "./styles/@types"
 
     const props = defineProps<{
         // 样式集
         class?: any,
 
         // 当前状态
-        state?: string | boolean,
+        state?: State,
 
         // 状态样式集
         states?: { [key: string]: any },
@@ -39,20 +40,6 @@
         cname?: string,
     }>()
 
-    // 行内样式
-    const lineStyle = computed(() => {
-        const bgImg = props.bgImg? {backgroundImage: `url(${ props.bgImg })`}: {}; // 背景图
-        const translate = props.matrix?.translate? `translate(${ props.matrix?.translate })`: ""; // 位移
-        const scale = props.matrix?.scale? `scale(${ props.matrix?.scale })`: ""; // 放缩
-        const rotate = props.matrix?.rotate? `rotate(${ props.matrix?.rotate })`: ""; // 旋转
-        const skew = props.matrix?.skew? `skew(${ props.matrix?.skew })`: ""; // 斜切
-        const transform = props.matrix? {
-            transform: `${ translate } ${ scale } ${ rotate } ${ skew }`
-        }: {}; 
-
-        return {
-            ...bgImg,
-            ...transform
-        }
-    })
+    // 背景图样式
+    const bgStyle = computed(() => props.bgImg? {backgroundImage: `url(${ props.bgImg })`}: {});
 </script>

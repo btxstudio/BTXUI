@@ -152,11 +152,6 @@
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><code>grid</code></td>
-                    <td>弹性布局容器，可换行</td>
-                    <td>-</td>
-                </tr>
-                <tr>
                     <td><code>flex-column</code></td>
                     <td>弹性布局容器，纵向生长</td>
                     <td>-</td>

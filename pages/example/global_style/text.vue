@@ -33,7 +33,7 @@
                 </tbody>
             </table>
             <p>【示例】：</p>
-            <div class="grid rw-100">
+            <div class="flex rw-100">
                 <div class="col-3 pad-d5 col-6-s">
                     <div class="bg-color-lgray round-sm pad-2 pleft">
                         在重视劳动和尊重劳动者的基础上，我们有可能来创造自己的新的道德。劳动和科学是世界上最伟大的两种力量。
@@ -68,7 +68,7 @@
             <p>预置的字号比率值：0 — 0.9、1 — 1.9、2、2.5、3、3.5、4、4.5、5、5.5，单位 em。数值 "." 使用 "d" 代替，"0" 使用 "" 空字符串代替。比如缩小为 0.9 倍，类名为 <code>.fsize-d9</code>。<code>.fsize-0</code> 可设置 0 号字。</p>
             <p>该样式类支持响应式后缀：<code>-s</code>（手机端）、<code>-m</code>（平板端）。</p>
             <p>【示例】：</p>
-            <div class="grid pcenter rw-100">
+            <div class="flex pcenter rw-100">
                 <div class="col-3 pad-d5 col-6-s">
                     <div class="bg-color-lgray round-sm flex-5 h-6">javascript</div>
                     <div class="pad-t-d5">初始文本大小</div>

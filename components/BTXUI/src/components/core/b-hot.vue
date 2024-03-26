@@ -24,9 +24,11 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, computed, onMounted } from "vue"
+    import { ref, computed, onMounted, getCurrentInstance } from "vue"
     import bStyle from "./styles/b-style.vue"
     import { State } from "./styles/@types"
+    import { useRouter } from "vue-router"
+    const { proxy } = getCurrentInstance() as any
 
     const props = defineProps<{
         // 链接
@@ -67,6 +69,7 @@
     const target = ref("");
 
     // 链接方式
+    let routeLink;
     const url = computed(() => {
         const link = props.link;
         if(props.forbid || !link) return "javascript: void 0;"; // 禁用效果
@@ -75,6 +78,7 @@
             return link;
         }
         if(link.search(/^(tel|mailto):/) === 0) return link; // 手机拨号 | 邮件
+        if(link[0] === '/') routeLink = link;
         return link; // 组件路由 & 其它
     })
 
@@ -82,12 +86,17 @@
     const cursor = computed(() => props.forbid? '': 'pointer');
 
     // 点击事件
+    const router = useRouter();
     const click = (e) => {
         if(props.anchor) {
             const $section = document.querySelector(props.anchor);
             if($section) $section.scrollIntoView({
                 behavior: "smooth"
             });
+        }
+        if(routeLink) {
+            e.preventDefault();
+            (router ?? proxy.$router).push(routeLink);
         }
         !props.forbid && emit("on_click", e);
     }

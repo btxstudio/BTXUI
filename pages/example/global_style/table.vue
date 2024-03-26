@@ -135,7 +135,7 @@
             <h5>响应式表格</h5>
             <p>通过添加 <code>response</code> 属性来实现，该属性实际只控制单元格文本内容不自动换行，要真正实现响应式效果需要对表格包裹一层结构，并通过设置 <code>.auto-h-scroll</code> 样式类实现。</p>
             <p>【示例】：</p>
-            <div class="grid rw-100">
+            <div class="flex rw-100">
                 <div class="col-6 pad-r-1">
                     <div class="over-scroll">
                         <table class="table" response>
@@ -221,7 +221,7 @@
             <h5>暗色表格</h5>
             <p>通过添加 <code>dark</code> 属性来实现。暗色表格也可同时启用线框样式。</p>
             <p>【示例】：</p>
-            <div class="grid rw-100">
+            <div class="flex rw-100">
                 <div class="col-6 pad-r-1">
                     <table class="table" dark>
                         <thead>

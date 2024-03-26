@@ -31,6 +31,12 @@
             skew?: string
         },
 
+        // 样式集扩展
+        extraClass?: {
+            selector: '>' | '+' | ' ' | '~',
+            value: string
+        },
+
         // 样式集唯一标识
         cname?: string
     }>()
@@ -72,9 +78,9 @@
     const validNumber = (val: any) => {
         if(!isNaN(val*1) || val === 'auto') return val;
 
-        let num = val;
-        if(/^f\d+$/.test(num)) num = num.substr(1) * -1; // 负数处理
-        if(/^\d*d\d+$/.test(num)) num = num.replace("d", ".") * 1; // 小数处理
+        let num = val.toString();
+        if(num[0] === 'f') num = `-${num.substr(1)}`; // 负数处理
+        if(/^-?\d*d\d+$/.test(num)) num = num.replace("d", ".") * 1; // 小数处理
         return isNaN(num)? false: num;
     }
 
@@ -126,10 +132,11 @@
     }
 
     // 单位设置
-    const NO_UNIT_VALS = ['auto'];
-    const setUnit = (val, unit?) => {
+    const setUnit = (val, customUnit?, Presetunit?) => {
+        let unit = customUnit ?? Presetunit;
         if (val === 'auto') unit = '';
-        return NO_UNIT_VALS.includes(val) ? '' : (unit ?? ''); 
+        if (unit === 'P') unit = '%';
+        return unit ?? ''; 
     }   
 
     // 解析样式集
@@ -157,7 +164,7 @@
             // property-value[-unit]：
             // 【exp】：mrg-5 | mrg-5-px => mrg: 5rem; | mrg: 5px;
             let value = validValue(r2);
-            if(value) return `${ style.pro }: ${ value }${ r3 || setUnit(value, style.unit) }`;
+            if(value) return `${ style.pro }: ${ value }${ setUnit(value, r3, style.unit) }`;
             
             // property[-direction]-value[-unit]：
             // 【exp】：mrg-l-5 | mrg-l-5-px | mrg-h-5 | mrg-h-auto => margin-left: 5rem; | margin-left: 5px; | margin-left: 5rem; margin-right: 5rem; | margin-left: auto; margin-right: auto;
@@ -167,11 +174,11 @@
                 if(dir) {
                     let dirStyle = "";
                     dir.forEach(_dir => {
-                        dirStyle += `${ style.pro }-${ _dir }: ${ value }${ r4 || setUnit(value, style.unit) };`;    
+                        dirStyle += `${ style.pro }-${ _dir }: ${ value }${ setUnit(value, r4, style.unit) };`;    
                     })
                     return dirStyle;
                 } else {
-                    return `${ style.pro }-${ r2 }: ${ value }${ r4 || setUnit(value, style.unit) }`;
+                    return `${ style.pro }-${ r2 }: ${ value }${ setUnit(value, r4, style.unit) }`;
                 }
             }
         }
@@ -242,6 +249,13 @@
         })
     }
 
+    // 基于聚类名，生成派生样式集
+    const genExtraStyles = (baseSelector) => {
+        if(!props.extraClass) return;
+        const { selector, value } = props.extraClass;
+        appendStyle(`${ baseSelector }${ selector }*`, value); 
+    }
+
     // 设置样式集
     const setStyle = () => {  
         Object.keys(styles).forEach(key => {
@@ -271,6 +285,7 @@
             genHoverStyles(`${ compSelector }[hover='true']:hover`); // 生成鼠标悬停伪类样式
             genActiveStyles(`${ compSelector }[active='true']:active`); // 生成激活伪类样式
             genStateStyles(compSelector); // 生成状态样式
+            genExtraStyles(compSelector); // 生成派生样式
             setStyle();
         }
     })

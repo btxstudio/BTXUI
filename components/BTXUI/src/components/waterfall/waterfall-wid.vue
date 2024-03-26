@@ -1,22 +1,23 @@
 <template>
     <b-view styles="rel">
-        <b-grid v-bind="grid_data">
-            <b-view v-for="img of show_imgs" :id="img.item_id" :key="img.item_id"
+        <b-row v-bind="grid_data">
+            <b-col v-for="img of show_imgs" :id="img.item_id" :key="img.item_id"
                     ref="item"
                     :styles="`abs mrg-b-0 pad-7px trans-fast t-${img.item_top} l-${img.item_left}`">
                 <b-img styles="flex round-sm round-t" :img="img.src" :title="img.title" />
                 <b-view styles="pad-1">
                     hello world
                 </b-view>
-            </b-view>
-        </b-grid>
+            </b-col>
+        </b-row>
     </b-view>
 </template>
 
 <script>
     import BView from "@/components/BTXUI/core/b-view"
     import BImg from "@/components/BTXUI/core/b-img"
-    import BGrid from "@/components/BTXUI/core/b-grid"
+    import BRow from "@/components/BTXUI/core/b-grid/b-row"
+    import BCol from "@/components/BTXUI/core/b-grid/b-col"
 
     const desc = ["该组件用于瀑布流方式展示内容。"],
         extend = [],

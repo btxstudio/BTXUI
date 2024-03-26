@@ -6,7 +6,7 @@
     <!-- 图标 -->
     <section class="mrg-t-5">
         <h5>图标汇总</h5>
-        <ul class="grid pcenter">
+        <ul class="flex pcenter">
             <li v-for="(ico, i) of icons" :key="i" class="w-10 h-10 round-sm line-lgray solid thick-1 mrg-b-1d5 pad-t-d5 mrg-r-1d5">
                 <i :class="`ico-${ico.name} scale-${ico.scale || 1}`" class="fsize-2d5 dark"></i><br>
                 <span class="fsize-d9">{{ico.name}}</span><br>

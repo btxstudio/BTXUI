@@ -37,7 +37,7 @@
             <p>通过 <code>.order-*</code> 可以设置弹性布局的项目排序。预置的排序值：0、1、2、3、4、5。</p>
             <p>该样式类支持响应式后缀：<code>-s</code>（手机端）、<code>-m</code>（平板端）。</p>
             <p>【示例】：九宫格对齐定位</p>
-            <div class="grid pcenter rw-100">
+            <div class="flex pcenter rw-100">
                 <div class="col-4 pad-1">
                     <div class="flex-1 h-5 round-sm bg-color-lgray mrg-b-d5">
                         <div class="w-2 h-2 round-sm bg-color-sub">1</div>
@@ -102,17 +102,17 @@
             <p>该样式类支持响应式后缀：<code>-s</code>（手机端）、<code>-m</code>（平板端）。</p>
             <p>【示例】等分布局：</p>
             <div class="pcenter rw-100 mrg-b-3">
-                <div class="grid pad-b-1">
+                <div class="flex pad-b-1">
                     <div class="col-12 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-12</span>
                     </div>
                 </div>
-                <div class="grid pad-b-1">
+                <div class="flex pad-b-1">
                     <div class="col-6 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-6</span>
                     </div>
                     <div class="col-6 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-6</span>
                     </div>
                 </div>
-                <div class="grid pad-b-1">
+                <div class="flex pad-b-1">
                     <div class="col-4 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-4</span>
                     </div>
                     <div class="col-4 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-4</span>
@@ -120,7 +120,7 @@
                     <div class="col-4 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-4</span>
                     </div>
                 </div>
-                <div class="grid pad-b-1">
+                <div class="flex pad-b-1">
                     <div class="col-3 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-3</span>
                     </div>
                     <div class="col-3 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-3</span>
@@ -130,7 +130,7 @@
                     <div class="col-3 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-3</span>
                     </div>
                 </div>
-                <div class="grid pad-b-1">
+                <div class="flex pad-b-1">
                     <div class="col-2 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-2</span>
                     </div>
                     <div class="col-2 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-2</span>
@@ -144,7 +144,7 @@
                     <div class="col-2 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-2</span>
                     </div>
                 </div>
-                <div class="grid">
+                <div class="flex">
                     <div class="col-1 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-1</span>
                     </div>
                     <div class="col-1 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-1</span>
@@ -173,7 +173,7 @@
             </div>
             <p>【示例】非等分布局：</p>
             <div class="pcenter rw-100 mrg-b-3">
-                <div class="grid pad-b-1">
+                <div class="flex pad-b-1">
                     <div class="col-6 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-6</span>
                     </div>
                     <div class="col-4 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-4</span>
@@ -181,13 +181,13 @@
                     <div class="col-2 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-2</span>
                     </div>
                 </div>
-                <div class="grid pad-b-1">
+                <div class="flex pad-b-1">
                     <div class="col-11 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-11</span>
                     </div>
                     <div class="col-1 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-1</span>
                     </div>
                 </div>
-                <div class="grid">
+                <div class="flex">
                     <div class="col-2 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">col-2</span>
                     </div>
                     <div class="col-7 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">col-7</span>
@@ -201,8 +201,8 @@
             <p>栅格布局可以通过嵌套来实现更为精细的分段。</p>
             <p>【示例】栅格嵌套布局，实现 24 等分：</p>
             <div class="pcenter rw-100">
-                <div class="grid pad-b-1">
-                    <div class="col-6 grid">
+                <div class="flex pad-b-1">
+                    <div class="col-6 flex">
                         <div class="col-1 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">1</span>
                         </div>
                         <div class="col-1 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">2</span>
@@ -228,7 +228,7 @@
                         <div class="col-1 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">12</span>
                         </div>
                     </div>
-                    <div class="col-6 grid">
+                    <div class="col-6 flex">
                         <div class="col-1 bg-color-lgray color-mgray solid thick-1 round-sm"><span class="color-dgray">13</span>
                         </div>
                         <div class="col-1 bg-color-light color-mgray solid thick-1 round-sm"><span class="color-dgray">14</span>
@@ -536,7 +536,7 @@
             <p>如果要进行反向移动，可以通过 "f" 设置负值，比如基于左侧向左位移 2rem，类名为 <code>.t-f-2rem</code>。</p>
             <p>最后也支持 auto 值设置：<code>.t-auto</code>、<code>.b-auto</code>、<code>.l-auto</code>、<code>.r-auto</code>。</p>
             <p>【示例】基础位移：</p>
-            <div class="grid rw-100 mrg-b-3">
+            <div class="flex rw-100 mrg-b-3">
                 <div class="col-3">
                     <div class="bg-color-mgray round-sm w-15">
                         <div class="rel l-6-px h-7 bg-color-lgray flex-5 flex-column round-sm alpha-d9">

@@ -90,7 +90,7 @@
           <h5>不透明度</h5>
           <p>使用 <code>.alpha-*</code> 可以设置元素的不透明度，范围是 0 - 1 逐级不透明，1 为完全不透明，0 为全透明。全透明时其 visibility 属性为 hidden。数值 "." 使用 "d" 代替。比如 0.5，类名为<code>.alpha-d5</code>。</p>
           <p>【exp】：</p>
-          <div class="grid pcenter rw-100">
+          <div class="flex pcenter rw-100">
               <div class="col-4 pad-r-d5 pad-b-d5">
                   <div class="bg-color-mgray alpha-d9 round-sm">alpha-d9</div>
               </div>

@@ -12,20 +12,20 @@
         </b-view>
 
         <!--底部导航栏-->
-        <b-view :class="`pcenter flex h-4d7 ${round? 'round-md round-t': ''} bg-color-${colors?.bar || 'dark'}`">
+        <b-view :class="`pcenter flex-around ${round? 'round-md round-t': ''} bg-color-${colors?.bar || 'dark'}`">
             <b-hot v-for="(nav,i) of navs" :key="i"
                    v-bind="nav.hotData"
                    @on_click="$emit('on_toggle', nav)"
-                   class="grow-1 flex rel pad-v-4-px">
+                   class="flex rel pad-v-4-px max-h">
 
                 <!--居中主按钮-->
-                <b-view v-if="nav.main"
-                        :class="`rel flex-5 mrg-h-auto solid thick-2 w-5 h-5 round t-f1 line-${colors?.center?.line || 'neutral'} bg-color-${colors?.center?.bg || 'dgray'}`">
-                    <b-icon v-bind="nav.iconData" class="max flex-5 fsize-1d7" />
+                <b-view v-if="nav.main" class="rel w-5">
+                    <b-icon v-bind="nav.iconData" 
+                        :class="`abs flex-5 solid t-f1d4 thick-2 w-5 h-5 flex-5 round fsize-1d7 line-${colors?.center?.line || 'neutral'} bg-color-${colors?.center?.bg || 'dgray'}`" />
                 </b-view>
 
                 <!--常规分布按钮-->
-                <b-view v-else :class="`flex-column flex-5 max-w color-${colors?.text?.normal || 'mgray'}`" :cname="colors?.text?.act || 'light'"
+                <b-view v-else :class="`flex-column flex-5 color-${colors?.text?.normal || 'mgray'}`" :cname="colors?.text?.act || 'light'"
                     :state="curRoute === nav.hotData.link ? 'act' : ''"
                     :states="{
                         act: `color-${colors?.text?.act || 'light'}`

@@ -23,12 +23,39 @@ export default <Prestyles>{
     "hide": `display: none;`,
 
     // 布局
-    "wrap": `flex-wrap: wrap;`,
-    "flex": `display: flex; justify-content: flex-start; align-items: stretch;`,
+    "no-wrap": `flex-wrap: no-wrap;`,
+    "flex": `display: flex; justify-content: flex-start; align-items: stretch; flex-wrap: wrap; align-content: flex-start;`,
     "flex-column": `display: flex; flex-direction: column;`,
     "flex-between": `display: flex; justify-content: space-between; align-items: center;`,
     "flex-around": `display: flex; justify-content: space-around; align-items: center;`,
-    "grid": `display: flex; flex-wrap: wrap; align-content: flex-start;`,
+
+    // 布局 - 栅格
+    "col-1": `flex-basis: 8.333%;`,
+    "col-2": `flex-basis: 16.667%;`,
+    "col-3": `flex-basis: 25%;`,
+    "col-4": `flex-basis: 33.333%;`,
+    "col-5": `flex-basis: 41.667%;`,
+    "col-6": `flex-basis: 50%;`,
+    "col-7": `flex-basis: 58.333%;`,
+    "col-8": `flex-basis: 66.667%;`,
+    "col-9": `flex-basis: 75%;`,
+    "col-10": `flex-basis: 83.333%;`,
+    "col-11": `flex-basis: 91.667%;`,
+    "col-12": `flex-basis: 100%;`,
+
+    // 布局 - 栅格偏移
+    "offset-1": `margin-left: 8.333%;`,
+    "offset-2": `margin-left: 16.667%;`,
+    "offset-3": `margin-left: 25%;`,
+    "offset-4": `margin-left: 33.333%;`,
+    "offset-5": `margin-left: 41.667%;`,
+    "offset-6": `margin-left: 50%;`,
+    "offset-7": `margin-left: 58.333%;`,
+    "offset-8": `margin-left: 66.667%;`,
+    "offset-9": `margin-left: 75%;`,
+    "offset-10": `margin-left: 83.333%;`,
+    "offset-11": `margin-left: 91.667%;`,
+    "offset-12": `margin-left: 100%;`,
     
     // 布局 - 九宫格
     "flex-1": `display: flex; justify-content: flex-start; align-items: flex-start;`,

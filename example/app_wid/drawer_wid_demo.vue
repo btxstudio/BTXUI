@@ -6,7 +6,7 @@
         <section>
             <h5>基础使用</h5>
             <p>通过 <code>spread</code> 属性可以初始化组件展开状态。组件交互区域继承自 <b>tag-wid</b> ，可参考相关入参：<code>tagData</code>。</p>
-            <div class="resize grid">
+            <div class="resize flex">
                 <div class="col-6 pad-r-3 line-r thick-1 line-lgray">
                     <drawer-wid v-bind="data_1">
                         <div class="bg-color-lgray pad-2 round-sm round-b">

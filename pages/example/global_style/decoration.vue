@@ -72,7 +72,7 @@
             </table>
             <p>通过 <code>.bpos-*</code> 样式类，值域为：1 — 9。可以对背景图进行九宫格式对齐定位。</p>
             <p>【示例】：</p>
-            <div class="grid pcenter rw-100">
+            <div class="flex pcenter rw-100">
                 <div class="col-4 pad-d5">
                     <div class="bpos-1 h-5 round-sm bg-color-lgray mrg-b-d5"
                          style="background-image: url('/img/f.png')"></div>
@@ -308,7 +308,7 @@
         <section class="mrg-t-5">
             <h5>阴影</h5>
             <p>框架预置了几种常用的盒子阴影样式，阴影的颜色可以通过颜色类进行设置。</p>
-            <div class="grid pcenter rw-100">
+            <div class="flex pcenter rw-100">
                 <div class="col-2d4 pad-d5 col-6-s">
                     <div class="solid thick-1 color-lgray max-w h-7 round-sm shadow-no color-dgray flex-5">
                         <div>

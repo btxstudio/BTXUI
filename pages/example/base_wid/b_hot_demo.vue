@@ -76,6 +76,20 @@
             <pre ref="$code5" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp5"></pre>
         </section>
 
+        <!-- 切换状态 -->
+        <section class="mrg-t-5">
+            <h5>切换状态</h5>
+            <p>通过 <code>states</code>、<code>state</code> 属性配合以实现多种状态的切换，通常可用于实现切换交互效果。</p>
+            <b-view class="flex">
+                <b-hot class="pad-v-d5 pad-h-2 solid thick-1 line-none bg-color-blue color-light round-sm"
+                    @on_click="data_3 = data_3 === '' ? 'close' : ''" 
+                    :state="data_3"
+                    :states="{
+                        close: 'bg-color-none line-blue color-blue'
+                    }">{{ data_3 === '' ? '启动' : '结束' }}</b-hot>
+            </b-view>
+            <pre ref="$code6" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp6"></pre>
+        </section>
     </article>
 </template>
 
@@ -137,9 +151,11 @@
     const $code3 = ref();
     const $code4 = ref();
     const $code5 = ref();
+    const $code6 = ref();
 
     const data_1 = ref(0);
     const data_2 = ref("");
+    const data_3 = ref("");
 
     const exp1 = `
     <b-view>
@@ -185,11 +201,22 @@
             @on_leave="data_2 = '结束触控'">按钮</b-hot>
     </b-view>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+    const exp6 = `
+    <b-view class="flex">
+        <b-hot class="pad-v-d5 pad-h-2 solid thick-1 line-none bg-color-blue color-light round-sm"
+            @on_click="data_3 = data_3 === '' ? 'close' : ''" 
+            :state="data_3"
+            :states="{
+                close: 'bg-color-none line-blue color-blue'
+            }">按钮</b-hot>
+    </b-view>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
     onMounted(() => {
         hljs.highlightElement($code.value);
         hljs.highlightElement($code2.value);
         hljs.highlightElement($code3.value);
         hljs.highlightElement($code4.value);
         hljs.highlightElement($code5.value);
+        hljs.highlightElement($code6.value);
     })
 </script>

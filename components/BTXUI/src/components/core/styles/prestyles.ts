@@ -119,7 +119,7 @@ export default <Prestyles>{
 
     // 圆角
     "round": `border-radius: 50%;`,
-    "round-lg": `borderRadius: 24px;`,
+    "round-lg": `border-radius: 24px;`,
     "round-md": `border-radius: 10px;`,
     "round-sm": `border-radius: 4px;`,
     "round-t": `border-bottom-right-radius: 0; border-bottom-left-radius: 0;`,

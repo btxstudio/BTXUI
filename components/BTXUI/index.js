@@ -16,10 +16,12 @@ import bCol from "./src/components/core/b-grid/b-col.vue";
 
 // app-wid
 import btnWid from "./src/components/btn-wid.vue";
+import checkboxWid from "./src/components/checkbox-wid/checkbox-wid.vue";
+import checkboxGroupWid from "./src/components/checkbox-wid/checkbox-group-wid.vue";
 import appWid from "./src/components/app-wid.vue";
 
 const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, bList, bWebview, bInput, bDrag, bTextarea, bRow, bCol,
-        btnWid, appWid];
+        btnWid, checkboxWid, checkboxGroupWid, appWid];
 
 export default {
     name: "btxui",

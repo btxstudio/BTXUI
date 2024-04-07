@@ -1,11 +1,12 @@
 <template>
-    <slot name="className" :class-name="className" :matrix-style="matrixStyle" />
+    <slot name="className" :ani-states="JSON.stringify(aniStates)" :class-name="className" :matrix-style="matrixStyle" />
 </template>
 <script setup lang="ts">
     import prestyles from "./prestyles.ts"
     import theme from "./theme.ts"
     import { onMounted, computed, reactive, ref } from "vue"
     import md5 from 'blueimp-md5'
+    import { States } from "../styles/@types"
 
     const props = defineProps<{
         // 样式集
@@ -21,7 +22,7 @@
         active?: any,
 
         // 状态样式集
-        states?: { [key: string]: any },
+        states?: States,
 
         // 变形矩阵
         matrix?: {
@@ -187,7 +188,7 @@
     // 合成样式集
     const combineStyles = (_class) => {
         if(!_class) return "";
-        const combineStyle = _class.split(" ").reduce((total: string, rule: string) => {
+        const combineStyle = _class.trim().split(" ").reduce((total: string, rule: string) => {
             const validateRule = parseStyle(rule);
             if(!validateRule) return '';
             total += `${ validateRule };`;
@@ -209,6 +210,15 @@
     // 批量解析样式集
     const parseStyles = (_class) => { 
         if(!_class) return;
+
+        // 类元素拆分及优先级处理
+        // const classBak = _class.split(" ").reduce((total, cur) => {
+        //     const index = total.findIndex(val => val === cur);
+        //     if (index > -1) total.splice(index, 1);
+        //     total.push(cur);
+        //     return total;
+        // }, []);
+
         _class.split(" ").forEach((selector: string) => {
             appendStyle(selector, selector);
         })
@@ -242,10 +252,26 @@
     }
 
     // 基于聚类名，生成状态样式集
+    const dealRule = (baseSelector, state, stateStyles) => {
+        appendStyle(`${ baseSelector }[state="${ state }"]`, stateStyles); 
+    }
+    const aniStates = reactive({});
+    const dealClassToggle = (state, ani) => {
+        aniStates[state] = ani;
+    }
     const genStateStyles = (baseSelector) => {
         if(!props.states) return;
         Object.keys(props.states).forEach(state => {
-            appendStyle(`${ baseSelector }[state="${ state }"]`, (props.states as any)[state]); 
+            if(props.states) {
+                const stateStyles = props.states[state];
+                if(typeof(stateStyles) === 'string') {
+                    dealRule(baseSelector, state, stateStyles);   
+                } else {
+                    const { class: styles, ani } = stateStyles;
+                    dealRule(baseSelector, state, styles);   
+                    dealClassToggle(state, ani);
+                }
+            }
         })
     }
 

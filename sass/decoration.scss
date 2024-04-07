@@ -75,6 +75,9 @@
 .round-sm {                                     // 4px 小型圆角
     border-radius: 4px;  
 }
+.round-none {                                   // 无圆角
+    border-radius: 0px;     
+}
 
 
 .round-t {                                      // 上侧圆角
@@ -109,6 +112,18 @@
 }
 .solid-b {                                       // 下实线描边
     border-bottom-style: solid;
+}
+.solid-l-none {                                  // 无左描边
+    border-left-style: none;
+}
+.solid-r-none {                                  // 无右描边
+    border-right-style: none;
+}
+.solid-t-none {                                 // 无上描边
+    border-top-style: none;
+}
+.solid-b-none {                                 // 无下描边
+    border-bottom-style: none;
 }
 .dashed {                                       // 四周虚线描边
     border-style: dashed;

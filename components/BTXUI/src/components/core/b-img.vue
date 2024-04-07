@@ -1,7 +1,7 @@
 <template>
-    <b-style :class="class" :cname="cname" :matrix="matrix">
+    <b-style :class="class" :cname="cname" :states="states" :matrix="matrix">
         <template v-slot:className="scope">
-            <img :src="src" :class="scope.className" :style="{display: 'block', ...scope.matrixStyle}" :alt="alt">
+            <img :src="src" :class="scope.className" :state="state" :style="{display: 'block', ...scope.matrixStyle}" :alt="alt">
         </template>
     </b-style>
 </template>
@@ -9,6 +9,7 @@
 <script setup lang="ts">
     import { onMounted, ref, watch, computed } from "vue";
     import bStyle from "./styles/b-style.vue"
+    import { State } from "./styles/@types"
 
     const props = defineProps<{
         // 图片地址
@@ -16,6 +17,10 @@
 
         // 样式集
         class?: any,
+
+        state?: State,
+
+        states?: { [key: string]: any },
 
         // 默认图片地址
         defaultSrc?: string,

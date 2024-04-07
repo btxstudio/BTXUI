@@ -1,7 +1,10 @@
 <template>
     <b-style :class="class" :cname="cname" :states="states" :matrix="matrix">
         <template v-slot:className="scope">
-            <div :class="scope.className"
+            <div ref="$el"
+                @animationend="aniEnd"
+                :class="scope.className" 
+                :data-ani-states="scope.aniStates"
                 :state="state"
                 :style="{...bgStyle, ...scope.matrixStyle}">
                 <slot/>
@@ -11,14 +14,14 @@
 </template>
 
 <script setup lang="ts">
-    import { computed } from "vue"
+    import { computed, ref, watch } from "vue"
     import bStyle from "./styles/b-style.vue"
-    import { ViewData, State } from "./styles/@types"
+    import { ViewData, State, States } from "./styles/@types"
 
     interface ViewDataProps extends ViewData {
         class?: any,
         state?: State,
-        states?: { [key: string]: any },
+        states?: States,
         bgImg?: string,
         matrix?: {
             translate?: string,
@@ -28,7 +31,26 @@
         },
         cname?: string
     }
-    const props = defineProps<ViewDataProps>()
+    const props = defineProps<ViewDataProps>();
+    const emit = defineEmits(['on_aniEnd']);
+
+    // 切换动效
+    const $el = ref();
+    const state = computed(() => props.state);
+    let lastAni;
+    watch(state, (val, old) => {
+        if (val == null || val == undefined) return;
+        const aniStates = JSON.parse($el.value.dataset.aniStates);
+        if (aniStates[val]) {
+            if (old != null || old != undefined) $el.value.classList.remove(aniStates[old]);
+            $el.value.classList.add('ani-fast', aniStates[val]);
+            lastAni = aniStates[val];
+        }
+    });
+    const aniEnd = (e) => {
+        $el.value.classList.remove(lastAni);
+        emit('on_aniEnd', e);
+    };
 
     // 背景图样式
     const bgStyle = computed(() => props.bgImg? {backgroundImage: `url(${ props.bgImg })`}: {});

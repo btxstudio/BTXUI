@@ -1,5 +1,10 @@
 export type State = string | null;
 
+export type States = { [key: string]: string | {
+    class?: string,
+    ani?: string,
+} };
+
 export interface ViewData {
     class?: any,
     state?: State,

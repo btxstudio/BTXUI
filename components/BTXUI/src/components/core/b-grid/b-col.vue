@@ -24,5 +24,5 @@
         viewData?: ViewData,
     }>();
 
-    const combClass = ref(`${props.class} ${props.span ? 'col-' + props.span : ''} ${props.offset ? 'offset-' + props.offset : ''}`);
+    const combClass = ref(`${props.class ?? ''} ${props.span ? 'col-' + props.span : ''} ${props.offset ? 'offset-' + props.offset : ''}`);
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <slot name="className" :ani-states="JSON.stringify(aniStates)" :class-name="className" :matrix-style="matrixStyle" />
+    <slot name="className" :ani-states="aniStates.str || null" :class-name="className" :matrix-style="matrixStyle" />
 </template>
 <script setup lang="ts">
     import prestyles from "./prestyles.ts"
@@ -10,7 +10,7 @@
 
     const props = defineProps<{
         // 样式集
-        class?: any,
+        class: any,
 
         // 聚焦样式集
         focus?: any,
@@ -255,9 +255,12 @@
     const dealRule = (baseSelector, state, stateStyles) => {
         appendStyle(`${ baseSelector }[state="${ state }"]`, stateStyles); 
     }
-    const aniStates = reactive({});
+    const aniStates = reactive({
+        res: {},
+        str: ''
+    });
     const dealClassToggle = (state, ani) => {
-        aniStates[state] = ani;
+        aniStates.res[state] = ani;
     }
     const genStateStyles = (baseSelector) => {
         if(!props.states) return;
@@ -273,6 +276,7 @@
                 }
             }
         })
+        aniStates.str = Object.keys(aniStates.res).length === 0 ? '' : JSON.stringify(aniStates.res);
     }
 
     // 基于聚类名，生成派生样式集
@@ -303,16 +307,14 @@
 
     onMounted(() => {
         if(props.matrix) matrix();
-        if(props.class) {
-            initStyle();
-            parseStyles(props.class);
-            const compSelector = combineClassName(props.class, props.cname ?? '');
-            genFocusStyles(`${ compSelector }[focus='true']:focus`); // 生成聚焦伪类样式
-            genHoverStyles(`${ compSelector }[hover='true']:hover`); // 生成鼠标悬停伪类样式
-            genActiveStyles(`${ compSelector }[active='true']:active`); // 生成激活伪类样式
-            genStateStyles(compSelector); // 生成状态样式
-            genExtraStyles(compSelector); // 生成派生样式
-            setStyle();
-        }
+        initStyle();
+        parseStyles(props.class);
+        const compSelector = combineClassName(props.class, props.cname ?? '');
+        genFocusStyles(`${ compSelector }[focus='true']:focus`); // 生成聚焦伪类样式
+        genHoverStyles(`${ compSelector }[hover='true']:hover`); // 生成鼠标悬停伪类样式
+        genActiveStyles(`${ compSelector }[active='true']:active`); // 生成激活伪类样式
+        genStateStyles(compSelector); // 生成状态样式
+        genExtraStyles(compSelector); // 生成派生样式
+        setStyle();
     })
 </script>

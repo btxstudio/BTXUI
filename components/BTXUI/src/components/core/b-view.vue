@@ -39,7 +39,7 @@
     const state = computed(() => props.state);
     let lastAni;
     watch(state, (val, old) => {
-        if (val == null || val == undefined) return;
+        if (val == null || val == undefined || !$el.value.dataset.aniStates) return;
         const aniStates = JSON.parse($el.value.dataset.aniStates);
         if (aniStates[val]) {
             if (old != null || old != undefined) $el.value.classList.remove(aniStates[old]);

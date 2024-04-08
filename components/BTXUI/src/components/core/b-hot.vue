@@ -27,7 +27,6 @@
     import { ref, computed, onMounted, getCurrentInstance } from "vue"
     import bStyle from "./styles/b-style.vue"
     import { State } from "./styles/@types"
-    import { useRouter } from "vue-router"
     const { proxy } = getCurrentInstance() as any
 
     const props = defineProps<{
@@ -86,7 +85,6 @@
     const cursor = computed(() => props.forbid? '': 'pointer');
 
     // 点击事件
-    const router = useRouter();
     const click = (e) => {
         if(props.anchor) {
             const $section = document.querySelector(props.anchor);
@@ -96,7 +94,7 @@
         }
         if(routeLink) {
             e.preventDefault();
-            (router ?? proxy.$router).push(routeLink);
+            proxy.$router.push(routeLink);
         }
         !props.forbid && emit("on_click", e);
     }

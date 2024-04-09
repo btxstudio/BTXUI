@@ -150,7 +150,7 @@
                 label: 'javascript',
                 value: 'javascript',
                 checkboxData: {
-                    class: 'bg-color-lgray round-lg',
+                    class: 'bg-color-lgray round-lg pad-4-px',
                     actClass: 'bg-color-blue color-light'
                 }
             },

@@ -6,12 +6,12 @@
         <section>
             <h5>单体开关使用</h5>
             <p>单独使用该组件可用作切换开关，<code>label</code> 属性可对标签文字进行设置。<code>actColor</code> 属性可设置组件选框的激活状态颜色样式。</p>
-            <b-view class="flex">
+            <b-view class="flex-4">
                 <checkbox-wid v-model:selected="data_1" />
-                <checkbox-wid label="开关" v-model:selected="data_2" class="mrg-h-4" />
+                <checkbox-wid label="开关" v-model:selected="data_2" class="mrg-h-4 flex-4" />
                 <checkbox-wid :label="['开', '关']" 
                     v-model:selected="data_2" 
-                    class="mrg-r-4 bg-color-none" 
+                    class="mrg-r-4 flex-4" 
                     :act-color="{bg: 'red', icon: 'yellow'}" />
                 <checkbox-wid :label="['编辑模式', '退出编辑']" v-model:selected="data_2" />
             </b-view>
@@ -22,8 +22,8 @@
         <section class="mrg-t-5">
             <h5>自定义效果插槽</h5>
             <p>可以使用插槽来定制化组件选框部分，通过作用域 <code>state</code> 属性，可获取 "act" 状态。配合组件本身的 <code>class</code>、<code>actClass</code> 属性可进行各式定制化样式效果设计。</p>
-            <b-view class="flex">
-                <checkbox-wid v-model:selected="data_3" class="round-lg">
+            <b-view class="flex-4">
+                <checkbox-wid v-model:selected="data_3" class="round-lg bg-color-neutral pad-4-px">
                     <template v-slot="scope">
                         <b-view class="rel round-lg w-5 bg-color-neutral trans-fast"
                             :state="scope.state" 
@@ -34,7 +34,7 @@
                         </b-view>
                     </template>
                 </checkbox-wid>
-                <checkbox-wid :label="['播放', '暂停']" v-model:selected="data_3" class="mrg-l-4 round-lg" act-class="bg-color-blue color-light">
+                <checkbox-wid :label="['播放', '暂停']" v-model:selected="data_3" class="mrg-l-4 pad-4-px round-lg flex-4 bg-color-neutral" act-class="bg-color-blue color-light">
                     <template v-slot="scope">
                         <b-icon :icon="scope.state === 'act' ? 'pause' : 'play'" class="bg-color-mgray round w-2d5 h-2d5 flex-5"
                             :state="scope.state" 
@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
     import { ref, onMounted } from "vue";
-    import headerInfo from "@/components/header-info";
+    import headerInfo from "@/components/header-info.vue";
     import { HeaderInfoData } from "@/components/types";
     import hljs from "highlight.js";
 
@@ -86,19 +86,19 @@
     const data_3 = ref(false);
 
     const exp1 = `
-    <b-view class="flex">
+    <b-view class="flex-4">
         <checkbox-wid v-model:selected="data_1" />
-        <checkbox-wid label="开关" v-model:selected="data_2" class="mrg-h-4" />
+        <checkbox-wid label="开关" v-model:selected="data_2" class="mrg-h-4 flex-4" />
         <checkbox-wid :label="['开', '关']" 
             v-model:selected="data_2" 
-            class="mrg-r-4 bg-color-none" 
+            class="mrg-r-4 flex-4" 
             :act-color="{bg: 'red', icon: 'yellow'}" />
         <checkbox-wid :label="['编辑模式', '退出编辑']" v-model:selected="data_2" />
     </b-view>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
     const exp2 = `
-    <b-view class="flex">
-        <checkbox-wid v-model:selected="data_3" class="round-lg">
+    <b-view class="flex-4">
+        <checkbox-wid v-model:selected="data_3" class="round-lg bg-color-neutral pad-4-px">
             <template v-slot="scope">
                 <b-view class="rel round-lg w-5 bg-color-neutral trans-fast"
                     :state="scope.state" 
@@ -109,7 +109,7 @@
                 </b-view>
             </template>
         </checkbox-wid>
-        <checkbox-wid :label="['播放', '暂停']" v-model:selected="data_3" class="mrg-l-4 round-lg" act-class="bg-color-blue color-light">
+        <checkbox-wid :label="['播放', '暂停']" v-model:selected="data_3" class="mrg-l-4 pad-4-px round-lg flex-4 bg-color-neutral" act-class="bg-color-blue color-light">
             <template v-slot="scope">
                 <b-icon :icon="scope.state === 'act' ? 'pause' : 'play'" class="bg-color-mgray round w-2d5 h-2d5 flex-5"
                     :state="scope.state" 

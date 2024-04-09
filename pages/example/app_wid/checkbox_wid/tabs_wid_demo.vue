@@ -51,9 +51,9 @@
                         }" />
                 </b-view>
                 <tabs-wid :options="data_3.options" v-model:selected="data_3.selected" @change="data_3.change">
-                    <template #head><b-icon icon="/img/flag.jpg" class="h-2 w-2 bsize-cover round" /></template>
-                    <template #head2><b-icon icon="/img/flag2.jpg" class="h-2 w-2 bsize-cover round" /></template>
-                    <template #head3><b-icon icon="/img/flag3.jpg" class="h-2 w-2 bsize-cover round" /></template>
+                    <template #head><b-icon icon="/img/flag.jpg" class="h-2 w-2 bsize-cover round mrg-r-d5" /></template>
+                    <template #head2><b-icon icon="/img/flag2.jpg" class="h-2 w-2 bsize-cover round mrg-r-d5" /></template>
+                    <template #head3><b-icon icon="/img/flag3.jpg" class="h-2 w-2 bsize-cover round mrg-r-d5" /></template>
                 </tabs-wid>
             </b-view>
             <pre ref="$code5" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp5"></pre>
@@ -147,7 +147,7 @@
                 value: "head",
                 label: "日本",
                 checkboxData: {
-                    class: 'bg-color-neutral round-lg mrg-r-1 pad-r-1d5',
+                    class: 'bg-color-neutral round-lg mrg-r-1 pad-r-1d5 flex-4 pad-4-px',
                     actClass: 'bg-color-blue color-light',
                 }
             },
@@ -155,7 +155,7 @@
                 value: "head2",
                 label: "南非",
                 checkboxData: {
-                    class: 'bg-color-neutral round-lg mrg-r-1 pad-r-1d5',
+                    class: 'bg-color-neutral round-lg mrg-r-1 pad-r-1d5 flex-4 pad-4-px',
                     actClass: 'bg-color-green color-light',
                 }
             },
@@ -163,14 +163,14 @@
                 value: "head3",
                 label: "中国",
                 checkboxData: {
-                    class: 'bg-color-neutral round-lg pad-r-1d5',
+                    class: 'bg-color-neutral round-lg pad-r-1d5 flex-4 pad-4-px',
                     actClass: 'bg-color-red color-light',
                 }
             },
         ],
         selected: "head",
         flipDir: "",
-        change: (flip) => {
+        change: (flip: { dir: string; }) => {
             data_3.flipDir = flip.dir;
         }
     });
@@ -199,9 +199,9 @@
                 }" />
         </b-view>
         <tabs-wid :options="data_3.options" v-model:selected="data_3.selected" @change="data_3.change">
-            <template #head><b-icon icon="/img/flag.jpg" class="h-2 w-2 bsize-cover round" /></template>
-            <template #head2><b-icon icon="/img/flag2.jpg" class="h-2 w-2 bsize-cover round" /></template>
-            <template #head3><b-icon icon="/img/flag3.jpg" class="h-2 w-2 bsize-cover round" /></template>
+            <template #head><b-icon icon="/img/flag.jpg" class="h-2 w-2 bsize-cover round mrg-r-d5" /></template>
+            <template #head2><b-icon icon="/img/flag2.jpg" class="h-2 w-2 bsize-cover round mrg-r-d5" /></template>
+            <template #head3><b-icon icon="/img/flag3.jpg" class="h-2 w-2 bsize-cover round mrg-r-d5" /></template>
         </tabs-wid>
     </b-view>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 

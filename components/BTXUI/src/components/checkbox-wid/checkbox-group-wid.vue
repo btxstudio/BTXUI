@@ -58,7 +58,7 @@
             return { ...opt,
                 checkboxData: {
                     ...opt?.checkboxData,
-                    class: opt?.checkboxData?.class ?? 'bg-color-none mrg-r-1d5'
+                    class: opt?.checkboxData?.class ?? 'bg-color-none mrg-r-1d5 flex-4 pad-4-px'
                 },  
                 selected: props.selected.includes(opt.value)
             };

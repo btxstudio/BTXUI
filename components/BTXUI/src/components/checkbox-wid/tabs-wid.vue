@@ -1,6 +1,6 @@
 <template>
     <b-view class="flex-7">
-        <radio-group-wid :options="options" :title="title" v-model:selected="selected">
+        <radio-group-wid :options="options" :title="title" :selected="selected" @change="change">
             <!-- grid 风格模板 -->
             <template v-if="slots.length === 0 && tabStyle === 'grid'" v-slot="scope"><span :state="scope"></span></template>
 
@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-    import { computed, onBeforeMount, getCurrentInstance, reactive, watch, ref } from "vue"
+    import { computed, onBeforeMount, getCurrentInstance, reactive, ref } from "vue"
     import radioGroupWid from "./radio-group-wid.vue"
     import bView from "../core/b-view.vue"
 
@@ -91,7 +91,7 @@
                 // 默认风格
                 contLine.value = true;
                 checkboxData = {
-                    class: 'round-none solid-b line-neutral thick-1 pad-b-1 bg-color-none rel',
+                    class: 'round-none solid-b line-neutral thick-1 bg-color-none rel pad-4-px pad-b-1',
                     actClass: `color-${color.value}`
                 }
                 
@@ -99,7 +99,7 @@
                 if (props.tabStyle === 'grid') {
                     contLine.value = false;
                     checkboxData = {
-                        class: 'round-none thick-1 solid line-neutral bg-color-none',
+                        class: 'round-none thick-1 solid line-neutral bg-color-none pad-d5',
                         actClass: `line-${color.value} color-${color.value}`
                     }    
                 }
@@ -107,7 +107,7 @@
                 // 卡片风格
                 if (props.tabStyle === 'card') {
                     checkboxData = {
-                        class: 'round-sm round-t thick-1 solid line-neutral bg-color-neutral rel mrg-r-4-px',
+                        class: 'round-sm round-t thick-1 solid line-neutral bg-color-neutral pad-d5 rel mrg-r-4-px',
                         actClass: `bg-color-none solid-b-none t-f1-px color-${color.value}`
                     }    
                 }
@@ -117,9 +117,10 @@
     });
     const contArea = computed(() => props.options.findIndex(opt => opt.cont) > -1);
 
-    const selected = ref(props.selected);
+    const selected = computed(() => props.selected);
     const flipDir = ref('');
-    watch(selected, (val, oldVal) => {
+    const change = (selected) => {
+        const [oldVal, val] = selected;
         flipDir.value = tabOrder[val] > tabOrder[oldVal] ? 'right-to-left' : 'left-to-right';
         emit('update:selected', val);
         emit('change', {
@@ -128,7 +129,7 @@
             dir: tabOrder[val] > tabOrder[oldVal] ? 1 : 0,
             aniClass: `ani-${flipDir.value}`,
         });
-    })
+    };
 
     const slots = ref<any>([]);
     onBeforeMount(() => {

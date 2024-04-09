@@ -50,7 +50,7 @@
     const props = defineProps<CheckboxDataProp>();
     const emit = defineEmits(['update:selected', 'change']);
 
-    const combClass = ref(`flex-4 bg-color-neutral round-sm pad-4-px ${props.class ?? ''}`);
+    const combClass = ref(props.class ?? 'flex-4 bg-color-neutral round-sm pad-4-px');
     const combActClass = ref(`color-blue ${props.actClass ?? ''}`);
 
     // 标签文字

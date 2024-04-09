@@ -7,10 +7,11 @@
     import { onMounted, computed, reactive, ref } from "vue"
     import md5 from 'blueimp-md5'
     import { States } from "../styles/@types"
+import { match } from "assert"
 
     const props = defineProps<{
         // 样式集
-        class: any,
+        class?: any,
 
         // 聚焦样式集
         focus?: any,
@@ -307,9 +308,11 @@
 
     onMounted(() => {
         if(props.matrix) matrix();
+
         initStyle();
-        parseStyles(props.class);
-        const compSelector = combineClassName(props.class, props.cname ?? '');
+        const _class = props.class ?? `style-${Math.round(Math.random() * 10000)}`;
+        parseStyles(_class);
+        const compSelector = combineClassName(_class, props.cname ?? '');
         genFocusStyles(`${ compSelector }[focus='true']:focus`); // 生成聚焦伪类样式
         genHoverStyles(`${ compSelector }[hover='true']:hover`); // 生成鼠标悬停伪类样式
         genActiveStyles(`${ compSelector }[active='true']:active`); // 生成激活伪类样式

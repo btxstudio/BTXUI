@@ -117,7 +117,9 @@
     });
     const contArea = computed(() => props.options.findIndex(opt => opt.cont) > -1);
 
-    const selected = computed(() => props.selected);
+    const selected = computed(() => {
+        return props.selected;
+    });
     const flipDir = ref('');
     const change = (selected) => {
         const [oldVal, val] = selected;

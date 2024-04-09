@@ -52,8 +52,10 @@
 
     const change = (selected: any) => {
         const values = selected.map(item => item.value);
-        if (values.length === 2) emit('update:selected', values[1]);
-        emit('change', values);
+        if (values.length === 2) {
+            emit('update:selected', values[1]);
+            emit('change', values);
+        }
     }
 
     const slots = ref<any>([]);

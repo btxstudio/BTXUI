@@ -91,7 +91,7 @@
         if(val && val.search("C") === 0) return `#${ val.substr(1) }`; // 16 进制颜色
         if(val && val.search("rgb") === 0) { // rgb 颜色
             const parts = val.split('_')
-            return `${parts[0]}(${parts[1]},${parts[2]},${parts[3]})`; 
+            return `${parts[0]}(${parts[1]},${parts[2]},${parts[3]}${parts[4] ? ',' + validNumber(parts[4]) : ''})`; 
         }
         return false;
     }

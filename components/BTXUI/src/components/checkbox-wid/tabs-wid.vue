@@ -2,7 +2,7 @@
     <b-view class="flex-7">
         <radio-group-wid :options="options" :title="title" v-model:selected="selected">
             <!-- grid 风格模板 -->
-            <template v-if="slots.length === 0 && tabStyle === 'grid'" v-slot="scope"><span></span></template>
+            <template v-if="slots.length === 0 && tabStyle === 'grid'" v-slot="scope"><span :state="scope"></span></template>
 
             <!-- card 风格模板 -->
             <template v-else-if="slots.length === 0 && tabStyle === 'card'" v-slot="scope">

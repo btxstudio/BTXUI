@@ -59,6 +59,12 @@
         $list.value.scrollTop = 0;
     };
 
+    // 重置置底
+    const toEnd = () => {
+        $list.value.scrollTop = 99999;
+        $list.value.scrollLeft = 99999;
+    };
+
     // 滚动定位监听
     const tolerance = 2;
     let origScrollPos = { x:0, y:0 };
@@ -84,7 +90,7 @@
         }
     };
 
-    defineExpose({ reset })
+    defineExpose({ reset, toEnd })
 
     onMounted(() => {
         watchPos();

@@ -4,6 +4,7 @@
 
 .no-wrap {                          // 文本禁止换行
     white-space: nowrap;
+    flex-wrap: nowrap;
 }
 
 .ellipsis {                         // 文本省略

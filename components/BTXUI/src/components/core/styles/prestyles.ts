@@ -23,7 +23,7 @@ export default <Prestyles>{
     "hide": `display: none;`,
 
     // 布局
-    "no-wrap": `flex-wrap: no-wrap;`,
+    "no-wrap": `flex-wrap: nowrap; white-space: nowrap;`,
     "flex": `display: flex; justify-content: flex-start; align-items: stretch; flex-wrap: wrap; align-content: flex-start;`,
     "flex-column": `display: flex; flex-direction: column;`,
     "flex-between": `display: flex; justify-content: space-between; align-items: center;`,

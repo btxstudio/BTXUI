@@ -7,7 +7,6 @@
     import { onMounted, computed, reactive, ref } from "vue"
     import md5 from 'blueimp-md5'
     import { States } from "../styles/@types"
-import { match } from "assert"
 
     const props = defineProps<{
         // 样式集

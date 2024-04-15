@@ -21,15 +21,18 @@ import checkboxGroupWid from "./src/components/checkbox-wid/checkbox-group-wid.v
 import radioGroupWid from "./src/components/checkbox-wid/radio-group-wid.vue";
 import tabsWid from "./src/components/checkbox-wid/tabs-wid.vue";
 import appWid from "./src/components/app-wid.vue";
+import confirmWid from "./src/components/confirm-wid.vue";
 
 const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, bList, bWebview, bInput, bDrag, bTextarea, bRow, bCol,
         btnWid, 
+        confirmWid, 
         checkboxWid, checkboxGroupWid, radioGroupWid, tabsWid,
         appWid];
 
 export default {
     name: "btxui",
     install(app, config){
+
         // 注册全局组件
         initGlobalComponents.forEach(wid => {
             app.component(wid.__name, wid);

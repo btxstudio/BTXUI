@@ -32,12 +32,12 @@
             <h5>横向滚动条</h5>
             <p><code>scroll.x</code> 属性设置为 scroll，可以实现内容的水平溢出滚动。此外。通过 <code>on_scroll</code> API 可以监控滚动方向以及滚动距离。</p>
             <b-view class="fsize-1d1 rw-70">
-                <b-list class="grow-1 h-12 bg-color-lgray round-sm bg-color-dgray pad-t-2 pad-b-1 pad-h-2"
+                <b-list class="grow-1 h-12 no-wrap bg-color-lgray round-sm bg-color-dgray pad-t-2 pad-b-1 pad-h-2"
                     :scroll="{x: 'scroll', y: 'hidden'}" 
                     scrollType="thick"
                     @on_scroll="setScrollDir">
                     <h5 class="color-mgray">横向滚动条</h5>
-                    <div class="flex pad-b-1d5 color-light">
+                    <div class="flex pad-b-1d5 color-light no-wrap">
                         <span class="bg-color-neutral round-lg pad-v-d5 pad-h-2 mrg-r-1">html</span>
                         <span class="bg-color-neutral round-lg pad-v-d5 pad-h-2 mrg-r-1">css</span>
                         <span class="bg-color-neutral round-lg pad-v-d5 pad-h-2 mrg-r-1">javascript</span>

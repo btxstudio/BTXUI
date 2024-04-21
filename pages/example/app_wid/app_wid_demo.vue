@@ -10,13 +10,13 @@
             <p>【exp】：</p>
             <b-view class="flex rw-100 pcenter">
                 <b-view class="grow-1 pad-h-1">
-                    <b-view class="h-20 solid line-main thick-1">
+                    <b-view class="h-20 solid line-main thick-1" :matrix="{scale: 1}">
                         <app-wid :spread="spread" :colors="{bg: 'main'}" :path="route.path" />
                     </b-view>
                     <b-view class="mrg-t-1">默认深色，不含中间按钮</b-view>
                 </b-view>
                 <b-view class="grow-1 pad-h-1">
-                    <b-view class="h-20 solid line-lgray thick-1">
+                    <b-view class="h-20 solid line-lgray thick-1" :matrix="{scale: 1}">
                         <app-wid :spread="spread" :path="route.path"
                             :center="{
                                 navId: 'main',
@@ -141,13 +141,13 @@
     const exp1 = `
     <b-view class="flex rw-100 pcenter">
         <b-view class="grow-1 pad-h-1">
-            <b-view class="h-20 solid line-main thick-1">
+            <b-view class="h-20 solid line-main thick-1" :matrix="{scale: 1}">
                 <app-wid :spread="spread" :colors="{bg: 'main'}" :path="route.path" />
             </b-view>
             <b-view class="mrg-t-1">默认深色，不含中间按钮</b-view>
         </b-view>
         <b-view class="grow-1 pad-h-1">
-            <b-view class="h-20 solid line-lgray thick-1">
+            <b-view class="h-20 solid line-lgray thick-1" :matrix="{scale: 1}">
                 <app-wid :spread="spread" :path="route.path"
                     :center="{
                         navId: 'main',

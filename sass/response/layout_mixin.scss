@@ -99,10 +99,13 @@
 // 生成强制隐藏与显示类
 @mixin auto_gen_display_class($suffix:"") {
     .hide#{$suffix}{
-        display: none !important;        // 强制隐藏
+        display: none !important;               // 强制隐藏
     } 
     .show#{$suffix}{
-        display: block !important;       // 强制显示
+        display: block !important;              // 强制显示
+    }
+    .visible#{$suffix}{
+        visibility: visible !important;         // 强制可见
     }
 }
 

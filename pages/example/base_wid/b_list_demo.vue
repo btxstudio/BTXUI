@@ -7,7 +7,7 @@
             <h5>基础使用</h5>
             <p>长内容通常使用该组件进行包装，通过 <code>scroll</code> 属性可以设置溢出滚动及隐藏效果。<code>scrollType</code> 属性则可以设置滚动条样式，框架分别提供了 thin（极窄，默认）、thick（加宽） 两种类型。</p>
             <b-view class="color-mgray flex fsize-1d1 rw-70">
-                <b-list class="grow-1 h-12 bg-color-lgray round-sm bg-color-dgray mrg-r-1 pad-1"
+                <b-list class="grow-1 h-12 rel bg-color-lgray round-sm bg-color-dgray mrg-r-1 pad-1"
                     :scroll="{x: 'hidden', y: 'hidden'}">
                     <div class="pad-1">
                         <h5>溢出隐藏</h5>
@@ -15,7 +15,7 @@
                         <div class="pright alpha-d5">—— btxstudio</div>
                     </div>
                 </b-list>
-                <b-list class="grow-1 h-12 bg-color-lgray round-sm bg-color-dgray pad-1"
+                <b-list class="grow-1 h-12 rel bg-color-lgray round-sm bg-color-dgray pad-1"
                     :scroll="{x: 'hidden', y: 'auto'}">
                     <div class="pad-1">
                         <h5>溢出滚动</h5>
@@ -111,7 +111,13 @@
                     ef: "重置定位",
                     params: "-",
                     return: "-"
-                }
+                },
+                {
+                    name: "toEnd",
+                    ef: "定位置底",
+                    params: "-",
+                    return: "-"
+                },
             ],
             event: [
                 {

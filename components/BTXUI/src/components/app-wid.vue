@@ -1,5 +1,5 @@
 <template>
-    <b-view :class="`max flex-column color-light select-none bg-color-${colors?.bg || 'none'}`">
+    <b-view :class="`max fixed flex-column color-light select-none bg-color-${colors?.bg || 'none'}`">
 
         <!--中部内容区域-->
         <b-view class="rel grow-1">
@@ -16,12 +16,12 @@
             <b-hot v-for="(nav,i) of navs" :key="i"
                    v-bind="nav.hotData"
                    @on_click="$emit('on_toggle', nav)"
-                   class="flex rel pad-v-4-px max-h">
+                   class="rel pad-v-d5">
 
                 <!--居中主按钮-->
                 <b-view v-if="nav.main" class="rel w-5">
                     <b-icon v-bind="nav.iconData" 
-                        :class="`abs flex-5 solid t-f1d4 thick-2 w-5 h-5 flex-5 round fsize-1d7 line-${colors?.center?.line || 'neutral'} bg-color-${colors?.center?.bg || 'dgray'}`" />
+                        :class="`abs flex-5 solid t-f3d4 thick-2 w-5 h-5 round fsize-1d7 line-${colors?.center?.line || 'neutral'} bg-color-${colors?.center?.bg || 'dgray'}`" />
                 </b-view>
 
                 <!--常规分布按钮-->

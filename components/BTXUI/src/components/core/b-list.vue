@@ -3,7 +3,7 @@
         <template v-slot:className="scope">
             <div :class="scope.className"
                 :state="state">
-        
+                
                 <!-- 滚动区域 -->
                 <div ref="$list"
                     :class="scrollTypeClass"

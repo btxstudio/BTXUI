@@ -60,6 +60,9 @@
         // 样式集别名
         cname?: string,
 
+        // 组件路由 replace 模式
+        replace?: boolean,
+
     }>();
     const emit = defineEmits(["on_click", "on_enter", "on_move", "on_leave", "on_dblclick"]);
     const $anchor = ref();
@@ -94,7 +97,7 @@
         }
         if(routeLink) {
             e.preventDefault();
-            proxy.$router.push(routeLink);
+            proxy.$router[props.replace ? 'replace' : 'push'](routeLink);
         }
         !props.forbid && emit("on_click", e);
     }

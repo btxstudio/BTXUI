@@ -12,16 +12,16 @@
         </b-view>
 
         <!--底部导航栏-->
-        <b-view :class="`pcenter flex-around ${round? 'round-md round-t': ''} bg-color-${colors?.bar || 'dark'}`">
+        <b-view :class="`pcenter pad-v-d3 flex-1 ${round? 'round-md round-t': ''} bg-color-${colors?.bar || 'dark'}`">
             <b-hot v-for="(nav,i) of navs" :key="i"
                    v-bind="nav.hotData"
-                   @on_click="$emit('on_toggle', nav)"
-                   class="rel pad-v-d5">
+                   class="grow-1"
+                   @on_click="$emit('on_toggle', nav)">
 
                 <!--居中主按钮-->
-                <b-view v-if="nav.main" class="rel w-5">
+                <b-view v-if="nav.main" class="rel w-5 mrg-h-auto">
                     <b-icon v-bind="nav.iconData" 
-                        :class="`abs flex-5 solid t-f3d4 thick-2 w-5 h-5 round fsize-1d7 line-${colors?.center?.line || 'neutral'} bg-color-${colors?.center?.bg || 'dgray'}`" />
+                        :class="`abs flex-5 solid t-f1d4 thick-2 w-5 h-5 round fsize-1d7 line-${colors?.center?.line || 'neutral'} bg-color-${colors?.center?.bg || 'dgray'}`" />
                 </b-view>
 
                 <!--常规分布按钮-->

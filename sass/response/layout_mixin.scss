@@ -402,6 +402,12 @@
         justify-content: space-around;
         align-items: center;
     }
+
+    // 基线对齐
+    .flex-baseline#{$suffix} { 
+        display: flex;
+        align-items: baseline;
+    }
 }
 
 // 生成自生长元素类

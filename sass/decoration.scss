@@ -96,6 +96,26 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
+.round-1 {                                      // 左上圆角
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.round-2 {                                      // 右上圆角
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.round-3 {                                      // 左下圆角
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.round-4 {                                      // 右下圆角
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
 
 .solid {                                         // 四周实线描边

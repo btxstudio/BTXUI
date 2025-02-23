@@ -8,7 +8,7 @@
                    @input="input"
                    v-model="val"
                    :name="name" 
-                   :focus="focus? true: ''"
+                   :focus="focus ? 'true' : ''"
                    :state="state"
                    :placeholder="placeholder"
                    :maxlength="maxlength"
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-    import { ref } from "vue"
+    import { ref, watchEffect } from "vue"
     import bStyle from "./styles/b-style.vue"
     import { State } from "./styles/@types"
 
@@ -67,6 +67,9 @@
 
     // 输入文字
     const val = ref(props.text);
+    watchEffect(() => {
+        val.value = props.text;
+    })
 
     // 预置正则
     const preset_rules = {

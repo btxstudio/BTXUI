@@ -20,7 +20,7 @@
         <!-- 自定义扩展字体图标 -->
         <section class="mrg-t-5">
             <h5>自定义扩展字体图标</h5>
-            <p>也可以使用自定义字体图标，需要首先引入相应字体图标样式文件，然后设置 <code>class</code> 属性 <b>font-*</b> 样式值为对应字体名，再通过 <code>icon</code> 属性绑定图标名（图标类名必须符合 <b>ico-name</b> 格式，图标名即 <b>name</b>）即可。</p>
+            <p>也可以使用自定义字体图标，需要首先引入相应字体图标样式文件，然后设置 <code>class</code> 属性 <b>font-_*</b> 样式值为对应字体名，再通过 <code>icon</code> 属性绑定图标名（图标类名必须符合 <b>ico-name</b> 格式，图标名即 <b>name</b>）即可。</p>
             <b-view class="flex-between fsize-2 w-40">
                 <b-icon class="font-_iconfont" icon="info" />
                 <b-icon class="font-_iconfont" icon="phone" />
@@ -90,11 +90,11 @@
 
     const exp2 = `
     <b-view class="flex-between fsize-2 w-40">
-        <b-icon class="font-iconfont" icon="info" />
-        <b-icon class="font-iconfont" icon="phone" />
-        <b-icon class="font-iconfont" icon="integral" />
-        <b-icon class="font-iconfont" icon="assets" />
-        <b-icon class="font-iconfont" icon="readed" />
+        <b-icon class="font-_iconfont" icon="info" />
+        <b-icon class="font-_iconfont" icon="phone" />
+        <b-icon class="font-_iconfont" icon="integral" />
+        <b-icon class="font-_iconfont" icon="assets" />
+        <b-icon class="font-_iconfont" icon="readed" />
     </b-view>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
     const exp3 = `

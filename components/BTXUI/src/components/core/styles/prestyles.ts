@@ -28,6 +28,7 @@ export default <Prestyles>{
     "flex-column": `display: flex; flex-direction: column;`,
     "flex-between": `display: flex; justify-content: space-between; align-items: center;`,
     "flex-around": `display: flex; justify-content: space-around; align-items: center;`,
+    "flex-baseline": `display: flex; align-items: baseline;`,
 
     // 布局 - 栅格
     "col-1": `flex-basis: 8.333%;`,
@@ -127,6 +128,10 @@ export default <Prestyles>{
     "round-b": `border-top-right-radius: 0; border-top-left-radius: 0;`,
     "round-l": `border-top-right-radius: 0; border-bottom-right-radius: 0;`,
     "round-r": `border-top-left-radius: 0; border-bottom-left-radius: 0;`,
+    "round-1": `border-top-right-radius: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0;`,
+    "round-2": `border-top-left-radius: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0;`,
+    "round-3": `border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0;`,
+    "round-4": `border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-left-radius: 0;`,
 
     // 描边
     "solid": `border-style: solid;`,

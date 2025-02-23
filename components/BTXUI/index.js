@@ -1,4 +1,5 @@
 // core-wid
+import theme from "./src/components/core/styles/theme.ts";
 import styles from "./src/components/core/styles/b-style.vue";
 import bView from "./src/components/core/b-view.vue";
 import bText from "./src/components/core/b-text.vue";
@@ -37,6 +38,9 @@ export default {
         initGlobalComponents.forEach(wid => {
             app.component(wid.__name, wid);
         })
+
+        // 扩展主题
+        app.config.globalProperties['$btxui_theme'] = theme;
 
         // 扩展全局属性
         if (config) {

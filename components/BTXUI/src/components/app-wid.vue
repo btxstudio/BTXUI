@@ -12,7 +12,7 @@
         </b-view>
 
         <!--底部导航栏-->
-        <b-view :class="`pcenter pad-v-d3 flex-1 ${round? 'round-md round-t': ''} bg-color-${colors?.bar || 'dark'}`">
+        <b-view :class="`pcenter pad-t-d5 flex-1 ${round? 'round-md round-t': ''} bg-color-${colors?.bar || 'dark'} solid-t line-C303030 thick-d4 app-nav-bar`">
             <b-hot v-for="(nav,i) of navs" :key="i"
                    v-bind="nav.hotData"
                    class="grow-1"
@@ -25,18 +25,20 @@
                 </b-view>
 
                 <!--常规分布按钮-->
-                <b-view v-else :class="`flex-column flex-5 color-${colors?.text?.normal || 'mgray'}`" :cname="colors?.text?.act || 'light'"
+                <b-view v-else :class="`flex-column rel flex-5 color-${colors?.text?.normal || 'mgray'}`" :cname="colors?.text?.act || 'light'"
                     :state="curRoute === nav.hotData.link ? 'act' : ''"
                     :states="{
                         act: `color-${colors?.text?.act || 'light'}`
                     }">
+                    <b-view v-if="nav.unread === 1" class="round w-d7 h-d7 r-9d2-vw t-d2 bg-color-red abs"></b-view>
+                    <b-view v-if="nav.unread > 1" class="flex-5 round w-1d5 h-1d5 bold r-7d7-vw t-fd5 bg-color-red abs color-Cfff">{{ nav.unread }}</b-view>
                     <b-icon v-bind="nav.iconData" :cname="nav.act"
                         :state="curRoute === nav.hotData.link ? 'act' : ''"
                         :states="{
                             act: nav.act ?? ''
                         }"
-                        class="w-2d7 h-2d7 trans-fast fsize-1d7" />
-                    <b-text v-if="nav.text" class="fsize-d8">{{nav.text}}</b-text>
+                        :class="`w-2d7 h-2d7 ${iconTransAni ? 'trans-fast' : ''} fsize-1d7`" />
+                    <b-text v-if="nav.text" class="fsize-d83">{{nav.text}}</b-text>
                 </b-view>
 
             </b-hot>
@@ -62,7 +64,9 @@
             hotData: any,
             text?: string,
             act?: string,
+            unread?: number
         }[],
+        iconTransAni?: boolean,
         center?: {
             navId: string,
             iconData: any,

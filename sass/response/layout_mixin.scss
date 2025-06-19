@@ -39,6 +39,10 @@
     height: 100vh;
 }
 
+.no-shrink {
+    flex-shrink: 0;
+}
+
 // 生成 z 轴层级
 @mixin auto_gen_z_index(){ 
     .z-f1 {

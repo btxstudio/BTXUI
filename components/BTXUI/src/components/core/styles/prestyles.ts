@@ -29,6 +29,7 @@ export default <Prestyles>{
     "flex-between": `display: flex; justify-content: space-between; align-items: center;`,
     "flex-around": `display: flex; justify-content: space-around; align-items: center;`,
     "flex-baseline": `display: flex; align-items: baseline;`,
+    "no-shrink": `flex-shrink: 0;`,
 
     // 布局 - 栅格
     "col-1": `flex-basis: 8.333%;`,

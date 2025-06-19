@@ -3,3 +3,26 @@
 @import "./icon.scss";
 
 @import "./animation.scss";
+
+.app-nav-bar {
+    padding-bottom: .7rem;
+}
+
+/* 适配设备：iphoneX */
+@media screen and (device-width: 375px) and (device-height: 812px) {
+    .app-nav-bar {
+        padding-bottom: 3.4rem;
+    }
+}
+/* 适配设备：iphone13 pro max */
+@media screen and (device-width: 428px) and (device-height: 926px) {
+    .app-nav-bar {
+        padding-bottom: 3.4rem;
+    }
+}
+/* 适配设备：iphone14 pro max */
+@media screen and (device-width: 430px) and (device-height: 932px) {
+    .app-nav-bar {
+        padding-bottom: 3.4rem;
+    }
+}

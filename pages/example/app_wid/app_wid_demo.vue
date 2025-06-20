@@ -27,18 +27,7 @@
                                     link: 'http://www.75sea.com'
                                 }
                             }"
-                            :colors="{
-                                bg: 'lgray',
-                                bar: 'light',
-                                center: {
-                                    bg: 'blue',
-                                    line: 'light'
-                                },
-                                text: {
-                                    normal: 'mgray',
-                                    act: 'blue'
-                                }
-                            }" />
+                            :colors="colors" />
                     </b-view>
                     <b-view class="mrg-t-1">自定义浅色，含中间按钮及点击回调</b-view>
                 </b-view>
@@ -76,6 +65,8 @@
             ["spread[*].hotData", "any", "参照：b-hot 组件入参"],
             ["spread[*].text", "string", "图标文字，可缺省"],
             ["spread[*].act", "string", "激活状态样式值"],
+            ["spread[*].unread", "number", "设置未读信息数"],
+            ["iconTransAni", "boolean", "是否启用图标过渡动画效果，默认关闭"],
             ["center", "{*}", "主导航项"],
             ["center.navId", "string", "导航标识"],
             ["center.iconData", "any", "参照：b-icon 组件入参"],
@@ -135,6 +126,21 @@
             text: "system"
         },
     ]);
+    const colors = reactive({
+        bg: 'lgray',
+        bar: 'light',
+        center: {
+            bg: 'blue',
+            line: 'light'
+        },
+        text: {
+            normal: 'mgray',
+            act: 'blue'
+        }
+    })
+    setTimeout(() => {
+        colors.bg = 'red';
+    }, 3000);
 
     const $code = ref();
 

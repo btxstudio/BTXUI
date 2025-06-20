@@ -33,7 +33,7 @@
         <!--flex 弹性布局-->
         <section class="mrg-t-5">
             <h5>flex 弹性布局</h5>
-            <p>BTX·UI 框架的布局核心是基于 flex 的，<code>.flex</code> 及 <code>.flex-*</code> 样式类，可以对容器内的元素进行九宫格式对齐定位。<code>.flex-between</code> 及 <code>.flex-around</code> 样式类可以设置元素均分排列。而 <code>.flex-column</code> 可以设置纵向生长弹性布局容器。此外框架还提供了 <code>.grow-*</code> 样式类，值域为 0 - 9，共 10 档，用于设置元素的自生长比率。</p>
+            <p>BTX·UI 框架的布局核心是基于 flex 的，<code>.flex</code> 及 <code>.flex-*</code> 样式类，可以对容器内的元素进行九宫格式对齐定位。<code>.flex-between</code> 及 <code>.flex-around</code> 样式类可以设置元素均分排列。而 <code>.flex-column</code> 可以设置纵向生长弹性布局容器。此外框架还提供了 <code>.grow-*</code> 样式类，值域为 0 - 9，共 10 档，用于设置元素的自生长比率。<code>.no-shrink</code> 可以设置元素的自收缩比率为 0。</p>
             <p>通过 <code>.order-*</code> 可以设置弹性布局的项目排序。预置的排序值：0、1、2、3、4、5。</p>
             <p>该样式类支持响应式后缀：<code>-s</code>（手机端）、<code>-m</code>（平板端）。</p>
             <p>【示例】：九宫格对齐定位</p>

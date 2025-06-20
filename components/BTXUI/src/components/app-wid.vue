@@ -12,7 +12,7 @@
         </b-view>
 
         <!--底部导航栏-->
-        <b-view :class="`pcenter pad-t-d5 flex-1 ${round? 'round-md round-t': ''} bg-color-${colors?.bar || 'dark'} solid-t line-C303030 thick-d4 app-nav-bar`">
+        <b-view :class="`pcenter pad-v-d5 flex-1 ${round? 'round-md round-t': ''} bg-color-${colors?.bar || 'dark'} solid-t line-neutral thick-d4 app-nav-bar`">
             <b-hot v-for="(nav,i) of navs" :key="i"
                    v-bind="nav.hotData"
                    class="grow-1"

@@ -1,25 +1,45 @@
 <template>
     <b-style :class="class" :focus="focus" :states="states" :cname="cname">
         <template v-slot:className="scope">
-            <input :class="scope.className" :type="type" 
-                   @focus="$emit('on_focus', $event)"
-                   @blur="blur"
-                   @change="change"
-                   @input="input"
-                   v-model="val"
-                   :name="name" 
-                   :focus="focus ? 'true' : ''"
-                   :state="state"
-                   :placeholder="placeholder"
-                   :maxlength="maxlength"
-                   :readonly="readonly"
-                   autocomplete="off" />
+            <div v-if="aspectHeight"
+                contenteditable
+                :class="scope.className" 
+                @focus="$emit('on_focus', $event)"
+                @blur="blur"
+                @change="change"
+                @input="input2"
+                :type="type" 
+                ref="$input" 
+                style="outline: none;"
+                :name="name" 
+                :focus-state="focus ? 'true' : ''"
+                :state="state"
+                :placeholder="placeholder"
+                :maxlength="maxlength"
+                :readonly="readonly"
+                autocomplete="off">{{ val2 }}</div>
+            <input v-else
+                :class="scope.className" 
+                @focus="$emit('on_focus', $event)"
+                @blur="blur"
+                @change="change"
+                @input="input"
+                v-model="val"
+                :type="type" 
+                ref="$input" 
+                :name="name" 
+                :focus-state="focus ? 'true' : ''"
+                :state="state"
+                :placeholder="placeholder"
+                :maxlength="maxlength"
+                :readonly="readonly"
+                autocomplete="off" />
         </template>
     </b-style> 
 </template>
 
 <script setup lang="ts">
-    import { ref, watchEffect } from "vue"
+    import { ref, watchEffect, onMounted, nextTick } from "vue"
     import bStyle from "./styles/b-style.vue"
     import { State } from "./styles/@types"
 
@@ -62,14 +82,11 @@
 
         // 样式集别名
         cname?: string,
-    }>();
-    const emit = defineEmits(["update:text", "on_focus", "on_blur", "on_change"]);
 
-    // 输入文字
-    const val = ref(props.text);
-    watchEffect(() => {
-        val.value = props.text;
-    })
+        // 自适应高度
+        aspectHeight?: boolean,
+    }>();
+    const emit = defineEmits(["update:text", "on_focus", "on_blur", "on_change", "on_input", "multiline"]);
 
     // 预置正则
     const preset_rules = {
@@ -104,8 +121,19 @@
     };
 
     // 文字输入
+    const val = ref(props.text);
+    const val2 = ref(props.text);
+    watchEffect(() => {
+        val.value = props.text;
+    })
+    const origHeight = ref();
     const input = () => {
         emit("update:text", val.value?.trim());
+    };
+    const input2 = () => {
+        emit("on_input", $input.value.innerText.trim());
+        const curHeight = getComputedStyle($input.value).height.split('px')[0];
+        emit("multiline", parseInt(curHeight) > parseInt(origHeight.value), curHeight); 
     };
 
     // 文字输入变化
@@ -132,7 +160,20 @@
         return true;
     };
 
+    const $input = ref();
     defineExpose({
-        check
+        check,
+        focus: function() {
+            $input.value.focus()
+        },
+        blur: function() {
+            $input.value.blur()
+        },
+    })
+
+    onMounted(() => {
+        nextTick(() => {
+            origHeight.value = getComputedStyle($input.value).height.split('px')[0].split('.')[0];
+        })
     })
 </script>

@@ -312,7 +312,7 @@
         const _class = props.class ?? `style-${Math.round(Math.random() * 10000)}`;
         parseStyles(_class);
         const compSelector = combineClassName(_class, props.cname ?? '');
-        genFocusStyles(`${ compSelector }[focus='true']:focus`); // 生成聚焦伪类样式
+        genFocusStyles(`${ compSelector }[focus-state='true']:focus`); // 生成聚焦伪类样式
         genHoverStyles(`${ compSelector }[hover='true']:hover`); // 生成鼠标悬停伪类样式
         genActiveStyles(`${ compSelector }[active='true']:active`); // 生成激活伪类样式
         genStateStyles(compSelector); // 生成状态样式

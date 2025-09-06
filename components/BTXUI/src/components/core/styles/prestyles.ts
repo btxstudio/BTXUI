@@ -24,6 +24,7 @@ export default <Prestyles>{
 
     // 布局
     "no-wrap": `flex-wrap: nowrap; white-space: nowrap;`,
+    "flex-wrap": `flex-wrap: wrap;`,
     "flex": `display: flex; justify-content: flex-start; align-items: stretch; flex-wrap: wrap; align-content: flex-start;`,
     "flex-column": `display: flex; flex-direction: column;`,
     "flex-between": `display: flex; justify-content: space-between; align-items: center;`,
@@ -272,10 +273,20 @@ export default <Prestyles>{
         unit: "%"
     },
 
+    // 元素尺寸分辨率
+    "ratio": {
+        pro: "aspect-ratio"
+    },
+
     // 字符间距
     "lspace": {
         pro: "letter-spacing",
         unit: "rem"
+    },
+
+    // 字体加粗
+    "bolder": {
+        pro: "font-weight"
     },
 
     // 宽度

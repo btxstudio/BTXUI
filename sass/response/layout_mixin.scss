@@ -39,6 +39,13 @@
     height: 100vh;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.no-wrap {
+    flex-wrap: nowrap; 
+    white-space: nowrap;
+}
 .no-shrink {
     flex-shrink: 0;
 }

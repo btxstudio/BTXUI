@@ -85,6 +85,48 @@
             </b-view>
             <pre ref="$code4" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp4"></pre>
         </section>
+
+        <!-- 被动失焦\聚焦 -->
+        <section class="mrg-t-5">
+            <h5>被动失焦\聚焦</h5>
+            <p>通过实例对象的 <code>focus</code>、<code>blur</code> 方法可以被动触发表单元素的聚焦、失焦效果。</p>
+            <b-view>
+                <b-input class="pad-h-1 h-3 bg-color-lgray solid line-Cddd thick-1 round-sm" 
+                    type="text"
+                    name="uname"
+                    ref="$input"
+                    focus="bg-color-light line-blue"
+                    v-model:text="data_5" />
+            </b-view>
+            <b-view class="flex mrg-t-1">
+                <btn-wid btn-text="聚焦" @on_click="focus" class="mrg-r-1" />
+                <btn-wid btn-text="失焦" @on_click="blur" />
+            </b-view>
+            <pre ref="$code5" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp5"></pre>
+        </section>
+
+        <!-- 自适应内容高度 -->
+        <section class="mrg-t-5">
+            <h5>自适应内容高度</h5>
+            <p>通过 <code>aspect-height</code> 属性可设置表单自适应内容高度，该属性需配合 <code>bh</code> 最小高度样式使用。需要注意的是，该类型输入无法实现数据的双向绑定，外部可通过 <code>on_input</code> 事件进行内容获取。</p>
+            <b-view>
+                <b-input class="pad-h-1 bh-2 lh-2 bg-color-lgray solid line-Cddd thick-1 round-sm w-20" 
+                    type="text"
+                    focus="bg-color-light line-blue"
+                    :aspect-height="true"
+                    @multiline="setMultiline"
+                    @on_input="setData6"
+                    v-model:text="data_6" />
+            </b-view>
+            <p>当前输入内容：
+                <code v-if="data_6">{{ data_6 }}</code>
+                <span v-else class="alpha-d5">暂无内容</span>
+            </p>
+            <div class="">
+                <span v-if="multiline.show">* 多行输入中，当前输入框高度为：<code>{{ multiline.height }}px</code></span>
+            </div>
+            <pre ref="$code6" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp6"></pre>
+        </section>
     </article>
 </template>
 
@@ -105,7 +147,19 @@
                     ef: "表单验证",
                     params: "-",
                     return: "{name:'表单项属性', notic:'报错提示', pass:'是否通过'}"
-                }
+                },
+                {
+                    name: "focus",
+                    ef: "表单聚焦",
+                    params: "-",
+                    return: "-"
+                },
+                {
+                    name: "blur",
+                    ef: "表单失焦",
+                    params: "-",
+                    return: "-"
+                },
             ],
             event: [
                 {
@@ -122,6 +176,16 @@
                     name: "on_blur",
                     ef: "表单失焦",
                     params: "checkResult, event",
+                },
+                {
+                    name: "on_input",
+                    ef: "自适应高度文本输入",
+                    params: "text",
+                },
+                {
+                    name: "multiline",
+                    ef: "自适应输入框高度变化",
+                    params: "ifMultiline, height",
                 }
             ]
         },
@@ -133,8 +197,9 @@
             ["maxlength", "string", "字符数上限"],
             ["placeholder", "string", "输入提示"],
             ["rule", "{ type: '自定义正则验证，或预置正则验证', notic: '验证报错提示' }", "正则验证 (包括：required、tel、email、url、uname、zh、uid)"],
-            ["readonly", "string", "只读样式集"],
-            ["focus", "string", "激活样式集"]
+            ["readonly", "boolean", "只读样式集"],
+            ["focus", "string", "激活样式集"],
+            ["aspect-height", "boolean", "自适应内容高度"]
         ] 
     }
 
@@ -142,6 +207,8 @@
     const $code2 = ref();
     const $code3 = ref();
     const $code4 = ref();
+    const $code5 = ref();
+    const $code6 = ref();
 
     const data_1 = ref("");
     const data_2 = reactive({
@@ -154,13 +221,34 @@
     });
     const data_4 = ref("hello BTXUI");
     const data_5 = ref("hello BTXUI");
-
+    
     const checkData2 = (result: any) => {
         data_2.result = result;
     };
     const checkData3 = (result: any) => {
         data_3.result = result;
     };
+    
+    const $input = ref();
+    const focus = () => {
+        $input.value.focus();
+    }
+    const blur = () => {
+        $input.value.blur();
+    }
+    
+    const data_6 = ref("hello BTXUI");
+    const multiline = reactive({
+        show: false,
+        height: 0
+    });
+    const setData6 = (val: string) => {
+        data_6.value = val;
+    }
+    const setMultiline = (val: boolean, height: number) => {
+        multiline.show = val;
+        multiline.height = height;
+    }
 
     const exp1 = `
     <b-view>
@@ -211,10 +299,33 @@
         state="readonly" :readonly="true" v-model:text="data_5" />
     </b-view>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+    const exp5 = `
+    <b-view>
+        <b-input class="pad-h-1 h-3 bg-color-lgray solid line-Cddd thick-1 round-sm" 
+            type="text"
+            name="uname"
+            ref="$input"
+            focus="bg-color-light line-blue"
+            v-model:text="data_5" />
+    </b-view>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    const exp6 = `
+    <b-view>
+        <b-input class="pad-h-1 bh-2 lh-2 bg-color-lgray solid line-Cddd thick-1 round-sm w-20" 
+            type="text"
+            focus="bg-color-light line-blue"
+            :aspect-height="true"
+            @multiline="setMultiline"
+            @on_input="setData6"
+            v-model:text="data_6" />
+    </b-view>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
     onMounted(() => {
         hljs.highlightElement($code.value);
         hljs.highlightElement($code2.value);
         hljs.highlightElement($code3.value);
         hljs.highlightElement($code4.value);
+        hljs.highlightElement($code5.value);
+        hljs.highlightElement($code6.value);
     })
 </script>

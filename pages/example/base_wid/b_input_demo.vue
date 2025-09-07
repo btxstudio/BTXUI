@@ -122,8 +122,8 @@
                 <code v-if="data_6">{{ data_6 }}</code>
                 <span v-else class="alpha-d5">暂无内容</span>
             </p>
-            <div class="">
-                <span v-if="multiline.show">* 多行输入中，当前输入框高度为：<code>{{ multiline.height }}px</code></span>
+            <div>
+                <span v-if="multiline.show">* 多行输入中，当前输入框高度为：<code>{{ multiline.height }}px，第 {{ multiline.row }} 行</code></span>
             </div>
             <pre ref="$code6" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp6"></pre>
         </section>
@@ -160,6 +160,12 @@
                     params: "-",
                     return: "-"
                 },
+                {
+                    name: "clear",
+                    ef: "文本清除",
+                    params: "-",
+                    return: "-"
+                },
             ],
             event: [
                 {
@@ -185,7 +191,7 @@
                 {
                     name: "multiline",
                     ef: "自适应输入框高度变化",
-                    params: "ifMultiline, height",
+                    params: "ifMultiline, row, height",
                 }
             ]
         },
@@ -240,13 +246,15 @@
     const data_6 = ref("hello BTXUI");
     const multiline = reactive({
         show: false,
-        height: 0
+        height: 0,
+        row: 1
     });
     const setData6 = (val: string) => {
         data_6.value = val;
     }
-    const setMultiline = (val: boolean, height: number) => {
+    const setMultiline = (val: boolean, row: number, height: number) => {
         multiline.show = val;
+        multiline.row = row;
         multiline.height = height;
     }
 

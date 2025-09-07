@@ -63,9 +63,10 @@
         <!-- 滚动置顶、置底监听 -->
         <section class="mrg-t-5">
             <h5>滚动置顶、置底监听</h5>
-            <p>滚动过程中，通过 <code>on_scroll</code> API 可以监听滚动方向及定位；<code>on_to_top</code>、<code>on_to_bottom</code> 可以监听滚动条滚动置顶及置底状态。</p>
+            <p>滚动过程中，通过 <code>on_scroll</code> API 可以监听滚动方向及定位；<code>on_to_top</code>、<code>on_to_bottom</code> 可以监听滚动条滚动置顶及置底状态。此外，通过实例的 <code>toTop</code>、<code>toEnd</code> 方法可以设置滚动条置顶或置底。</p>
             <b-view class="fsize-1d1 rw-70 color-mgray">
                 <b-list class="grow-1 h-15 bg-color-lgray round-sm bg-color-dgray pad-1"
+                    ref="$list3"
                     :scroll="{x: 'hidden', y: 'scroll'}" 
                     @on_to_top="scrollState = '滚动置顶'"
                     @on_to_bottom="scrollState = '滚动置底'"
@@ -82,10 +83,18 @@
                     </div>
                 </b-list>
             </b-view>
+            <b-view class="flex mrg-t-2">
+                <b-hot class="pad-h-1d5 pad-v-d5 bg-color-lgray round-sm" @on_click="$list3.toTop()">
+                    直接置顶
+                </b-hot>
+                <b-hot class="pad-h-1d5 pad-v-d5 bg-color-lgray round-sm mrg-l-1" @on_click="$list3.toEnd(true)">
+                    缓动置底
+                </b-hot>
+            </b-view>
             <p>
                 滚动方向及定位：
-                <span v-if="scrollDir_2">
-                    <span v-html="scrollDir_2"></span>
+                <span v-if="scrollDir_3">
+                    <span v-html="scrollDir_3"></span>
                     <span class="color-mgray pad-l-1">{{ scrollState }}</span>
                 </span>
                 <span v-else class="alpha-d7">暂无滚动</span>
@@ -113,9 +122,15 @@
                     return: "-"
                 },
                 {
+                    name: "toTop",
+                    ef: "置顶",
+                    params: "smooth",
+                    return: "-"
+                },
+                {
                     name: "toEnd",
-                    ef: "定位置底",
-                    params: "-",
+                    ef: "置底",
+                    params: "smooth",
                     return: "-"
                 },
             ],
@@ -150,9 +165,6 @@
     const $code3 = ref();
 
     const scrollDir = ref("");
-    const scrollDir_2 = ref("");
-    const scrollState = ref("");
-
     const setScrollDir = (scroll: any) => {
         let result: any;
         switch(scroll.dir){
@@ -162,6 +174,10 @@
         }
         scrollDir.value = result;
     };
+
+    const scrollDir_3 = ref("");
+    const scrollState = ref("");
+    const $list3 = ref();
     const setScrollDir_2 = (scroll: any) => {
         let result: any;
         switch(scroll.dir){
@@ -170,7 +186,7 @@
             case "b2t": result = `由下往上滑动，距离顶部：<code>${scroll.top} px</code>`;
         }
         scrollState.value = "";
-        scrollDir_2.value = result;
+        scrollDir_3.value = result;
     };
 
     const exp1 = `
@@ -219,6 +235,7 @@
     const exp3 = `
     <b-view class="fsize-1d1 rw-70 color-mgray">
         <b-list class="grow-1 h-15 bg-color-lgray round-sm bg-color-dgray pad-1"
+            ref="$list3"
             :scroll="{x: 'hidden', y: 'scroll'}" 
             @on_to_top="scrollState = '滚动置顶'"
             @on_to_bottom="scrollState = '滚动置底'"

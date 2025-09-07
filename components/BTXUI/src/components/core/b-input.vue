@@ -48,7 +48,7 @@
         type: "text" | "password",
 
         // 表单名
-        name: string,
+        name?: string,
 
         // 样式集
         class?: string,
@@ -132,8 +132,8 @@
     };
     const input2 = () => {
         emit("on_input", $input.value.innerText.trim());
-        const curHeight = getComputedStyle($input.value).height.split('px')[0];
-        emit("multiline", parseInt(curHeight) > parseInt(origHeight.value), curHeight); 
+        const curHeight = parseInt(getComputedStyle($input.value).height.split('px')[0]);
+        emit("multiline", curHeight > origHeight.value, Math.ceil(curHeight / origHeight.value), curHeight); 
     };
 
     // 文字输入变化
@@ -169,11 +169,20 @@
         blur: function() {
             $input.value.blur()
         },
+        clear: function() {
+            if(props.aspectHeight) {
+                $input.value.innerText = '';
+                input2();
+            } else {
+                val.value = '';
+                input();
+            }
+        }
     })
 
     onMounted(() => {
         nextTick(() => {
-            origHeight.value = getComputedStyle($input.value).height.split('px')[0].split('.')[0];
+            origHeight.value = parseInt(getComputedStyle($input.value).height.split('px')[0].split('.')[0]);
         })
     })
 </script>

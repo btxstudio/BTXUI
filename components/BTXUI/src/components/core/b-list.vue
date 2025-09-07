@@ -59,10 +59,21 @@
         $list.value.scrollTop = 0;
     };
 
-    // 重置置底
-    const toEnd = () => {
-        $list.value.scrollTop = 99999;
-        $list.value.scrollLeft = 99999;
+    // 置顶
+    const _to = (top, smooth=false) => {
+        const scroller = $list.value;
+        scroller.scrollTo({
+            top,
+            behavior: smooth ? 'smooth' : 'auto'
+        });
+    }
+    const toTop = (smooth) => {
+        _to(0, smooth);
+    };
+
+    // 置底
+    const toEnd = (smooth) => {
+        _to(99999, smooth);
     };
 
     // 滚动定位监听
@@ -90,7 +101,7 @@
         }
     };
 
-    defineExpose({ reset, toEnd })
+    defineExpose({ reset, toTop, toEnd })
 
     onMounted(() => {
         watchPos();

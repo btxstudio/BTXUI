@@ -40,10 +40,9 @@
                 </tr>
                 </tbody>
             </table>
-            <hr>
         </div>
 
-        <div v-if="api">
+        <div v-if="api" class="mrg-t-2">
             <h5>组件 API：</h5>
 
             <!--属性-->

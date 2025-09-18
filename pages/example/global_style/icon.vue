@@ -330,5 +330,15 @@ const icons = reactive([
         code: "\e61a",
         scale: "d9"
     },
+    {
+        name: "load",
+        code: "\e668",
+        scale: "d9"
+    },
+    {
+        name: "load2",
+        code: "\e61b",
+        scale: "d9"
+    },
 ]);
 </script>

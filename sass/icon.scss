@@ -1,8 +1,8 @@
 @font-face {
     font-family: "defaultICO"; /* Project id 1066215 */
-    src: url('/cdn/fonts/iconfont.woff2?t=1622074607009') format('woff2'),
-    url('/cdn/fonts/iconfont.woff?t=1622074607009') format('woff'),
-    url('/cdn/fonts/iconfont.ttf?t=1622074607009') format('truetype');
+    src: url('/cdn/fonts/iconfont.woff2?t=1758126391719') format('woff2'),
+    url('/cdn/fonts/iconfont.woff?t=1758126391719') format('woff'),
+    url('/cdn/fonts/iconfont.ttf?t=1758126391719') format('truetype');
 }
 
 [class^="ico-"],
@@ -49,6 +49,8 @@ $icons:
     (log, "\e60f")                  //日志
     (edit, "\e70c")                 //编辑
     (no-data, "\e62c")              //无数据
+    (load, "\e668")                 //加载
+    (load2, "\e61b")                //加载2
 
     (btxstudio-zh, "\e606")         //佰逹仕
     (company-pad, "\e603")          //七武海（实心）

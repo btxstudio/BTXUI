@@ -86,6 +86,7 @@ $slow_duration: 1.4s;
     }
 }
 .ani-loop {
+    animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
 

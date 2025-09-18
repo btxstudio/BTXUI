@@ -23,12 +23,17 @@ import radioGroupWid from "./src/components/checkbox-wid/radio-group-wid.vue";
 import tabsWid from "./src/components/checkbox-wid/tabs-wid.vue";
 import appWid from "./src/components/app-wid.vue";
 import confirmWid from "./src/components/confirm-wid.vue";
+import toastWid from "./src/components/toast-wid.vue";
 
-const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, bList, bWebview, bInput, bDrag, bTextarea, bRow, bCol,
-        btnWid, 
-        confirmWid, 
-        checkboxWid, checkboxGroupWid, radioGroupWid, tabsWid,
-        appWid];
+// glob
+import { showToast, showLoadToast, hideLoadToast } from "./src/components/core/lib/glob.ts";
+
+const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, bList, bWebview, bInput, bDrag, bTextarea, bRow, bCol, 
+    btnWid, 
+    confirmWid, 
+    checkboxWid, checkboxGroupWid, radioGroupWid, tabsWid,
+    appWid,
+    toastWid];
 
 export default {
     name: "btxui",
@@ -48,5 +53,6 @@ export default {
                 app.config.globalProperties[`$${key}`] = config[key];
             })
         }
-    }
+    },
+    showToast, showLoadToast, hideLoadToast
 }

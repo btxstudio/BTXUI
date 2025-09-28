@@ -26,7 +26,7 @@ import confirmWid from "./src/components/confirm-wid.vue";
 import toastWid from "./src/components/toast-wid.vue";
 
 // glob
-import { showToast, showLoadToast, hideLoadToast } from "./src/components/core/lib/glob.ts";
+export * from "./src/components/core/lib/glob.ts";
 
 const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, bList, bWebview, bInput, bDrag, bTextarea, bRow, bCol, 
     btnWid, 
@@ -53,6 +53,5 @@ export default {
                 app.config.globalProperties[`$${key}`] = config[key];
             })
         }
-    },
-    showToast, showLoadToast, hideLoadToast
+    }
 }

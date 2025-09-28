@@ -60,7 +60,7 @@
         // 样式集别名
         cname?: string,
 
-        // 组件路由 replace 模式
+        // replace 模式
         replace?: boolean,
 
     }>();
@@ -98,6 +98,9 @@
         if(routeLink) {
             e.preventDefault();
             proxy.$router[props.replace ? 'replace' : 'push'](routeLink);
+        }
+        if(target.value === "_blank" && props.replace) {
+            location.replace(url.value);
         }
         !props.forbid && emit("on_click", e);
     }

@@ -63,8 +63,11 @@
         // replace 模式
         replace?: boolean,
 
+        // 长按有效时间（默认 1000ms）
+        touchDuration?: number
+
     }>();
-    const emit = defineEmits(["on_click", "on_enter", "on_move", "on_leave", "on_dblclick"]);
+    const emit = defineEmits(["on_click", "on_enter", "on_move", "on_leave", "on_dblclick", "on_longTouch"]);
     const $anchor = ref();
 
     // 外链开启方式
@@ -111,8 +114,21 @@
     }
 
     // 鼠标移入|触控开始
+    let touchStartTime = ref(0);
+    let t;
+    let isLongTouch = false;
     const enter = (e) => {
         emit("on_enter", e);
+        if(e.type === 'touchstart') {
+            touchStartTime.value = Date.now();
+            t = setInterval(() => {
+                if(Date.now() - touchStartTime.value > (props.touchDuration || 1000)) { // 长按生效
+                    isLongTouch = true;
+                    emit("on_longTouch"); 
+                    clearTimeout(t);    
+                }
+            }, 100)
+        }
     };
 
     // 鼠标移动|触控移动
@@ -123,6 +139,13 @@
     // 鼠标移出|触控结束
     const leave = (e) => {
         emit("on_leave", e);
+        if(e.type === 'touchend') {
+            if(isLongTouch) {
+                e.preventDefault();
+                isLongTouch = false;
+            }
+            clearTimeout(t);
+        }
     };
 
     onMounted(() => {

@@ -9,7 +9,7 @@
             <p>【exp】：</p>
             <b-view class="flex">
                 <b-view class="w-10 h-10 round-md mrg-r-9 bsize-cover" bg-img="/img/head.jpg"></b-view>
-                <b-view class="w-10 h-10 round-md mrg-r-9 bsize-cover" bg-img="/img/head2.jpg"></b-view>
+                <b-view class="w-10 h-10 round-md mrg-r-9 bsize-cover" bg-img="/img/head2.jpg" :prevent="true"></b-view>
                 <b-view class="w-10 h-10 round-md bsize-50 bpos-50 bg-color-lgray" bg-img="/img/head.jpg"></b-view>
             </b-view>
             <pre ref="$code" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp1"></pre>
@@ -93,6 +93,7 @@
             ["states", "{[key: State]: string}", "各状态预设"],
             ["matrix", "{translate: '位移', scale: '放缩', rotate: '旋转', skew: '斜切'}", "设置变形矩阵"],
             ["cname", "string", "元素别名，用于类名合成唯一化"],
+            ["prevent", "boolean", "禁用默认行为"],
         ] 
     }
 

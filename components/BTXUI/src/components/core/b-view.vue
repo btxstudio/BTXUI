@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-    import { computed, ref, watch } from "vue"
+    import { computed, ref, watch, onMounted } from "vue"
     import bStyle from "./styles/b-style.vue"
     import { ViewData, State, States } from "./styles/@types"
 
@@ -29,7 +29,8 @@
             rotate?: string,
             skew?: string
         },
-        cname?: string
+        cname?: string,
+        prevent?: boolean,
     }
     const props = defineProps<ViewDataProps>();
     const emit = defineEmits(['on_aniEnd']);
@@ -54,4 +55,13 @@
 
     // 背景图样式
     const bgStyle = computed(() => props.bgImg? {backgroundImage: `url(${ props.bgImg })`}: {});
+
+    // 设置禁止默认
+    onMounted(() => {
+        if(props.prevent) {
+            $el.value.ontouchstart = $el.value.ontouchend = (e) => {
+                e.preventDefault();
+            }
+        }
+    })
 </script>

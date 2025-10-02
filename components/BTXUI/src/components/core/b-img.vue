@@ -1,7 +1,7 @@
 <template>
     <b-style :class="class" :cname="cname" :states="states" :matrix="matrix">
         <template v-slot:className="scope">
-            <img :src="src" :class="scope.className" :state="state" :style="{display: 'block', ...scope.matrixStyle}" :alt="alt">
+            <img :src="src" :class="scope.className" :state="state" :style="{display: 'block', ...scope.matrixStyle}" @touchstart.prevent :alt="alt">
         </template>
     </b-style>
 </template>

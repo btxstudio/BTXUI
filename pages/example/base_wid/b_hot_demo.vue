@@ -61,13 +61,20 @@
         <!-- 交互事件 -->
         <section class="mrg-t-5">
             <h5>交互事件</h5>
-            <p>组件还提供了 <code>on_dblclick</code>、<code>on_enter</code>、<code>on_move</code>、<code>on_level</code> 等 API 绑定用户交互操作。</p>
+            <p>组件还提供了 <code>on_dblclick</code>（移动端不支持）、<code>on_enter</code>、<code>on_move</code>、<code>on_level</code>、<code>on_longTouch</code> 等 API 绑定用户交互操作。<code>touch-duration</code> 属性则可设置长按的有效时间值，默认为 1s。</p>
             <b-view class="flex">
                 <b-hot class="pad-v-d5 pad-h-2 bg-color-blue color-light round-sm"
                     @on_click="data_2 = '执单双击'"
                     @on_dblclick="data_2 = '执行双击'"
                     @on_enter="data_2 = '开始触控'"
                     @on_leave="data_2 = '结束触控'">按钮</b-hot>
+                <b-hot class="pad-v-d5 rel pad-h-2 bg-color-mgray color-light round-sm mrg-l-1 over-hide"
+                    @on_enter="touchState = 'enter'"
+                    @on_leave="touchState = 'leave'"
+                    @on_longTouch="longTouchSuccess">
+                    <b-view class="abs max-h bg-color-blue l-0 t-0" :state="touchState"></b-view>
+                    <b-text class="rel">长按按钮</b-text>
+                </b-hot>
             </b-view>
             <p>当前交互状态：
                 <code v-if="data_2">{{ data_2 }}</code>
@@ -98,6 +105,7 @@
     import headerInfo from "@/components/header-info.vue"
     import { HeaderInfoData } from "@/components/types";
     import hljs from "highlight.js"
+    import { showToast } from "@/components/BTXUI/src/components/core/lib/glob";
 
     const introduce: HeaderInfoData = {
         name: "b-hot", 
@@ -112,7 +120,7 @@
                 },
                 {
                     name: "on_dblclick",
-                    ef: "左键双击",
+                    ef: "左键双击（移动端不支持）",
                     params: "event",
                 },
                 {
@@ -129,6 +137,11 @@
                     name: "on_move",
                     ef: "鼠标移动",
                     params: "event",
+                },
+                {
+                    name: "on_longTouch",
+                    ef: "触控长按（仅限移动端）",
+                    params: "-",
                 }
             ]
         },
@@ -142,7 +155,8 @@
             ["link", "string", "邮件发送 (format: mailto:xxx)"],
             ["anchor", "string", "跳转锚点 (format: #xxx)"],
             ["download", "string", "下载文件名"],
-            ["forbid", "boolean", "鼠标点击事件及链接禁用，默认 false，不禁用"]
+            ["forbid", "boolean", "鼠标点击事件及链接禁用，默认 false，不禁用"],
+            ["touch-duration", "number", "长按有效时间，默认 1000ms"]
         ] 
     }
 
@@ -156,6 +170,11 @@
     const data_1 = ref(0);
     const data_2 = ref("");
     const data_3 = ref("");
+
+    const touchState = ref('leave');
+    const longTouchSuccess = () => {
+        showToast('长按成功！')
+    }
 
     const exp1 = `
     <b-view>
@@ -220,3 +239,16 @@
         hljs.highlightElement($code6.value);
     })
 </script>
+<style>
+    [state='enter'] {
+        animation: enterAni 1s;
+    }
+    @keyframes enterAni {
+        from {
+            width: 0%;
+        }
+        to {
+            width: 100%;
+        }
+    }
+</style>

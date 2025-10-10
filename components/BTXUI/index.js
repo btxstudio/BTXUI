@@ -21,6 +21,8 @@ import checkboxWid from "./src/components/checkbox-wid/checkbox-wid.vue";
 import checkboxGroupWid from "./src/components/checkbox-wid/checkbox-group-wid.vue";
 import radioGroupWid from "./src/components/checkbox-wid/radio-group-wid.vue";
 import tabsWid from "./src/components/checkbox-wid/tabs-wid.vue";
+import uploadWid from "./src/components/upload-wid/upload-wid.vue";
+import imgUploadWid from "./src/components/upload-wid/img-upload-wid.vue";
 import appWid from "./src/components/app-wid.vue";
 import confirmWid from "./src/components/confirm-wid.vue";
 import toastWid from "./src/components/toast-wid.vue";
@@ -33,6 +35,7 @@ const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, b
     confirmWid, 
     checkboxWid, checkboxGroupWid, radioGroupWid, tabsWid,
     appWid,
+    uploadWid, imgUploadWid,
     toastWid];
 
 export default {

@@ -1,18 +1,16 @@
-const fetchData = async (url: string) => {
-    const res = await $fetch(url);
-    const { datas, error } = JSON.parse(res as string);
-    if(error > 0) console.error(error);
-    return datas;
+const fetchData = async (url: string, formData: FormData) => {
+    fetch(url, {
+        method: 'POST',
+        body: formData, 
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
 
-// 获取站点元信息
-export const getSiteInfo = async () => await fetchData("http://localhost/BTXphp/index.php/sea/App/get_site_info");
-
-// 获取友情链接
-export const getFriendLinks = async () => await fetchData("http://localhost/BTXphp/index.php/sea/Index/get_friend_links");
-
-// 获取静态文章
-export const getStatic = async () => await fetchData("http://localhost/BTXphp/index.php/sea/Index/get_static");
-
-// 获取文章列表
-export const getArticleList = async () => await fetchData("http://localhost/BTXphp/index.php/sea/Index/get_articles");
+// 图片上传测试接口
+export const uploadImg = async (data: FormData) => await fetchData("http://localhost/BTXphp/sea/Test/upload_file", data);

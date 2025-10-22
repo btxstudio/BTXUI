@@ -1,6 +1,5 @@
 import global_style from './global_style'                //全局样式
 import base_widget from './base_wid'                     //基础组件
-import app_widget from './app_wid'                       //应用组件
 
 const set_content = (data)=>{
     return data.map((item)=>{
@@ -14,20 +13,20 @@ const set_content = (data)=>{
 export default [
     {
         id: "/download",
-        text: "<b>下载及安装</b>"
+        text: "下载及安装"
     },
     {
         id: "/start",
-        text: "<b>起步</b>"
+        text: "起步"
     },
     {
         id: "a",
-        text: "<b>全局样式</b>",
+        text: "全局样式",
         children: set_content(global_style)
     },
     {
         id: "b",
-        text: "<b>主题组件</b>",
+        text: "主题组件",
         children: [
             {
                 id: "/level_widget",
@@ -37,13 +36,13 @@ export default [
     },
     {
         id: "c",
-        text: "<b>基础组件</b>",
+        text: "基础组件",
         children: set_content(base_widget)
     },
-    {
-        id: "e",
-        text: "<b>应用组件</b>",
-        children: set_content(app_widget),
-        spread: true
-    }
+    // {
+    //     id: "e",
+    //     text: "应用组件",
+    //     children: set_content(app_widget),
+    //     spread: true
+    // }
 ]

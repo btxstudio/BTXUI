@@ -16,61 +16,61 @@ export default [
     {
         path: '/b_style_demo',
         component: b_style_demo,
-        text: "<b>b-style</b> 样式机制"
+        text: "b-style 样式机制"
     },
     {
         path: '/b_view_demo',
         component: b_view_demo,
-        text: "<b>b-view</b> 基础布局"
+        text: "b-view 基础布局"
     },
     {
         path: '/b_grid_demo',
         component: b_grid_demo,
-        text: "<b>b-grid</b> 栅格布局"
+        text: "b-grid 栅格布局"
     },
     {
         path: '/b_video_demo',
         component: b_video_demo,
-        text: "<b>b-video</b> 视频媒体"
+        text: "b-video 视频媒体"
     },
     {
         path: '/b_text_demo',
         component: b_text_demo,
-        text: "<b>b-text</b> 文字区域"
+        text: "b-text 文字区域"
     },
     {
         path: '/b_hot_demo',
         component: b_hot_demo,
-        text: "<b>b-hot</b> 热点区域"
+        text: "b-hot 热点区域"
     },
     {
         path: '/b_img_demo',
         component: b_img_demo,
-        text: "<b>b-img</b> 图像"
+        text: "b-img 图像"
     },
     {
         path: '/b_icon_demo',
         component: b_icon_demo,
-        text: "<b>b-icon</b> 图标"
+        text: "b-icon 图标"
     },
     {
         path: '/b_input_demo',
         component: b_input_demo,
-        text: "<b>b-input</b> 表单输入"
+        text: "b-input 表单输入"
     },
     {
         path: '/b_textarea_demo',
         component: b_textarea_demo,
-        text: "<b>b-textarea</b> 文字域输入"
+        text: "b-textarea 文字域输入"
     },
     {
         path: '/b_list_demo',
         component: b_list_demo,
-        text: "<b>b-list</b> 滚动列表"
+        text: "b-list 滚动列表"
     },
     {
         path: '/b_drag_demo',
         component: b_drag_demo,
-        text: "<b>b-drag</b> 拖拽元素"
+        text: "b-drag 拖拽元素"
     }
 ]

@@ -26,6 +26,7 @@ import imgUploadWid from "./src/components/upload-wid/img-upload-wid.vue";
 import appWid from "./src/components/app-wid.vue";
 import confirmWid from "./src/components/confirm-wid.vue";
 import toastWid from "./src/components/toast-wid.vue";
+import contentWid from "./src/components/content-wid/content-wid.vue";
 
 // glob
 export * from "./src/components/core/lib/glob.ts";
@@ -36,6 +37,7 @@ const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, b
     checkboxWid, checkboxGroupWid, radioGroupWid, tabsWid,
     appWid,
     uploadWid, imgUploadWid,
+    contentWid,
     toastWid];
 
 export default {

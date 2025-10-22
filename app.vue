@@ -14,7 +14,7 @@
       </div>
   
       <!-- 顶部主导航栏 -->
-      <div class="rel z2 pad-h-3 bg-color-main flex-between color-sub">
+      <div class="rel z2 pad-h-3 bg-color-main line-neutral solid-b thick-1 flex-between color-sub">
   
           <!-- 左侧 logo -->
           <div class="rel z2 flex-4 color-light alpha-d7 fsize-2d5 scale-1d4">
@@ -57,9 +57,13 @@
   
       <div class="flex grow-1">
           <!-- 左侧目录 -->
-          <div :class="`flex-column w-30 z1 bg-color-lgray max-h t-0 trans-fast fixed-s ${contents_state? 'translateX-0-s': 'translateX-f100-s'}`">
-              <div class="grow-1 over-scroll pad-h-1 pad-t-2 pad-b-4 fsize-1d1 pad-t-5-s">
-                  <!-- <content-wid v-bind="nav" ref="cont_tree" @on_select="$_nav_select" /> -->
+          <div :class="`flex-column w-30 z1 bg-color-main color-light max-h t-0 trans-fast fixed-s ${contents_state? 'translateX-0-s': 'translateX-f100-s'}`">
+              <div class="grow-1 bold over-scroll thin-scroll pad-h-2 pad-t-2 pad-b-4 fsize-1d2 pad-t-5-s">
+                  <content-wid 
+                    gap="1d4"
+                    hover="color-sub"
+                    :data-tree="contentData" 
+                    @on_select="toPage" />
               </div>
           </div>
   
@@ -71,90 +75,60 @@
     </div>
   </template>
   
-  <script>
-//   import BHot from "@/components/BTXUI/core/b-hot"
-//   import BList from "@/components/BTXUI/core/b-list"
-//   import ContentWid from "@/components/BTXUI/content/content-wid"
-//   import contentData from "@/pages/example/content"
-  //   import ConfirmWid from "@/components/BTXUI/confirm/confirm-wid"
+  <script setup lang="ts">
+    import ContentWid from "@/components/BTXUI/src/components/content-wid/content-wid.vue"
+    import contentData from "@/pages/example/content"
+    import { useRouter } from "vue-router"
   
-  export default {
-    name: "App",
-    components: {
-        // BHot,
-        // BList,
-        // ContentWid,
-        // ConfirmWid,
-    },
-    data(){
-        return {
-  
-            //目录导航
-            nav: {
-                // dataTree: contentData,
-                colors: {
-                    normal: {
-                        text: "#777",
-                        bg: "none",
-                    },
-                    act: {
-                        text: "blue",
-                        bg: "none",
-                    },
-                    hover: {
-                        text: "dgray",
-                        bg: "none",
-                    }
-                },
+  //目录导航
+  const nav = {
+        // dataTree: contentData,
+        colors: {
+            normal: {
+                text: "#777",
+                bg: "none",
             },
-  
-            //目录侧边栏状态
-            contents_state: false,
-  
-            //【手机端】导航状态
-            nav_state: false
-  
-        }
-    },
-    computed: {
-  
-        //目录
-        $cont_tree(){
-            return this.$refs.cont_tree;
-        }
-  
-    },
-    methods: {
-  
-        //导航路由
-        $_nav_select(route){
-            this.contents_state = false;
-            this.$router.push(route);
-        },
-  
-        //初始化目录激活项
-        $_init_nav_act(content){
-            for(let item of content){
-                if(item.id === this.$route.path){
-                    item.selected = true;
-                    break;
-                }
-                const children = item.children;
-                if(children && children.length) this.$_init_nav_act(children);
+            act: {
+                text: "blue",
+                bg: "none",
+            },
+            hover: {
+                text: "dgray",
+                bg: "none",
             }
         },
+    };
   
-        //跳转 BTX·UI
-        $_go_btx_ui(){
-            this.$cont_tree.clear_selected();
-            this.nav_state = false;
-        }
+    //目录侧边栏状态
+    const contents_state = false;
   
-    },
-    beforeMount(){
-        // this.$_init_nav_act(contentData);
-    }
-  }
+    //【手机端】导航状态
+    const nav_state = false;
+    
+    // 导航路由
+    const router = useRouter();
+    const toPage = (item: any) => {
+        console.log(item, router);
+        // router.replace(route);
+    };
+  
+    //初始化目录激活项
+    // const $_init_nav_act = (content) => {
+    //     for(let item of content){
+    //         if(item.id === this.$route.path){
+    //             item.selected = true;
+    //             break;
+    //         }
+    //         const children = item.children;
+    //         if(children && children.length) this.$_init_nav_act(children);
+    //     }
+    // };
+
+    //跳转 BTX·UI
+    // const $_go_btx_ui = () => {
+    //     this.$cont_tree.clear_selected();
+    //     this.nav_state = false;
+    // }
   </script>
 
 <style lang="scss">

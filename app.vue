@@ -1,5 +1,5 @@
 <template>
-    <div class="max-screen flex-column">
+    <div class="max-screen bg-color-main flex-column">
         
       <!--全局弹窗组件-->
       <!-- <confirm-wid :colors="{matte: 'rgba(240,240,240,.6)'}" /> -->
@@ -14,7 +14,7 @@
       </div>
   
       <!-- 顶部主导航栏 -->
-      <div class="rel z2 pad-h-3 bg-color-main line-neutral solid-b thick-1 flex-between color-sub">
+      <div class="rel z2 pad-h-3 line-neutral solid-b thick-1 flex-between color-sub">
   
           <!-- 左侧 logo -->
           <div class="rel z2 flex-4 color-light alpha-d7 fsize-2d5 scale-1d4">
@@ -57,11 +57,12 @@
   
       <div class="flex grow-1">
           <!-- 左侧目录 -->
-          <div :class="`flex-column w-30 z1 bg-color-main color-light max-h t-0 trans-fast fixed-s ${contents_state? 'translateX-0-s': 'translateX-f100-s'}`">
-              <div class="grow-1 bold over-scroll thin-scroll pad-h-2 pad-t-2 pad-b-4 fsize-1d2 pad-t-5-s">
+          <div :class="`flex-column w-35 z1 color-light max-h t-0 trans-fast fixed-s ${contents_state? 'translateX-0-s': 'translateX-f100-s'}`">
+              <div class="grow-1 over-scroll thin-scroll pad-h-2d5 pad-t-2 pad-b-4 fsize-1d2 pad-t-5-s">
                   <content-wid 
                     gap="1d4"
                     hover="color-sub"
+                    active="bg-color-neutral bold line-neutral thick-1 solid color-sub round-sm pad-v-d4 pad-h-1 fsize-1d3 rel l-f1"
                     :data-tree="contentData" 
                     @on_select="toPage" />
               </div>
@@ -69,7 +70,7 @@
   
           <!-- 右侧介绍 -->
           <div class="grow-1 rel">
-            <nuxt-page class="abs max pad-h-4 pad-t-2 pad-b-7 pjustify over-scroll thick-scroll" />
+            <nuxt-page class="abs bg-color-light round-md max pad-h-4 pad-t-2 pad-b-7 pjustify over-scroll thick-scroll" />
           </div>
       </div>
     </div>
@@ -108,21 +109,10 @@
     // 导航路由
     const router = useRouter();
     const toPage = (item: any) => {
-        console.log(item, router);
-        // router.replace(route);
+        const parent = item.parent;
+        if(!parent) return;
+        router.push(`/example/${item.parent.id}/${item.id}`);
     };
-  
-    //初始化目录激活项
-    // const $_init_nav_act = (content) => {
-    //     for(let item of content){
-    //         if(item.id === this.$route.path){
-    //             item.selected = true;
-    //             break;
-    //         }
-    //         const children = item.children;
-    //         if(children && children.length) this.$_init_nav_act(children);
-    //     }
-    // };
 
     //跳转 BTX·UI
     // const $_go_btx_ui = () => {

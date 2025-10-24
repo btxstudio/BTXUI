@@ -1,7 +1,7 @@
 <template>
     <b-style :class="class" :states="states" :hover="hover" :active="active" :cname="cname">
         <template v-slot:className="scope">
-            <a :style="`user-select: none; cursor: ${ cursor };`"
+            <component :is="eventProxy ? 'div' : 'a'" :style="`user-select: none; cursor: ${ cursor };`"
                 ref="$anchor"
                 @mouseenter="enter"
                 @touchstart="enter"
@@ -9,7 +9,7 @@
                 @touchmove="move"
                 @mouseleave="leave"
                 @touchend="leave"
-                @click.stop="click"
+                @click="click"
                 @dblclick.stop="dblclick"
                 :target="target"
                 :class="scope.className"
@@ -18,7 +18,7 @@
                 :active="active? true: ''"
                 :href="url">
                 <slot />
-            </a>
+            </component>
         </template>
     </b-style>
 </template>
@@ -64,7 +64,10 @@
         replace?: boolean,
 
         // 长按有效时间（默认 1000ms）
-        touchDuration?: number
+        touchDuration?: number,
+
+        // 作为事件代理外层
+        eventProxy?: boolean
 
     }>();
     const emit = defineEmits(["on_click", "on_enter", "on_move", "on_leave", "on_dblclick", "on_longTouch"]);

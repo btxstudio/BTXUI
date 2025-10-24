@@ -156,7 +156,8 @@
             ["anchor", "string", "跳转锚点 (format: #xxx)"],
             ["download", "string", "下载文件名"],
             ["forbid", "boolean", "鼠标点击事件及链接禁用，默认 false，不禁用"],
-            ["touch-duration", "number", "长按有效时间，默认 1000ms"]
+            ["touchDuration", "number", "长按有效时间，默认 1000ms"],
+            ["eventProxy", "boolean", "作为事件代理外层"],
         ] 
     }
 

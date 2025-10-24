@@ -1,41 +1,13 @@
 <template>
-    <b-view>
-        <b-view v-for="item of dataTree">
-            <b-hot 
-                :class="`flex-4 mrg-b-${gap}`"
-                :hover="hover"
-                :states="{
-                    'true': `${active ? active : ''}`,
-                    'false': ''
-                }" 
-                :state="selected?.findIndex(data => data.id === item.id) as number > -1"
-                @on_click="nodeSelect(item)">
-                <b-icon 
-                    v-if="item.children && item.children.length"
-                    class="mrg-r-d4" 
-                    :state="item.spread ? 'content-wid-spread' : 'content-wid-collapse'"
-                    icon="arrow-right" />
-                <b-text>{{ item.text }}</b-text>
-            </b-hot>
-            <b-view 
-                v-if="item.children && item.children.length"
-                :states="{
-                    'show': 'show',
-                    'hide': 'hide'
-                }"
-                :state="item.spread ? 'show' : 'hide'"
-                :class="`pad-l-${indent}`">
-                <content-wid
-                    @on_select="nodeSelect" 
-                    v-bind="{...props, dataTree: item.children, sub: true}" />
-            </b-view>
-        </b-view>
-    </b-view>
+    <b-hot @on_click="select" :event-proxy="true">
+        <content-node-wid v-bind="props" />
+    </b-hot>
 </template>
 
-<script setup name="ContentWid" lang="ts">
-    import { computed, onBeforeMount, onMounted, ref, reactive, provide, inject } from "vue"
-    import BView from "../core/b-view.vue"
+<script setup lang="ts">
+    import { onBeforeMount, onMounted, ref, reactive, provide } from "vue"
+    import contentNodeWid from "./content-node-wid.vue"
+    import BHot from "../core/b-hot.vue"
 
     type dataTreeItem = {
         id: string,
@@ -49,24 +21,12 @@
     }
     const props = defineProps<{
         dataTree: dataTreeItem[],
-        sub?: boolean,
         gap?: string,
         indent?: string,
         hover?: string,
         active?: string,
     }>();
-    const dataTree = ref<dataTreeItem[]>(props.dataTree || []);
     const emit = defineEmits(["on_select"]); 
-
-    // 层级间距 
-    const gap = computed(() => {
-        return props.gap || "d5"
-    })
-
-    // 层级缩进 
-    const indent = computed(() => {
-        return props.indent || "3"
-    })
 
     // 节点展开数据
     let prefix = 0;
@@ -86,41 +46,52 @@
         }
         traverse(props.dataTree);
     })
+    const selected: any = ref([]);
+    onBeforeMount(() => {
+        provide('selected', selected.value);
+    })
     onMounted(() => {
-        if(props.sub) return;
         flatDataTree();
     })
     
     // 点击节点
-    let onSelect;
+    // let onSelect;
     // const subSelected = ref<dataTreeItem[]>();  
     // const selected: dataTreeItem[] = reactive([]);
-    const selected: any = ref([]);
-    const emitSelected = (data) => {
-        selected.value[0] = data;
-        emit('on_select', data);
+    const select = (e) => {
+        const x = e.clientX; 
+        const y = e.clientY; 
+        const element = document.elementFromPoint(x, y);
+        let targ;
+        console.log(1111, element);
+        emit('on_select');
     }
-    onBeforeMount(() => {
-        if(props.sub) return;
-        provide('onSelect', (data) => {
-            emitSelected(data);
-        });
-        provide('selected', selected.value);
-    })
-    if(props.sub) {
-        onSelect = inject('onSelect');
-        // subSelected.value = inject('selected');
-        selected.value = inject('selected');
-    }
-    const nodeSelect = (item: dataTreeItem) => {
-        if(item.spread !== undefined) item.spread = !item.spread;
-        item.selected = true;
-        if(props.sub) {
-            onSelect(item);
-        } else {
-            emitSelected(item);
-        }
-    }   
+    // const selected: any = ref([]);
+    // const emitSelected = (data) => {
+    //     selected.value[0] = data;
+    //     emit('on_select', data);
+    // }
+    // onBeforeMount(() => {
+    //     if(props.sub) return;
+    //     provide('onSelect', (data) => {
+    //         emitSelected(data);
+    //     });
+    //     provide('selected', selected.value);
+    // })
+    // if(props.sub) {
+    //     onSelect = inject('onSelect');
+    //     // subSelected.value = inject('selected');
+    //     selected.value = inject('selected');
+    // }
+    // const nodeSelect = (item: dataTreeItem) => {
+    //     if(item.spread !== undefined) item.spread = !item.spread;
+    //     item.selected = true;
+    //     if(props.sub) {
+    //         onSelect(item);
+    //     } else {
+    //         emitSelected(item);
+    //     }
+    // }   
 </script>
 <style>
     [state="content-wid-spread"] {

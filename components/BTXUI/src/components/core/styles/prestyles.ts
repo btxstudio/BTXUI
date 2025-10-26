@@ -73,7 +73,7 @@ export default <Prestyles>{
 
     // 布局 - 尺寸
     "max-h": `height: 100%;`,
-    "max-w": `width: 100%;`,
+    "max-w": `width: 100%; !important`,
     "max": `height: 100%; width: 100%;`,
     "max-fixed": `height: 100%; width: 100%; position: fixed; left: 0; top: 0;`,
     "max-screen": `height: 100vh; width: 100%;`,
@@ -199,6 +199,9 @@ export default <Prestyles>{
     "objfit-contain": `object-fit: contain;`,
     "objfit-none": `object-fit: none;`,
     "objfit-scaledown": `object-fit: scale-down;`,
+
+    // 图层混合模式
+    "lighten": `mix-blend-mode: lighten;`,
 
     // 二段赋值-----------------------------------------------------------------------------------
 

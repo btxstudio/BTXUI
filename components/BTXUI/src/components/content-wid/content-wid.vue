@@ -1,6 +1,6 @@
 <template>
     <b-hot @on_click="select" :event-proxy="true">
-        <content-node-wid v-bind="props" />
+        <content-node-wid v-if="flatState" v-bind="{...props, dataTree: dataTree}" />
     </b-hot>
 </template>
 
@@ -8,19 +8,10 @@
     import { onBeforeMount, onMounted, ref, reactive, provide } from "vue"
     import contentNodeWid from "./content-node-wid.vue"
     import BHot from "../core/b-hot.vue"
+    import { DataTreeItem } from "../@types"
 
-    type dataTreeItem = {
-        id: string,
-        text: string,
-        checkbox?: boolean,
-        selected?: boolean,
-        spread?: boolean,
-        children?: dataTreeItem[],
-        prefix?: number,
-        parent?: dataTreeItem,
-    }
     const props = defineProps<{
-        dataTree: dataTreeItem[],
+        dataTree: DataTreeItem[],
         gap?: string,
         indent?: string,
         hover?: string,
@@ -30,68 +21,49 @@
 
     // 节点展开数据
     let prefix = 0;
-    const result: dataTreeItem[] = reactive([]);
-    const flatDataTree = (() => {
-        const traverse = (items: dataTreeItem[], parent?: dataTreeItem) => {
+    const flatDataTree: DataTreeItem[] = reactive([]);
+    const indexDataTree: any = reactive({});
+    const dataTree = ref(props.dataTree);
+    const flatState = ref(false);
+    const flatData = (() => {
+        const traverse = (items: DataTreeItem[], parent?: DataTreeItem, level=0) => {
             for (const item of items) {
+                item.level = level; // 添加层级标志
                 item.prefix = prefix++; // 添加动态序号属性
                 if(parent) item.parent = parent; // 关联父节点属性
                 if(item.children) item.spread = item.spread || false; // 重置展开/折叠属性（默认折叠）
                 // if(item.selected) item.selected = item.selected || false; // 重置选中（默认单选）
-                result.push(item)
+                flatDataTree.push(item)
+                indexDataTree[item.id] = item;
                 if (item.children && item.children.length > 0) {
-                    traverse(item.children, item);
+                    traverse(item.children, item, level+1);
                 }
             }
         }
-        traverse(props.dataTree);
+        traverse(dataTree.value);
     })
     const selected: any = ref([]);
     onBeforeMount(() => {
         provide('selected', selected.value);
     })
     onMounted(() => {
-        flatDataTree();
+        flatData();
+        flatState.value = true;
     })
     
     // 点击节点
-    // let onSelect;
-    // const subSelected = ref<dataTreeItem[]>();  
-    // const selected: dataTreeItem[] = reactive([]);
     const select = (e) => {
         const x = e.clientX; 
         const y = e.clientY; 
-        const element = document.elementFromPoint(x, y);
-        let targ;
-        console.log(1111, element);
-        emit('on_select');
+        let element: Element|null = document.elementFromPoint(x, y);
+        while(!(element?.getAttribute('state')?.indexOf('id-') === 0)) {
+            element = element?.parentElement as Element;
+        }
+        const data = indexDataTree[element?.getAttribute('state')?.substring(3) as string];
+        selected.value[0] = data;
+        if(data.spread !== undefined) data.spread = !data.spread;
+        emit('on_select', data);
     }
-    // const selected: any = ref([]);
-    // const emitSelected = (data) => {
-    //     selected.value[0] = data;
-    //     emit('on_select', data);
-    // }
-    // onBeforeMount(() => {
-    //     if(props.sub) return;
-    //     provide('onSelect', (data) => {
-    //         emitSelected(data);
-    //     });
-    //     provide('selected', selected.value);
-    // })
-    // if(props.sub) {
-    //     onSelect = inject('onSelect');
-    //     // subSelected.value = inject('selected');
-    //     selected.value = inject('selected');
-    // }
-    // const nodeSelect = (item: dataTreeItem) => {
-    //     if(item.spread !== undefined) item.spread = !item.spread;
-    //     item.selected = true;
-    //     if(props.sub) {
-    //         onSelect(item);
-    //     } else {
-    //         emitSelected(item);
-    //     }
-    // }   
 </script>
 <style>
     [state="content-wid-spread"] {

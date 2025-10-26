@@ -255,3 +255,6 @@ $dirs: (l left), (r right), (t top), (b bottom);
 .gray-sm { filter: grayscale(40%) }
 .gray-md { filter: grayscale(70%) }
 .gray-lg { filter: grayscale(100%) }
+
+// 图层混合模式
+.lighten { mix-blend-mode: lighten }

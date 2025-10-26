@@ -1,39 +1,54 @@
 <template>
     <b-style :class="class" :focus="focus" :states="states" :cname="cname">
         <template v-slot:className="scope">
-            <div v-if="aspectHeight"
-                contenteditable
-                :class="scope.className" 
-                @focus="$emit('on_focus', $event)"
-                @blur="blur"
-                @change="change"
-                @input="input2"
-                :type="type" 
-                ref="$input" 
-                style="outline: none;"
-                :name="name" 
-                :focus-state="focus ? 'true' : ''"
-                :state="state"
-                :placeholder="placeholder"
-                :maxlength="maxlength"
-                :readonly="readonly"
-                autocomplete="off">{{ val2 }}</div>
-            <input v-else
-                :class="scope.className" 
-                @focus="$emit('on_focus', $event)"
-                @blur="blur"
-                @change="change"
-                @input="input"
-                v-model="val"
-                :type="type" 
-                ref="$input" 
-                :name="name" 
-                :focus-state="focus ? 'true' : ''"
-                :state="state"
-                :placeholder="placeholder"
-                :maxlength="maxlength"
-                :readonly="readonly"
-                autocomplete="off" />
+            <b-view class="flex-4 rel">
+                <div v-if="aspectHeight"
+                    :class="scope.className"
+                    contenteditable
+                    @focus="focusEvent($event)"
+                    @blur="blurEvent"
+                    @change="change"
+                    @input="input2"
+                    :type="type" 
+                    ref="$input" 
+                    style="outline: none;"
+                    :name="name" 
+                    :focus-state="focus ? 'true' : ''"
+                    :state="state"
+                    :placeholder="placeholder"
+                    :maxlength="maxlength"
+                    :readonly="readonly"
+                    autocomplete="off">{{ val2 }}</div>
+                <input v-else
+                    :class="scope.className"
+                    @focus="focusEvent($event)"
+                    @blur="blurEvent"
+                    @change="change"
+                    @input="input"
+                    v-model="val"
+                    :type="type" 
+                    ref="$input" 
+                    style="outline: none;"
+                    :name="name" 
+                    :focus-state="focus ? 'true' : ''"
+                    :state="state"
+                    :placeholder="placeholder"
+                    :maxlength="maxlength"
+                    :readonly="readonly"
+                    autocomplete="off" />
+                <b-hot 
+                    v-if="!readonly && !aspectHeight"
+                    @on_click="clear" 
+                    class="abs r-1 trans-fast"
+                    :states="{
+                        show: 'alpha-1 visible',
+                        hide: 'alpha-0'
+                    }"
+                    :state="val?.length != 0 && focusState ? 'show' : 'hide'">
+                    <slot name="cancel" v-if="$slots.cancel"></slot>
+                    <b-icon v-else class="flex-5 h-1d8 w-1d8 bg-color-neutral round" icon="fail" />
+                </b-hot>
+            </b-view>
         </template>
     </b-style> 
 </template>
@@ -141,9 +156,15 @@
         emit("on_change", check(), e);
     };
 
-    // 文字失焦
-    const blur = (e) => {
+    // 文字聚焦/失焦
+    const focusState = ref(false);
+    const blurEvent = (e) => {
+        focusState.value = false;
         emit("on_blur", check(), e);
+    };
+    const focusEvent = (e) => {
+        focusState.value = true;
+        emit("on_focus", e);
     };
 
     // 执行验证
@@ -160,6 +181,17 @@
         return true;
     };
 
+    // 内容重置
+    const clear = () => {
+        if(props.aspectHeight) {
+            $input.value.innerText = '';
+            input2();
+        } else {
+            val.value = '';
+            input();
+        }
+    }
+
     const $input = ref();
     defineExpose({
         check,
@@ -169,15 +201,7 @@
         blur: function() {
             $input.value.blur()
         },
-        clear: function() {
-            if(props.aspectHeight) {
-                $input.value.innerText = '';
-                input2();
-            } else {
-                val.value = '';
-                input();
-            }
-        }
+        clear
     })
 
     onMounted(() => {

@@ -58,11 +58,10 @@
       <div class="flex grow-1">
           <!-- 左侧目录 -->
           <div :class="`flex-column w-35 z1 color-light max-h t-0 trans-fast fixed-s ${contents_state? 'translateX-0-s': 'translateX-f100-s'}`">
-              <div class="grow-1 over-scroll thin-scroll pad-h-2d5 pad-t-2 pad-b-4 fsize-1d2 pad-t-5-s">
+              <div class="grow-1 over-scroll thin-scroll pad-h-2 pad-t-2 pad-b-4 fsize-1d2 pad-t-5-s color-mgray">
                   <content-wid 
-                    gap="1d4"
                     hover="color-sub"
-                    active="bg-color-neutral bold line-neutral thick-1 solid color-sub round-sm pad-v-d4 pad-h-1 fsize-1d3 rel l-f1"
+                    active="bg-color-neutral round-sm line-neutral bold thick-1 solid color-light"
                     :data-tree="contentData" 
                     @on_select="toPage" />
               </div>

@@ -1,13 +1,14 @@
 <template>
-    <b-view v-for="item of dataTree" :key="item.id">
+    <b-view v-for="item of dataTree" :state="`id-${item.id}`" :key="item.id">
         <b-hot
-            :class="`flex-4 mrg-b-${gap}`"
+            :cname="`${item.id}-${Math.random()}`"
+            :class="`flex-4 pad-v-${gap} pad-l-${setIndex(item.level)}`"
             :hover="hover"
             :states="{
-                'true': `${active ? active : ''}`,
-                'false': ''
+                true: `${active ? active : ''}`,
+                false: ''
             }" 
-            :state="selected?.findIndex(data => data.id === item.id) as number > -1">
+            :state="(selected?.findIndex(data => data.id === item.id) as number > -1).toString()">
             <b-icon 
                 v-if="item.children && item.children.length"
                 class="mrg-r-d4" 
@@ -21,8 +22,7 @@
                 'show': 'show',
                 'hide': 'hide'
             }"
-            :state="item.spread ? 'show' : 'hide'"
-            :class="`pad-l-${indent}`">
+            :state="item.spread ? 'show' : 'hide'">
             <content-node-wid v-bind="{...props, dataTree: item.children}" />
         </b-view>
     </b-view>
@@ -33,60 +33,30 @@
     import BView from "../core/b-view.vue"
     import BHot from "../core/b-hot.vue"
     import BIcon from "../core/b-icon.vue"
+    import { DataTreeItem } from "../@types"
 
-    type dataTreeItem = {
-        id: string,
-        text: string,
-        checkbox?: boolean,
-        selected?: boolean,
-        spread?: boolean,
-        children?: dataTreeItem[],
-        prefix?: number,
-        parent?: dataTreeItem,
-    }
     const props = defineProps<{
-        dataTree: dataTreeItem[],
+        dataTree: DataTreeItem[],
         gap?: string,
         indent?: string,
         hover?: string,
         active?: string,
     }>();
-    const dataTree = ref<dataTreeItem[]>(props.dataTree || []);
+    const dataTree = ref<DataTreeItem[]>(props.dataTree || []);
     const emit = defineEmits(["on_select"]); 
 
     const selected: any = inject('selected');
 
     // 层级间距 
     const gap = computed(() => {
-        return props.gap || "d5"
+        return props.gap || "d7"
     })
 
     // 层级缩进 
     const indent = computed(() => {
         return props.indent || "3"
     })
+    const setIndex = (level) => {
+        return (level * parseFloat(indent.value.replace('d', '.')) + parseFloat(gap.value.replace('d', '.'))).toString().replace('.', 'd');
+    }
 </script>
-<style>
-    [state="content-wid-spread"] {
-        animation: content-wid-spread .3s forwards;
-    }
-    [state="content-wid-collapse"] {
-        animation: content-wid-collapse .3s forwards;
-    }
-    @keyframes content-wid-spread {
-        from {
-            transform: rotate(0);
-        }
-        to {
-            transform: rotate(90deg);
-        }
-    }
-    @keyframes content-wid-collapse {
-        from {
-            transform: rotate(90deg);
-        }
-        to {
-            transform: rotate(0);
-        }
-    }   
-</style>

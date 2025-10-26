@@ -10,3 +10,15 @@ export interface CheckboxData {
     },
     label?: Label,
 };
+
+export type DataTreeItem = {
+    id: string,
+    text: string,
+    level?: number,
+    checkbox?: boolean,
+    selected?: boolean,
+    spread?: boolean,
+    children?: dataTreeItem[],
+    prefix?: number,
+    parent?: dataTreeItem,
+}

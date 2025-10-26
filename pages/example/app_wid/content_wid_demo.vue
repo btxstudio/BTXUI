@@ -15,7 +15,7 @@
         </section>
 
         <!--自定义节点-->
-        <section class="mrg-t-5">
+        <!-- <section class="mrg-t-5">
             <h5>自定义节点</h5>
             <p>可以通过插槽形式来自定义节点样式及内容。</p>
             <div class="pad-d5 bg-color-dgray round-sm">
@@ -31,7 +31,7 @@
                 <span v-else class="alpha-d4">暂无</span>
             </p>
             <pre ref="$code2" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp2"></pre>
-        </section>
+        </section> -->
 
         <!--复选操作-->
         <!-- <section>
@@ -70,7 +70,7 @@
     const introduce: HeaderInfoData = {
         name: "content-wid", 
         desc: ["该组件用于处理树形结构数据的可视化及交互操作。"],
-        dependent: ["b-view", "b-hot", "b-icon", "content-wid"], 
+        dependent: ["b-view", "b-hot", "b-icon", "content-node-wid"], 
         api: {
             methods: [
                 {
@@ -170,56 +170,56 @@
         data1Selected.value = `所选数据序号【${item.prefix}】${item.id}，值为:${item.text}`;
     };
 
-    const $code2 = ref();
-    const data2 = [
-        {
-            id: "html",
-            text: "html",
-            children: [
-                {
-                    id: "div",
-                    text: "div 标签",
-                },
-                {
-                    id: "span",
-                    text: "span 标签",
-                },
-                {
-                    id: "a",
-                    text: "a 标签",
-                },
-            ]
-        },
-        {
-            id: "css",
-            text: "css",
-            spread: true,
-            children: [
-                {
-                    id: "color",
-                    text: "color 文字颜色",
-                    children: [
-                        {
-                            id: "red",
-                            text: "red 玫红",
-                        },
-                        {
-                            id: "yellow",
-                            text: "yellow 橙黄",
-                        },
-                    ]
-                },
-                {
-                    id: "background",
-                    text: "background",
-                },
-            ]
-        }
-    ];
-    const data2Selected = ref("");
-    const select2 = (item: any) => {
-        data2Selected.value = `所选数据序号【${item.prefix}】${item.id}，值为:${item.text}`;
-    };
+    // const $code2 = ref();
+    // const data2 = [
+    //     {
+    //         id: "html",
+    //         text: "html",
+    //         children: [
+    //             {
+    //                 id: "div",
+    //                 text: "div 标签",
+    //             },
+    //             {
+    //                 id: "span",
+    //                 text: "span 标签",
+    //             },
+    //             {
+    //                 id: "a",
+    //                 text: "a 标签",
+    //             },
+    //         ]
+    //     },
+    //     {
+    //         id: "css",
+    //         text: "css",
+    //         spread: true,
+    //         children: [
+    //             {
+    //                 id: "color",
+    //                 text: "color 文字颜色",
+    //                 children: [
+    //                     {
+    //                         id: "red",
+    //                         text: "red 玫红",
+    //                     },
+    //                     {
+    //                         id: "yellow",
+    //                         text: "yellow 橙黄",
+    //                     },
+    //                 ]
+    //             },
+    //             {
+    //                 id: "background",
+    //                 text: "background",
+    //             },
+    //         ]
+    //     }
+    // ];
+    // const data2Selected = ref("");
+    // const select2 = (item: any) => {
+    //     data2Selected.value = `所选数据序号【${item.prefix}】${item.id}，值为:${item.text}`;
+    // };
 
     const data_3 = {
         props: {
@@ -344,18 +344,6 @@
         }
     }
 
-    // const $_select_1 = (id){
-    //     this.data_1.selected = id;
-    // }
-
-    // const $_select_2 = (id){
-    //     this.data_2.selected = id;
-    // }
-
-    // const $_select_3 = (ids){
-    //     this.data_3.selected = ids;
-    // }
-
     const exp1 = `
     <content-wid :data-tree="data1" @on_select="select1" hover="color-blue" />`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
@@ -364,6 +352,6 @@
 
     onMounted(() => {
         hljs.highlightElement($code.value);
-        hljs.highlightElement($code2.value);
+        // hljs.highlightElement($code2.value);
     })
 </script>

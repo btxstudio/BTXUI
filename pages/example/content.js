@@ -117,6 +117,10 @@ export default [
                 text: "toast_wid 浮窗提示"
             },
             {
+                id: 'modal_wid_demo',
+                text: "modal_wid 模态窗"
+            },
+            {
                 id: 'checkbox_wid/checkbox_wid_demo',
                 text: "checkbox_wid 复选按钮"
             },

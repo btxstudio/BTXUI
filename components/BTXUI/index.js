@@ -26,6 +26,7 @@ import imgUploadWid from "./src/components/upload-wid/img-upload-wid.vue";
 import appWid from "./src/components/app-wid.vue";
 import confirmWid from "./src/components/confirm-wid.vue";
 import toastWid from "./src/components/toast-wid.vue";
+import modalWid from "./src/components/modal-wid.vue";
 import contentWid from "./src/components/content-wid/content-wid.vue";
 
 // glob
@@ -38,6 +39,7 @@ const initGlobalComponents = [styles, bView, bText, bHot, bImg, bIcon, bVideo, b
     appWid,
     uploadWid, imgUploadWid,
     contentWid,
+    modalWid,
     toastWid];
 
 export default {

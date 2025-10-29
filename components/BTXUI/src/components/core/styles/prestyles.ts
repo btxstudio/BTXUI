@@ -176,6 +176,9 @@ export default <Prestyles>{
     "dark-sm": `filter: brightness(80%);`,
     "dark-md": `filter: brightness(50%);`,
     "dark-lg": `filter: brightness(20%);`,
+    "light-sm": `filter: brightness(120%);`,
+    "light-md": `filter: brightness(150%);`,
+    "light-lg": `filter: brightness(200%);`,
 
     // 纯度滤镜
     "gray-no": `filter: grayscale(0%);`,

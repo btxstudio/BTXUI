@@ -142,6 +142,11 @@
                     name: "on_longTouch",
                     ef: "触控长按（仅限移动端）",
                     params: "-",
+                },
+                {
+                    name: "on_transend",
+                    ef: "过渡动画结束",
+                    params: "-",
                 }
             ]
         },

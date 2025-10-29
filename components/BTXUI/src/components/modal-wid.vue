@@ -1,13 +1,14 @@
 <template>
-    <b-view :class="`alpha-0 fixed t-0 l-0 max z-9 ${dirStyle.layout}`"
-        :state="visiable" 
+    <b-view :class="`fixed t-0 l-0 max z-9 ${dirStyle.layout}`"
+        :state="closeState" 
         :states="{
             true: 'alpha-1 visible',
             false: 'alpha-0'
         }">
 
         <!-- matte -->
-        <b-hot 
+        <b-hot
+            @on_transend="matteAniend" 
             @on_click="hide" 
             :state="visiable" 
             :states="{
@@ -18,30 +19,44 @@
         
         <!-- pannel -->
         <b-view 
-            :class="`${dirStyle.pannal} alpha-0 rel ani-mode-both`"
+            :class="`${dirStyle.pannal} rel ani-mode-both`"
             :state="aniDir"
             :states="{
                 left: {
-                    class: 'alpha-1 visible',
                     ani: 'ani-left-to-right'
                 },
                 right: {
-                    class: 'alpha-1 visible',
                     ani: 'ani-right-to-left'
                 },
                 top: {
-                    class: 'alpha-1 visible',
                     ani: 'ani-top-to-bottom'
                 },
                 bottom: {
-                    class: 'alpha-1 visible',
                     ani: 'ani-bottom-to-top'
-                }
+                },
+                center: {
+                    ani: 'ani-scale-fade-in'
+                },
+                leftBack: {
+                    ani: 'ani-left-to-right-reverse'
+                },
+                rightBack: {
+                    ani: 'ani-right-to-left-reverse'
+                },
+                topBack: {
+                    ani: 'ani-top-to-bottom-reverse'
+                },
+                bottomBack: {
+                    ani: 'ani-bottom-to-top-reverse'
+                },
+                centerBack: {
+                    ani: 'ani-scale-fade-out'
+                },
             }">
-            <slot v-if="$slots.custom" />
+            <slot v-if="$slots.custom" name="custom" />
             <b-view v-else 
-                :class="`bg-color-light rel pad-2 ${roundEnable ? 'round-lg' : ''}`">
-                <b-hot v-if="!closeEnable" class="abs r-2 t-1d5 color-mgray" @on_click="hide">
+                :class="`bg-color-${pannelColor || 'light'} rel pad-2 ${roundEnable ? 'round-md' : ''} ${dirStyle.pannal}`">
+                <b-hot v-if="!closeEnable" class="abs r-1 t-d7 color-mgray" @on_click="hide">
                     <b-icon icon="fail" class="fsize-2 lh-1d4" />
                 </b-hot>
                 <slot />
@@ -57,6 +72,7 @@
         matteColor?: string,
         closeEnable?: boolean,
         roundEnable?: boolean,
+        pannelColor?: string,
         dir?: 'left' | 'right' | 'top' | 'bottom' | 'center', 
     }>()
     const emit = defineEmits(['update:visiable']);
@@ -94,17 +110,20 @@
     const aniDir = ref('');
     watchEffect(() => {
         if(props.visiable) { // 显示
-            setTimeout(() => {
-                aniDir.value = dir.value;
-            })
+            closeState.value = true;
+            aniDir.value = dir.value;
         } else { // 隐藏
-            aniDir.value = '';
+            aniDir.value = `${dir.value}Back`;
         }
     })
 
+    
     /** 隐藏模态窗 */
+    const closeState = ref(false);
+    const matteAniend = (e) => {
+        if(getComputedStyle(e.target).opacity === "0") closeState.value = false;
+    }
     const hide = () => {
-        aniDir.value = '';
         emit('update:visiable', false);
     }
 </script>

@@ -11,6 +11,7 @@
                 @touchend="leave"
                 @click="click"
                 @dblclick.stop="dblclick"
+                @transitionend="$emit('on_transend', $event)"
                 :target="target"
                 :class="scope.className"
                 :hover="hover? true: ''"
@@ -70,7 +71,7 @@
         eventProxy?: boolean
 
     }>();
-    const emit = defineEmits(["on_click", "on_enter", "on_move", "on_leave", "on_dblclick", "on_longTouch"]);
+    const emit = defineEmits(["on_click", "on_enter", "on_move", "on_leave", "on_dblclick", "on_longTouch", "on_transend"]);
     const $anchor = ref();
 
     // 外链开启方式

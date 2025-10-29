@@ -217,18 +217,14 @@ $slow_duration: 1.4s;
 }
 
 
-//由左向右滑动动画
+// 由左向右滑动动画
 .ani-left-to-right{                         
     animation-name: aniLeftSliderToRight; 
     @extend %duration;
 }
-@-webkit-keyframes aniLeftSliderToRight {
-    from {
-        -webkit-transform: translateX(-150%);
-    }
-    to{
-        -webkit-transform: translateX(0%);
-    }
+.ani-left-to-right-reverse{                         
+    animation-name: aniLeftSliderToRightReverse; 
+    @extend %duration;
 }
 @keyframes aniLeftSliderToRight {
     from {
@@ -238,20 +234,23 @@ $slow_duration: 1.4s;
         transform: translateX(0%);
     }
 }
+@keyframes aniLeftSliderToRightReverse {
+    from {
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-150%);
+    }
+}
 
-
-//由右向左滑动动画
+// 由右向左滑动动画
 .ani-right-to-left{                         
     animation-name: aniRightSliderToLeft; 
     @extend %duration;
 }
-@-webkit-keyframes aniRightSliderToLeft {
-    from {
-        -webkit-transform: translateX(150%);
-    }
-    to{
-        -webkit-transform: translateX(0%);
-    }
+.ani-right-to-left-reverse{                         
+    animation-name: aniRightSliderToLeftReverse; 
+    @extend %duration;
 }
 @keyframes aniRightSliderToLeft {
     from {
@@ -261,20 +260,23 @@ $slow_duration: 1.4s;
         transform: translateX(0%);
     }
 }
+@keyframes aniRightSliderToLeftReverse {
+    from {
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(150%);
+    }
+}
 
-
-//由上向下滑动动画
+// 由上向下滑动动画
 .ani-top-to-bottom{                         
     animation-name: aniTopSliderToBottom; 
     @extend %duration;
 }
-@-webkit-keyframes aniTopSliderToBottom {
-    from {
-        -webkit-transform: translateY(-150%);
-    }
-    to{
-        -webkit-transform: translateY(0%);
-    }
+.ani-top-to-bottom-reverse{                         
+    animation-name: aniTopSliderToBottomReverse; 
+    @extend %duration;
 }
 @keyframes aniTopSliderToBottom {
     from {
@@ -284,20 +286,23 @@ $slow_duration: 1.4s;
         transform: translateY(0%);
     }
 }
+@keyframes aniTopSliderToBottomReverse {
+    from {
+        transform: translateY(0%);
+    }
+    to{
+        transform: translateY(-150%);
+    }
+}
 
-
-//由下向上滑动动画
+// 由下向上滑动动画
 .ani-bottom-to-top{                         
     animation-name: aniBottomSliderToTop; 
     @extend %duration;
 }
-@-webkit-keyframes aniBottomSliderToTop {
-    from {
-        -webkit-transform: translateY(150%);
-    }
-    to{
-        -webkit-transform: translateY(0%);
-    }
+.ani-bottom-to-top-reverse{                         
+    animation-name: aniBottomSliderToTopReverse; 
+    @extend %duration;
 }
 @keyframes aniBottomSliderToTop {
     from {
@@ -307,7 +312,14 @@ $slow_duration: 1.4s;
         transform: translateY(0%);
     }
 }
-
+@keyframes aniBottomSliderToTopReverse {
+    from {
+        transform: translateY(0%);
+    }
+    to{
+        transform: translateY(150%);
+    }
+}
 
 //旋转 360 度动画
 .ani-rotate {

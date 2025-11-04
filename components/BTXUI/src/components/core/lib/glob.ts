@@ -64,7 +64,7 @@ export const showToast = (text: string, duration=2000, icon='') => {
     }, duration)
 }
 
-export const showLoadToast = (text?: string) => {
+export const showLoadToast = (text='数据加载中') => {
     let bToast: HTMLDivElement | null = document.querySelector('.b-load-toast');
     if(!bToast) { // 构建组件
         bToast = document.createElement('div');
@@ -72,7 +72,7 @@ export const showLoadToast = (text?: string) => {
         const bToastInner = document.createElement('div');
         bToast.appendChild(bToastInner);
         const bToastIcon = document.createElement('i');
-        bToastIcon.className = 'ico-load ani-rotate ani-loop ani-slow';
+        // bToastIcon.className = 'ico-load ani-rotate ani-loop ani-slow';
         bToastIcon.style.cssText = `
             color: #fff;
             font-size: 3.2rem;
@@ -87,18 +87,28 @@ export const showLoadToast = (text?: string) => {
             padding: 1.2rem 1.7rem;
             text-align: center;
             background-color: rgba(0,0,0,.9);
+            min-width: 10rem;
             font-size: 1.27rem;
         `;
         bToast.style.cssText = hideStyle;
         document.body.appendChild(bToast);
     }
-    (bToast.childNodes[0].childNodes[1] as HTMLDivElement).innerText = text || '数据加载中';
+    (bToast.childNodes[0].childNodes[0] as HTMLElement).className = 'ico-load ani-rotate ani-loop ani-slow';
+    (bToast.childNodes[0].childNodes[1] as HTMLDivElement).innerText = text;
     bToast.style.cssText = showStyle;
 }
 
-export const hideLoadToast = () => {
+export const hideLoadToast = (_text?: string, _icon?: string) => {
     clearTimeout(t);
     let bToast: HTMLDivElement | null = document.querySelector('.b-load-toast');
     if(!bToast) return;
-    bToast.style.cssText = hideStyle;
+    if(_text) { // 展示结果延迟结束
+        if(_icon) (bToast.childNodes[0].childNodes[0] as HTMLElement).className = `ico-${_icon}`;
+        (bToast.childNodes[0].childNodes[1] as HTMLDivElement).innerText = _text;
+        setTimeout(() => {
+            bToast.style.cssText = hideStyle;
+        }, 1000)
+    } else { // 直接结束
+        bToast.style.cssText = hideStyle;
+    }
 }

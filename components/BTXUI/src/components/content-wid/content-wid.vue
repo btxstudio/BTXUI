@@ -1,6 +1,10 @@
 <template>
     <b-hot @on_click="select" :event-proxy="true">
-        <content-node-wid v-if="flatState" v-bind="{...props, dataTree: dataTree}" />
+        <content-node-wid v-if="flatState" v-bind="{...props, dataTree: dataTree}">
+            <template v-if="$slots.default" v-slot="scope">
+                <slot v-bind="scope['dataItem']" />
+            </template>
+        </content-node-wid>
     </b-hot>
 </template>
 

@@ -15,23 +15,40 @@
         </section>
 
         <!--自定义节点-->
-        <!-- <section class="mrg-t-5">
+        <section class="mrg-t-5">
             <h5>自定义节点</h5>
-            <p>可以通过插槽形式来自定义节点样式及内容。</p>
-            <div class="pad-d5 bg-color-dgray round-sm">
-                <content-wid :data-tree="data2" @on_select="select2">
-                    <b-view>
-                        <b-icon icon="" />
-                        <b-text>23</b-text>
-                    </b-view>
+            <p>可以通过插槽形式来自定义节点样式及内容，实际使用时通常可以通过扩展 <code>state</code> 属性来进一步实现选项激活时（active）样式。</p>
+            <div class="pad-d5 bg-color-dgray round-sm color-light">
+                <content-wid :data-tree="data2" @on_select="select2" active="bg-color-neutral color-green">
+                    <template v-slot="scope">
+                        <b-view class="flex-4">
+                            <b-icon 
+                                v-if="scope?.icon" 
+                                :states="{
+                                    active: 'color-light bg-color-green',
+                                    normal: 'color-yellow bg-color-neutral'
+                                }"
+                                :state="data2Selected.id === scope.id ? 'active' : 'normal'"
+                                class="w-2d5 h-2d5 round flex-5" 
+                                :icon="scope.icon" />
+                            <b-hot 
+                                :states="{
+                                    active: 'alpha-1',
+                                    normal: 'alpha-d4'
+                                }"
+                                :state="data2Selected.id === scope.id ? 'active' : 'normal'"
+                                class="trans-fast mrg-l-1" 
+                                hover="alpha-1">{{ scope.text }}</b-hot>
+                        </b-view>
+                    </template>
                 </content-wid>
             </div>
             <p>当前选择数据：
-                <code v-if="data2Selected">{{data2Selected}}</code>
+                <code v-if="data2Selected">{{`所选数据序号【${data2Selected.prefix}】${data2Selected.id}，值为:${data2Selected.text}`}}</code>
                 <span v-else class="alpha-d4">暂无</span>
             </p>
             <pre ref="$code2" class="lang-html round-md pad-v-1 mrg-t-2 over-scroll" v-html="exp2"></pre>
-        </section> -->
+        </section>
 
         <!--复选操作-->
         <!-- <section>
@@ -101,9 +118,7 @@
             ["indent", "string", "节点层级缩进样式值"],
             ["hover", "string", "节点鼠标悬停时样式值"],
             ["active", "string", "节点激活时样式值"],
-            ["mode", "'radio'|'checkbox'", "选择模式（默认单选）"],
-            ["iconData", "string", "参照：b-icon 组件入参"],
-            ["hotData", "boolean", "参照：b-hot 组件入参"]
+            ["mode", "'radio'|'checkbox'", "选择模式（默认单选）"]
         ]
     };
 
@@ -170,56 +185,65 @@
         data1Selected.value = `所选数据序号【${item.prefix}】${item.id}，值为:${item.text}`;
     };
 
-    // const $code2 = ref();
-    // const data2 = [
-    //     {
-    //         id: "html",
-    //         text: "html",
-    //         children: [
-    //             {
-    //                 id: "div",
-    //                 text: "div 标签",
-    //             },
-    //             {
-    //                 id: "span",
-    //                 text: "span 标签",
-    //             },
-    //             {
-    //                 id: "a",
-    //                 text: "a 标签",
-    //             },
-    //         ]
-    //     },
-    //     {
-    //         id: "css",
-    //         text: "css",
-    //         spread: true,
-    //         children: [
-    //             {
-    //                 id: "color",
-    //                 text: "color 文字颜色",
-    //                 children: [
-    //                     {
-    //                         id: "red",
-    //                         text: "red 玫红",
-    //                     },
-    //                     {
-    //                         id: "yellow",
-    //                         text: "yellow 橙黄",
-    //                     },
-    //                 ]
-    //             },
-    //             {
-    //                 id: "background",
-    //                 text: "background",
-    //             },
-    //         ]
-    //     }
-    // ];
-    // const data2Selected = ref("");
-    // const select2 = (item: any) => {
-    //     data2Selected.value = `所选数据序号【${item.prefix}】${item.id}，值为:${item.text}`;
-    // };
+    const $code2 = ref();
+    const data2 = [
+        {
+            id: "html",
+            text: "html",
+            spread: true,
+            children: [
+                {
+                    id: "div",
+                    icon: 'talk',
+                    text: "div 标签",
+                },
+                {
+                    id: "span",
+                    icon: 'trophy',
+                    text: "span 标签",
+                },
+                {
+                    id: "a",
+                    icon: 'edit',
+                    text: "a 标签",
+                },
+            ]
+        },
+        {
+            id: "css",
+            text: "css",
+            spread: true,
+            children: [
+                {
+                    id: "color",
+                    text: "color 文字颜色",
+                    children: [
+                        {
+                            id: "red",
+                            icon: 'work',
+                            text: "red 玫红",
+                        },
+                        {
+                            id: "yellow",
+                            icon: 'circle',
+                            text: "yellow 橙黄",
+                        },
+                    ]
+                },
+                {
+                    id: "background",
+                    icon: 'shop',
+                    text: "background",
+                },
+            ]
+        }
+    ];
+    const data2Selected: any = ref({
+        id: 'span'
+    });
+    const select2 = (item: any) => {
+        data2Selected.value = item;
+    };
 
     const data_3 = {
         props: {
@@ -348,10 +372,32 @@
     <content-wid :data-tree="data1" @on_select="select1" hover="color-blue" />`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
     const exp2 = `
-    <content-wid :data-tree="data1" @on_select="select1" hover="color-blue" />`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    <content-wid :data-tree="data2" @on_select="select2" active="bg-color-neutral color-green">
+        <template v-slot="scope">
+            <b-view class="flex-4">
+                <b-icon 
+                    v-if="scope?.icon" 
+                    :states="{
+                        active: 'color-light bg-color-green',
+                        normal: 'color-yellow bg-color-neutral'
+                    }"
+                    :state="data2Selected.id === scope.id ? 'active' : 'normal'"
+                    class="w-2d5 h-2d5 round flex-5" 
+                    :icon="scope.icon" />
+                <b-hot 
+                    :states="{
+                        active: 'alpha-1',
+                        normal: 'alpha-d4'
+                    }"
+                    :state="data2Selected.id === scope.id ? 'active' : 'normal'"
+                    class="trans-fast mrg-l-1" 
+                    hover="alpha-1">{{ scope.text }}</b-hot>
+            </b-view>
+        </template>
+    </content-wid>`.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
     onMounted(() => {
         hljs.highlightElement($code.value);
-        // hljs.highlightElement($code2.value);
+        hljs.highlightElement($code2.value);
     })
 </script>

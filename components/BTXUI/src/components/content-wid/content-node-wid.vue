@@ -14,7 +14,9 @@
                 class="mrg-r-d4" 
                 :state="item.spread ? 'content-wid-spread' : 'content-wid-collapse'"
                 icon="arrow-right" />
-            <b-text>{{ item.text }}</b-text>
+            <slot :data-item="dealSlotData(item)">
+                <b-text>{{ item.text }}</b-text>
+            </slot>
         </b-hot>
         <b-view 
             v-if="item.children && item.children.length"
@@ -23,7 +25,11 @@
                 'hide': 'hide'
             }"
             :state="item.spread ? 'show' : 'hide'">
-            <content-node-wid v-bind="{...props, dataTree: item.children}" />
+            <content-node-wid v-bind="{...props, dataTree: item.children}">
+                <template v-if="$slots.default" v-slot="scope">
+                    <slot v-bind="scope" />
+                </template>
+            </content-node-wid>
         </b-view>
     </b-view>
 </template>
@@ -58,5 +64,11 @@
     })
     const setIndex = (level) => {
         return (level * parseFloat(indent.value.replace('d', '.')) + parseFloat(gap.value.replace('d', '.'))).toString().replace('.', 'd');
+    }
+
+    // 处理 slot 数据
+    const dealSlotData = (item) => {
+        const { parent, children, ...extra } = item;
+        return extra;
     }
 </script>

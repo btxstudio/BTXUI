@@ -1,7 +1,7 @@
 <template>
     <b-style :class="class" :cname="cname" :states="states" :matrix="matrix">
         <template v-slot:className="scope">
-            <img :src="src" :class="scope.className" :state="state" :style="{display: 'block', ...scope.matrixStyle}" :alt="alt">
+            <img :src="`${publicConfig}${src.replace(/^\//, '')}`" :class="scope.className" :state="state" :style="{display: 'block', ...scope.matrixStyle}" :alt="alt">
         </template>
     </b-style>
 </template>
@@ -10,6 +10,7 @@
     import { onMounted, ref, watch, computed } from "vue";
     import bStyle from "./styles/b-style.vue"
     import { State } from "./styles/@types"
+    import { useRuntimeConfig } from 'nuxt/app'
 
     const props = defineProps<{
         // 图片地址
@@ -43,6 +44,7 @@
     const emit = defineEmits(["on_load"]);
 
     // 展示图源
+    const { public: publicConfig } = useRuntimeConfig()
     const src = ref("");
 
     // 设置展示图源

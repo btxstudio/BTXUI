@@ -17,6 +17,7 @@
     import { computed, ref, watch, onMounted } from "vue"
     import bStyle from "./styles/b-style.vue"
     import { ViewData, State, States } from "./styles/@types"
+    import { useRuntimeConfig } from 'nuxt/app'
 
     interface ViewDataProps extends ViewData {
         class?: any,
@@ -54,7 +55,8 @@
     };
 
     // 背景图样式
-    const bgStyle = computed(() => props.bgImg? {backgroundImage: `url(${ props.bgImg })`}: {});
+    const { public: publicConfig } = useRuntimeConfig()
+    const bgStyle = computed(() => props.bgImg? {backgroundImage: `url(${publicConfig.baseURL}${ props.bgImg.replace(/^\//, '') })`}: {});
 
     // 设置禁止默认
     onMounted(() => {

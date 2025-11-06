@@ -12,12 +12,14 @@ export default defineNuxtConfig({
                 {name: 'format-detection', content: 'telephone=no'}
             ],
             link: [
-                {rel: 'icon', type: 'image/x-icon', href: '/favicon.gif'},
+                {rel: 'icon', type: 'image/x-icon', href: './favicon.gif'},
             ]
-        }
+        },
+        baseURL: process.env.NODE_ENV === 'production' ? '/pros/btx_ui/' : '/',
     },
 
     vite: {
+        base: process.env.NODE_ENV === 'production' ? '/pros/btx_ui/' : '/',
         css: {
             preprocessorOptions: {
                 scss: {
@@ -29,6 +31,12 @@ export default defineNuxtConfig({
             alias: {
                 "@": resolve(__dirname, "./")
             }
+        }
+    },
+
+    runtimeConfig: {
+        public: {
+            baseURL: process.env.NODE_ENV === 'production' ? '/pros/btx_ui/' : '/'
         }
     },
 

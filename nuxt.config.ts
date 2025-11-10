@@ -12,8 +12,9 @@ export default defineNuxtConfig({
                 {name: 'format-detection', content: 'telephone=no'}
             ],
             link: [
-                {rel: 'icon', type: 'image/x-icon', href: './favicon.gif'},
-            ]
+                {rel: 'icon', type: 'image/x-icon', href: '/pros/btx_ui/favicon.gif'},
+            ],
+            title: 'BTX·UI'
         },
         baseURL: process.env.NODE_ENV === 'production' ? '/pros/btx_ui/' : '/',
     },

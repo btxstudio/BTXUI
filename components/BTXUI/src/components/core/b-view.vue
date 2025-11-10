@@ -56,7 +56,9 @@
 
     // 背景图样式
     const { public: publicConfig } = useRuntimeConfig()
-    const bgStyle = computed(() => props.bgImg? {backgroundImage: `url(${publicConfig.baseURL}${ props.bgImg.replace(/^\//, '') })`}: {});
+    const isRootSrc = computed(() => props.bgImg && props.bgImg[0] === '/');
+    const imgSrc = computed(() => props.bgImg && isRootSrc.value ? `${publicConfig.baseURL}${props.bgImg.replace(/^\//, '')}` : props.bgImg);
+    const bgStyle = computed(() => props.bgImg? {backgroundImage: `url(${imgSrc.value})`}: {});
 
     // 设置禁止默认
     onMounted(() => {

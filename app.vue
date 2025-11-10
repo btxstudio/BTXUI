@@ -24,18 +24,18 @@
           <!-- 右侧导航按钮 -->
           <nav :class="`flex-4 fsize-1d2 bg-color-main l-0 t-0 trans-fast z1 fixed-s max-s flex-5-s fsize-1d4-s pcenter-s flex-column-s translateX-${nav_state? 0: 100}-s`">
               <div class="mrg-h-2 mrg-v-1d5-s">
-                  <!-- <b-hot link="/" hover="color-light" @on_click="$_go_btx_ui">BTX·UI</b-hot> -->
+                  <b-hot link="/" hover="color-light">Home</b-hot>
               </div>
               <div class="mrg-h-2 mrg-v-1d5-s">
-                  <!-- <b-hot link="http://level.75sea.com" hover="color-light">Level</b-hot> -->
+                  <b-hot link="http://level.75sea.com" hover="color-light">Level</b-hot>
               </div>
               <div class="mrg-h-2 mrg-v-1d5-s">
-                  <!-- <b-hot link="https://github.com/btxstudio/BTXUI" hover="color-light">Github</b-hot> -->
+                  <b-hot link="https://github.com/btxstudio/BTXUI" hover="color-light">Github</b-hot>
               </div>
               <div class="mrg-h-2 mrg-v-1d5-s">
-                  <!-- <b-hot link="http://www.75sea.com" hover="color-light">
+                  <b-hot link="http://www.75sea.com" hover="color-light">
                       <i class="ico-company-line mrg-r-d5"></i>七武海科技
-                  </b-hot> -->
+                  </b-hot>
               </div>
           </nav>
   
@@ -79,25 +79,6 @@
     import ContentWid from "@/components/BTXUI/src/components/content-wid/content-wid.vue"
     import contentData from "@/pages/example/content"
     import { useRouter } from "vue-router"
-  
-  //目录导航
-  const nav = {
-        // dataTree: contentData,
-        colors: {
-            normal: {
-                text: "#777",
-                bg: "none",
-            },
-            act: {
-                text: "blue",
-                bg: "none",
-            },
-            hover: {
-                text: "dgray",
-                bg: "none",
-            }
-        },
-    };
   
     //目录侧边栏状态
     const contents_state = false;

@@ -1,7 +1,7 @@
 <template>
     <b-style :class="class" :cname="cname" :states="states" :matrix="matrix">
         <template v-slot:className="scope">
-            <img :src="`${publicConfig}${src.replace(/^\//, '')}`" :class="scope.className" :state="state" :style="{display: 'block', ...scope.matrixStyle}" :alt="alt">
+            <img v-if="src" :src="src" :class="`${scope.className} ani-fade-in`" :state="state" :style="{display: 'block', ...scope.matrixStyle}" :alt="alt">
         </template>
     </b-style>
 </template>
@@ -40,22 +40,23 @@
         // 样式集别名
         cname?: string,
     }>()
+    const { public: publicConfig } = useRuntimeConfig()
+    const setBaseURL = (src) => src[0] === '/' ? `${publicConfig.baseURL}${src.replace(/^\//, '')}` : src;
     const img = computed(() => props.img);
     const emit = defineEmits(["on_load"]);
 
     // 展示图源
-    const { public: publicConfig } = useRuntimeConfig()
     const src = ref("");
 
     // 设置展示图源
     const setSrc = () => {
-        if(props.defaultSrc) src.value = props.defaultSrc; // 设置默认图
+        if(props.defaultSrc) src.value = setBaseURL(props.defaultSrc); // 设置默认图
         const imgLoader = new Image();
         imgLoader.onload = ()=>{
-            src.value = props.img;
+            src.value = setBaseURL(props.img);
             emit("on_load");
         }
-        imgLoader.src = props.img;
+        imgLoader.src = setBaseURL(props.img);
     }
 
     watch(img, setSrc);
